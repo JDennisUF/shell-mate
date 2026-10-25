@@ -1,9 +1,44 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shell Mate — Rotten Autumn Tracker</title><style>
-:root{color-scheme:dark;font-family:system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;color:#f8ead9;background:radial-gradient(ellipse at top,#442519,#111014 65%)}main{max-width:900px;margin:auto;padding:28px 18px 80px}header{text-align:center;padding:25px 0}h1,h2{font-family:Georgia,serif;color:#ffb56b}h1{font-size:clamp(2.8rem,8vw,5rem);margin:5px}p,small{color:#cbbbae}.pumpkins{font-size:3.5rem}.panel{background:#221c20;border:1px solid #604338;border-radius:15px;padding:20px;margin:18px 0}.item{display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid #49383a}.item:last-child{border:0}.item input{accent-color:#e99a42;width:21px;height:21px;flex:none}.item label{cursor:pointer;flex:1}.item small{display:block;margin-top:4px;line-height:1.5}.done strong{text-decoration:line-through;opacity:.6}button,input[type=search],select{background:#382a2c;color:#fff;border:1px solid #835946;padding:9px;border-radius:7px}button{cursor:pointer}button:hover{border-color:#ffb56b}.controls{display:flex;flex-wrap:wrap;gap:8px}input[type=search]{flex:1;min-width:180px}progress{width:100%;height:14px;accent-color:#ee9741}.tag{font-size:.75rem;color:#ffc994;background:#55372c;border-radius:5px;padding:3px 6px;margin-left:8px}footer{text-align:center;color:#b8aaa1;font-size:.85rem}</style></head><body><main><header><div class="pumpkins" aria-hidden="true">🎃 🕯️ 🎃</div><h1>Shell Mate</h1><p>Your Mortal Shell companion · Rotten Autumn dungeon tracker</p></header><section class="panel"><h2>Progress</h2><strong id="count"></strong><progress id="bar" max="15"></progress><p id="ghostCount"></p><div class="controls"><input id="search" type="search" placeholder="Search dungeons or beacons"><select id="filter"><option value="all">All</option><option value="open">Incomplete</option><option value="done">Completed</option></select><button id="export">Export progress</button><button id="import">Import progress</button><input id="file" type="file" accept="application/json" hidden></div></section><section class="panel"><h2>🗝️ 15 New Dungeons</h2><div id="dungeons"></div></section><section class="panel"><h2>👻 Ghost Beacons</h2><p>Four Ghost Beacon discoveries tracked separately.</p><div id="ghosts"></div></section><footer>Unofficial fan project. Not affiliated with Cold Symmetry. Directions are community-sourced and may need correction. Progress stays in this browser unless exported.</footer></main><script>
-const d=[["Troubadour's Reprise","One Legged Wolf","North; lute statue","Night"],["Primeval Dungeon","Gloomshade Grove","Northeast; giant mushroom","Night"],["Obscured Market","Gloomshade Grove","West; via Citadel of Penance","Ghost"],["Shrouded Mire","Outskirts of Nochte","Northeast; Hag's Path swamp","Ghost"],["The Corridors","Nochtean Gate","Northeast; ruins and bridge",""],["The Sideway","High Lord's Courtyard","Behind beacon pillar","Night"],["Ankle's Bane","Gate of Mammon","East; wooden stairs",""],["Veiled Tower","Gate of Mammon","North-northeast; pumpkin trail","Night"],["Well of Knowledge","Gate of Infinity","North; elevator","Night"],["Buried Library","The Silent Steps","South; downhill between braziers",""],["Secret Alcove","The Silent Steps","Southeast; statue path","Ghost"],["Concealed Lookout","Sester's Gate","West; stone stairs","Ghost"],["Icebound Chamber","Sester's Gate","Through Cleansed Gate","Night"],["Not The Sheep","Sunken Village","Northeast; below bridge","Sheephead Totem"],["Neglected Ward","Hangman's Scaffold","Stairs, bridge, left, stairs, right",""]];
-const g=["Obscured Market","Shrouded Mire","Secret Alcove","Concealed Lookout"],key="shell-mate-rotten-autumn-v1";let state={dungeons:{},ghosts:{}};try{const v=JSON.parse(localStorage.getItem(key));if(v&&typeof v==="object")state={dungeons:v.dungeons||{},ghosts:v.ghosts||{}}}catch{}
-function save(){localStorage.setItem(key,JSON.stringify(state))}
-function render(){const q=document.querySelector("#search").value.toLowerCase(),f=document.querySelector("#filter").value;function rows(items,id,kind){const el=document.getElementById(id);el.replaceChildren();items.forEach((row,i)=>{const name=kind==="dungeons"?row[0]:row,checked=!!state[kind][name];if(!name.toLowerCase().includes(q)&&!(row[1]||"").toLowerCase().includes(q))return;if(f==="open"&&checked||f==="done"&&!checked)return;const div=document.createElement("div");div.className="item"+(checked?" done":"");const cb=document.createElement("input");cb.type="checkbox";cb.id=kind+i;cb.checked=checked;cb.onchange=()=>{state[kind][name]=cb.checked;save();render()};const label=document.createElement("label");label.htmlFor=cb.id;const strong=document.createElement("strong");strong.textContent=name;label.append(strong);if(kind==="dungeons"){if(row[3]){const tag=document.createElement("span");tag.className="tag";tag.textContent=row[3];label.append(tag)}const small=document.createElement("small");small.textContent="Closest Beacon: "+row[1]+" · "+row[2];label.append(small)}div.append(cb,label);el.append(div)})}rows(d,"dungeons","dungeons");rows(g,"ghosts","ghosts");const n=d.filter(x=>state.dungeons[x[0]]).length;document.getElementById("count").textContent=n+" / 15 dungeons complete";document.getElementById("bar").value=n;document.getElementById("ghostCount").textContent=g.filter(x=>state.ghosts[x]).length+" / 4 Ghost Beacons found"}
-document.getElementById("search").oninput=render;document.getElementById("filter").onchange=render;document.getElementById("export").onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="shell-mate-progress.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};document.getElementById("import").onclick=()=>document.getElementById("file").click();document.getElementById("file").onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!data||typeof data.dungeons!=="object"||typeof data.ghosts!=="object")throw Error("Invalid progress file");state=data;save();render()}catch(err){alert(err.message)}e.target.value=""};render();
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181b1b">
+  <title>Shell Mate | Mortal Shell 2 Guide</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip" href="#catalog">Skip to guide</a>
+  <header class="site-header">
+    <div class="shell">
+      <p class="eyebrow">Mortal Shell 2 companion</p>
+      <h1>Shell Mate <span aria-hidden="true">◆</span></h1>
+      <p class="intro">Find your next objective. Keep your place.</p>
+    </div>
+  </header>
+  <main class="shell" id="catalog">
+    <section class="overview" aria-labelledby="progress-title">
+      <div class="overview-top"><h2 id="progress-title">Your progress</h2><strong id="overall-count"></strong></div>
+      <progress id="overall-progress" value="0" max="1" aria-label="Overall completion"></progress>
+      <div id="category-progress" class="progress-grid"></div>
+    </section>
+    <nav class="tabs" aria-label="Guide categories" id="tabs"></nav>
+    <section class="guide" aria-labelledby="category-title">
+      <div class="guide-head"><div><p class="eyebrow" id="category-eyebrow"></p><h2 id="category-title"></h2><p id="category-description"></p></div><div class="file-actions"><button id="export" type="button">Export</button><button id="import" type="button">Import</button><input id="import-file" type="file" accept=".json,application/json" hidden></div></div>
+      <div class="filters" role="search">
+        <label class="search-field"><span>Search guide</span><input id="search" type="search" placeholder="Name, region, or landmark" autocomplete="off"></label>
+        <label><span>Region</span><select id="region"></select></label>
+        <label><span>Content</span><select id="scope"><option value="all">All MS2</option><option value="base">Base game</option><option value="rotten-autumn">Rotten Autumn</option></select></label>
+        <label><span>Progress</span><select id="status"><option value="all">All</option><option value="open">To do</option><option value="done">Done</option></select></label>
+        <label><span id="kind-label">Type</span><select id="kind-filter"></select></label>
+        <label><span>Order</span><select id="sort"><option value="progression">Progression</option><option value="name">Name</option></select></label>
+      </div>
+      <p class="results" id="results" aria-live="polite"></p>
+      <div id="entries" class="entries"></div>
+    </section>
+  </main>
+  <footer class="site-footer shell"><p>Unofficial guide. Source links appear with each entry. Progress is stored in this browser until exported.</p><p>Routes and counts can change as the community documents the game.</p></footer>
+  <div class="toast" id="notice" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
