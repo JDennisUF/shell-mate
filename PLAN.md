@@ -15,7 +15,7 @@ Expand Shell Mate from its current Rotten Autumn dungeon and Ghost Beacon tracke
 
 1. Build a source-backed inventory for tarstones, beacons, and bosses across Mortal Shell 2, including Rotten Autumn content. Cross-check game names, counts, locations, and acquisition requirements against at least two independent sources where possible. Record source URLs and the date checked.
 2. Give each entry a stable ID and a scope (`base` or `rotten-autumn`). Keep aliases for changed spellings or names; display one verified name. Mark disputed or unconfirmed entries in the data and UI instead of silently treating them as complete facts.
-3. Write a usable guide for every entry. For each tarstone, give its category, region, nearest usable beacon, step-by-step route, prerequisites/objectives, acquisition method, and relevant boss or dungeon. For each beacon, give its region, starting point, step-by-step path, and activation requirements. For each boss, give its region, nearest beacon, approach/unlock steps, a concise fight strategy, and rewards. State when a route is unavailable until another objective is completed.
+3. Write a usable guide for every entry. For each tarstone, give its category, region, nearest usable beacon, step-by-step route, prerequisites/objectives, acquisition method, and relevant boss or dungeon. For each beacon, give its region, starting point, step-by-step path, and activation requirements. For each boss, give its region, nearest beacon, approach/unlock steps, rewards, and brief fight tips only when the tips can be verified. Omit unverified tactics rather than guessing. State when a route is unavailable until another objective is completed.
 4. Treat Ghost Beacons as beacons with a subtype, while preserving the existing four-entry Ghost Beacon checklist and its progress. Keep the 15 existing dungeon entries as their own checklist.
 5. Audit all routes in the five local tarstone notes (`Myriad Stone`, `Rupturing Stone`, `Unstable Stone`, `Clockwork Shardstone`, `Strange Remnant`) before using them in the app. They are draft leads, not verified source material.
 
@@ -23,7 +23,7 @@ Expand Shell Mate from its current Rotten Autumn dungeon and Ghost Beacon tracke
 
 - Keep the app static and easy to host: plain HTML, CSS, and JavaScript. Split the growing catalog into small data and UI files once the entries are assembled; no build step is required.
 - First screen: Shell Mate title, overall progress, category navigation (`Tarstones`, `Beacons`, `Bosses`, `Dungeons`), and a compact search/filter row. Show category counts and completion totals. Let players browse by region and in a suggested progression order as well as by name.
-- Each category supports text search, region/scope filters, and all/open/completed status. Tarstones also filter by category. Entry details show numbered directions, requirements, rewards where relevant, and source links. Link each route's nearest beacon and cross-link related bosses, tarstones, and dungeons. Keep progress controls visible without hiding guide text.
+- Each category supports text search, region/scope filters, and all/open/completed status. Tarstones also filter by category. Entry details show numbered directions, requirements, rewards where relevant, and source links. Link each route's nearest beacon and cross-link related bosses, tarstones, and dungeons. Keep progress controls visible without hiding route text. Put boss fight tips in a collapsed, clearly labeled `Fight tips (spoilers)` disclosure that opens only when selected.
 - Use Unicode marks such as `◆` for tarstones, `✦` for beacons, `⚔` for bosses, and `✓` for completion. Treat symbols as decoration with accessible text labels; no emoji-only commands.
 - Keep the visual language compact and readable on phones. Use semantic controls, keyboard navigation, visible focus, and sufficient contrast. Respect reduced-motion settings.
 - Progress remains local to the browser. Export includes all categories; import validates the file and reports what was restored. The page works without an account or network connection after its static assets are loaded.
@@ -40,11 +40,11 @@ Expand Shell Mate from its current Rotten Autumn dungeon and Ghost Beacon tracke
 1. **Research and reconcile:** create the complete inventory, source links, aliases, and unresolved-item log. Do not publish an unsupported “complete” count.
 2. **Model and migrate:** add catalog data and a tested migration/import path for the existing DLC tracker.
 3. **Build the interface:** implement category navigation, searchable lists, detail views, links, progress, and Unicode styling.
-4. **Verify and ship:** compare rendered counts with the verified inventory; test search and filters, route links, mobile layout, keyboard use, reload persistence, legacy import, new export/import, and offline static loading. Deploy from the repository's static hosting setup once chosen.
+4. **Verify and ship:** compare rendered counts with the verified inventory; test search and filters, route links, collapsed-by-default boss tips and keyboard disclosure, mobile layout, reload persistence, legacy import, new export/import, and offline static loading. Deploy from the repository's static hosting setup once chosen.
 
 ## Agreed scope and next decisions
 
 - Cover **Mortal Shell 2 only**, including its Rotten Autumn content. Additional games or collectible types can be added later without changing existing entry IDs or progress.
 - Track each collected tarstone, activated beacon, defeated boss, and existing dungeon with an independent checkbox. Guide text remains available regardless of completion state.
 - Use GitHub Pages as the default host for this no-build app; the repo has no deployment configuration yet.
-- Before implementation, decide whether boss strategies should be brief practical tips or detailed move-by-move guides. The initial plan assumes brief practical tips.
+- Boss tips are brief, source-checked, and hidden initially to avoid spoilers. If a reliable tip cannot be established, show no tip.
