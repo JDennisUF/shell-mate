@@ -23,6 +23,18 @@ export const catalog = {
     "existing-checklist": {
       "title": "Existing Shell Mate DLC checklist",
       "url": "https://github.com/JDennisUF/shell-mate/blob/main/index.html"
+    },
+    "rotten-dungeons": {
+      "title": "Item Level: Rotten Autumn dungeon routes",
+      "url": "https://itemlevel.net/mortal-shell-2-rotten-autumn-all-15-new-dungeons-location-guide/"
+    },
+    "rotten-crosscheck": {
+      "title": "GamesHorizon: Rotten Autumn dungeon locations",
+      "url": "https://gameshorizon.com/guides/mortal-shell-2-rotten-autumn-all-15-new-dungeons-location-guide/"
+    },
+    "tarstone-roster": {
+      "title": "Probonk: tarstone catalog",
+      "url": "https://probonk.com/mortal-shell-2/tarstones"
     }
   },
   "tarstones": [
@@ -43,7 +55,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "tar-02",
@@ -61,7 +76,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [
+        "Headsman's Stone"
+      ],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
     },
     {
       "id": "tar-03",
@@ -79,7 +99,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-13"
     },
     {
       "id": "tar-04",
@@ -98,7 +121,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
     },
     {
       "id": "tar-05",
@@ -117,7 +143,10 @@ export const catalog = {
       "requirement": "Missable: collect before taking the Heart of Vatra and leaving",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
     },
     {
       "id": "tar-06",
@@ -135,7 +164,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-03"
     },
     {
       "id": "tar-07",
@@ -153,7 +185,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-28"
     },
     {
       "id": "tar-08",
@@ -172,7 +207,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-21"
     },
     {
       "id": "tar-09",
@@ -191,7 +229,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-10",
@@ -209,7 +250,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-10"
     },
     {
       "id": "tar-11",
@@ -227,7 +271,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "tar-12",
@@ -245,7 +292,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
     },
     {
       "id": "tar-13",
@@ -264,7 +314,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
     },
     {
       "id": "tar-14",
@@ -282,7 +335,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "tar-15",
@@ -299,7 +355,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-10"
     },
     {
       "id": "tar-16",
@@ -318,7 +377,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-04"
     },
     {
       "id": "tar-17",
@@ -336,7 +398,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
     },
     {
       "id": "tar-18",
@@ -354,7 +419,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "tar-19",
@@ -372,7 +440,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-14"
     },
     {
       "id": "tar-20",
@@ -390,7 +461,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-34"
     },
     {
       "id": "tar-21",
@@ -409,7 +483,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-20"
     },
     {
       "id": "tar-22",
@@ -427,7 +504,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-49"
     },
     {
       "id": "tar-23",
@@ -445,7 +525,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-16"
     },
     {
       "id": "tar-24",
@@ -463,7 +546,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
     },
     {
       "id": "tar-25",
@@ -483,7 +569,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "tar-26",
@@ -501,7 +590,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-32"
     },
     {
       "id": "tar-27",
@@ -519,7 +611,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "tar-28",
@@ -538,7 +633,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
     },
     {
       "id": "tar-29",
@@ -556,7 +654,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "tar-30",
@@ -574,7 +675,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "tar-31",
@@ -592,7 +696,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-28"
     },
     {
       "id": "tar-32",
@@ -610,7 +717,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-22"
     },
     {
       "id": "tar-33",
@@ -628,7 +738,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-25"
     },
     {
       "id": "tar-34",
@@ -645,8 +758,12 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
-      ]
+        "tarstone-list",
+        "tarstone-roster"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-37"
     },
     {
       "id": "tar-35",
@@ -665,7 +782,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "tar-36",
@@ -682,7 +802,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-45"
+      ],
+      "nearestBeaconId": "beacon-03"
     },
     {
       "id": "tar-37",
@@ -699,7 +824,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-09"
+      ],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "tar-38",
@@ -717,7 +847,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-14"
+      ],
+      "nearestBeaconId": "beacon-02"
     },
     {
       "id": "tar-39",
@@ -734,7 +869,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-44"
+      ],
+      "nearestBeaconId": "beacon-04"
     },
     {
       "id": "tar-40",
@@ -752,7 +892,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-41"
+      ],
+      "nearestBeaconId": "beacon-32"
     },
     {
       "id": "tar-41",
@@ -770,7 +915,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-08"
+      ],
+      "nearestBeaconId": "beacon-14"
     },
     {
       "id": "tar-42",
@@ -789,7 +939,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-16"
     },
     {
       "id": "tar-43",
@@ -806,7 +959,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-38"
     },
     {
       "id": "tar-44",
@@ -823,7 +979,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-12"
+      ],
+      "nearestBeaconId": "beacon-18"
     },
     {
       "id": "tar-45",
@@ -842,7 +1003,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-21"
+      ],
+      "nearestBeaconId": "beacon-05"
     },
     {
       "id": "tar-46",
@@ -859,7 +1025,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-06"
     },
     {
       "id": "tar-47",
@@ -876,7 +1045,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-05"
     },
     {
       "id": "tar-48",
@@ -894,7 +1066,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-43"
+      ],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "tar-49",
@@ -912,7 +1089,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-26"
+      ],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "tar-50",
@@ -930,7 +1112,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-33"
     },
     {
       "id": "tar-51",
@@ -948,7 +1133,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-02"
+      ],
+      "nearestBeaconId": "beacon-16"
     },
     {
       "id": "tar-52",
@@ -966,7 +1156,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-53",
@@ -984,7 +1177,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-54",
@@ -1001,7 +1197,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-01"
     },
     {
       "id": "tar-55",
@@ -1018,7 +1217,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-01"
     },
     {
       "id": "tar-56",
@@ -1035,7 +1237,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-15"
+      ],
+      "nearestBeaconId": "beacon-21"
     },
     {
       "id": "tar-57",
@@ -1052,7 +1259,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-17"
+      ],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "tar-58",
@@ -1069,7 +1281,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-05"
+      ],
+      "nearestBeaconId": "beacon-31"
     },
     {
       "id": "tar-59",
@@ -1087,7 +1304,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-60",
@@ -1106,7 +1326,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-21"
     },
     {
       "id": "tar-61",
@@ -1124,7 +1347,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-19"
     },
     {
       "id": "tar-62",
@@ -1141,7 +1367,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-34"
+      ],
+      "nearestBeaconId": "beacon-29"
     },
     {
       "id": "tar-63",
@@ -1158,7 +1389,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-13"
+      ],
+      "nearestBeaconId": "beacon-35"
     },
     {
       "id": "tar-64",
@@ -1177,7 +1413,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "tar-65",
@@ -1194,7 +1433,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-11"
+      ],
+      "nearestBeaconId": "beacon-38"
     },
     {
       "id": "tar-66",
@@ -1211,7 +1455,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-25"
+      ],
+      "nearestBeaconId": "beacon-34"
     },
     {
       "id": "tar-67",
@@ -1229,7 +1478,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-38"
+      ],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "tar-68",
@@ -1246,7 +1500,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-03"
+      ],
+      "nearestBeaconId": "beacon-32"
     },
     {
       "id": "tar-69",
@@ -1263,7 +1522,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "tar-70",
@@ -1280,7 +1542,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-32"
+      ],
+      "nearestBeaconId": "beacon-29"
     },
     {
       "id": "tar-71",
@@ -1298,7 +1565,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-72",
@@ -1316,7 +1586,12 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-27"
+      ],
+      "nearestBeaconId": "beacon-38"
     },
     {
       "id": "tar-73",
@@ -1334,7 +1609,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
     },
     {
       "id": "tar-74",
@@ -1352,7 +1630,10 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-34"
     },
     {
       "id": "tar-75",
@@ -1370,7 +1651,228 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
+    },
+    {
+      "id": "tar-ra-guitarstone",
+      "name": "Guitarstone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Fainweald",
+      "order": 76,
+      "category": "Uncategorized",
+      "nearestBeacon": "One Legged Wolf",
+      "nearestBeaconId": "beacon-11",
+      "steps": [
+        "Reward in Troubadour's Reprise. Follow the linked dungeon route."
+      ],
+      "requirement": "Night Mode and Troubadour's Lute",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-01"
       ]
+    },
+    {
+      "id": "tar-ra-mourning-bell",
+      "name": "Mourning Bell",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Fainweald",
+      "order": 77,
+      "category": "Uncategorized",
+      "nearestBeacon": "Gloomshade Grove",
+      "nearestBeaconId": "beacon-09",
+      "steps": [
+        "Reward in Obscured Market. Follow the linked dungeon route."
+      ],
+      "requirement": "Night Mode; Ghost Beacon entrance.",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-03"
+      ]
+    },
+    {
+      "id": "tar-ra-widowmoon-stone",
+      "name": "Widowmoon Stone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Fainweald",
+      "order": 78,
+      "category": "Uncategorized",
+      "nearestBeacon": "Outskirts of Nochte",
+      "nearestBeaconId": "beacon-06",
+      "steps": [
+        "Reward in Shrouded Mire. Follow the linked dungeon route."
+      ],
+      "requirement": "Night Mode; Ghost Beacon entrance.",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-04"
+      ]
+    },
+    {
+      "id": "tar-ra-waning-stone",
+      "name": "Waning Stone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Ruins of Mammon",
+      "order": 79,
+      "category": "Uncategorized",
+      "nearestBeacon": "Gate of Mammon",
+      "nearestBeaconId": "beacon-18",
+      "steps": [
+        "Reward in Ankle's Bane. Follow the linked dungeon route."
+      ],
+      "requirement": "",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-07"
+      ]
+    },
+    {
+      "id": "tar-ra-black-lantern",
+      "name": "Black Lantern",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Ruins of Mammon",
+      "order": 80,
+      "category": "Uncategorized",
+      "nearestBeacon": "Gate of Mammon",
+      "nearestBeaconId": "beacon-18",
+      "steps": [
+        "Reward in Veiled Tower. Follow the linked dungeon route."
+      ],
+      "requirement": "Night",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-08"
+      ]
+    },
+    {
+      "id": "tar-ra-channelers-stone",
+      "name": "Channeler's Stone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Ruins of Mammon",
+      "order": 81,
+      "category": "Uncategorized",
+      "nearestBeacon": "The Silent Steps",
+      "nearestBeaconId": "beacon-19",
+      "steps": [
+        "Reward in Buried Library. Follow the linked dungeon route."
+      ],
+      "requirement": "",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-10"
+      ]
+    },
+    {
+      "id": "tar-ra-starless-eye",
+      "name": "Starless Eye",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Ruins of Mammon",
+      "order": 82,
+      "category": "Uncategorized",
+      "nearestBeacon": "The Silent Steps",
+      "nearestBeaconId": "beacon-19",
+      "steps": [
+        "Reward in Secret Alcove. Follow the linked dungeon route."
+      ],
+      "requirement": "Night Mode; Ghost Beacon entrance.",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [
+        "Starless Eye Stone"
+      ],
+      "relatedIds": [
+        "dungeon-11"
+      ]
+    },
+    {
+      "id": "tar-ra-black-fleece",
+      "name": "Black Fleece",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Glutted Mire",
+      "order": 83,
+      "category": "Uncategorized",
+      "nearestBeacon": "Sunken Village",
+      "nearestBeaconId": "beacon-22",
+      "steps": [
+        "Reward in Not The Sheep. Follow the linked dungeon route."
+      ],
+      "requirement": "Sheephead Totem",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-14"
+      ]
+    },
+    {
+      "id": "tar-ra-bloodoath-stone",
+      "name": "Bloodoath Stone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Prisoners’ Domain",
+      "order": 84,
+      "category": "Uncategorized",
+      "nearestBeacon": "Hangman's Scaffold",
+      "nearestBeaconId": "beacon-24",
+      "steps": [
+        "Reward in Neglected Ward. Follow the linked dungeon route."
+      ],
+      "requirement": "",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-15"
+      ]
+    },
+    {
+      "id": "tar-ra-knowledge-stone",
+      "name": "Knowledge Stone",
+      "kind": "tarstone",
+      "scope": "rotten-autumn",
+      "region": "Unspecified",
+      "order": 85,
+      "category": "Uncategorized",
+      "steps": [
+        "Found in The Forgotten Tower."
+      ],
+      "requirement": "",
+      "sources": [
+        "rotten-dungeons"
+      ],
+      "aliases": [],
+      "relatedIds": []
     }
   ],
   "beacons": [
@@ -1390,6 +1892,11 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-54",
+        "tar-55"
       ]
     },
     {
@@ -1409,6 +1916,11 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-38",
+        "boss-14"
       ]
     },
     {
@@ -1428,6 +1940,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-06",
+        "tar-36",
+        "boss-45"
       ]
     },
     {
@@ -1447,6 +1965,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-16",
+        "tar-39",
+        "boss-44",
+        "dungeon-05"
       ]
     },
     {
@@ -1466,6 +1991,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-45",
+        "tar-47",
+        "boss-21"
       ]
     },
     {
@@ -1485,6 +2016,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-46",
+        "ghost-02",
+        "dungeon-04",
+        "tar-ra-widowmoon-stone"
       ]
     },
     {
@@ -1504,6 +2042,14 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-12",
+        "tar-13",
+        "tar-28",
+        "boss-10",
+        "boss-19"
       ]
     },
     {
@@ -1522,6 +2068,15 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-01",
+        "tar-11",
+        "tar-14",
+        "tar-18",
+        "tar-37",
+        "boss-09"
       ]
     },
     {
@@ -1540,6 +2095,16 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-25",
+        "tar-69",
+        "ghost-01",
+        "boss-01",
+        "dungeon-02",
+        "dungeon-03",
+        "tar-ra-mourning-bell"
       ]
     },
     {
@@ -1559,6 +2124,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-10",
+        "tar-15",
+        "boss-37"
       ]
     },
     {
@@ -1578,6 +2149,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-05",
+        "tar-75",
+        "dungeon-01",
+        "tar-ra-guitarstone"
       ]
     },
     {
@@ -1596,6 +2174,14 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-02",
+        "tar-04",
+        "tar-17",
+        "tar-24",
+        "boss-20"
       ]
     },
     {
@@ -1615,6 +2201,15 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-03",
+        "ghost-04",
+        "boss-28",
+        "boss-39",
+        "dungeon-12",
+        "dungeon-13"
       ]
     },
     {
@@ -1633,6 +2228,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-19",
+        "tar-41",
+        "boss-08",
+        "dungeon-09"
       ]
     },
     {
@@ -1651,6 +2253,17 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-29",
+        "tar-35",
+        "tar-48",
+        "tar-49",
+        "tar-64",
+        "boss-26",
+        "boss-29",
+        "boss-43"
       ]
     },
     {
@@ -1670,6 +2283,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-23",
+        "tar-42",
+        "tar-51",
+        "boss-02"
       ]
     },
     {
@@ -1689,6 +2309,15 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-09",
+        "tar-52",
+        "tar-53",
+        "tar-59",
+        "tar-71",
+        "tar-73"
       ]
     },
     {
@@ -1707,6 +2336,15 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-44",
+        "boss-12",
+        "dungeon-07",
+        "dungeon-08",
+        "tar-ra-waning-stone",
+        "tar-ra-black-lantern"
       ]
     },
     {
@@ -1725,6 +2363,16 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-61",
+        "ghost-03",
+        "boss-22",
+        "dungeon-10",
+        "dungeon-11",
+        "tar-ra-channelers-stone",
+        "tar-ra-starless-eye"
       ]
     },
     {
@@ -1743,6 +2391,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-21",
+        "boss-42",
+        "dungeon-06"
       ]
     },
     {
@@ -1762,6 +2416,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-08",
+        "tar-56",
+        "tar-60",
+        "boss-04"
       ]
     },
     {
@@ -1780,6 +2441,14 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-32",
+        "boss-15",
+        "boss-36",
+        "dungeon-14",
+        "tar-ra-black-fleece"
       ]
     },
     {
@@ -1799,7 +2468,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-24",
@@ -1818,6 +2489,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-06",
+        "dungeon-15",
+        "tar-ra-bloodoath-stone"
       ]
     },
     {
@@ -1837,6 +2514,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-33"
       ]
     },
     {
@@ -1855,6 +2536,15 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-27",
+        "tar-30",
+        "tar-57",
+        "tar-67",
+        "boss-17",
+        "boss-38"
       ]
     },
     {
@@ -1873,7 +2563,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-28",
@@ -1891,6 +2583,11 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-07",
+        "tar-31"
       ]
     },
     {
@@ -1909,6 +2606,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-62",
+        "tar-70",
+        "boss-32",
+        "boss-34"
       ]
     },
     {
@@ -1927,7 +2631,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-31",
@@ -1945,6 +2651,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-58",
+        "boss-05",
+        "boss-40"
       ]
     },
     {
@@ -1963,6 +2675,14 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-26",
+        "tar-40",
+        "tar-68",
+        "boss-03",
+        "boss-41"
       ]
     },
     {
@@ -1982,6 +2702,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-50"
       ]
     },
     {
@@ -2000,6 +2724,13 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-20",
+        "tar-66",
+        "tar-74",
+        "boss-25"
       ]
     },
     {
@@ -2018,6 +2749,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-63",
+        "boss-13",
+        "boss-23"
       ]
     },
     {
@@ -2036,7 +2773,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-37",
@@ -2054,6 +2793,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-34"
       ]
     },
     {
@@ -2072,6 +2815,14 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-43",
+        "tar-65",
+        "tar-72",
+        "boss-11",
+        "boss-27"
       ]
     },
     {
@@ -2090,7 +2841,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-40",
@@ -2109,6 +2862,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-16"
       ]
     },
     {
@@ -2127,7 +2884,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-42",
@@ -2145,7 +2904,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-43",
@@ -2163,7 +2924,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-44",
@@ -2182,6 +2945,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-35"
       ]
     },
     {
@@ -2200,7 +2967,9 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": []
     },
     {
       "id": "beacon-46",
@@ -2219,6 +2988,10 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-18"
       ]
     },
     {
@@ -2237,6 +3010,11 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-33",
+        "boss-46"
       ]
     },
     {
@@ -2255,6 +3033,11 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "boss-30",
+        "boss-31"
       ]
     },
     {
@@ -2273,6 +3056,12 @@ export const catalog = {
       "sources": [
         "beacon-list",
         "beacon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-22",
+        "boss-07",
+        "boss-24"
       ]
     },
     {
@@ -2288,10 +3077,16 @@ export const catalog = {
       "steps": [
         "West; via Citadel of Penance"
       ],
-      "requirement": "Rotten Autumn Ghost Beacon",
+      "requirement": "Night Mode; interact with the Ghost Beacon.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-03"
+      ],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "ghost-02",
@@ -2306,10 +3101,16 @@ export const catalog = {
       "steps": [
         "Northeast; Hag's Path swamp"
       ],
-      "requirement": "Rotten Autumn Ghost Beacon",
+      "requirement": "Night Mode; interact with the Ghost Beacon.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-04"
+      ],
+      "nearestBeaconId": "beacon-06"
     },
     {
       "id": "ghost-03",
@@ -2324,10 +3125,16 @@ export const catalog = {
       "steps": [
         "Southeast; statue path"
       ],
-      "requirement": "Rotten Autumn Ghost Beacon",
+      "requirement": "Night Mode; interact with the Ghost Beacon.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-11"
+      ],
+      "nearestBeaconId": "beacon-19"
     },
     {
       "id": "ghost-04",
@@ -2342,10 +3149,16 @@ export const catalog = {
       "steps": [
         "West; stone stairs"
       ],
-      "requirement": "Rotten Autumn Ghost Beacon",
+      "requirement": "Night Mode; interact with the Ghost Beacon.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "dungeon-12"
+      ],
+      "nearestBeaconId": "beacon-13"
     }
   ],
   "bosses": [
@@ -2366,7 +3179,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "boss-02",
@@ -2385,7 +3201,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-51"
+      ],
+      "nearestBeaconId": "beacon-16"
     },
     {
       "id": "boss-03",
@@ -2404,7 +3225,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-68"
+      ],
+      "nearestBeaconId": "beacon-32"
     },
     {
       "id": "boss-04",
@@ -2423,7 +3249,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-21"
     },
     {
       "id": "boss-05",
@@ -2443,7 +3272,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-58"
+      ],
+      "nearestBeaconId": "beacon-31"
     },
     {
       "id": "boss-06",
@@ -2462,7 +3296,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-24"
     },
     {
       "id": "boss-07",
@@ -2481,7 +3318,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-49"
     },
     {
       "id": "boss-08",
@@ -2500,7 +3340,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-41"
+      ],
+      "nearestBeaconId": "beacon-14"
     },
     {
       "id": "boss-09",
@@ -2519,7 +3364,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-37"
+      ],
+      "nearestBeaconId": "beacon-08"
     },
     {
       "id": "boss-10",
@@ -2538,7 +3388,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
     },
     {
       "id": "boss-11",
@@ -2558,7 +3411,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-65"
+      ],
+      "nearestBeaconId": "beacon-38"
     },
     {
       "id": "boss-12",
@@ -2577,7 +3435,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-44"
+      ],
+      "nearestBeaconId": "beacon-18"
     },
     {
       "id": "boss-13",
@@ -2597,7 +3460,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-63"
+      ],
+      "nearestBeaconId": "beacon-35"
     },
     {
       "id": "boss-14",
@@ -2616,7 +3484,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-38"
+      ],
+      "nearestBeaconId": "beacon-02"
     },
     {
       "id": "boss-15",
@@ -2637,7 +3510,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-56"
+      ],
+      "nearestBeaconId": "beacon-22"
     },
     {
       "id": "boss-16",
@@ -2657,7 +3535,10 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-40"
     },
     {
       "id": "boss-17",
@@ -2677,7 +3558,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-57"
+      ],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "boss-18",
@@ -2700,7 +3586,9 @@ export const catalog = {
       ],
       "aliases": [
         "Orrem, the Discarded Golem"
-      ]
+      ],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-46"
     },
     {
       "id": "boss-19",
@@ -2719,7 +3607,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
     },
     {
       "id": "boss-20",
@@ -2738,7 +3629,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
     },
     {
       "id": "boss-21",
@@ -2757,7 +3651,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-45"
+      ],
+      "nearestBeaconId": "beacon-05"
     },
     {
       "id": "boss-22",
@@ -2777,7 +3676,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-19"
     },
     {
       "id": "boss-23",
@@ -2796,7 +3698,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-35"
     },
     {
       "id": "boss-24",
@@ -2815,7 +3720,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-49"
     },
     {
       "id": "boss-25",
@@ -2834,7 +3742,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-66"
+      ],
+      "nearestBeaconId": "beacon-34"
     },
     {
       "id": "boss-26",
@@ -2853,7 +3766,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-49"
+      ],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "boss-27",
@@ -2872,7 +3790,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-72"
+      ],
+      "nearestBeaconId": "beacon-38"
     },
     {
       "id": "boss-28",
@@ -2891,7 +3814,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-13"
     },
     {
       "id": "boss-29",
@@ -2910,7 +3836,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "boss-30",
@@ -2929,7 +3858,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-48"
     },
     {
       "id": "boss-31",
@@ -2949,7 +3881,10 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-48"
     },
     {
       "id": "boss-32",
@@ -2968,7 +3903,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-70"
+      ],
+      "nearestBeaconId": "beacon-29"
     },
     {
       "id": "boss-33",
@@ -2987,7 +3927,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-47"
     },
     {
       "id": "boss-34",
@@ -3007,7 +3950,12 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-62"
+      ],
+      "nearestBeaconId": "beacon-29"
     },
     {
       "id": "boss-35",
@@ -3027,7 +3975,10 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-44"
     },
     {
       "id": "boss-36",
@@ -3046,7 +3997,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-22"
     },
     {
       "id": "boss-37",
@@ -3065,7 +4019,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-10"
     },
     {
       "id": "boss-38",
@@ -3084,7 +4041,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-67"
+      ],
+      "nearestBeaconId": "beacon-26"
     },
     {
       "id": "boss-39",
@@ -3103,7 +4065,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-13"
     },
     {
       "id": "boss-40",
@@ -3122,7 +4087,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-31"
     },
     {
       "id": "boss-41",
@@ -3141,7 +4109,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-40"
+      ],
+      "nearestBeaconId": "beacon-32"
     },
     {
       "id": "boss-42",
@@ -3160,7 +4133,10 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-20"
     },
     {
       "id": "boss-43",
@@ -3179,7 +4155,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-48"
+      ],
+      "nearestBeaconId": "beacon-15"
     },
     {
       "id": "boss-44",
@@ -3198,7 +4179,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-39"
+      ],
+      "nearestBeaconId": "beacon-04"
     },
     {
       "id": "boss-45",
@@ -3217,7 +4203,12 @@ export const catalog = {
       "tip": "",
       "sources": [
         "boss-roster"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-36"
+      ],
+      "nearestBeaconId": "beacon-03"
     },
     {
       "id": "boss-46",
@@ -3237,7 +4228,10 @@ export const catalog = {
       "sources": [
         "boss-roster",
         "boss-main"
-      ]
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-47"
     }
   ],
   "dungeons": [
@@ -3252,10 +4246,16 @@ export const catalog = {
       "steps": [
         "North; lute statue"
       ],
-      "requirement": "Night",
+      "requirement": "Night Mode and Troubadour's Lute",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-guitarstone"
+      ],
+      "nearestBeaconId": "beacon-11"
     },
     {
       "id": "dungeon-02",
@@ -3270,8 +4270,12 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "dungeon-03",
@@ -3284,10 +4288,17 @@ export const catalog = {
       "steps": [
         "West; via Citadel of Penance"
       ],
-      "requirement": "Ghost",
+      "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-mourning-bell",
+        "ghost-01"
+      ],
+      "nearestBeaconId": "beacon-09"
     },
     {
       "id": "dungeon-04",
@@ -3300,10 +4311,17 @@ export const catalog = {
       "steps": [
         "Northeast; Hag's Path swamp"
       ],
-      "requirement": "Ghost",
+      "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-widowmoon-stone",
+        "ghost-02"
+      ],
+      "nearestBeaconId": "beacon-06"
     },
     {
       "id": "dungeon-05",
@@ -3318,8 +4336,12 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-04"
     },
     {
       "id": "dungeon-06",
@@ -3334,8 +4356,12 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-20"
     },
     {
       "id": "dungeon-07",
@@ -3350,8 +4376,14 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-waning-stone"
+      ],
+      "nearestBeaconId": "beacon-18"
     },
     {
       "id": "dungeon-08",
@@ -3366,8 +4398,14 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-black-lantern"
+      ],
+      "nearestBeaconId": "beacon-18"
     },
     {
       "id": "dungeon-09",
@@ -3382,8 +4420,12 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-14"
     },
     {
       "id": "dungeon-10",
@@ -3398,8 +4440,14 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-channelers-stone"
+      ],
+      "nearestBeaconId": "beacon-19"
     },
     {
       "id": "dungeon-11",
@@ -3412,10 +4460,17 @@ export const catalog = {
       "steps": [
         "Southeast; statue path"
       ],
-      "requirement": "Ghost",
+      "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-starless-eye",
+        "ghost-03"
+      ],
+      "nearestBeaconId": "beacon-19"
     },
     {
       "id": "dungeon-12",
@@ -3428,10 +4483,16 @@ export const catalog = {
       "steps": [
         "West; stone stairs"
       ],
-      "requirement": "Ghost",
+      "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "ghost-04"
+      ],
+      "nearestBeaconId": "beacon-13"
     },
     {
       "id": "dungeon-13",
@@ -3446,8 +4507,12 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-13"
     },
     {
       "id": "dungeon-14",
@@ -3462,8 +4527,14 @@ export const catalog = {
       ],
       "requirement": "Sheephead Totem",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-black-fleece"
+      ],
+      "nearestBeaconId": "beacon-22"
     },
     {
       "id": "dungeon-15",
@@ -3478,8 +4549,14 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "existing-checklist"
-      ]
+        "rotten-dungeons",
+        "rotten-crosscheck"
+      ],
+      "aliases": [],
+      "relatedIds": [
+        "tar-ra-bloodoath-stone"
+      ],
+      "nearestBeaconId": "beacon-24"
     }
   ]
 };

@@ -18,26 +18,30 @@
   </header>
   <main class="shell" id="catalog">
     <section class="overview" aria-labelledby="progress-title">
-      <div class="overview-top"><h2 id="progress-title">Your progress</h2><strong id="overall-count"></strong></div>
+      <div class="overview-top"><h2 id="progress-title">Your guide progress</h2><strong id="overall-count"></strong></div>
+      <p id="progress-scope" class="progress-note"></p>
       <progress id="overall-progress" value="0" max="1" aria-label="Overall completion"></progress>
       <div id="category-progress" class="progress-grid"></div>
     </section>
+    <p class="storage-warning" id="storage-warning" role="status" hidden></p>
+    <p class="guide-note">Track your progress through the checklist. Open each route for directions, requirements, and source links.</p>
     <nav class="tabs" aria-label="Guide categories" id="tabs"></nav>
     <section class="guide" aria-labelledby="category-title">
       <div class="guide-head"><div><p class="eyebrow" id="category-eyebrow"></p><h2 id="category-title"></h2><p id="category-description"></p></div><div class="file-actions"><button id="export" type="button">Export</button><button id="import" type="button">Import</button><input id="import-file" type="file" accept=".json,application/json" hidden></div></div>
       <div class="filters" role="search">
         <label class="search-field"><span>Search guide</span><input id="search" type="search" placeholder="Name, region, or landmark" autocomplete="off"></label>
         <label><span>Region</span><select id="region"></select></label>
-        <label><span>Content</span><select id="scope"><option value="all">All MS2</option><option value="base">Base game</option><option value="rotten-autumn">Rotten Autumn</option></select></label>
+        <label class="content-field"><span>Content</span><select id="scope"><option value="all">Base game + DLC</option><option value="base">Base game only</option><option value="rotten-autumn">Rotten Autumn DLC only</option></select></label>
         <label><span>Progress</span><select id="status"><option value="all">All</option><option value="open">To do</option><option value="done">Done</option></select></label>
         <label><span id="kind-label">Type</span><select id="kind-filter"></select></label>
-        <label><span>Order</span><select id="sort"><option value="progression">Progression</option><option value="name">Name</option></select></label>
+        <label><span>Order</span><select id="sort"><option value="catalog">Catalog order</option><option value="name">Name</option></select></label>
       </div>
-      <p class="results" id="results" aria-live="polite"></p>
+      <p class="backup-note">Export saves a backup file. Import replaces your current checks with a backup.</p>
+      <p class="results" id="results" aria-live="polite" tabindex="-1"></p>
       <div id="entries" class="entries"></div>
     </section>
   </main>
-  <footer class="site-footer shell"><p>Unofficial guide. Source links appear with each entry. Progress is stored in this browser until exported.</p><p>Routes and counts can change as the community documents the game.</p></footer>
+  <footer class="site-footer shell"><p>Unofficial fan guide; not affiliated with Cold Symmetry. Progress is saved in this browser for this site address. Clearing browser data removes it. Use Export to keep a backup or move to another browser.</p><p>Routes and counts can change as the community documents the game. The checklist works while this page stays open; offline reopening is not supported.</p></footer>
   <div class="toast" id="notice" role="status" aria-live="polite"></div>
   <script type="module" src="./app.js"></script>
 </body>

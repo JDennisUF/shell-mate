@@ -1,30 +1,50 @@
 # Shell Mate
 
-A static Mortal Shell 2 progression guide and checklist. Open `index.html` through a static web server or the published GitHub Pages site. There is no build step or package installation.
+A small Mortal Shell 2 guide and progress checklist. Plain HTML, CSS, and JavaScript; no application build step.
 
-## Coverage
+## Run locally
 
-- 75 obtainable tarstones, with routes and nearest beacons
-- 49 standard beacons and the 4 Ghost Beacons from the existing Rotten Autumn checklist
-- 46 named boss encounters, including 11 main fights; brief tips for main fights are collapsed by default
-- 15 existing Rotten Autumn dungeon entries
+From this folder:
 
-These are sourced catalog counts, not in-game achievement requirements. Named optional boss catalogs can differ, and routes may change with game updates. Each entry links to its source. The five earlier local tarstone notes were treated as draft leads; the app's collectible roster was reconciled against the linked guide.
+```bash
+python3 -m http.server 8000
+```
+
+Open http://localhost:8000. Stop the server with Ctrl+C. Open through a server rather than double-clicking `index.html`.
+
+## Filter the guide
+
+Under **Content**, choose **Rotten Autumn DLC only**, **Base game only**, or **Base game + DLC**. This choice stays selected when switching categories. Progress totals follow that content choice. Search, region, type, and completion filters work together.
+
+The checklist includes 85 tarstones (75 base-game entries and ten DLC stones), 53 beacons (49 standard and four Ghost Beacons), 46 bosses, and 15 DLC dungeons. No DLC bosses are cataloged yet. Ghost Beacon and dungeon checks are independent, even where they describe the same place.
+
+Source links are available inside each route. See [the content notes](CONTENT_REVIEW.md) for catalog maintenance. “Catalog order” follows the item catalog rather than a recommended playthrough route.
 
 ## Progress and backups
 
-Checkmarks live in browser `localStorage` under `shell-mate-progress-v2`. Existing `shell-mate-rotten-autumn-v1` dungeon and Ghost Beacon checks migrate on first visit; the old value is left in place. Export makes a JSON backup. Import accepts either the new export or the original DLC-only JSON format and replaces the current progress with valid known IDs.
+Checks are saved in this browser for this site address under `shell-mate-progress-v2`. The local site and published site have separate saves. Clearing browser data removes saved progress.
 
-## Publishing
+**Export** downloads a JSON backup; **Import** replaces the current checks with a valid backup. Unknown entries are ignored and reported. Invalid files leave current progress alone. Both current backups and the original dungeon/Ghost Beacon format are supported. Older browser saves migrate automatically; the original save remains untouched.
 
-The repository includes `.github/workflows/pages.yml`. To publish it, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**, then run **Publish Shell Mate** from the Actions tab if it does not start automatically. The expected address is `https://jdennisuf.github.io/shell-mate/`. Relative asset paths make the app work under the repository path.
+If browser saving fails, a message stays visible and you can still check entries and export them. An unreadable save is left untouched; new checks are kept only for the current visit until you import a replacement or export them. The app works while the loaded page stays open; reopening offline is not supported.
 
-## Sources
+## Developer checks
 
-- [PowerPyx tarstone locations](https://www.powerpyx.com/mortal-shell-2-all-tarstone-locations/)
-- [PowerPyx beacon locations](https://www.powerpyx.com/mortal-shell-2-all-beacon-locations/)
-- [PowerPyx main boss guide](https://www.powerpyx.com/mortal-shell-2-boss-guide-all-main-bosses/)
-- [Probonk beacon routes](https://probonk.com/mortal-shell-2/beacons)
-- [Probonk boss catalog](https://probonk.com/mortal-shell-2/bosses)
+Node 22 or newer is used for checks.
+
+```bash
+npm ci
+npm test
+npx playwright install chromium
+npm run test:browser
+```
+
+These tools are only needed for development. Players do not need them.
+
+## Publish
+
+Set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**. `.github/workflows/pages.yml` runs the catalog, save, and browser checks, then publishes only site files on pushes to `main` or manual runs. Pull requests run the same checks without publishing.
+
+The expected address is https://jdennisuf.github.io/shell-mate/. Relative asset paths support the repository subfolder.
 
 Unofficial fan project, not affiliated with Cold Symmetry.

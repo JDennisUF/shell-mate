@@ -1,23 +1,18 @@
 import { catalog } from "./data.js";
+import { groups, all, byId, matches, relatedItems, entryFromHash } from "./model.js";
+import { loadProgress, saveProgress, decodeProgress, encodeProgress } from "./storage.js";
 
-const groups = [
-  { key: "tarstones", title: "Tarstones", symbol: "◆", description: "Find every collectible stone and the steps needed to claim it." },
-  { key: "beacons", title: "Beacons", symbol: "✦", description: "Navigate to each beacon, including the existing Ghost Beacon checklist." },
-  { key: "bosses", title: "Bosses", symbol: "⚔", description: "Track main and optional fights. Fight tips stay hidden until opened." },
-  { key: "dungeons", title: "Dungeons", symbol: "▧", description: "Your Rotten Autumn dungeon checklist." }
-];
-const all = groups.flatMap(group => catalog[group.key]);
-const byId = new Map(all.map(item => [item.id, item]));
-const saveKey = "shell-mate-progress-v2";
-const legacyKey = "shell-mate-rotten-autumn-v1";
-const normalize = value => String(value || "").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "").replace(/[^a-z0-9]/g, "");
-const beaconByName = new Map(catalog.beacons.filter(item => item.subtype === "standard").map(item => [normalize(item.name), item]));
-const openRoutes = new Set();
 let active = "tarstones";
-let completed = loadProgress();
+const storage = {
+  getItem: key => window.localStorage.getItem(key),
+  setItem: (key, value) => window.localStorage.setItem(key, value)
+};
+const loaded = loadProgress(storage);
+let completed = loaded.completed;
+let saveBlocked = loaded.blocked;
 let noticeTimer;
+const disclosureState = new Map();
 
-function findBeacon(name) { return beaconByName.get(normalize(name)); }
 function element(tag, className, value) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -27,6 +22,12 @@ function element(tag, className, value) {
 function linkTo(item, label) {
   const a = element("a", "", label || item.name);
   a.href = "#" + item.id;
+  a.onclick = event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (location.hash === a.hash) navigateToHash();
+    else location.hash = a.hash;
+  };
   return a;
 }
 function announce(message) {
@@ -36,84 +37,60 @@ function announce(message) {
   clearTimeout(noticeTimer);
   noticeTimer = setTimeout(() => box.classList.remove("show"), 5500);
 }
-function validRecord(value) {
-  return value && typeof value === "object" && !Array.isArray(value);
-}
-function legacyProgress(data) {
-  if (!validRecord(data) || !validRecord(data.dungeons) || !validRecord(data.ghosts)) throw new Error("This is not a Shell Mate progress file.");
-  const result = {};
-  for (const item of catalog.dungeons) if (data.dungeons[item.name] === true) result[item.id] = true;
-  for (const item of catalog.beacons.filter(entry => entry.subtype === "ghost")) if (data.ghosts[item.legacyName] === true) result[item.id] = true;
-  return result;
-}
-function decodeProgress(data) {
-  if (validRecord(data) && data.version === 2 && validRecord(data.completed)) {
-    const result = {};
-    let ignored = 0;
-    for (const [id, value] of Object.entries(data.completed)) {
-      if (typeof value !== "boolean") throw new Error("Progress values must be true or false.");
-      if (!byId.has(id)) { ignored++; continue; }
-      if (value) result[id] = true;
-    }
-    return { result, ignored };
-  }
-  return { result: legacyProgress(data), ignored: 0 };
-}
-function loadProgress() {
-  try {
-    const current = localStorage.getItem(saveKey);
-    if (current) return decodeProgress(JSON.parse(current)).result;
-    const old = localStorage.getItem(legacyKey);
-    if (old) {
-      const migrated = legacyProgress(JSON.parse(old));
-      localStorage.setItem(saveKey, JSON.stringify({ version: 2, completed: migrated }));
-      return migrated;
-    }
-  } catch (error) {
-    setTimeout(() => announce("Saved progress could not be read. Import a backup if you have one."), 0);
-  }
-  return {};
+function showStorageWarning(message) {
+  const warning = document.getElementById("storage-warning");
+  warning.textContent = message;
+  warning.hidden = !message;
 }
 function save() {
-  try { localStorage.setItem(saveKey, JSON.stringify({ version: 2, completed })); }
-  catch { announce("Browser storage is unavailable. Export your progress to keep it."); }
+  if (!saveBlocked) showStorageWarning(saveProgress(storage, completed));
 }
 function numberDone(items) { return items.filter(item => completed[item.id]).length; }
 function renderProgress() {
-  const count = numberDone(all);
-  document.getElementById("overall-count").textContent = count + " / " + all.length;
+  const scope = document.getElementById("scope").value;
+  const scoped = items => items.filter(item => scope === "all" || item.scope === scope);
+  const items = scoped(all);
+  const count = numberDone(items);
+  document.getElementById("overall-count").textContent = count + " / " + items.length;
+  document.getElementById("progress-scope").textContent = scope === "rotten-autumn" ? "Rotten Autumn DLC entries in this guide" : scope === "base" ? "Base-game entries in this guide" : "All entries in this guide";
   const progress = document.getElementById("overall-progress");
-  progress.max = all.length;
+  progress.max = items.length || 1;
   progress.value = count;
   const stats = document.getElementById("category-progress");
   stats.replaceChildren();
   for (const group of groups) {
     const cell = element("div", "progress-stat");
-    const strong = element("strong", "", numberDone(catalog[group.key]) + " / " + catalog[group.key].length);
+    const groupItems = scoped(catalog[group.key]);
+    const strong = element("strong", "", numberDone(groupItems) + " / " + groupItems.length);
     cell.append(strong, document.createTextNode(group.title));
     stats.append(cell);
   }
 }
 function renderTabs() {
   const nav = document.getElementById("tabs");
+  const focusedCategory = nav.contains(document.activeElement) ? document.activeElement.dataset.category : null;
   nav.replaceChildren();
   for (const group of groups) {
-    const button = element("button", "tab", group.symbol + "  " + group.title);
+    const button = element("button", "tab", group.title);
+    const symbol = element("span", "", group.symbol + "  ");
+    symbol.setAttribute("aria-hidden", "true");
+    button.prepend(symbol);
     button.type = "button";
+    button.dataset.category = group.key;
     button.setAttribute("aria-current", active === group.key ? "page" : "false");
     button.onclick = () => {
       if (active === group.key) return;
       active = group.key;
       document.getElementById("search").value = "";
       document.getElementById("region").value = "all";
-      document.getElementById("scope").value = "all";
       document.getElementById("status").value = "all";
-      document.getElementById("sort").value = "progression";
+      document.getElementById("kind-filter").value = "all";
       updateFilters();
       render();
     };
     nav.append(button);
   }
+  if (focusedCategory) nav.querySelector('[data-category="' + focusedCategory + '"]')?.focus();
 }
 function setOptions(select, values, selected) {
   select.replaceChildren();
@@ -145,40 +122,10 @@ function updateFilters() {
   }
   extra.disabled = active === "dungeons";
 }
-function matches(item) {
-  const q = normalize(document.getElementById("search").value);
-  const region = document.getElementById("region").value;
-  const scope = document.getElementById("scope").value;
-  const status = document.getElementById("status").value;
-  const kind = document.getElementById("kind-filter").value;
-  const words = [item.name, item.region, item.nearestBeacon, item.requirement, item.rewards, ...(item.steps || [])].join(" ");
-  if (q && !normalize(words).includes(q)) return false;
-  if (region !== "all" && item.region !== region) return false;
-  if (scope !== "all" && item.scope !== scope) return false;
-  if (status === "done" && !completed[item.id]) return false;
-  if (status === "open" && completed[item.id]) return false;
-  if (kind !== "all" && (item.category || item.subtype || item.bossType) !== kind) return false;
-  return true;
-}
-function relatedItems(item) {
-  const result = [];
-  if (item.nearestBeacon) {
-    const beacon = findBeacon(item.nearestBeacon);
-    if (beacon && beacon.id !== item.id) result.push(beacon);
-  }
-  if (item.kind === "beacon") {
-    for (const other of [...catalog.tarstones, ...catalog.bosses]) {
-      if (normalize(other.nearestBeacon) === normalize(item.name)) result.push(other);
-    }
-  }
-  if (item.kind === "boss") {
-    for (const stone of catalog.tarstones) if (item.rewards && normalize(item.rewards).includes(normalize(stone.name))) result.push(stone);
-  }
-  if (item.subtype === "ghost") {
-    const dungeon = catalog.dungeons.find(entry => entry.name === item.legacyName);
-    if (dungeon) result.push(dungeon);
-  }
-  return [...new Map(result.map(entry => [entry.id, entry])).values()];
+function readFilters() {
+  const filters = Object.fromEntries(["search", "region", "scope", "status"].map(id => [id, document.getElementById(id).value]));
+  filters.kind = document.getElementById("kind-filter").value;
+  return filters;
 }
 function renderEntry(item) {
   const card = element("article", "entry" + (completed[item.id] ? " done" : ""));
@@ -193,17 +140,28 @@ function renderEntry(item) {
     if (check.checked) completed[item.id] = true;
     else delete completed[item.id];
     save();
-    render();
+    card.classList.toggle("done", check.checked);
+    check.setAttribute("aria-label", (check.checked ? "Mark incomplete: " : "Mark complete: ") + item.name);
+    renderProgress();
+    if (matches(item, readFilters(), completed)) updateResults();
+    else {
+      const cards = [...document.querySelectorAll(".entry")];
+      const index = cards.indexOf(card);
+      const nextId = cards[index + 1]?.id || cards[index - 1]?.id;
+      render();
+      const target = nextId && document.getElementById("check-" + nextId);
+      (target || document.getElementById("results")).focus();
+    }
   };
   const heading = element("div", "entry-heading");
-  const name = element("div", "entry-name", item.name);
+  const name = element("h3", "entry-name", item.name);
   const meta = element("div", "entry-meta", item.region + (item.nearestBeacon ? " · From " + item.nearestBeacon : ""));
   heading.append(name, meta);
+  heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
   row.append(check, heading, tag);
   const details = element("details", "route");
-  details.open = openRoutes.has(item.id);
-  details.ontoggle = () => { if (details.open) openRoutes.add(item.id); else openRoutes.delete(item.id); };
+  details.open = disclosureState.get(item.id)?.route || false;
   const summary = element("summary", "", "Route & details");
   const body = element("div", "route-body");
   if (item.requirement) {
@@ -212,11 +170,11 @@ function renderEntry(item) {
     body.append(req);
   }
   if (item.kind === "beacon") {
-    const rule = item.alreadyCleansed ? "Already active when found." : item.subtype === "ghost" ? "Ghost Beacon discovery." : "Enter and finish its challenge to cleanse it; claim the Ova at the end.";
+    const rule = item.alreadyCleansed ? "Already active when found." : item.subtype === "ghost" ? "Interact with the Ghost Beacon to enter." : "Follow this beacon’s requirements below; activation varies by location.";
     body.append(element("p", "", rule));
   }
   if (item.nearestBeacon) {
-    const beacon = findBeacon(item.nearestBeacon);
+    const beacon = byId.get(item.nearestBeaconId);
     const p = element("p");
     p.append(element("strong", "", "Nearest beacon: "));
     p.append(beacon ? linkTo(beacon, beacon.name) : document.createTextNode(item.nearestBeacon));
@@ -229,7 +187,7 @@ function renderEntry(item) {
     body.append(list);
   }
   if (item.rewards) body.append(element("p", "", "Rewards: " + item.rewards));
-  const related = relatedItems(item).slice(0, 16);
+  const related = relatedItems(item);
   if (related.length) {
     body.append(element("h3", "", item.kind === "beacon" ? "Nearby entries" : "Related"));
     const links = element("div", "related");
@@ -238,6 +196,7 @@ function renderEntry(item) {
   }
   if (item.kind === "boss" && item.tip) {
     const tips = element("details", "tips");
+    tips.open = disclosureState.get(item.id)?.tips || false;
     tips.append(element("summary", "", "Fight tips (spoilers)"), element("p", "", item.tip));
     body.append(tips);
   }
@@ -256,43 +215,64 @@ function renderEntry(item) {
   card.append(row, details);
   return card;
 }
+function filteredItems() {
+  const filters = readFilters();
+  const filtered = catalog[active].filter(item => matches(item, filters, completed));
+  if (document.getElementById("sort").value === "name") filtered.sort((first, second) => first.name.localeCompare(second.name));
+  else filtered.sort((first, second) => first.order - second.order);
+  return filtered;
+}
+function updateResults() {
+  const filtered = filteredItems();
+  document.getElementById("results").textContent = filtered.length + " of " + catalog[active].length + " entries shown · " + numberDone(filtered) + " shown entries complete";
+}
 function render() {
+  for (const card of document.querySelectorAll(".entry")) {
+    disclosureState.set(card.id, { route: card.querySelector(".route").open, tips: card.querySelector(".tips")?.open || false });
+  }
   renderProgress();
   renderTabs();
   const group = groups.find(entry => entry.key === active);
   document.getElementById("category-eyebrow").textContent = group.symbol + "  Guide";
   document.getElementById("category-title").textContent = group.title;
   document.getElementById("category-description").textContent = group.description;
-  const filtered = catalog[active].filter(matches);
-  if (document.getElementById("sort").value === "name") filtered.sort((a, b) => a.name.localeCompare(b.name));
-  else filtered.sort((a, b) => a.order - b.order);
-  document.getElementById("results").textContent = filtered.length + " of " + catalog[active].length + " entries · " + numberDone(catalog[active]) + " complete";
+  const filtered = filteredItems();
+  updateResults();
   const container = document.getElementById("entries");
   container.replaceChildren();
-  if (!filtered.length) container.append(element("p", "empty", "No entries match these filters."));
+  if (!filtered.length) {
+    const message = document.getElementById("scope").value === "rotten-autumn" && active === "bosses"
+      ? "No Rotten Autumn bosses have been added to this guide. Try Tarstones, Beacons, or Dungeons."
+      : "No entries match these filters. Try another category or change your filters.";
+    container.append(element("p", "empty", message));
+  }
   else for (const item of filtered) container.append(renderEntry(item));
 }
 function navigateToHash() {
-  const id = decodeURIComponent(location.hash.slice(1));
-  const target = byId.get(id);
+  const target = entryFromHash(location.hash);
   if (!target) return;
+  const id = target.id;
   const group = groups.find(entry => catalog[entry.key].some(item => item.id === id));
   active = group.key;
   document.getElementById("search").value = "";
-  document.getElementById("scope").value = "all";
+  const scope = document.getElementById("scope");
+  if (scope.value !== target.scope) scope.value = "all";
   document.getElementById("status").value = "all";
   document.getElementById("region").value = "all";
   document.getElementById("kind-filter").value = "all";
   updateFilters();
-  openRoutes.add(id);
   render();
-  requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "start" }));
+  const card = document.getElementById(id);
+  card.querySelector(".route").open = true;
+  card.tabIndex = -1;
+  card.focus({ preventScroll: true });
+  requestAnimationFrame(() => card.scrollIntoView({ block: "start" }));
 }
 for (const id of ["search", "region", "scope", "status", "kind-filter", "sort"]) {
   document.getElementById(id).addEventListener(id === "search" ? "input" : "change", render);
 }
 document.getElementById("export").onclick = () => {
-  const data = JSON.stringify({ version: 2, completed }, null, 2);
+  const data = encodeProgress(completed);
   const url = URL.createObjectURL(new Blob([data], { type: "application/json" }));
   const a = element("a");
   a.href = url;
@@ -308,6 +288,7 @@ document.getElementById("import-file").onchange = async event => {
   try {
     const decoded = decodeProgress(JSON.parse(await file.text()));
     completed = decoded.result;
+    saveBlocked = false;
     save();
     render();
     announce("Imported " + Object.keys(completed).length + " completed entries" + (decoded.ignored ? "; ignored " + decoded.ignored + " unknown IDs." : "."));
@@ -318,3 +299,4 @@ window.addEventListener("hashchange", navigateToHash);
 updateFilters();
 render();
 navigateToHash();
+showStorageWarning(loaded.warning);
