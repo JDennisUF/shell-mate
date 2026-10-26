@@ -64,6 +64,7 @@ test("every boss card has an identifying image and encounter description", async
   await expect(page.locator(".boss-portrait")).toHaveCount(46);
   await expect(page.locator(".boss-description")).toHaveCount(46);
   await expect(page.locator(".boss-portrait").first()).toHaveAttribute("alt", /boss$/);
+  expect(await page.locator(".boss-portrait").evaluateAll(images => images.every(image => /^\.\/assets\/bosses\/.+\.jpg$/.test(image.getAttribute("src"))))).toBe(true);
   for (const [id, image] of [["boss-11", "hexapod"], ["boss-16", "malborn-offspring"], ["boss-18", "orrem-the-reclaimed"], ["boss-33", "foul-passenger"], ["boss-35", "the-monolith"], ["boss-46", "zmey-the-unbidden"]]) {
     await expect(page.locator(`#${id} .boss-portrait`)).toHaveAttribute("src", `./assets/bosses/${image}.jpg`);
   }
