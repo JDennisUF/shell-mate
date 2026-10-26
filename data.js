@@ -67,6 +67,22 @@ export const catalog = {
     "derelict-hideout-route": {
       "title": "All Things How: Derelict Hideout Beacon walkthrough",
       "url": "https://allthings.how/mortal-shell-2-disciple-s-grotto-beacon-walkthrough-derelict-hideout/"
+    },
+    "boss-artwork-hexapod": {
+      "title": "All Things How: Hexapod boss location and screenshots",
+      "url": "https://allthings.how/mortal-shell-2-how-to-find-the-hexapod-boss/"
+    },
+    "boss-artwork-endgame": {
+      "title": "Probonk: Malborn Offspring and Monolith images",
+      "url": "https://probonk.com/mortal-shell-2/enemies?e=malborn-offspring"
+    },
+    "boss-artwork-orrem": {
+      "title": "All Things How: Empty Cradle and Orrem screenshots",
+      "url": "https://allthings.how/mortal-shell-2-empty-cradle-beacon-dungeon-walkthrough/"
+    },
+    "boss-artwork-zmey": {
+      "title": "All Things How: Zmey, the Unbidden screenshots",
+      "url": "https://allthings.how/mortal-shell-2-how-to-reach-and-beat-zmey-the-unbidden/"
     }
   },
   "tarstones": [
@@ -3516,7 +3532,8 @@ export const catalog = {
       "tip": "Harden buys time against its quick frontal attacks. Move to the side when homing shots appear.",
       "sources": [
         "boss-roster",
-        "boss-main"
+        "boss-main",
+        "boss-artwork-hexapod"
       ],
       "aliases": [],
       "relatedIds": [
@@ -3640,7 +3657,8 @@ export const catalog = {
       "tip": "Keep distance from grabs and long sword chains. Faithful Doubles can draw attention and create openings.",
       "sources": [
         "boss-roster",
-        "boss-main"
+        "boss-main",
+        "boss-artwork-endgame"
       ],
       "aliases": [],
       "relatedIds": [],
@@ -3688,7 +3706,8 @@ export const catalog = {
       "tip": "Circle close to the second form's sides and dodge beneath the arm slams; sidestep its ranged barrage.",
       "sources": [
         "boss-roster",
-        "boss-main"
+        "boss-main",
+        "boss-artwork-orrem"
       ],
       "aliases": [
         "Orrem, the Discarded Golem"
@@ -4080,7 +4099,8 @@ export const catalog = {
       "tip": "Hit the exposed center, back away from repeated slams, and dodge through its laser sweep.",
       "sources": [
         "boss-roster",
-        "boss-main"
+        "boss-main",
+        "boss-artwork-endgame"
       ],
       "aliases": [],
       "relatedIds": [],
@@ -4333,7 +4353,8 @@ export const catalog = {
       "tip": "Equip Cosmic resistance before the fight. Avoid the grab and move away as the second phase opens with waves.",
       "sources": [
         "boss-roster",
-        "boss-main"
+        "boss-main",
+        "boss-artwork-zmey"
       ],
       "aliases": [],
       "relatedIds": [],

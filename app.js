@@ -186,9 +186,11 @@ function renderEntry(item) {
   let portrait;
   if (item.kind === "boss") {
     portrait = element("img", "boss-portrait");
-    portrait.src = bossArtwork[item.id]
-      ? `https://probonk.com/game/mortal-shell-2/${bossArtwork[item.id]}`
-      : bossPlaceholder(item.name, item.id);
+    portrait.src = bossArtwork[item.id]?.startsWith("assets/")
+      ? `./${bossArtwork[item.id]}`
+      : bossArtwork[item.id]
+        ? `https://probonk.com/game/mortal-shell-2/${bossArtwork[item.id]}`
+        : bossPlaceholder(item.name, item.id);
     portrait.alt = `${item.name} boss`;
     portrait.loading = "lazy";
     portrait.decoding = "async";
@@ -276,11 +278,14 @@ const bossArtwork = {
   "boss-08": "vestige-gate-29-walkthrough-mortal-shell-ii-wiki-guide.webp",
   "boss-09": "great-arbiter-of-flesh-boss-beta-mortal-shell-2-wiki-guide.webp",
   "boss-10": "grisha-boss-mortal-shell-2-game8.webp",
+  "boss-11": "assets/bosses/hexapod.jpg",
   "boss-12": "infested-miner-walkthrough-mortal-shell-ii-wiki-guide.webp",
   "boss-13": "ashen-sanctum-25-walkthrough-mortal-shell-ii-wiki-guide.webp",
   "boss-14": "lucian-the-thirsting-knight-boss-mortal-shell-2-game8.webp",
   "boss-15": "magdalena-lady-of-the-woods-boss-beta-mortal-shell-2-wiki-guide.webp",
+  "boss-16": "assets/bosses/malborn-offspring.jpg",
   "boss-17": "infobox-the-nameless-captive-mortal-shell-2-wiki.webp",
+  "boss-18": "assets/bosses/orrem-the-reclaimed.jpg",
   "boss-19": "pale-grisha-boss-mortal-shell-2-game8.webp",
   "boss-20": "prophet-of-profane-infinities-boss-mortal-shell-2-wiki-guide.webp",
   "boss-21": "rabid-grisha-pack-boss-mortal-shell-2-game8.webp",
@@ -295,7 +300,9 @@ const bossArtwork = {
   "boss-30": "tainted-vestige-boss-mortal-shell-2-game8.webp",
   "boss-31": "tar-golem-boss-mortal-shell-2-wiki-guide.webp",
   "boss-32": "tarblighted-stoner-miniboss-sanguine-caverns-gate-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-33": "assets/bosses/foul-passenger.jpg",
   "boss-34": "the-lost-child-screengrab-sanguine-caverns-gate-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-35": "assets/bosses/the-monolith.jpg",
   "boss-36": "the-wandering-shepherd-boss-mortal-shell-2-game8.webp",
   "boss-37": "the-warden-boss-2-mortal-shell-2-wiki-guide.webp",
   "boss-38": "thishinas-confessor-boss-mortal-shell-2-wiki.webp",
@@ -305,7 +312,8 @@ const bossArtwork = {
   "boss-42": "vellen-high-lord-of-mammon-mortal-shell-2-wiki-guide.webp",
   "boss-43": "viletongue-batushka-boss-mortal-shell-2-game8.webp",
   "boss-44": "vrago-solikar-champion-shield-jump-abandoned-shrine-beacon-dungeon-walkthrough-mortal-shell-2-wiki.webp",
-  "boss-45": "vrannic-the-grand-illusionist-boss-mortal-shell-2-game8.webp"
+  "boss-45": "vrannic-the-grand-illusionist-boss-mortal-shell-2-game8.webp",
+  "boss-46": "assets/bosses/zmey-the-unbidden.jpg"
 };
 function bossPlaceholder(name, id) {
   const initials = name.split(/\s+/).slice(0, 2).map(part => part[0]).join("");
