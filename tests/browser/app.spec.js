@@ -1,13 +1,47 @@
 import { test, expect } from "@playwright/test";
+import { catalog } from "../../data.js";
 
 const backup = completed => ({ version: 2, completed });
 const upload = async (page, data) => page.locator("#import-file").setInputFiles({ name: "progress.json", mimeType: "application/json", buffer: Buffer.from(typeof data === "string" ? data : JSON.stringify(data)) });
 
+test("existing Tarstone checks survive expansion and missing stones can be tracked", async ({ page }) => {
+  const originalStones = catalog.tarstones.filter(item => item.order <= 85);
+  expect(originalStones).toHaveLength(85);
+  const completed = Object.fromEntries(originalStones.map(item => [item.id, true]));
+  await page.addInitScript(data => {
+    if (!localStorage.getItem("shell-mate-progress-v2")) localStorage.setItem("shell-mate-progress-v2", JSON.stringify(data));
+  }, backup(completed));
+  await page.goto("./");
+  await expect(page.locator(".entry")).toHaveCount(89);
+  await expect(page.locator("#category-progress .progress-stat").first()).toContainText("85 / 89");
+  await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
+  await expect(page.locator(".entry")).toHaveCount(4);
+  await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Fragile");
+  await expect(page.locator(".entry")).toHaveCount(2);
+  await page.locator("#tar-egons-stone > .route > summary").click();
+  await expect(page.locator("#tar-egons-stone .route-body")).toContainText("Merrick");
+  await expect(page.locator('#tar-egons-stone a[href="#beacon-01"]').first()).toBeVisible();
+  await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("all");
+  await page.getByLabel("Search guide").fill("Forsaken Vow Stone");
+  await expect(page.locator(".entry")).toHaveCount(1);
+  await page.locator("#tar-ra-forsaken-vow > .route > summary").click();
+  await expect(page.locator("#tar-ra-forsaken-vow .route-body")).toContainText("No acquisition route is documented yet");
+  await expect(page.locator("#tar-ra-forsaken-vow .sources a")).toHaveCount(2);
+  await page.locator("#check-tar-ra-forsaken-vow").focus();
+  await page.keyboard.press("Space");
+  await expect(page.locator(".entry")).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator("#check-tar-01")).toBeChecked();
+  await expect(page.locator("#check-tar-ra-forsaken-vow")).toBeChecked();
+  await expect(page.locator("#check-tar-glimpse-stone")).not.toBeChecked();
+  await expect(page.locator("#category-progress .progress-stat").first()).toContainText("86 / 89");
+});
+
 test("DLC selection follows categories and updates guide totals", async ({ page }) => {
   await page.goto("./");
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
-  await expect(page.locator(".entry")).toHaveCount(10);
-  await expect(page.locator("#overall-count")).toHaveText("0 / 29");
+  await expect(page.locator(".entry")).toHaveCount(12);
+  await expect(page.locator("#overall-count")).toHaveText("0 / 31");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
   await expect(page.locator(".entry")).toHaveCount(4);
   await expect(page.locator("#scope")).toHaveValue("rotten-autumn");

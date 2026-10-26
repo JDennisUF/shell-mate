@@ -35,6 +35,22 @@ export const catalog = {
     "tarstone-roster": {
       "title": "Probonk: tarstone catalog",
       "url": "https://probonk.com/mortal-shell-2/tarstones"
+    },
+    "glimpse-stone-route": {
+      "title": "All Things How: Glimpse Stone",
+      "url": "https://allthings.how/mortal-shell-2-how-to-get-and-use-the-glimpse-stone/"
+    },
+    "egon-stone-route": {
+      "title": "All Things How: Egon's Stone",
+      "url": "https://allthings.how/mortal-shell-2-how-to-get-and-use-egon-s-stone/"
+    },
+    "tarstone-effects": {
+      "title": "QuestLog: Tarstones",
+      "url": "https://questlog.casual-heroes.com/soulslike/mortal-shell-2/tarstones/"
+    },
+    "rotten-missing-stones": {
+      "title": "Community discussion: Wellspring Stone and Forsaken Vow",
+      "url": "https://www.reddit.com/r/MortalShell/comments/1xc99or/wellspring_stone_and_forsaken_vow_stone/"
     }
   },
   "tarstones": [
@@ -1872,6 +1888,80 @@ export const catalog = {
         "rotten-dungeons"
       ],
       "aliases": [],
+      "relatedIds": []
+    },
+    {
+      "id": "tar-glimpse-stone",
+      "name": "Glimpse Stone",
+      "kind": "tarstone",
+      "scope": "base",
+      "region": "Marrow Keep",
+      "order": 86,
+      "category": "Fragile",
+      "nearestBeacon": "Marrow Keep",
+      "nearestBeaconId": "beacon-01",
+      "steps": [
+        "Travel to Marrow Keep and speak with Merrick.",
+        "Open the Tarstones tab in his shop and purchase a Glimpse Stone for 250 Coins.",
+        "If it is not stocked yet, return as you progress through the story and defeat bosses."
+      ],
+      "requirement": "250 Coins; Merrick's shop stock expands with progression.",
+      "sources": ["glimpse-stone-route"],
+      "aliases": ["Glimpse Tarstone"],
+      "relatedIds": []
+    },
+    {
+      "id": "tar-egons-stone",
+      "name": "Egon's Stone",
+      "kind": "tarstone",
+      "scope": "base",
+      "region": "Marrow Keep",
+      "order": 87,
+      "category": "Fragile",
+      "nearestBeacon": "Marrow Keep",
+      "nearestBeaconId": "beacon-01",
+      "steps": [
+        "Travel to Marrow Keep and speak with Merrick.",
+        "Open the Tarstones tab in his shop and purchase Egon's Stone for 500 Coins.",
+        "If it is not stocked yet, return as you progress through the story and defeat bosses."
+      ],
+      "requirement": "500 Coins; Merrick's shop stock expands with progression.",
+      "sources": ["egon-stone-route"],
+      "aliases": ["Egon Stone"],
+      "relatedIds": []
+    },
+    {
+      "id": "tar-ra-wellspring-stone",
+      "name": "Wellspring Stone",
+      "kind": "tarstone",
+      "availabilityWarning": "NOT FOUND BY PLAYERS · POSSIBLY BUGGED",
+      "scope": "rotten-autumn",
+      "region": "Unspecified",
+      "order": 88,
+      "category": "Support",
+      "steps": [
+        "No acquisition route is documented yet. This entry tracks Wellspring Stone, which continuously regenerates Resolve."
+      ],
+      "requirement": "",
+      "sources": ["tarstone-effects", "rotten-missing-stones"],
+      "aliases": [],
+      "relatedIds": []
+    },
+    {
+      "id": "tar-ra-forsaken-vow",
+      "name": "Forsaken Vow",
+      "kind": "tarstone",
+      "availabilityWarning": "NOT FOUND BY PLAYERS · POSSIBLY BUGGED",
+      "scope": "rotten-autumn",
+      "region": "Unspecified",
+      "order": 89,
+      "category": "Support",
+      "steps": [
+        "No acquisition route is documented yet. This entry tracks Forsaken Vow, which increases melee damage during Night Mode while disabling your sidearm and Shell ability."
+      ],
+      "requirement": "",
+      "sources": ["tarstone-effects", "rotten-missing-stones"],
+      "aliases": ["Forsaken Vow Stone"],
       "relatedIds": []
     }
   ],

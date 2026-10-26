@@ -34,7 +34,7 @@ test("original saved IDs are preserved", () => {
 
 test("DLC filters exclude base entries and combine with search, region, type and completion", () => {
   const dlc = { ...filters, scope: "rotten-autumn" };
-  assert.equal(catalog.tarstones.filter(item => matches(item, dlc, {})).length, 10);
+  assert.equal(catalog.tarstones.filter(item => matches(item, dlc, {})).length, 12);
   assert.equal(catalog.beacons.filter(item => matches(item, dlc, {})).length, 4);
   assert.equal(catalog.dungeons.filter(item => matches(item, dlc, {})).length, 15);
   assert.equal(catalog.bosses.filter(item => matches(item, dlc, {})).length, 0);
@@ -46,6 +46,22 @@ test("DLC filters exclude base entries and combine with search, region, type and
 test("search finds aliases and ignores apostrophes and accents", () => {
   assert.ok(matches(byId.get("tar-02"), { ...filters, search: "Headsman’s Stone" }, {}));
   assert.ok(matches(byId.get("tar-ra-channelers-stone"), { ...filters, search: "chánnelers" }, {}));
+  assert.ok(matches(byId.get("tar-ra-forsaken-vow"), { ...filters, search: "Forsaken Vow Stone" }, {}));
+});
+
+test("expanded Tarstone catalog includes missing update stones without duplicate names", () => {
+  assert.equal(catalog.tarstones.length, 89);
+  assert.equal(new Set(catalog.tarstones.map(item => item.name.toLowerCase())).size, 89);
+  assert.equal(new Set(catalog.tarstones.map(item => item.order)).size, 89);
+  for (const id of ["tar-glimpse-stone", "tar-egons-stone"]) {
+    assert.ok(matches(byId.get(id), { ...filters, scope: "base", kind: "Fragile" }, {}));
+    assert.equal(byId.get(id).nearestBeaconId, "beacon-01");
+  }
+  for (const id of ["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]) {
+    assert.ok(matches(byId.get(id), { ...filters, scope: "rotten-autumn", kind: "Support" }, {}));
+    assert.equal(byId.get(id).nearestBeaconId, undefined);
+    assert.match(byId.get(id).steps[0], /No acquisition route is documented/);
+  }
 });
 
 test("links use IDs even when display names change", () => {
