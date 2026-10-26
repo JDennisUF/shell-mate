@@ -58,6 +58,14 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await expect(page.locator(".entry")).toHaveCount(46);
 });
 
+test("every boss card has an identifying image and encounter description", async ({ page }) => {
+  await page.goto("./?page=bosses");
+  await expect(page.locator(".entry")).toHaveCount(46);
+  await expect(page.locator(".boss-portrait")).toHaveCount(46);
+  await expect(page.locator(".boss-description")).toHaveCount(46);
+  await expect(page.locator(".boss-portrait").first()).toHaveAttribute("alt", /boss$/);
+});
+
 test("checking keeps focus, route and spoiler state, and survives reload", async ({ page }) => {
   await page.goto("./");
   await page.getByRole("button", { name: "Bosses", exact: true }).click();

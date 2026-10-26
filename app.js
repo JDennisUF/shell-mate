@@ -183,10 +183,32 @@ function renderEntry(item) {
   const name = element("h3", "entry-name", item.name);
   const meta = element("div", "entry-meta", item.region + (item.nearestBeacon ? " · From " + item.nearestBeacon : ""));
   heading.append(name, meta);
+  let portrait;
+  if (item.kind === "boss") {
+    portrait = element("img", "boss-portrait");
+    portrait.src = bossArtwork[item.id]
+      ? `https://probonk.com/game/mortal-shell-2/${bossArtwork[item.id]}`
+      : bossPlaceholder(item.name, item.id);
+    portrait.alt = `${item.name} boss`;
+    portrait.loading = "lazy";
+    portrait.decoding = "async";
+    portrait.onerror = () => {
+      portrait.onerror = null;
+      portrait.src = bossPlaceholder(item.name, item.id);
+    };
+  }
   heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
   if (item.availabilityWarning) heading.append(element("span", "entry-warning", item.availabilityWarning));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
   row.append(check, heading, tag);
+  if (portrait) row.append(portrait);
+  if (item.kind === "boss") {
+    const description = element("p", "boss-description");
+    const encounter = item.nearestBeacon ? `Encountered near ${item.nearestBeacon} in ${item.region}.` : `Encountered in ${item.region}.`;
+    const reward = item.rewards ? ` Notable drop: ${item.rewards.split(",")[0]}.` : "";
+    description.textContent = encounter + reward;
+    card.append(description);
+  }
   const details = element("details", "route");
   details.open = disclosureState.get(item.id)?.route || false;
   const summary = element("summary", "", "Route & details");
@@ -241,6 +263,55 @@ function renderEntry(item) {
   details.append(summary, body);
   card.append(row, details);
   return card;
+}
+
+const bossArtwork = {
+  "boss-01": "bloodcursed-lithopod-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-02": "bor-the-deluded-monarch-boss-mortal-shell-2-game8.webp",
+  "boss-03": "caged-grisha-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-04": "circle-of-the-grasping-root-boss-mortal-shell-2-game8.webp",
+  "boss-05": "infobox-droeg-the-conquerer-mortal-shell-2-wiki.webp",
+  "boss-06": "gloombound-legion-boss-mortal-shell-2-game8.webp",
+  "boss-07": "gloombound-ritualist-boss-beta-mortal-shell-2-wiki-guide.webp",
+  "boss-08": "vestige-gate-29-walkthrough-mortal-shell-ii-wiki-guide.webp",
+  "boss-09": "great-arbiter-of-flesh-boss-beta-mortal-shell-2-wiki-guide.webp",
+  "boss-10": "grisha-boss-mortal-shell-2-game8.webp",
+  "boss-12": "infested-miner-walkthrough-mortal-shell-ii-wiki-guide.webp",
+  "boss-13": "ashen-sanctum-25-walkthrough-mortal-shell-ii-wiki-guide.webp",
+  "boss-14": "lucian-the-thirsting-knight-boss-mortal-shell-2-game8.webp",
+  "boss-15": "magdalena-lady-of-the-woods-boss-beta-mortal-shell-2-wiki-guide.webp",
+  "boss-17": "infobox-the-nameless-captive-mortal-shell-2-wiki.webp",
+  "boss-19": "pale-grisha-boss-mortal-shell-2-game8.webp",
+  "boss-20": "prophet-of-profane-infinities-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-21": "rabid-grisha-pack-boss-mortal-shell-2-game8.webp",
+  "boss-22": "sariel-the-endless-boss-mortal-shell-2-game8.webp",
+  "boss-23": "servants-of-the-scholar-prince-boss-mortal-shell-2-game8.webp",
+  "boss-24": "sester-secundus-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-25": "solnir-the-gloom-seeker-boss-mortal-shell-2-game8.webp",
+  "boss-26": "starved-harridan-boss-mortal-shell-2-game8.webp",
+  "boss-27": "strange-grisha-boss-mortal-shell-2-game8.webp",
+  "boss-28": "stray-sesters-boss-mortal-shell-2-game8.webp",
+  "boss-29": "subjugated-guardian-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-30": "tainted-vestige-boss-mortal-shell-2-game8.webp",
+  "boss-31": "tar-golem-boss-mortal-shell-2-wiki-guide.webp",
+  "boss-32": "tarblighted-stoner-miniboss-sanguine-caverns-gate-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-34": "the-lost-child-screengrab-sanguine-caverns-gate-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-36": "the-wandering-shepherd-boss-mortal-shell-2-game8.webp",
+  "boss-37": "the-warden-boss-2-mortal-shell-2-wiki-guide.webp",
+  "boss-38": "thishinas-confessor-boss-mortal-shell-2-wiki.webp",
+  "boss-39": "black-sester-sesters-bastion-beacon-dungeon-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-40": "tyrants-sycophants-boss-mortal-shell-2-game8.webp",
+  "boss-41": "urrig-the-executioner-boss-mortal-shell-2-game8.webp",
+  "boss-42": "vellen-high-lord-of-mammon-mortal-shell-2-wiki-guide.webp",
+  "boss-43": "viletongue-batushka-boss-mortal-shell-2-game8.webp",
+  "boss-44": "vrago-solikar-champion-shield-jump-abandoned-shrine-beacon-dungeon-walkthrough-mortal-shell-2-wiki.webp",
+  "boss-45": "vrannic-the-grand-illusionist-boss-mortal-shell-2-game8.webp"
+};
+function bossPlaceholder(name, id) {
+  const initials = name.split(/\s+/).slice(0, 2).map(part => part[0]).join("");
+  const hue = Number(id.slice(-2)) * 29 % 360;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#17151b"/><circle cx="320" cy="180" r="118" fill="hsl(${hue} 38% 24%)"/><path d="M320 64 404 142 382 270H258l-22-128z" fill="#8c818a"/><text x="320" y="215" text-anchor="middle" font-family="sans-serif" font-size="86" font-weight="700" fill="#f1e9df">${initials}</text></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 function filteredItems() {
   const filters = readFilters();
