@@ -3,6 +3,7 @@ import { groups, all, byId, matches, relatedItems, entryFromHash } from "./model
 import { loadProgress, saveProgress, decodeProgress, encodeProgress } from "./storage.js";
 
 let active = "tarstones";
+const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
 const storage = {
   getItem: key => window.localStorage.getItem(key),
   setItem: (key, value) => window.localStorage.setItem(key, value)
@@ -86,7 +87,7 @@ function renderTabs() {
       document.getElementById("status").value = "all";
       document.getElementById("kind-filter").value = "all";
       updateFilters();
-      render();
+      render("push");
     };
     nav.append(button);
   }
@@ -126,6 +127,31 @@ function readFilters() {
   const filters = Object.fromEntries(["search", "region", "scope", "status"].map(id => [id, document.getElementById(id).value]));
   filters.kind = document.getElementById("kind-filter").value;
   return filters;
+}
+function syncUrl(method = "replace") {
+  const url = new URL(location.href);
+  url.search = "";
+  url.searchParams.set("page", active);
+  const values = { search: document.getElementById("search").value, ...Object.fromEntries(Object.entries(urlFilterIds).map(([param, id]) => [param, document.getElementById(id).value])) };
+  for (const [param, value] of Object.entries(values)) {
+    if (value && value !== "all" && !(param === "order" && value === "catalog")) url.searchParams.set(param, value);
+  }
+  history[method + "State"]({}, "", url);
+}
+function restoreUrlState() {
+  const params = new URLSearchParams(location.search);
+  const requestedPage = params.get("page");
+  const hashTarget = entryFromHash(location.hash);
+  active = groups.some(group => group.key === requestedPage) ? requestedPage
+    : hashTarget ? groups.find(group => catalog[group.key].some(item => item.id === hashTarget.id)).key
+      : "tarstones";
+  document.getElementById("search").value = params.get("search") || "";
+  updateFilters();
+  for (const [param, id] of Object.entries(urlFilterIds)) {
+    const select = document.getElementById(id);
+    const value = params.get(param);
+    if (value && [...select.options].some(option => option.value === value)) select.value = value;
+  }
 }
 function renderEntry(item) {
   const card = element("article", "entry" + (completed[item.id] ? " done" : ""));
@@ -227,7 +253,7 @@ function updateResults() {
   const filtered = filteredItems();
   document.getElementById("results").textContent = filtered.length + " of " + catalog[active].length + " entries shown · " + numberDone(filtered) + " shown entries complete";
 }
-function render() {
+function render(urlMethod = "replace") {
   for (const card of document.querySelectorAll(".entry")) {
     disclosureState.set(card.id, { route: card.querySelector(".route").open, tips: card.querySelector(".tips")?.open || false });
   }
@@ -248,6 +274,7 @@ function render() {
     container.append(element("p", "empty", message));
   }
   else for (const item of filtered) container.append(renderEntry(item));
+  syncUrl(urlMethod);
 }
 function navigateToHash() {
   const target = entryFromHash(location.hash);
@@ -297,7 +324,11 @@ document.getElementById("import-file").onchange = async event => {
   event.target.value = "";
 };
 window.addEventListener("hashchange", navigateToHash);
-updateFilters();
+window.addEventListener("popstate", () => {
+  restoreUrlState();
+  render();
+});
+restoreUrlState();
 render();
 navigateToHash();
 showStorageWarning(loaded.warning);
