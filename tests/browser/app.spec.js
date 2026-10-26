@@ -30,7 +30,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await page.locator("#check-tar-ra-forsaken-vow").focus();
   await page.keyboard.press("Space");
   await expect(page.locator(".entry")).toHaveCount(0);
-  await page.reload();
+  await page.goto("./?page=tarstones");
   await expect(page.locator("#check-tar-01")).toBeChecked();
   await expect(page.locator("#check-tar-ra-forsaken-vow")).toBeChecked();
   await expect(page.locator("#check-tar-glimpse-stone")).not.toBeChecked();
