@@ -27,7 +27,7 @@ test("catalog entries have unique permanent IDs, checklist information, sources,
 });
 
 test("original saved IDs are preserved", () => {
-  for (const [prefix, count] of [["tar", 75], ["beacon", 49], ["ghost", 4], ["boss", 46], ["dungeon", 15]]) {
+  for (const [prefix, count] of [["tar", 75], ["beacon", 49], ["ghost", 4], ["boss", 46], ["dungeon", 52]]) {
     for (let index = 1; index <= count; index++) assert.ok(byId.has(prefix + "-" + String(index).padStart(2, "0")));
   }
 });
@@ -37,6 +37,7 @@ test("DLC filters exclude base entries and combine with search, region, type and
   assert.equal(catalog.tarstones.filter(item => matches(item, dlc, {})).length, 12);
   assert.equal(catalog.beacons.filter(item => matches(item, dlc, {})).length, 4);
   assert.equal(catalog.dungeons.filter(item => matches(item, dlc, {})).length, 15);
+  assert.equal(catalog.dungeons.filter(item => matches(item, { ...filters, scope: "base" }, {})).length, 37);
   assert.equal(catalog.bosses.filter(item => matches(item, dlc, {})).length, 0);
   const selected = { ...dlc, search: "Shrouded", region: "Fainweald", kind: "ghost", status: "done" };
   assert.deepEqual(all.filter(item => matches(item, selected, { "ghost-02": true })).map(item => item.id), ["ghost-02"]);

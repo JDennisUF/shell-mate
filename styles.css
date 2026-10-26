@@ -11,7 +11,9 @@ a{color:#e9bb69;text-underline-offset:3px}
 .skip{position:absolute;top:-80px;left:16px;z-index:10;background:#e9bb69;color:#171919;padding:8px}
 .skip:focus{top:12px}
 .site-header{border-bottom:1px solid #46534e;background:#202624}
-.site-header .shell{padding:26px 0 24px}
+.site-header .shell{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:26px 0 24px}
+.kofi-button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;margin-top:2px;border:1px solid #df785f;border-radius:5px;background:#38231f;color:#ffe6d8;text-decoration:none;font-size:2rem;line-height:1}
+.kofi-button:hover{border-color:#ffab88;background:#4a2b24;color:#fff}
 .eyebrow{text-transform:uppercase;letter-spacing:.09em;color:#94b7aa;font-size:.74rem;font-weight:700;margin:0 0 5px}
 h1,h2,h3,p{margin-top:0}
 h1{font-family:Georgia,serif;font-size:2.6rem;line-height:1.1;margin-bottom:8px;font-weight:500}

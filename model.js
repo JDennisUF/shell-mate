@@ -4,7 +4,7 @@ export const groups = [
   { key: "tarstones", title: "Tarstones", symbol: "◆", description: "Track the stones in this guide, including Rotten Autumn rewards." },
   { key: "beacons", title: "Beacons", symbol: "✦", description: "Find standard beacons and the four Rotten Autumn Ghost Beacons." },
   { key: "bosses", title: "Bosses", symbol: "⚔", description: "Track main and optional fights. Open fight tips only when you want them." },
-  { key: "dungeons", title: "Dungeons", symbol: "▧", description: "Track the 15 Rotten Autumn dungeons. This does not include base-game dungeons." }
+  { key: "dungeons", title: "Dungeons", symbol: "▧", description: "Track all 37 base-game dungeons and 15 Rotten Autumn dungeons." }
 ];
 export const all = groups.flatMap(group => catalog[group.key]);
 export const byId = new Map(all.map(item => [item.id, item]));

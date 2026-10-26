@@ -51,6 +51,22 @@ export const catalog = {
     "rotten-missing-stones": {
       "title": "Community discussion: Wellspring Stone and Forsaken Vow",
       "url": "https://www.reddit.com/r/MortalShell/comments/1xc99or/wellspring_stone_and_forsaken_vow_stone/"
+    },
+    "base-dungeon-routes": {
+      "title": "All Things How: all 35 base-game dungeon locations",
+      "url": "https://allthings.how/mortal-shell-2-every-dungeon-location-all-35-sites/"
+    },
+    "base-dungeon-roster": {
+      "title": "PowerPyx: all 36 overworld dungeon locations",
+      "url": "https://www.powerpyx.com/mortal-shell-2-all-dungeon-locations/"
+    },
+    "hag-pit-route": {
+      "title": "All Things How: Hag’s Pit dungeon walkthrough",
+      "url": "https://allthings.how/hag-s-pit-dungeon-walkthrough-in-mortal-shell-2-all-rewards/"
+    },
+    "derelict-hideout-route": {
+      "title": "All Things How: Derelict Hideout Beacon walkthrough",
+      "url": "https://allthings.how/mortal-shell-2-disciple-s-grotto-beacon-walkthrough-derelict-hideout/"
     }
   },
   "tarstones": [
@@ -4647,6 +4663,710 @@ export const catalog = {
         "tar-ra-bloodoath-stone"
       ],
       "nearestBeaconId": "beacon-24"
+    },
+    {
+      "id": "dungeon-16",
+      "name": "Desolate Keep",
+      "kind": "dungeon",
+      "region": "Marrow Keep",
+      "scope": "base",
+      "order": 16,
+      "nearestBeacon": "Marrow Keep",
+      "steps": [
+        "Break the four chains and commune with the goblet in the hidden room in Sester Genessa’s room at Marrow Keep."
+      ],
+      "requirement": "Progress far enough in the story.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-01"
+    },
+    {
+      "id": "dungeon-17",
+      "name": "Ravaged Tomb",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 17,
+      "nearestBeacon": "Nochtean Gate",
+      "steps": [
+        "From Nochtean Gate, take the southeast elevator down; the entrance is in the room below."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-04"
+    },
+    {
+      "id": "dungeon-18",
+      "name": "Thieves Retreat",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 18,
+      "nearestBeacon": "Nochtean Gate",
+      "steps": [
+        "From Nochtean Gate, head north and drop one level; press the switch to open the metal gate."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-04"
+    },
+    {
+      "id": "dungeon-19",
+      "name": "Shrine of Trials",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 19,
+      "nearestBeacon": "Mushroom Village",
+      "steps": [
+        "Northwest of Mushroom Village, open the doorway with the Chapel Key."
+      ],
+      "requirement": "Chapel Key.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-05"
+    },
+    {
+      "id": "dungeon-20",
+      "name": "Holding Cells",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 20,
+      "nearestBeacon": "Mushroom Village",
+      "steps": [
+        "Northwest of Mushroom Village, clear the corruption from the nearby jump pad and interact with the well on the upper level."
+      ],
+      "requirement": "Mether’s Breath.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-05"
+    },
+    {
+      "id": "dungeon-21",
+      "name": "Waterfall Camp",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 21,
+      "nearestBeacon": "Outskirts of Nochte",
+      "steps": [
+        "South of Outskirts of Nochte, press the button on the north wall of the southeast building to reveal the entrance."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-06"
+    },
+    {
+      "id": "dungeon-22",
+      "name": "Disciple’s Stash",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 22,
+      "nearestBeacon": "Outskirts of Nochte",
+      "steps": [
+        "East of Outskirts of Nochte in the town; break the wall of the large building."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-06"
+    },
+    {
+      "id": "dungeon-23",
+      "name": "Illusionist’s Cache",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 23,
+      "nearestBeacon": "Outskirts of Nochte",
+      "steps": [
+        "North of Outskirts of Nochte, take a Bone Gate to Desolate Peak; the entrance is inside the building."
+      ],
+      "requirement": "Bone Gate.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-06"
+    },
+    {
+      "id": "dungeon-24",
+      "name": "Flooded Village",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 24,
+      "nearestBeacon": "Blackridge Pass",
+      "steps": [
+        "Northwest of Blackridge Pass, use the archway to open the doorway in the building."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
+    },
+    {
+      "id": "dungeon-25",
+      "name": "Coward’s Retreat",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 25,
+      "nearestBeacon": "Blackridge Pass",
+      "steps": [
+        "East of Blackridge Pass, inside a cave."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
+    },
+    {
+      "id": "dungeon-26",
+      "name": "Crumbling Tunnel",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 26,
+      "nearestBeacon": "Blackridge Pass",
+      "steps": [
+        "Northeast of Blackridge Pass, east of the Shattered Beacon entrance."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
+    },
+    {
+      "id": "dungeon-27",
+      "name": "The King’s Crypt",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 27,
+      "nearestBeacon": "Blackridge Pass",
+      "steps": [
+        "North of the Shattered Beacon dungeon, in the cave near explosive jars."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
+    },
+    {
+      "id": "dungeon-28",
+      "name": "Martyr’s Tomb",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 28,
+      "nearestBeacon": "Widow’s Overlook",
+      "steps": [
+        "Southeast of Widow’s Overlook, inside the building."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
+    },
+    {
+      "id": "dungeon-29",
+      "name": "Ritual Grounds",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 29,
+      "nearestBeacon": "Widow’s Overlook",
+      "steps": [
+        "Southeast of Widow’s Overlook, behind the village where Tiel is found."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-08"
+    },
+    {
+      "id": "dungeon-30",
+      "name": "Ravaged Hideout",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 30,
+      "nearestBeacon": "Gloomshade Grove",
+      "steps": [
+        "South of Gloomshade Grove; defeat the Bloodcursed Lithopod to access it."
+      ],
+      "requirement": "Defeat the Bloodcursed Lithopod.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
+    },
+    {
+      "id": "dungeon-31",
+      "name": "Martyr’s Prison",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 31,
+      "nearestBeacon": "Gloomshade Grove",
+      "steps": [
+        "Northwest of Gloomshade Grove; follow the path to the castle’s northeast outer corner and enter through the hole in the wall."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-09"
+    },
+    {
+      "id": "dungeon-32",
+      "name": "Deserted Mine",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 32,
+      "nearestBeacon": "One Legged Wolf",
+      "steps": [
+        "West of One Legged Wolf, through the cave near the flags."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
+    },
+    {
+      "id": "dungeon-33",
+      "name": "Overrun Quarry",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 33,
+      "nearestBeacon": "One Legged Wolf",
+      "steps": [
+        "North of One Legged Wolf; pass through the castle area, loop southeast, and look by the north side of the broken wooden bridge."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
+    },
+    {
+      "id": "dungeon-34",
+      "name": "Grisha Hunting Grounds",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 34,
+      "nearestBeacon": "One Legged Wolf",
+      "steps": [
+        "Northwest of One Legged Wolf, in the valley beyond the ruins."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
+    },
+    {
+      "id": "dungeon-35",
+      "name": "Hall of Echoes",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 35,
+      "nearestBeacon": "One Legged Wolf",
+      "steps": [
+        "Northwest of One Legged Wolf; open the building with the Crypt Key."
+      ],
+      "requirement": "Crypt Key, found in Illusionist’s Cache.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-11"
+    },
+    {
+      "id": "dungeon-36",
+      "name": "Feeding Grounds",
+      "kind": "dungeon",
+      "region": "Fainweald",
+      "scope": "base",
+      "order": 36,
+      "nearestBeacon": "Blackridge Pass",
+      "steps": [
+        "Northeast of Blackridge Pass, in the graveyard; destroy the three glowing headstones to open the door."
+      ],
+      "requirement": "Destroy three glowing headstones.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-07"
+    },
+    {
+      "id": "dungeon-37",
+      "name": "Smuggler’s Hideout",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 37,
+      "nearestBeacon": "Outskirts of Mammon",
+      "steps": [
+        "Northwest of Outskirts of Mammon, near the camp."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
+    },
+    {
+      "id": "dungeon-38",
+      "name": "Revered Beacon",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 38,
+      "nearestBeacon": "Sester’s Gate",
+      "steps": [
+        "From Sester’s Gate, take the northwest stairs, drop to the western ledge by the Bone Gate, then follow the path north; the entrance is past the hammer enemy on the right."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-13"
+    },
+    {
+      "id": "dungeon-39",
+      "name": "Blackwell Cavern",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 39,
+      "nearestBeacon": "Castigator’s Keep",
+      "steps": [
+        "From Castigator’s Keep, follow the paths or drop behind the Beacon to the lower level; head north and turn around the cliff corner."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
+    },
+    {
+      "id": "dungeon-40",
+      "name": "Hall of Murmurs",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 40,
+      "nearestBeacon": "Castigator’s Keep",
+      "steps": [
+        "From Castigator’s Keep, go southwest through the central courtyard; the entrance stairs are set into the ground beyond it."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
+    },
+    {
+      "id": "dungeon-41",
+      "name": "Alchemist’s Workshop",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 41,
+      "nearestBeacon": "Castigator’s Keep",
+      "steps": [
+        "Find the Makeshift Projectile near the southern Grisha hunters by Outskirts of Mammon and fire it from the catapult east of that Beacon’s statue. Then follow the southwest wooden platforms below Castigator’s Keep."
+      ],
+      "requirement": "Makeshift Projectile.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-15"
+    },
+    {
+      "id": "dungeon-42",
+      "name": "Bellkeeper’s Corner",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 42,
+      "nearestBeacon": "Abandoned Outpost",
+      "steps": [
+        "North of Abandoned Outpost, ring the bell to form a path across the bridge."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
+    },
+    {
+      "id": "dungeon-43",
+      "name": "Collapsed Mine",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 43,
+      "nearestBeacon": "Abandoned Outpost",
+      "steps": [
+        "South of Abandoned Outpost in the slums; follow the platforms around the central pit and head west into a cave."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
+    },
+    {
+      "id": "dungeon-44",
+      "name": "Obsidianite Mines",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 44,
+      "nearestBeacon": "Abandoned Outpost",
+      "steps": [
+        "South of Abandoned Outpost in the slums; drop to the lower mining area and find the entrance on the west wall."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-17"
+    },
+    {
+      "id": "dungeon-45",
+      "name": "Spoiled Mortuary",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 45,
+      "nearestBeacon": "Gate of Mammon",
+      "steps": [
+        "From Gate of Mammon, climb the stairs and continue past the next set; the entrance is in the corner."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-18"
+    },
+    {
+      "id": "dungeon-46",
+      "name": "Sentry’s Grave",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 46,
+      "nearestBeacon": "Gate of Mammon",
+      "steps": [
+        "From Gate of Mammon, go northeast up the first stairs, follow the first level clockwise, and take the stairs down inside."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-18"
+    },
+    {
+      "id": "dungeon-47",
+      "name": "Chamber of Becoming",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 47,
+      "nearestBeacon": "The Silent Steps",
+      "steps": [
+        "Southeast of The Silent Steps, defeat Sariel at the large stone platform; the south wall opens into the dungeon."
+      ],
+      "requirement": "Defeat Sariel, the Endless.",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-19"
+    },
+    {
+      "id": "dungeon-48",
+      "name": "Parasitic Stash",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 48,
+      "nearestBeacon": "The Silent Steps",
+      "steps": [
+        "Northwest of The Silent Steps; follow the path to the platform east of it and look beneath the wooden bridge."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-19"
+    },
+    {
+      "id": "dungeon-49",
+      "name": "Besieged Ruins",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 49,
+      "nearestBeacon": "High Lord’s Courtyard",
+      "steps": [
+        "East of High Lord’s Courtyard, drop two levels to the enemies and jump pad; the entrance is in the nearby wall."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-20"
+    },
+    {
+      "id": "dungeon-50",
+      "name": "Garrick’s Den",
+      "kind": "dungeon",
+      "region": "Disciple’s Pass",
+      "scope": "base",
+      "order": 50,
+      "nearestBeacon": "Disciple’s Grotto",
+      "steps": [
+        "Left of Disciple’s Grotto, inside a cave."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-routes"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-48"
+    },
+    {
+      "id": "dungeon-51",
+      "name": "Hag’s Pit",
+      "kind": "dungeon",
+      "region": "Ruins of Mammon",
+      "scope": "base",
+      "order": 51,
+      "nearestBeacon": "Outskirts of Mammon",
+      "steps": [
+        "From Outskirts of Mammon, follow the cliff southeast to a cave entrance, then ride the lift down."
+      ],
+      "requirement": "",
+      "sources": [
+        "base-dungeon-roster",
+        "hag-pit-route"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-12"
+    },
+    {
+      "id": "dungeon-52",
+      "name": "Derelict Hideout",
+      "kind": "dungeon",
+      "region": "Disciple’s Pass",
+      "scope": "base",
+      "order": 52,
+      "nearestBeacon": "Disciple’s Grotto",
+      "steps": [
+        "Cleanse Disciple’s Grotto Beacon in the prologue to open Derelict Hideout; clear the area and cleanse the corruption behind the crates."
+      ],
+      "requirement": "",
+      "sources": [
+        "derelict-hideout-route"
+      ],
+      "aliases": [],
+      "relatedIds": [],
+      "nearestBeaconId": "beacon-48"
     }
   ]
 };
