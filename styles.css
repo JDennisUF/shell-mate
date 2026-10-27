@@ -25,6 +25,16 @@ h1 span{color:#d1aa68;font-size:.6em;vertical-align:middle}
 .overview h2{font-size:1.2rem;margin:0}
 .overview strong{font-variant-numeric:tabular-nums;color:#e9bb69}
 progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8bba9c}
+.completion-banner[hidden]{display:none}
+.completion-banner:not([hidden]){display:flex;align-items:center;gap:13px;margin:12px 0 18px;padding:13px 16px;border:1px solid #c29b51;border-radius:7px;background:linear-gradient(110deg,#393324,#282d27 58%,#342a20);color:#f6ebcf;box-shadow:0 0 18px #d2a74a22}
+.completion-banner strong{color:#f3d58d;font-size:1rem}
+.completion-banner p{margin:3px 0 0;color:#d2d7c8;font-size:.84rem}
+.completion-spark{flex:none;color:#f0ca68;font-size:1.8rem;text-shadow:0 0 12px #edc55b99}
+.completion-spark-end{margin-left:auto}
+.completion-banner.celebrate{animation:completion-pop .65s cubic-bezier(.2,.8,.2,1),completion-glow 1.8s ease-out .25s}
+@keyframes completion-pop{0%{opacity:0;transform:translateY(10px) scale(.98)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes completion-glow{0%,100%{box-shadow:0 0 18px #d2a74a22}35%{box-shadow:0 0 32px #f0c55b77}}
+@media(prefers-reduced-motion:reduce){.completion-banner.celebrate{animation:none}}
 .progress-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .progress-stat{border-left:2px solid #576c60;padding-left:10px;font-size:.82rem;color:#becbc2}
 .progress-stat strong{display:block;color:#f2ede1;font-size:1.05rem}

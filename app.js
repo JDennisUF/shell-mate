@@ -18,6 +18,10 @@ const storage = {
 const loaded = loadProgress(storage);
 let completed = loaded.completed;
 let saveBlocked = loaded.blocked;
+const completionExclusions = new Set(["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]);
+const currentlyFindable = all.filter(item => !completionExclusions.has(item.id));
+let wasKnownComplete = currentlyFindable.every(item => !!completed[item.id]);
+let wasAllComplete = all.every(item => !!completed[item.id]);
 let noticeTimer;
 const disclosureState = new Map();
 
@@ -59,11 +63,32 @@ function renderProgress() {
   const scoped = items => items.filter(item => scope === "all" || item.scope === scope);
   const items = scoped(all);
   const count = numberDone(items);
+  const totalDone = numberDone(all);
+  const allComplete = totalDone === all.length;
+  const knownDone = numberDone(currentlyFindable);
+  const knownComplete = knownDone === currentlyFindable.length;
   document.getElementById("overall-count").textContent = count + " / " + items.length;
   document.getElementById("progress-scope").textContent = scope === "rotten-autumn" ? "Rotten Autumn DLC entries in this guide" : scope === "base" ? "Base-game entries in this guide" : "All entries in this guide";
   const progress = document.getElementById("overall-progress");
   progress.max = items.length || 1;
   progress.value = count;
+  const completionBanner = document.getElementById("completion-banner");
+  completionBanner.hidden = !knownComplete;
+  completionBanner.classList.toggle("provisional", knownComplete && !allComplete);
+  completionBanner.classList.toggle("perfect", allComplete);
+  document.getElementById("completion-title").textContent = allComplete
+    ? `Perfect completion — ${totalDone} / ${all.length}`
+    : `Everything currently found is complete — ${totalDone} / ${all.length}`;
+  document.getElementById("completion-message").textContent = allComplete
+    ? "Every Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
+    : `Wellspring Stone and Forsaken Vow are ignored for completion for now, but remain in the ${all.length} total until they are found.`;
+  if ((knownComplete && !wasKnownComplete) || (allComplete && !wasAllComplete)) {
+    completionBanner.classList.remove("celebrate");
+    void completionBanner.offsetWidth;
+    completionBanner.classList.add("celebrate");
+  } else if (!knownComplete) completionBanner.classList.remove("celebrate");
+  wasKnownComplete = knownComplete;
+  wasAllComplete = allComplete;
   const stats = document.getElementById("category-progress");
   stats.replaceChildren();
   for (const group of groups) {
