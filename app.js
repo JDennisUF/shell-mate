@@ -1,6 +1,7 @@
 import { catalog } from "./data.js";
 import { groups, all, byId, matches, relatedItems, entryFromHash } from "./model.js";
 import { loadProgress, saveProgress, decodeProgress, encodeProgress } from "./storage.js";
+import { tarstoneArtwork } from "./tarstone-art.js";
 
 let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
@@ -184,6 +185,14 @@ function renderEntry(item) {
   const meta = element("div", "entry-meta", item.region + (item.nearestBeacon ? " · From " + item.nearestBeacon : ""));
   heading.append(name, meta);
   let portrait;
+  if (item.kind === "tarstone") {
+    portrait = element("img", "tarstone-portrait");
+    const hasArtwork = !!tarstoneArtwork[item.id];
+    portrait.src = `./${tarstoneArtwork[item.id] || "assets/tarstones/unknown-placeholder.webp"}`;
+    portrait.alt = hasArtwork ? `${item.name} icon` : `${item.name} placeholder icon`;
+    portrait.loading = "lazy";
+    portrait.decoding = "async";
+  }
   if (item.kind === "boss") {
     portrait = element("img", "boss-portrait");
     portrait.src = bossArtwork[item.id]?.startsWith("assets/")
