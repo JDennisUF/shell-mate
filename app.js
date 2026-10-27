@@ -5,6 +5,12 @@ import { tarstoneArtwork } from "./tarstone-art.js";
 
 let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
+const categoryArtwork = {
+  tarstones: "assets/categories/tarstones.png",
+  beacons: "assets/categories/beacons.png",
+  bosses: "assets/categories/bosses-red-eyes.png",
+  dungeons: "assets/categories/dungeons.png"
+};
 const storage = {
   getItem: key => window.localStorage.getItem(key),
   setItem: (key, value) => window.localStorage.setItem(key, value)
@@ -74,9 +80,11 @@ function renderTabs() {
   nav.replaceChildren();
   for (const group of groups) {
     const button = element("button", "tab", group.title);
-    const symbol = element("span", "", group.symbol + "  ");
-    symbol.setAttribute("aria-hidden", "true");
-    button.prepend(symbol);
+    const icon = element("img", "tab-icon");
+    icon.src = new URL(categoryArtwork[group.key], import.meta.url).href;
+    icon.alt = "";
+    icon.setAttribute("aria-hidden", "true");
+    button.prepend(icon, document.createTextNode(" "));
     button.type = "button";
     button.dataset.category = group.key;
     button.setAttribute("aria-current", active === group.key ? "page" : "false");
@@ -190,6 +198,14 @@ function renderEntry(item) {
     const hasArtwork = !!tarstoneArtwork[item.id];
     portrait.src = `./${tarstoneArtwork[item.id] || "assets/tarstones/unknown-placeholder.webp"}`;
     portrait.alt = hasArtwork ? `${item.name} icon` : `${item.name} placeholder icon`;
+    portrait.loading = "lazy";
+    portrait.decoding = "async";
+  }
+  if (item.kind === "beacon") {
+    portrait = element("img", "beacon-portrait");
+    const ghostBeacon = item.subtype === "ghost";
+    portrait.src = new URL(ghostBeacon ? "assets/categories/ghost-beacon.png" : "assets/categories/beacons.png", import.meta.url).href;
+    portrait.alt = ghostBeacon ? `${item.name} icon` : `${item.name} beacon icon`;
     portrait.loading = "lazy";
     portrait.decoding = "async";
   }
@@ -348,7 +364,7 @@ function render(urlMethod = "replace") {
   renderProgress();
   renderTabs();
   const group = groups.find(entry => entry.key === active);
-  document.getElementById("category-eyebrow").textContent = group.symbol + "  Guide";
+  document.getElementById("category-eyebrow").textContent = "TRACKING GUIDE";
   document.getElementById("category-title").textContent = group.title;
   document.getElementById("category-description").textContent = group.description;
   const filtered = filteredItems();

@@ -29,7 +29,9 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .progress-stat{border-left:2px solid #576c60;padding-left:10px;font-size:.82rem;color:#becbc2}
 .progress-stat strong{display:block;color:#f2ede1;font-size:1.05rem}
 .tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid #46534e;margin-top:8px}
-.tab{flex:none;background:transparent;border:0;border-bottom:3px solid transparent;border-radius:0;color:#c4cbc4;padding:13px 16px 11px;font-weight:600}
+.tab{display:flex;align-items:center;gap:9px;flex:none;background:transparent;border:0;border-bottom:3px solid transparent;border-radius:0;color:#c4cbc4;padding:11px 16px 9px;font-weight:600}
+.tab-icon{width:34px;height:34px;object-fit:contain;flex:none}
+.tab[data-category="tarstones"] .tab-icon,.tab[data-category="beacons"] .tab-icon,.tab[data-category="dungeons"] .tab-icon{padding:4px;border:1px solid #b8beb6;border-radius:5px;background:#d9dcd4}
 .tab[aria-current=page]{color:#f3e5c8;border-color:#d7a969}
 .tab:hover{background:#242b28;border-color:#8ba99a}
 .guide{padding:25px 0 60px}
@@ -57,6 +59,8 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .entry-tag{color:#d6b878;font-size:.72rem;text-transform:uppercase;font-weight:700;white-space:nowrap}
 .boss-portrait{display:block;width:min(100%,28rem);aspect-ratio:16/9;margin:12px 0 7px 52px;border:1px solid #46534e;border-radius:8px;background:#17151b;object-fit:cover}
 .tarstone-portrait{display:block;width:60px;height:60px;margin:0 4px;border:1px solid #46534e;border-radius:6px;background:#17151b;object-fit:contain}
+.beacon-portrait{display:block;width:56px;height:56px;margin:0 4px;object-fit:contain;filter:drop-shadow(0 0 5px #64b9ee55)}
+.entry-row:has(.beacon-portrait){grid-template-columns:28px minmax(0,1fr) auto 64px}
 .entry-row:has(.tarstone-portrait){grid-template-columns:28px minmax(0,1fr) auto 68px}
 .entry-row:has(.boss-portrait){grid-template-columns:28px minmax(0,1fr) auto 144px}
 .entry-row .boss-portrait{width:144px;height:90px;aspect-ratio:auto;margin:0;justify-self:end;border-radius:5px}
@@ -92,5 +96,5 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .entry-row{grid-template-columns:28px minmax(0,1fr) auto;min-height:78px}
 .entry:focus-visible,.results:focus-visible{outline:2px solid #e9bb69;outline-offset:3px}
 @media(max-width:900px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.search-field{grid-column:span 3}}
-@media(max-width:540px){.shell{width:min(100% - 24px,1120px)}.site-header .shell{padding:19px 0}h1{font-size:2rem}.progress-grid{grid-template-columns:repeat(2,1fr)}.guide-head{align-items:start}.guide-head{flex-direction:column}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.search-field,.content-field{grid-column:span 2}.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.entry-row{grid-template-columns:28px minmax(0,1fr);gap:8px}.entry-row:has(.boss-portrait){grid-template-columns:28px minmax(0,1fr) 104px}.entry-row:has(.tarstone-portrait){grid-template-columns:28px minmax(0,1fr) 68px}.entry-row .boss-portrait{grid-column:3;grid-row:1 / span 2;width:104px;height:68px}.entry-row .tarstone-portrait{grid-column:3;grid-row:1 / span 2}.entry-tag{grid-column:2;justify-self:start}.route>summary{padding-left:48px}.route-body{padding-left:16px}.tab{padding-inline:12px}}
+@media(max-width:540px){.shell{width:min(100% - 24px,1120px)}.site-header .shell{padding:19px 0}h1{font-size:2rem}.progress-grid{grid-template-columns:repeat(2,1fr)}.guide-head{align-items:start}.guide-head{flex-direction:column}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.search-field,.content-field{grid-column:span 2}.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.entry-row{grid-template-columns:28px minmax(0,1fr);gap:8px}.entry-row:has(.boss-portrait){grid-template-columns:28px minmax(0,1fr) 104px}.entry-row:has(.beacon-portrait){grid-template-columns:28px minmax(0,1fr) 56px}.entry-row:has(.tarstone-portrait){grid-template-columns:28px minmax(0,1fr) 68px}.entry-row .boss-portrait{grid-column:3;grid-row:1 / span 2;width:104px;height:68px}.entry-row .beacon-portrait{grid-column:3;grid-row:1 / span 2}.entry-row .tarstone-portrait{grid-column:3;grid-row:1 / span 2}.entry-tag{grid-column:2;justify-self:start}.route>summary{padding-left:48px}.route-body{padding-left:16px}.tab{padding:9px 10px;font-size:.9rem}.tab-icon{width:28px;height:28px}.tab[data-category="tarstones"] .tab-icon,.tab[data-category="beacons"] .tab-icon,.tab[data-category="dungeons"] .tab-icon{padding:3px}}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
