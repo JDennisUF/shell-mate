@@ -117,8 +117,6 @@ function renderTabs() {
       if (active === group.key) return;
       active = group.key;
       document.getElementById("search").value = "";
-      document.getElementById("region").value = "all";
-      document.getElementById("status").value = "all";
       document.getElementById("kind-filter").value = "all";
       updateFilters();
       render("push");
@@ -138,7 +136,7 @@ function setOptions(select, values, selected) {
 }
 function updateFilters() {
   const items = catalog[active];
-  const regions = [...new Set(items.map(item => item.region))].sort((a, b) => a.localeCompare(b));
+  const regions = [...new Set(all.map(item => item.region))].sort((a, b) => a.localeCompare(b));
   setOptions(document.getElementById("region"), [["all", "All regions"], ...regions.map(name => [name, name])], document.getElementById("region").value);
   const extra = document.getElementById("kind-filter");
   const label = document.getElementById("kind-label");
