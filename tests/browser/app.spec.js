@@ -40,6 +40,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
 test("DLC selection follows categories and updates guide totals", async ({ page }) => {
   await page.goto("./");
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
+  await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(12);
   await expect(page.locator("#overall-count")).toHaveText("0 / 31");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
@@ -52,10 +53,12 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await page.getByLabel("Search guide").fill("Primeval");
   await expect(page.locator(".entry")).toHaveCount(1);
   await page.getByRole("button", { name: "Bosses", exact: true }).click();
+  await expect(page.getByRole("combobox", { name: "Region", exact: true })).toHaveValue("Fainweald");
+  await expect(page.getByRole("combobox", { name: "Progress", exact: true })).toHaveValue("open");
   await expect(page.locator(".entry")).toHaveCount(0);
   await expect(page.locator(".empty")).toContainText("No Rotten Autumn bosses");
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("base");
-  await expect(page.locator(".entry")).toHaveCount(46);
+  await expect(page.locator(".entry")).toHaveCount(9);
 });
 
 test("every boss card has an identifying image and encounter description", async ({ page }) => {
