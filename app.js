@@ -5,7 +5,9 @@ import { tarstoneArtwork } from "./tarstone-art.js";
 
 let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
+const urlDefaults = { page: "tarstones", search: "", region: "all", content: "all", progress: "all", type: "all", order: "catalog" };
 const categoryArtwork = {
+  shells: "assets/shells/tiel.webp",
   tarstones: "assets/categories/tarstones.png",
   beacons: "assets/categories/beacons.png",
   bosses: "assets/categories/bosses-red-eyes.png",
@@ -37,20 +39,41 @@ const tarstoneKeywords = [
   ["bloodcurse", "Bloodcurse"], ["perforation", "Perforation"], ["lightning", "Lightning"],
   ["phantom", "Phantom"], ["fragile", "Fragile"], ["health", "Health"], ["resolve", "Resolve"],
   ["weak", "Weak"], ["burn", "Burn"], ["warp", "Warp"], ["leech", "Leech"],
-  ["frost", "Frost"], ["poison", "Poison"], ["curse", "Curse"], ["trauma", "Trauma"]
+  ["frost", "Frost"], ["stasis", "Stasis"], ["poison", "Poison"], ["curse", "Curse"], ["trauma", "Trauma"]
 ];
 const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
 const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
+const percentagePattern = /[-+]?\d+(?:\.\d+)?%/g;
+function appendTarstoneText(target, text) {
+  let lastIndex = 0;
+  let match;
+  percentagePattern.lastIndex = 0;
+  while ((match = percentagePattern.exec(text))) {
+    target.append(document.createTextNode(text.slice(lastIndex, match.index)));
+    target.append(element("span", "tarstone-percent", match[0]));
+    lastIndex = match.index + match[0].length;
+  }
+  target.append(document.createTextNode(text.slice(lastIndex)));
+}
 function appendTarstoneKeywords(target, text) {
   let lastIndex = 0;
   tarstoneKeywordPattern.lastIndex = 0;
   let match;
   while ((match = tarstoneKeywordPattern.exec(text))) {
-    target.append(document.createTextNode(text.slice(lastIndex, match.index)));
-    target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, match[0]));
+    const preceding = text.slice(lastIndex, match.index);
+    const value = preceding.match(/([-+]?\d+(?:\.\d+)?(?:%|×|x)?)(\s+)$/i);
+    const sharesKeywordColor = value && !value[1].endsWith("%");
+    const start = sharesKeywordColor ? match.index - value[0].length : match.index;
+    if (sharesKeywordColor) {
+      appendTarstoneText(target, text.slice(lastIndex, start));
+      target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, text.slice(start, match.index + match[0].length)));
+    } else {
+      appendTarstoneText(target, text.slice(lastIndex, match.index));
+      target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, match[0]));
+    }
     lastIndex = match.index + match[0].length;
   }
-  target.append(document.createTextNode(text.slice(lastIndex)));
+  appendTarstoneText(target, text.slice(lastIndex));
 }
 function tarstoneKeywordClassIn(text) {
   tarstoneKeywordPattern.lastIndex = 0;
@@ -135,7 +158,7 @@ function renderProgress() {
     ? `Perfect completion — ${totalDone} / ${all.length}`
     : `Everything currently found is complete — ${totalDone} / ${all.length}`;
   document.getElementById("completion-message").textContent = allComplete
-    ? "Every Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
+    ? "Every Shell, Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
     : `Wellspring Stone and Forsaken Vow are ignored for completion for now, but remain in the ${all.length} total until they are found.`;
   if ((knownComplete && !wasKnownComplete) || (allComplete && !wasAllComplete)) {
     completionBanner.classList.remove("celebrate");
@@ -218,10 +241,9 @@ function readFilters() {
 function syncUrl(method = "replace") {
   const url = new URL(location.href);
   url.search = "";
-  url.searchParams.set("page", active);
-  const values = { search: document.getElementById("search").value, ...Object.fromEntries(Object.entries(urlFilterIds).map(([param, id]) => [param, document.getElementById(id).value])) };
+  const values = { page: active, search: document.getElementById("search").value.trim(), ...Object.fromEntries(Object.entries(urlFilterIds).map(([param, id]) => [param, document.getElementById(id).value])) };
   for (const [param, value] of Object.entries(values)) {
-    if (value && value !== "all" && !(param === "order" && value === "catalog")) url.searchParams.set(param, value);
+    if (value !== urlDefaults[param]) url.searchParams.set(param, value);
   }
   history[method + "State"]({}, "", url);
 }
@@ -232,6 +254,8 @@ function restoreUrlState() {
   active = groups.some(group => group.key === requestedPage) ? requestedPage
     : hashTarget ? groups.find(group => catalog[group.key].some(item => item.id === hashTarget.id)).key
       : "tarstones";
+  for (const id of ["region", "scope", "status", "kind-filter"]) document.getElementById(id).value = "all";
+  document.getElementById("sort").value = "catalog";
   document.getElementById("search").value = params.get("search") || "";
   updateFilters();
   for (const [param, id] of Object.entries(urlFilterIds)) {
@@ -302,6 +326,13 @@ function renderEntry(item) {
       portrait.src = bossPlaceholder(item.name, item.id);
     };
   }
+  if (item.kind === "shell") {
+    portrait = element("img", "shell-portrait");
+    portrait.src = `./${item.image}`;
+    portrait.alt = `${item.shellName} portrait`;
+    portrait.loading = "lazy";
+    portrait.decoding = "async";
+  }
   heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
   if (item.availabilityWarning) heading.append(element("span", "entry-warning", item.availabilityWarning));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
@@ -316,7 +347,7 @@ function renderEntry(item) {
   }
   const details = element("details", "route");
   details.open = disclosureState.get(item.id)?.route || false;
-  const summary = element("summary", "", "Route & details");
+  const summary = element("summary", "", item.kind === "shell" ? "Abilities & details" : "Route & details");
   const body = element("div", "route-body");
   if (item.kind === "tarstone") {
     if (item.description) {
@@ -340,6 +371,45 @@ function renderEntry(item) {
       extra.append(document.createTextNode("Additional effect details: "));
       appendTarstoneKeywords(extra, item.fixedEffect);
       body.append(extra);
+    }
+  }
+  if (item.kind === "shell") {
+    for (const ability of item.signature) {
+      const signature = element("p", "shell-signature");
+      appendTarstoneKeywords(signature, ability);
+      body.append(signature);
+    }
+    if (item.skills.length) {
+      body.append(element("h3", "", "Shell Point skills"));
+      body.append(element("p", "shell-skill-note", "Skills are grouped by Bond Tier, with every rank effect shown."));
+      const tiers = element("div", "shell-tiers");
+      for (let tier = 1; tier <= 4; tier++) {
+        const tierSkills = (item.skillDetails || []).filter(skill => skill.tier === tier);
+        if (!tierSkills.length) continue;
+        const tierCard = element("section", "shell-tier");
+        tierCard.append(element("h4", "shell-tier-title", `Tier ${tier}`));
+        const skills = element("ul", "shell-skills");
+        for (const skill of tierSkills) {
+          const itemNode = element("li", "shell-skill");
+          itemNode.append(element("h5", "shell-skill-title", `${skill.name} · ${skill.levels.length} ${skill.levels.length === 1 ? "rank" : "ranks"}`));
+          if (skill.levels?.length) {
+            const ranks = element("ol", "shell-skill-ranks");
+            skill.levels.forEach((effect, index) => {
+              const rank = element("li");
+              rank.append(element("strong", "", `Rank ${index + 1}: `));
+              appendTarstoneKeywords(rank, effect);
+              ranks.append(rank);
+            });
+            itemNode.append(ranks);
+          }
+          skills.append(itemNode);
+        }
+        tierCard.append(skills);
+        tiers.append(tierCard);
+      }
+      body.append(tiers);
+    } else {
+      body.append(element("p", "note", "Harros is playable only during the opening prologue and has no Shell Point skill tree."));
     }
   }
   if (item.requirement) {

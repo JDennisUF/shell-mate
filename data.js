@@ -1,3 +1,5 @@
+import { shellItems } from "./shells.js";
+
 export const catalog = {
   "sources": {
     "tarstone-list": {
@@ -97,6 +99,7 @@ export const catalog = {
       "url": "https://www.reddit.com/r/MortalShell/comments/1xbytpp/new_tarstones_i_found_so_far/"
     }
   },
+  "shells": shellItems,
   "tarstones": [
     {
       "id": "tar-01",

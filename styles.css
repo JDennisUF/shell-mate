@@ -69,6 +69,18 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .entry-tag{color:#d6b878;font-size:.72rem;text-transform:uppercase;font-weight:700;white-space:nowrap}
 .boss-portrait{display:block;width:min(100%,28rem);aspect-ratio:16/9;margin:12px 0 7px 52px;border:1px solid #46534e;border-radius:8px;background:#17151b;object-fit:cover}
 .tarstone-portrait{display:block;width:60px;height:60px;margin:0 4px;border:1px solid #46534e;border-radius:6px;background:#17151b;object-fit:contain}
+.shell-portrait{display:block;width:76px;height:76px;margin:0 4px;border:1px solid #46534e;border-radius:6px;background:#17151b;object-fit:contain}
+.entry-row:has(.shell-portrait){grid-template-columns:28px minmax(0,1fr) auto 84px}
+.shell-signature{margin:0 0 12px;color:#d5ddd4}
+.shell-tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.shell-tier{border:1px solid #45534d;border-radius:5px;background:#1c2220;padding:10px 12px}
+.shell-tier-title{margin:0 0 8px;color:#d6b878;font-size:.83rem;text-transform:uppercase;letter-spacing:.06em}
+.shell-skills{list-style:none;margin:0;padding:0}
+.shell-skills li{margin:6px 0}
+.shell-skill-note{margin:0 0 8px;color:#aebbb0;font-size:.82rem}
+.shell-skill-title{margin:0;color:#e9e7df;font-size:.88rem;font-weight:650}
+.shell-skill-ranks{margin:5px 0 10px;padding-left:20px;color:#c7d0c8;font-size:.83rem;line-height:1.45}
+.shell-skill-ranks li{margin:4px 0}
 .beacon-portrait{display:block;width:56px;height:56px;margin:0 4px;object-fit:contain;filter:drop-shadow(0 0 5px #64b9ee55)}
 .entry-row:has(.beacon-portrait){grid-template-columns:28px minmax(0,1fr) auto 64px}
 .entry-row:has(.tarstone-portrait){grid-template-columns:28px minmax(0,1fr) auto 68px}
@@ -86,6 +98,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .route-body ol{margin:5px 0 12px;padding-left:1.2rem}
 .route-body .tarstone-levels{list-style:none;padding-left:0}
 .tarstone-stat-value{color:#d9ff68;font-weight:750;text-shadow:0 0 8px #b7eb4d55}
+.tarstone-percent{color:#ffe16b;font-weight:750;text-shadow:0 0 8px #ffe16b44}
 .tarstone-keyword{font-weight:700}
 .tarstone-keyword-weak,.tarstone-keyword-burn,.tarstone-keyword-health,.tarstone-keyword-perforation{color:#ff737b}
 .tarstone-keyword-warp{color:#b8a0ff}
@@ -122,4 +135,5 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .entry:focus-visible,.results:focus-visible{outline:2px solid #e9bb69;outline-offset:3px}
 @media(max-width:900px){.filters{grid-template-columns:repeat(3,minmax(0,1fr))}.search-field{grid-column:span 3}}
 @media(max-width:540px){.shell{width:min(100% - 24px,1120px)}.site-header .shell{padding:19px 0}h1{font-size:2rem}.progress-grid{grid-template-columns:repeat(2,1fr)}.guide-head{align-items:start}.guide-head{flex-direction:column}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.search-field,.content-field{grid-column:span 2}.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.entry-row{grid-template-columns:28px minmax(0,1fr);gap:8px}.entry-row:has(.boss-portrait){grid-template-columns:28px minmax(0,1fr) 104px}.entry-row:has(.beacon-portrait){grid-template-columns:28px minmax(0,1fr) 56px}.entry-row:has(.tarstone-portrait){grid-template-columns:28px minmax(0,1fr) 68px}.entry-row .boss-portrait{grid-column:3;grid-row:1 / span 2;width:104px;height:68px}.entry-row .beacon-portrait{grid-column:3;grid-row:1 / span 2}.entry-row .tarstone-portrait{grid-column:3;grid-row:1 / span 2}.entry-tag{grid-column:2;justify-self:start}.route>summary{padding-left:48px}.route-body{padding-left:16px}.tab{padding:9px 10px;font-size:.9rem}.tab-icon{width:28px;height:28px}.tab[data-category="tarstones"] .tab-icon,.tab[data-category="beacons"] .tab-icon,.tab[data-category="dungeons"] .tab-icon{padding:3px}}
+@media(max-width:540px){.entry-row:has(.shell-portrait){grid-template-columns:28px minmax(0,1fr) 64px}.entry-row .shell-portrait{grid-column:3;grid-row:1 / span 2;width:60px;height:60px}.shell-tiers{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
