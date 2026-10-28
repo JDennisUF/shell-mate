@@ -11,3 +11,5 @@ Source links are available inside each route. Tarstone catalog order follows the
 ## Updating content
 
 Edit `data.js` to add entries or correct details reported by users. Never rename or reuse an existing `id`, so corrections preserve saved progress. Use `aliases` for alternate spellings and `nearestBeaconId` and `relatedIds` for links. Keep source links with the relevant entries and run the catalog checks after editing.
+
+Tarstone details now show each stone’s general effect above its Level 1–3 upgrade descriptions, with a direct Fextralife page link on each sourced entry. Fextralife lists Bloodoath Stone’s unupgraded base effect at Level 1 and its three upgrades at Levels 2–4; the app keeps its existing three upgrade descriptions and shows the base effect separately. Fextralife has no content on the Forsaken Vow page, so that description remains based on the existing catalog sources.

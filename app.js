@@ -288,8 +288,10 @@ function renderEntry(item) {
   const summary = element("summary", "", "Route & details");
   const body = element("div", "route-body");
   if (item.kind === "tarstone") {
-    body.append(element("h3", "", "Upgrade effects"));
+    if (item.description) body.append(element("p", "tarstone-description", item.description));
+    else body.append(element("p", "note", "Fextralife does not have a description for this Tarstone yet."));
     if (item.levelEffects?.length === 3) {
+      body.append(element("h3", "", "Upgrade effects"));
       const levels = element("ol", "tarstone-levels");
       item.levelEffects.forEach((effect, index) => {
         const level = element("li");
@@ -299,9 +301,7 @@ function renderEntry(item) {
       });
       body.append(levels);
     } else if (item.fixedEffect) {
-      body.append(element("p", "", `Fixed effect: ${item.fixedEffect}`));
-    } else {
-      body.append(element("p", "note", "Level 1–3 effect descriptions are not available for this tarstone yet."));
+      body.append(element("p", "", `Additional effect details: ${item.fixedEffect}`));
     }
   }
   if (item.requirement) {
@@ -346,6 +346,13 @@ function renderEntry(item) {
     if (!source) continue;
     const a = element("a", "", source.title);
     a.href = source.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    sources.append(a);
+  }
+  if (item.descriptionSource) {
+    const a = element("a", "", "Fextralife");
+    a.href = item.descriptionSource;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     sources.append(a);

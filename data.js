@@ -83,6 +83,18 @@ export const catalog = {
     "boss-artwork-zmey": {
       "title": "All Things How: Zmey, the Unbidden screenshots",
       "url": "https://allthings.how/mortal-shell-2-how-to-reach-and-beat-zmey-the-unbidden/"
+    },
+    "tarstone-ms2db-levels": {
+      "title": "Mortal Shell 2 Database: tarstone levels",
+      "url": "https://ms2db.com/tarstones/clockwork-shardstone"
+    },
+    "tarstone-gamerguides": {
+      "title": "Gamer Guides: tarstone effects and levels",
+      "url": "https://www.gamerguides.com/mortal-shell-ii/checklists/tarstones-locations"
+    },
+    "tarstone-community-levels": {
+      "title": "Community-reported tarstone levels (Reddit)",
+      "url": "https://www.reddit.com/r/MortalShell/comments/1xbytpp/new_tarstones_i_found_so_far/"
     }
   },
   "tarstones": [
@@ -102,11 +114,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-ms2db-levels"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-08"
+      "nearestBeaconId": "beacon-08",
+      "levelEffects": [
+        "Melee attacks have +10% Critical Chance",
+        "Melee attacks have +15% Critical Chance",
+        "Melee attacks have +18% Critical Chance"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Auspicious_Stone",
+      "description": "Improves melee Critical Chance."
     },
     {
       "id": "tar-02",
@@ -135,7 +155,9 @@ export const catalog = {
         "Melee attacks deal 0.5 Critical Damage",
         "Melee attacks deal 0.8 Critical Damage",
         "Melee attacks deal 1 Critical Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Headsman%27s_Stone",
+      "description": "Improves melee Critical Damage."
     },
     {
       "id": "tar-03",
@@ -162,7 +184,9 @@ export const catalog = {
         "Generates 7 Resolve",
         "Generates 14 Resolve",
         "Generates 28 Resolve"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Devout_Stone",
+      "description": "Improves Resolve gain from melee attacks."
     },
     {
       "id": "tar-04",
@@ -190,7 +214,9 @@ export const catalog = {
         "The next melee attack deals 1.2 Stagger Damage",
         "The next melee attack deals 1.3 Stagger Damage",
         "The next melee attack deals 1.5 Stagger Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Shattering_Stone",
+      "description": "Improves melee Stagger Damage."
     },
     {
       "id": "tar-05",
@@ -208,11 +234,19 @@ export const catalog = {
       ],
       "requirement": "Missable: collect before taking the Heart of Vatra and leaving",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-ms2db-levels"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-11"
+      "nearestBeaconId": "beacon-11",
+      "levelEffects": [
+        "Melee damage increased up to 130% when Health is at 35% or below",
+        "Melee damage increased up to 140% when Health is at 40% or below",
+        "Melee damage increased up to 165% when Health is at 50% or below"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Berserker%27s_Stone",
+      "description": "Improves melee damage the lower your Health is."
     },
     {
       "id": "tar-06",
@@ -239,7 +273,9 @@ export const catalog = {
         "Ranged attacks have 10% Critical Chance",
         "Ranged attacks have 12% Critical Chance",
         "Ranged attacks have 15% Critical Chance"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Marksman%27s_Stone",
+      "description": "Improves ranged Critical Chance."
     },
     {
       "id": "tar-07",
@@ -266,7 +302,9 @@ export const catalog = {
         "Ranged attacks deal 0.2 Critical Damage",
         "Ranged attacks deal 0.3 Critical Damage",
         "Ranged attacks deal 0.4 Critical Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Deadeye_Stone",
+      "description": "Improves ranged Critical Damage."
     },
     {
       "id": "tar-08",
@@ -294,7 +332,9 @@ export const catalog = {
         "Ranged attacks deal 1.5 Stagger Damage",
         "Ranged attacks deal 2 Stagger Damage",
         "Ranged attacks deal 2.5 Stagger Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Siegebreaker%27s_Stone",
+      "description": "Improves ranged Stagger Damage."
     },
     {
       "id": "tar-09",
@@ -322,7 +362,9 @@ export const catalog = {
         "Ranged damage increased up to 1.4 when Health is at 35% or below",
         "Ranged damage increased up to 1.5 when Health is at 40% or below",
         "Ranged damage increased up to 1.6 when Health is at 50% or below"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Spite_Stone",
+      "description": "Improves ranged damage the lower your Health is."
     },
     {
       "id": "tar-10",
@@ -349,7 +391,9 @@ export const catalog = {
         "Gain 25% Damage Reduction for the next 2s",
         "Gain 50% Damage Reduction for the next 3s",
         "Gain 70% Damage Reduction for the next 4s"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Bulwark_Stone",
+      "description": "Provides Damage Reduction to all characters."
     },
     {
       "id": "tar-11",
@@ -376,7 +420,9 @@ export const catalog = {
         "Riposte damage increased by 0.05",
         "Riposte damage increased by 0.08",
         "Riposte damage increased by 0.15"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Retribution_Stone",
+      "description": "Improves Riposte damage."
     },
     {
       "id": "tar-12",
@@ -394,12 +440,15 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [],
       "nearestBeaconId": "beacon-07",
-      "fixedEffect": "Gloom bonus: 30% · Break: 3000"
+      "fixedEffect": "While it lasts, slain foes drop 30% more Gloom. When it breaks, it grants 3,000 Gloom; durability falls as Gloom is gained.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Gloombound_Stone",
+      "description": "Increases Gloom gained from slain foes; when it breaks, grants Gloom and a Tarcore."
     },
     {
       "id": "tar-13",
@@ -418,12 +467,15 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [],
       "nearestBeaconId": "beacon-07",
-      "fixedEffect": "Coin bonus: 30% · Break: 1500"
+      "fixedEffect": "While it lasts, slain foes drop 30% more Coin. When it breaks, it grants 1,500 Coin; durability falls as Coin is gained.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Justiciar%27s_Stone",
+      "description": "Increases Coin gained from slain foes; when it breaks, grants Coin and a Tarcore."
     },
     {
       "id": "tar-14",
@@ -440,11 +492,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-ms2db-levels"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-08"
+      "nearestBeaconId": "beacon-08",
+      "levelEffects": [
+        "Inflict 2 Perforation stacks per strike",
+        "Inflict 4 Perforation stacks per strike",
+        "Inflict 7 Perforation stacks per strike"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Wounding_Stone",
+      "description": "Melee attacks inflict Perforation."
     },
     {
       "id": "tar-15",
@@ -470,7 +530,9 @@ export const catalog = {
         "Every 7 attacks",
         "Every 6 attacks",
         "Every 5 attacks"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Grudge_Stone",
+      "description": "Your Weapon deals a guaranteed Critical Hit."
     },
     {
       "id": "tar-16",
@@ -498,7 +560,9 @@ export const catalog = {
         "First attack only",
         "First and Second attacks",
         "All attacks"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Duality_Stone",
+      "description": "Your Weapon light attack combo strikes twice."
     },
     {
       "id": "tar-17",
@@ -525,7 +589,9 @@ export const catalog = {
         "First attack only",
         "First and Second attacks",
         "All attacks"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Unyielding_Stone",
+      "description": "Your Weapon light attack combo has Stagger immunity."
     },
     {
       "id": "tar-18",
@@ -552,7 +618,9 @@ export const catalog = {
         "Gain 2 Leech stack per kill",
         "Gain 4 Leech stacks per kill",
         "Gain 6 Leech stacks per kill"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Parasitic_Stone",
+      "description": "Slaying foes grants Leech stacks."
     },
     {
       "id": "tar-19",
@@ -579,7 +647,9 @@ export const catalog = {
         "Gain 3 Warp stack per strike",
         "Gain 4 Warp stacks per strike",
         "Gain 5 Warp stacks per strike"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Thief%27s_Stone",
+      "description": "Striking foes grants Warp."
     },
     {
       "id": "tar-20",
@@ -606,7 +676,9 @@ export const catalog = {
         "The light finisher deals 10 Break Damage",
         "The light finisher deals 15 Break Damage",
         "The light finisher deals 25 Break Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Stillblade%27s_Stone",
+      "description": "Grants access to a special Light Combo Finisher that deals Break Damage."
     },
     {
       "id": "tar-21",
@@ -634,7 +706,9 @@ export const catalog = {
         "The light finisher generates 1.4 Resolve",
         "The light finisher generates 1.7 Resolve",
         "The light finisher generates 2.5 Resolve"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Zealot%27s_Stone",
+      "description": "Grants access to a special Light Combo Finisher that generates Resolve."
     },
     {
       "id": "tar-22",
@@ -661,7 +735,9 @@ export const catalog = {
         "The heavy finisher has 0.3 Critical Chance",
         "The heavy finisher has 0.35 Critical Chance",
         "The heavy finisher has 0.4 Critical Chance"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Clerik%27s_Stone",
+      "description": "Grants access to a special Heavy Combo Finisher with increased Critical Chance."
     },
     {
       "id": "tar-23",
@@ -688,7 +764,9 @@ export const catalog = {
         "The heavy finisher inflicts 4 Weak stacks",
         "The heavy finisher inflicts 5 Weak stacks",
         "The heavy finisher inflicts 6 Weak stacks"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Tyrant%27s_Stone",
+      "description": "Grants access to a special Heavy Combo Finisher that inflicts Weak."
     },
     {
       "id": "tar-24",
@@ -715,7 +793,9 @@ export const catalog = {
         "Inflict 5 Fragile stacks per strike",
         "Inflict 6 Fragile stacks per strike",
         "Inflict 7 Fragile stacks per strike"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Enfeebling_Stone",
+      "description": "Projectiles inflict Fragile."
     },
     {
       "id": "tar-25",
@@ -744,7 +824,9 @@ export const catalog = {
         "Small shockwave on impact",
         "Medium shockwave on impact",
         "Large shockwave on impact"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Shuddering_Stone",
+      "description": "Projectile impacts generate a Knockback shockwave."
     },
     {
       "id": "tar-26",
@@ -771,7 +853,9 @@ export const catalog = {
         "Small shockwave on impact",
         "Medium shockwave on impact",
         "Large shockwave on impact"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Pulse_Stone",
+      "description": "Projectile impacts generate a shockwave that pulls enemies inward."
     },
     {
       "id": "tar-27",
@@ -798,7 +882,9 @@ export const catalog = {
         "Projectiles pierce up to 3 targets before stopping",
         "Projectiles pierce up to 4 targets before stopping",
         "Projectiles pierce up to 5 targets before stopping"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Ironpiercer%27s_Stone",
+      "description": "Projectiles pierce through enemies."
     },
     {
       "id": "tar-28",
@@ -826,7 +912,9 @@ export const catalog = {
         "Fire 3 projectiles per shot, each dealing 0.6 of the original damage.",
         "Fire 5 projectiles per shot, each dealing 0.4 of the original damage.",
         "Fire 7 projectiles per shot, each dealing 0.3 of the original damage."
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Myriad_Stone",
+      "description": "Your Sidearm fires multiple projectiles in an arc without consuming additional Resolve."
     },
     {
       "id": "tar-29",
@@ -853,7 +941,9 @@ export const catalog = {
         "Fire 2 projectiles per shot, each dealing 0.55 of the original damage.",
         "Fire 3 projectiles per shot, each dealing 0.4 of the original damage.",
         "Fire 4 projectiles per shot, each dealing 0.35 of the original damage."
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Splitting_Stone",
+      "description": "Your Sidearm fires multiple projectiles in an arc without consuming additional Resolve."
     },
     {
       "id": "tar-30",
@@ -880,7 +970,9 @@ export const catalog = {
         "Projectiles deal 4 Break Damage",
         "Projectiles deal 8 Break Damage",
         "Projectiles deal 12 Break Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Rupturing_Stone",
+      "description": "Projectiles that strike critically deal Break Damage."
     },
     {
       "id": "tar-31",
@@ -907,7 +999,9 @@ export const catalog = {
         "Exploding projectiles deal 2× splash damage",
         "Exploding projectiles deal 3× splash damage",
         "Exploding projectiles deal 4× splash damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Blackblood_Stone",
+      "description": "Projectiles explode mid-air and deal splash damage."
     },
     {
       "id": "tar-32",
@@ -934,7 +1028,9 @@ export const catalog = {
         "Projectiles deal 0.08× of the original damage every 7s for 30s",
         "Projectiles deal 0.12× of the original damage every 7s for 30s",
         "Projectiles deal 0.15× of the original damage every 7s for 30s"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Corroded_Stone",
+      "description": "Projectiles deal damage over time after striking their target."
     },
     {
       "id": "tar-33",
@@ -961,7 +1057,9 @@ export const catalog = {
         "Projectiles spin for 3s and deal 0.09× of original damage",
         "Projectiles spin for 4s and deal 0.1× of original damage",
         "Projectiles spin for 5s and deal 0.11× of original damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Squall_Stone",
+      "description": "Projectiles spin in place after hitting their target."
     },
     {
       "id": "tar-34",
@@ -989,7 +1087,9 @@ export const catalog = {
         "Sidearm charging speed increased by 0.2",
         "Sidearm charging speed increased by 0.35",
         "Sidearm charging speed increased by 0.5"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Charged_Stone",
+      "description": "Your Sidearm charges faster."
     },
     {
       "id": "tar-35",
@@ -1017,7 +1117,9 @@ export const catalog = {
         "The triggered explosion deals 30 splash damage",
         "The triggered explosion deals 40 splash damage",
         "The explosion triggers after 4 hits"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Unstable_Stone",
+      "description": "Repeatedly hitting the same enemy triggers an explosion that deals splash damage."
     },
     {
       "id": "tar-36",
@@ -1045,7 +1147,9 @@ export const catalog = {
         "Exploding enemies deal 15 splash damage",
         "Exploding enemies deal 25 splash damage",
         "Exploding enemies deal 35 splash damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Volatile_Fragment",
+      "description": "Enemies dying by a ranged attack explode, dealing splash damage."
     },
     {
       "id": "tar-37",
@@ -1073,7 +1177,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Arbiter%27s_Prize",
+      "description": "Consume 30 Resolve to infuse your Weapon with Bloodcurse."
     },
     {
       "id": "tar-38",
@@ -1102,7 +1208,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Serpent_Stone",
+      "description": "Consume 15 Resolve to infuse your Weapon with Poison."
     },
     {
       "id": "tar-39",
@@ -1118,13 +1226,21 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-ms2db-levels"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-44"
       ],
-      "nearestBeaconId": "beacon-04"
+      "nearestBeaconId": "beacon-04",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Voltaic_Crown",
+      "description": "Consume 30 Resolve to infuse with Lightning."
     },
     {
       "id": "tar-40",
@@ -1153,7 +1269,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Warden%27s_Stone",
+      "description": "Consume 30 Resolve to infuse your Weapon with Frost."
     },
     {
       "id": "tar-41",
@@ -1182,7 +1300,9 @@ export const catalog = {
         "Infusion lasts for 15 strikes",
         "Infusion lasts for 30 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Curseblood_Stone",
+      "description": "Consume 30 Resolve to infuse your Weapon with Curse."
     },
     {
       "id": "tar-42",
@@ -1210,7 +1330,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Nightgrasp_Stone",
+      "description": "Consume 30 Resolve to infuse your Weapon with Phantom."
     },
     {
       "id": "tar-43",
@@ -1236,7 +1358,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Torpor_Stone",
+      "description": "Consume 25 Resolve to infuse your Weapon with Stasis."
     },
     {
       "id": "tar-44",
@@ -1264,7 +1388,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Wretchcaller%27s_Stone",
+      "description": "Consume 30 Resolve to infuse your Weapon with Trauma."
     },
     {
       "id": "tar-45",
@@ -1294,7 +1420,9 @@ export const catalog = {
         "Infusion lasts for 4 strikes",
         "Infusion lasts for 8 strikes",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Inflamed_Clawstone",
+      "description": "Consume 30 Resolve to infuse your Weapon with Burn."
     },
     {
       "id": "tar-46",
@@ -1320,7 +1448,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Hag_Stone",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Trauma."
     },
     {
       "id": "tar-47",
@@ -1346,7 +1476,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Emberseed_Stone",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Burn. Burn is inflicted on Critical Hits only."
     },
     {
       "id": "tar-48",
@@ -1375,7 +1507,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Viletongue_Hedron",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Bloodcurse."
     },
     {
       "id": "tar-49",
@@ -1404,7 +1538,9 @@ export const catalog = {
         "Infusion lasts for 40 shots",
         "Infusion lasts for 80 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Voltaic_Amber",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Lightning."
     },
     {
       "id": "tar-50",
@@ -1431,7 +1567,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Frostshard_Stone",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Frost."
     },
     {
       "id": "tar-51",
@@ -1460,7 +1598,9 @@ export const catalog = {
         "Infusion lasts for {X} shots",
         "Infusion lasts for {X} shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Monarch%27s_Vestige",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Phantom."
     },
     {
       "id": "tar-52",
@@ -1487,7 +1627,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Accursed_Stone",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Curse. Curse is inflicted on Critical Hits only."
     },
     {
       "id": "tar-53",
@@ -1514,7 +1656,9 @@ export const catalog = {
         "Infusion lasts for 4 shots",
         "Infusion lasts for 8 shots",
         "Infusion is permanent"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Weeping_Stone",
+      "description": "Consume 20 Resolve to infuse your Sidearm with Trauma."
     },
     {
       "id": "tar-54",
@@ -1540,7 +1684,9 @@ export const catalog = {
         "The charged attack has 15% Critical Chance",
         "The charged attack deals 1.5× Critical Damage",
         "Resolve cost reduced to 30"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Acolyte%27s_Stone",
+      "description": "Consume 40 Resolve to perform a charged Light Attack."
     },
     {
       "id": "tar-55",
@@ -1566,7 +1712,9 @@ export const catalog = {
         "The charged attack restores 10 Health on a critically hit.",
         "The charged attack restores 20 Health on a critically hit.",
         "The charged attack restores 40 Health on a critically hit."
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Unwieldly_Stone",
+      "description": "Consume 35 Resolve to perform a charged Heavy Attack."
     },
     {
       "id": "tar-56",
@@ -1594,7 +1742,9 @@ export const catalog = {
         "Each strike inflicts 2 Weak stacks",
         "Each strike has 15% Critical Chance Each strike deals 1× Critical Damage",
         "Each strike deals 1× Critical Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Magdalena%27s_Memento",
+      "description": "Consume 100 Resolve to rise into the air and unleash a flurry of ruthless strikes."
     },
     {
       "id": "tar-57",
@@ -1622,7 +1772,9 @@ export const catalog = {
         "Each strike deals 3 damage",
         "Each strike deals 250 Stagger Damage",
         "Resolve cost reduced to 75"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Captive%27s_Scabstone",
+      "description": "Consume 100 Resolve to swing your Weapon in a violent arc, striking nearby foes."
     },
     {
       "id": "tar-58",
@@ -1650,7 +1802,9 @@ export const catalog = {
         "Each strike deals 2 damage",
         "The attack delivers 4 additional strikes",
         "Resolve cost reduced to 75"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Conqueror%27s_Reward",
+      "description": "Consume 100 Resolve to drive your Weapon forward in a series of swift, piercing thrusts."
     },
     {
       "id": "tar-59",
@@ -1677,7 +1831,9 @@ export const catalog = {
         "Each strike inflicts 3 Perforation stacks",
         "The thrown weapon strikes up to 4 targets",
         "Each strike inflicts 1.5 damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Infused_Stone",
+      "description": "Consume 70 Resolve to throw your Weapon through multiple targets before it returns."
     },
     {
       "id": "tar-60",
@@ -1705,7 +1861,9 @@ export const catalog = {
         "The attack triggers a shockwave upon landing that deals 150 splash damage",
         "Resolve cost reduced to 50",
         "The attack deals 25 Break Damage to nearby foes upon landing"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Shrike_Stone",
+      "description": "Consume 70 Resolve to leap high and plunge your Weapon into the ground."
     },
     {
       "id": "tar-61",
@@ -1732,7 +1890,9 @@ export const catalog = {
         "Each shockwave deals 30 splash damage",
         "Each shockwave covers a wider area",
         "Each shockwave deals 80 splash damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Colossus_Stone",
+      "description": "Consume 80 Resolve to thrust your Weapon into the ground and send out shockwaves."
     },
     {
       "id": "tar-62",
@@ -1760,7 +1920,9 @@ export const catalog = {
         "The thrown weapon deals 200 splash damage on impact",
         "The thrown weapon deals 3 damage to the struck target",
         "Resolve cost reduced to 40"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Lost_Clotstone",
+      "description": "Consume 60 Resolve to spin and release your Weapon with brutal force."
     },
     {
       "id": "tar-63",
@@ -1788,7 +1950,9 @@ export const catalog = {
         "Each chainsaw spin deals 0.12× of the weapon base damage",
         "Each chainsaw spin deals 15 Stagger Damage",
         "Each chainsaw spin deals 0.2× of the weapon base damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Scholar%27s_Wormstone",
+      "description": "Consume Resolve over time to set the chainsaw in motion, augmenting your attacks."
     },
     {
       "id": "tar-64",
@@ -1806,11 +1970,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-ms2db-levels"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-15"
+      "nearestBeaconId": "beacon-15",
+      "levelEffects": [
+        "Each chainsaw spin deals 12% of the weapon base damage",
+        "Each chainsaw spin deals 15 Stagger Damage",
+        "Each chainsaw spin deals 20% of the weapon base damage"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Clockwork_Shardstone",
+      "description": "Consume Resolve over time to hold your Weapon forward with its chainsaw spinning at full speed."
     },
     {
       "id": "tar-65",
@@ -1838,7 +2010,9 @@ export const catalog = {
         "Each strike grants 3 Warp stacks",
         "Each strike inflicts 2 Fragile stacks",
         "Resolve cost increased to 80, but the ability continues with another barrage of ruthless dual-blade strikes"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Hexapod_Core",
+      "description": "Consume 60 Resolve to carve through enemies with a rapid succession of strikes."
     },
     {
       "id": "tar-66",
@@ -1866,7 +2040,9 @@ export const catalog = {
         "The heavy round deals 70 splash damage in a small range",
         "The heavy round deals 120 splash damage in a small range",
         "The heavy round bursts into a wider explosion"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Solnir_Shard",
+      "description": "Consume 25 Resolve to launch a heavy round in a parabolic arc that bursts on impact."
     },
     {
       "id": "tar-67",
@@ -1895,7 +2071,9 @@ export const catalog = {
         "The charged shot deals {X} damage",
         "The charged shot deals {X} damage",
         "The charged shot deals {X} damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Confessor%27s_Keepsake",
+      "description": "Consume 60 Resolve to charge your Sidearm and fire a devastating shot."
     },
     {
       "id": "tar-68",
@@ -1923,7 +2101,9 @@ export const catalog = {
         "Each shot has 20% Critical Chance",
         "Each shot has 35% Critical Chance",
         "Each shot deals 1× Critical Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Fusillade_Stone",
+      "description": "At 80 Resolve or higher, unleash a flurry of consecutive shots."
     },
     {
       "id": "tar-69",
@@ -1949,7 +2129,9 @@ export const catalog = {
         "The heavy round detonates 2 times, each explosive projectile deals 4× splash damage",
         "The heavy round detonates 2 times, each explosive projectile deals 8 splash damage",
         "The heavy round detonates 3 times, each explosive projectile deals 8 splash damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Barrage_Stone",
+      "description": "Consume 40 Resolve to launch a heavy round that detonates above the target and scatters explosive projectiles."
     },
     {
       "id": "tar-70",
@@ -1977,7 +2159,9 @@ export const catalog = {
         "The tethered projectiles spin at 6s",
         "The tethered projectiles spin at 8s",
         "The tethered projectiles spin at 10s and deals more frequently damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Tarred_Fragment",
+      "description": "Consume 50 Resolve to fire multiple tethered projectiles spinning at high speed."
     },
     {
       "id": "tar-71",
@@ -2004,7 +2188,9 @@ export const catalog = {
         "The heavy-caliber shot triggers 3 explosions around the target",
         "The heavy-caliber shot triggers 5 explosions around the target",
         "Each explosion deal 20 Break Damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Fulminant_Stone",
+      "description": "Consume 60 Resolve to fire a heavy-caliber round that triggers multiple explosions around the target."
     },
     {
       "id": "tar-72",
@@ -2033,7 +2219,9 @@ export const catalog = {
         "Chaining projectiles deal 20 damage",
         "Projectiles chain between up to 4 targets",
         "Chaining projectiles deal 40 damage"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Strange_Remnant",
+      "description": "Consume 15 Resolve to unleash a stream of projectiles that chain between targets."
     },
     {
       "id": "tar-73",
@@ -2060,7 +2248,9 @@ export const catalog = {
         "The clinging projectile deals 100 damage upon exploding",
         "The clinging projectile draws the aggression of all nearby enemies",
         "The clinging projectile scatters 3 other clinging projectiles upon exploding"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Infested_Stone",
+      "description": "Consume 60 Resolve to fire a clinging projectile that explodes after a short delay."
     },
     {
       "id": "tar-74",
@@ -2087,7 +2277,9 @@ export const catalog = {
         "The summoned foe attacks 2 times before vanishing",
         "The summoned foe attacks 5 times before vanishing",
         "Summon 2 foes instead of one"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Summoning_Stone",
+      "description": "Consume 70 Resolve to summon the last slain foe to fight for you."
     },
     {
       "id": "tar-75",
@@ -2114,7 +2306,9 @@ export const catalog = {
         "Each projectile deals 10 damage",
         "Each projectile deals 5× Break Damage",
         "Firing rate is increased by 0.7"
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Hand_of_Rock",
+      "description": "Consume 80 Resolve to unleash a swarm of homing projectiles."
     },
     {
       "id": "tar-ra-guitarstone",
@@ -2132,13 +2326,21 @@ export const catalog = {
       "requirement": "Night Mode and Troubadour's Lute",
       "sources": [
         "rotten-dungeons",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-01"
       ],
-      "fixedEffect": "Unlocks one guitar melody for the lute, with another at each upgrade."
+      "fixedEffect": "Unlocks one guitar melody for the lute, with another at each upgrade.",
+      "levelEffects": [
+        "Unlocks melodies 1, 2 and 3",
+        "Unlocks melodies 4, 5 and 6",
+        "Unlocks melodies 7, 8 and 9"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Guitarstone",
+      "description": "Compatible only with the Troubadour's Lute, which unlocks additional tracks."
     },
     {
       "id": "tar-ra-mourning-bell",
@@ -2156,13 +2358,21 @@ export const catalog = {
       "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
         "rotten-dungeons",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-03"
       ],
-      "fixedEffect": "During Night Mode, deal increased melee poise damage while melee attacks are 15% slower; both effects are dormant by day."
+      "fixedEffect": "During Night Mode, deal increased melee poise damage while melee attacks are 15% slower; both effects are dormant by day.",
+      "levelEffects": [
+        "Melee attacks deal 140% Stagger Damage but are 15% slower",
+        "Melee attacks deal 160% Stagger Damage but are 15% slower",
+        "Melee attacks deal 180% Stagger Damage but are 15% slower"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Mourning_Bell",
+      "description": "Increases melee Stagger Damage at night, but slows attack speed."
     },
     {
       "id": "tar-ra-widowmoon-stone",
@@ -2179,12 +2389,20 @@ export const catalog = {
       ],
       "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-04"
-      ]
+      ],
+      "levelEffects": [
+        "Attacks deal 125% damage but you take 25% more damage",
+        "Attacks deal 135% damage but you take 25% more damage",
+        "Attacks deal 145% damage but you take 25% more damage"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Widowmoon_Stone",
+      "description": "Increases melee attack damage at night, but you take increased damage when struck."
     },
     {
       "id": "tar-ra-waning-stone",
@@ -2201,12 +2419,20 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-07"
-      ]
+      ],
+      "levelEffects": [
+        "Resolve cost reduced by 30% but damage reduced by 40%",
+        "Resolve cost reduced by 40% but damage reduced by 40%",
+        "Resolve cost reduced by 50% but damage reduced by 40%"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Waning_Stone",
+      "description": "Reduces Resolve consumption for Sidearm attacks, but also reduces their damage."
     },
     {
       "id": "tar-ra-black-lantern",
@@ -2234,7 +2460,9 @@ export const catalog = {
         "After a parry, perfect guard, or perfect harden, the next melee hit restores 10% of maximum health.",
         "After a parry, perfect guard, or perfect harden, the next melee hit restores 20% of maximum health.",
         "After a parry, perfect guard, or perfect harden, the next melee hit restores 30% of maximum health."
-      ]
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Black_Lantern",
+      "description": "Blocks Mether's Pulse. Blocking, Perfect Guard, Parry, or Perfect Harden empowers your next attack."
     },
     {
       "id": "tar-ra-channelers-stone",
@@ -2252,13 +2480,21 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "rotten-dungeons",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-10"
       ],
-      "fixedEffect": "Regenerate additional Resolve while aiming a sidearm. Regeneration continues while firing."
+      "fixedEffect": "Regenerate additional Resolve while aiming a sidearm. Regeneration continues while firing.",
+      "levelEffects": [
+        "Regenerates Resolve proportional to 50% damage over 5s",
+        "Regenerates Resolve proportional to 60% damage over 5s",
+        "Regenerates Resolve proportional to 80% damage over 5s"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Channeler%27s_Stone",
+      "description": "Lets you regenerate Resolve in proportion to the damage dealt to enemies with a Sidearm."
     },
     {
       "id": "tar-ra-starless-eye",
@@ -2275,14 +2511,22 @@ export const catalog = {
       ],
       "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-gamerguides"
       ],
       "aliases": [
         "Starless Eye Stone"
       ],
       "relatedIds": [
         "dungeon-11"
-      ]
+      ],
+      "levelEffects": [
+        "Damage increased 30% but Resolve cost increased by 40%",
+        "Damage increased 45% but Resolve cost increased by 40%",
+        "Damage increased 60% but Resolve cost increased by 40%"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Starless_Eye",
+      "description": "At night, increases Sidearm damage at the cost of increased Resolve consumption."
     },
     {
       "id": "tar-ra-black-fleece",
@@ -2300,13 +2544,21 @@ export const catalog = {
       "requirement": "Sheephead Totem",
       "sources": [
         "rotten-dungeons",
-        "tarstone-effects"
+        "tarstone-effects",
+        "tarstone-gamerguides"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-14"
       ],
-      "fixedEffect": "Consume 40 Resolve in sheep form to become the black sheep, unleash a halberd assault, and remain invulnerable during it."
+      "fixedEffect": "Consume 40 Resolve in sheep form to become the black sheep, unleash a halberd assault, and remain invulnerable during it.",
+      "levelEffects": [
+        "Each Halberd strike deals 180 damage",
+        "Each Halberd strike deals 225 damage",
+        "Each Halberd strike deals 270 damage"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Black_Fleece",
+      "description": "Transforms you into a black sheep that can attack with a halberd."
     },
     {
       "id": "tar-ra-bloodoath-stone",
@@ -2323,12 +2575,20 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-community-levels"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-15"
-      ]
+      ],
+      "levelEffects": [
+        "Weapon attacks are 10% faster and deal 120% Stagger Damage; you take 20% more damage when struck",
+        "Weapon attacks are 15% faster and deal 130% Stagger Damage; you take 20% more damage when struck",
+        "Weapon attacks are 20% faster and deal 140% Stagger Damage; you take 20% more damage when struck"
+      ],
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Bloodoath_Stone",
+      "description": "Makes weapon attacks faster and increases Stagger damage, but you take increased damage when struck."
     },
     {
       "id": "tar-ra-knowledge-stone",
@@ -2348,7 +2608,9 @@ export const catalog = {
       ],
       "aliases": [],
       "relatedIds": [],
-      "fixedEffect": "While continuously locked on to the same enemy, deal 5% more damage per second, up to 25%; changing or losing lock-on resets it."
+      "fixedEffect": "While continuously locked on to the same enemy, deal 5% more damage per second, up to 25%; changing or losing lock-on resets it.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Knowledge_Stone",
+      "description": "Its passive grants increased damage while locked onto the same enemy; its Break and Durability effects are dormant."
     },
     {
       "id": "tar-glimpse-stone",
@@ -2374,7 +2636,9 @@ export const catalog = {
         "Glimpse Tarstone"
       ],
       "relatedIds": [],
-      "fixedEffect": "After 20 defeated enemies consume its durability, the stone breaks and grants 3 Glimpses."
+      "fixedEffect": "After 20 defeated enemies consume its durability, the stone breaks and grants 3 Glimpses.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Glimpse_Stone",
+      "description": "Wears down as you defeat enemies, then breaks into Glimpses."
     },
     {
       "id": "tar-egons-stone",
@@ -2400,7 +2664,9 @@ export const catalog = {
         "Egon Stone"
       ],
       "relatedIds": [],
-      "fixedEffect": "Upon death inside a Dungeon, revive at its entrance and prevent Gloom loss for that death. Durability decreases on activation."
+      "fixedEffect": "Upon death inside a Dungeon, revive at its entrance and prevent Gloom loss for that death. Durability decreases on activation.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Egon%27s_Stone",
+      "description": "Revives you at the entrance of a dungeon when you die there; when it breaks, it prevents Gloom loss for that death."
     },
     {
       "id": "tar-ra-wellspring-stone",
@@ -2421,7 +2687,9 @@ export const catalog = {
       ],
       "aliases": [],
       "relatedIds": [],
-      "fixedEffect": "Continuously regenerate Resolve, even when empty."
+      "fixedEffect": "Continuously regenerate Resolve, even when empty.",
+      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Wellspring_Stone",
+      "description": "Lets you regenerate Resolve after damaging an enemy. Subsequent levels increase the duration of this effect."
     },
     {
       "id": "tar-ra-forsaken-vow",
@@ -2448,7 +2716,8 @@ export const catalog = {
         "During Night Mode, gain 50% bonus melee attack damage; sidearm and shell ability remain disabled.",
         "During Night Mode, gain 75% bonus melee attack damage; sidearm and shell ability remain disabled.",
         "During Night Mode, gain 100% bonus melee attack damage; sidearm and shell ability remain disabled."
-      ]
+      ],
+      "description": "During Night Mode, increases melee attack damage while disabling Sidearm use and Shell abilities."
     }
   ],
   "beacons": [
