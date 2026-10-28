@@ -263,6 +263,22 @@ function renderEntry(item) {
   details.open = disclosureState.get(item.id)?.route || false;
   const summary = element("summary", "", "Route & details");
   const body = element("div", "route-body");
+  if (item.kind === "tarstone") {
+    body.append(element("h3", "", "Upgrade effects"));
+    if (item.levelEffects?.length === 3) {
+      const levels = element("ol", "tarstone-levels");
+      item.levelEffects.forEach((effect, index) => {
+        const level = element("li");
+        level.append(element("strong", "", `Level ${index + 1}: `), document.createTextNode(effect));
+        levels.append(level);
+      });
+      body.append(levels);
+    } else if (item.fixedEffect) {
+      body.append(element("p", "", `Fixed effect: ${item.fixedEffect}`));
+    } else {
+      body.append(element("p", "note", "Level 1–3 effect descriptions are not available for this tarstone yet."));
+    }
+  }
   if (item.requirement) {
     const req = element("p", "note");
     req.append(element("strong", "", "Requirement: "), document.createTextNode(item.requirement));

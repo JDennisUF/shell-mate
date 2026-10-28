@@ -123,13 +123,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [
         "Headsman's Stone"
       ],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-12"
+      "nearestBeaconId": "beacon-12",
+      "levelEffects": [
+        "Melee attacks deal 0.5 Critical Damage",
+        "Melee attacks deal 0.8 Critical Damage",
+        "Melee attacks deal 1 Critical Damage"
+      ]
     },
     {
       "id": "tar-03",
@@ -146,11 +152,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-13"
+      "nearestBeaconId": "beacon-13",
+      "levelEffects": [
+        "Generates 7 Resolve",
+        "Generates 14 Resolve",
+        "Generates 28 Resolve"
+      ]
     },
     {
       "id": "tar-04",
@@ -168,11 +180,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-12"
+      "nearestBeaconId": "beacon-12",
+      "levelEffects": [
+        "The next melee attack deals 1.2 Stagger Damage",
+        "The next melee attack deals 1.3 Stagger Damage",
+        "The next melee attack deals 1.5 Stagger Damage"
+      ]
     },
     {
       "id": "tar-05",
@@ -211,11 +229,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-03"
+      "nearestBeaconId": "beacon-03",
+      "levelEffects": [
+        "Ranged attacks have 10% Critical Chance",
+        "Ranged attacks have 12% Critical Chance",
+        "Ranged attacks have 15% Critical Chance"
+      ]
     },
     {
       "id": "tar-07",
@@ -232,11 +256,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-28"
+      "nearestBeaconId": "beacon-28",
+      "levelEffects": [
+        "Ranged attacks deal 0.2 Critical Damage",
+        "Ranged attacks deal 0.3 Critical Damage",
+        "Ranged attacks deal 0.4 Critical Damage"
+      ]
     },
     {
       "id": "tar-08",
@@ -254,11 +284,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-21"
+      "nearestBeaconId": "beacon-21",
+      "levelEffects": [
+        "Ranged attacks deal 1.5 Stagger Damage",
+        "Ranged attacks deal 2 Stagger Damage",
+        "Ranged attacks deal 2.5 Stagger Damage"
+      ]
     },
     {
       "id": "tar-09",
@@ -276,11 +312,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "Ranged damage increased up to 1.4 when Health is at 35% or below",
+        "Ranged damage increased up to 1.5 when Health is at 40% or below",
+        "Ranged damage increased up to 1.6 when Health is at 50% or below"
+      ]
     },
     {
       "id": "tar-10",
@@ -297,11 +339,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-10"
+      "nearestBeaconId": "beacon-10",
+      "levelEffects": [
+        "Gain 25% Damage Reduction for the next 2s",
+        "Gain 50% Damage Reduction for the next 3s",
+        "Gain 70% Damage Reduction for the next 4s"
+      ]
     },
     {
       "id": "tar-11",
@@ -318,11 +366,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-08"
+      "nearestBeaconId": "beacon-08",
+      "levelEffects": [
+        "Riposte damage increased by 0.05",
+        "Riposte damage increased by 0.08",
+        "Riposte damage increased by 0.15"
+      ]
     },
     {
       "id": "tar-12",
@@ -339,11 +393,13 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-07"
+      "nearestBeaconId": "beacon-07",
+      "fixedEffect": "Gloom bonus: 30% · Break: 3000"
     },
     {
       "id": "tar-13",
@@ -361,11 +417,13 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-07"
+      "nearestBeaconId": "beacon-07",
+      "fixedEffect": "Coin bonus: 30% · Break: 1500"
     },
     {
       "id": "tar-14",
@@ -402,11 +460,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-10"
+      "nearestBeaconId": "beacon-10",
+      "levelEffects": [
+        "Every 7 attacks",
+        "Every 6 attacks",
+        "Every 5 attacks"
+      ]
     },
     {
       "id": "tar-16",
@@ -424,11 +488,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-04"
+      "nearestBeaconId": "beacon-04",
+      "levelEffects": [
+        "First attack only",
+        "First and Second attacks",
+        "All attacks"
+      ]
     },
     {
       "id": "tar-17",
@@ -445,11 +515,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-12"
+      "nearestBeaconId": "beacon-12",
+      "levelEffects": [
+        "First attack only",
+        "First and Second attacks",
+        "All attacks"
+      ]
     },
     {
       "id": "tar-18",
@@ -466,11 +542,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-08"
+      "nearestBeaconId": "beacon-08",
+      "levelEffects": [
+        "Gain 2 Leech stack per kill",
+        "Gain 4 Leech stacks per kill",
+        "Gain 6 Leech stacks per kill"
+      ]
     },
     {
       "id": "tar-19",
@@ -487,11 +569,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-14"
+      "nearestBeaconId": "beacon-14",
+      "levelEffects": [
+        "Gain 3 Warp stack per strike",
+        "Gain 4 Warp stacks per strike",
+        "Gain 5 Warp stacks per strike"
+      ]
     },
     {
       "id": "tar-20",
@@ -508,11 +596,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-34"
+      "nearestBeaconId": "beacon-34",
+      "levelEffects": [
+        "The light finisher deals 10 Break Damage",
+        "The light finisher deals 15 Break Damage",
+        "The light finisher deals 25 Break Damage"
+      ]
     },
     {
       "id": "tar-21",
@@ -530,11 +624,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-20"
+      "nearestBeaconId": "beacon-20",
+      "levelEffects": [
+        "The light finisher generates 1.4 Resolve",
+        "The light finisher generates 1.7 Resolve",
+        "The light finisher generates 2.5 Resolve"
+      ]
     },
     {
       "id": "tar-22",
@@ -551,11 +651,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-49"
+      "nearestBeaconId": "beacon-49",
+      "levelEffects": [
+        "The heavy finisher has 0.3 Critical Chance",
+        "The heavy finisher has 0.35 Critical Chance",
+        "The heavy finisher has 0.4 Critical Chance"
+      ]
     },
     {
       "id": "tar-23",
@@ -572,11 +678,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-16"
+      "nearestBeaconId": "beacon-16",
+      "levelEffects": [
+        "The heavy finisher inflicts 4 Weak stacks",
+        "The heavy finisher inflicts 5 Weak stacks",
+        "The heavy finisher inflicts 6 Weak stacks"
+      ]
     },
     {
       "id": "tar-24",
@@ -593,11 +705,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-12"
+      "nearestBeaconId": "beacon-12",
+      "levelEffects": [
+        "Inflict 5 Fragile stacks per strike",
+        "Inflict 6 Fragile stacks per strike",
+        "Inflict 7 Fragile stacks per strike"
+      ]
     },
     {
       "id": "tar-25",
@@ -616,11 +734,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-09"
+      "nearestBeaconId": "beacon-09",
+      "levelEffects": [
+        "Small shockwave on impact",
+        "Medium shockwave on impact",
+        "Large shockwave on impact"
+      ]
     },
     {
       "id": "tar-26",
@@ -637,11 +761,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-32"
+      "nearestBeaconId": "beacon-32",
+      "levelEffects": [
+        "Small shockwave on impact",
+        "Medium shockwave on impact",
+        "Large shockwave on impact"
+      ]
     },
     {
       "id": "tar-27",
@@ -658,11 +788,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-26"
+      "nearestBeaconId": "beacon-26",
+      "levelEffects": [
+        "Projectiles pierce up to 3 targets before stopping",
+        "Projectiles pierce up to 4 targets before stopping",
+        "Projectiles pierce up to 5 targets before stopping"
+      ]
     },
     {
       "id": "tar-28",
@@ -680,11 +816,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-07"
+      "nearestBeaconId": "beacon-07",
+      "levelEffects": [
+        "Fire 3 projectiles per shot, each dealing 0.6 of the original damage.",
+        "Fire 5 projectiles per shot, each dealing 0.4 of the original damage.",
+        "Fire 7 projectiles per shot, each dealing 0.3 of the original damage."
+      ]
     },
     {
       "id": "tar-29",
@@ -701,11 +843,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-15"
+      "nearestBeaconId": "beacon-15",
+      "levelEffects": [
+        "Fire 2 projectiles per shot, each dealing 0.55 of the original damage.",
+        "Fire 3 projectiles per shot, each dealing 0.4 of the original damage.",
+        "Fire 4 projectiles per shot, each dealing 0.35 of the original damage."
+      ]
     },
     {
       "id": "tar-30",
@@ -722,11 +870,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-26"
+      "nearestBeaconId": "beacon-26",
+      "levelEffects": [
+        "Projectiles deal 4 Break Damage",
+        "Projectiles deal 8 Break Damage",
+        "Projectiles deal 12 Break Damage"
+      ]
     },
     {
       "id": "tar-31",
@@ -743,11 +897,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-28"
+      "nearestBeaconId": "beacon-28",
+      "levelEffects": [
+        "Exploding projectiles deal 2× splash damage",
+        "Exploding projectiles deal 3× splash damage",
+        "Exploding projectiles deal 4× splash damage"
+      ]
     },
     {
       "id": "tar-32",
@@ -764,11 +924,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-22"
+      "nearestBeaconId": "beacon-22",
+      "levelEffects": [
+        "Projectiles deal 0.08× of the original damage every 7s for 30s",
+        "Projectiles deal 0.12× of the original damage every 7s for 30s",
+        "Projectiles deal 0.15× of the original damage every 7s for 30s"
+      ]
     },
     {
       "id": "tar-33",
@@ -785,11 +951,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-25"
+      "nearestBeaconId": "beacon-25",
+      "levelEffects": [
+        "Projectiles spin for 3s and deal 0.09× of original damage",
+        "Projectiles spin for 4s and deal 0.1× of original damage",
+        "Projectiles spin for 5s and deal 0.11× of original damage"
+      ]
     },
     {
       "id": "tar-34",
@@ -807,11 +979,17 @@ export const catalog = {
       "requirement": "",
       "sources": [
         "tarstone-list",
-        "tarstone-roster"
+        "tarstone-roster",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-37"
+      "nearestBeaconId": "beacon-37",
+      "levelEffects": [
+        "Sidearm charging speed increased by 0.2",
+        "Sidearm charging speed increased by 0.35",
+        "Sidearm charging speed increased by 0.5"
+      ]
     },
     {
       "id": "tar-35",
@@ -829,11 +1007,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-15"
+      "nearestBeaconId": "beacon-15",
+      "levelEffects": [
+        "The triggered explosion deals 30 splash damage",
+        "The triggered explosion deals 40 splash damage",
+        "The explosion triggers after 4 hits"
+      ]
     },
     {
       "id": "tar-36",
@@ -849,13 +1033,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-45"
       ],
-      "nearestBeaconId": "beacon-03"
+      "nearestBeaconId": "beacon-03",
+      "levelEffects": [
+        "Exploding enemies deal 15 splash damage",
+        "Exploding enemies deal 25 splash damage",
+        "Exploding enemies deal 35 splash damage"
+      ]
     },
     {
       "id": "tar-37",
@@ -871,13 +1061,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-09"
       ],
-      "nearestBeaconId": "beacon-08"
+      "nearestBeaconId": "beacon-08",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-38",
@@ -894,13 +1090,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-14"
       ],
-      "nearestBeaconId": "beacon-02"
+      "nearestBeaconId": "beacon-02",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-39",
@@ -939,13 +1141,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-41"
       ],
-      "nearestBeaconId": "beacon-32"
+      "nearestBeaconId": "beacon-32",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-41",
@@ -962,13 +1170,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-08"
       ],
-      "nearestBeaconId": "beacon-14"
+      "nearestBeaconId": "beacon-14",
+      "levelEffects": [
+        "Infusion lasts for 15 strikes",
+        "Infusion lasts for 30 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-42",
@@ -986,11 +1200,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-16"
+      "nearestBeaconId": "beacon-16",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-43",
@@ -1006,11 +1226,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-38"
+      "nearestBeaconId": "beacon-38",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-44",
@@ -1026,13 +1252,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-12"
       ],
-      "nearestBeaconId": "beacon-18"
+      "nearestBeaconId": "beacon-18",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-45",
@@ -1050,13 +1282,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-21"
       ],
-      "nearestBeaconId": "beacon-05"
+      "nearestBeaconId": "beacon-05",
+      "levelEffects": [
+        "Infusion lasts for 4 strikes",
+        "Infusion lasts for 8 strikes",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-46",
@@ -1072,11 +1310,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-06"
+      "nearestBeaconId": "beacon-06",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-47",
@@ -1092,11 +1336,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-05"
+      "nearestBeaconId": "beacon-05",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-48",
@@ -1113,13 +1363,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-43"
       ],
-      "nearestBeaconId": "beacon-15"
+      "nearestBeaconId": "beacon-15",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-49",
@@ -1136,13 +1392,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-26"
       ],
-      "nearestBeaconId": "beacon-15"
+      "nearestBeaconId": "beacon-15",
+      "levelEffects": [
+        "Infusion lasts for 40 shots",
+        "Infusion lasts for 80 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-50",
@@ -1159,11 +1421,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-33"
+      "nearestBeaconId": "beacon-33",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-51",
@@ -1180,13 +1448,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-02"
       ],
-      "nearestBeaconId": "beacon-16"
+      "nearestBeaconId": "beacon-16",
+      "levelEffects": [
+        "Infusion lasts for {X} shots",
+        "Infusion lasts for {X} shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-52",
@@ -1203,11 +1477,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-53",
@@ -1224,11 +1504,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
+        "Infusion is permanent"
+      ]
     },
     {
       "id": "tar-54",
@@ -1244,11 +1530,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-01"
+      "nearestBeaconId": "beacon-01",
+      "levelEffects": [
+        "The charged attack has 15% Critical Chance",
+        "The charged attack deals 1.5× Critical Damage",
+        "Resolve cost reduced to 30"
+      ]
     },
     {
       "id": "tar-55",
@@ -1264,11 +1556,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-01"
+      "nearestBeaconId": "beacon-01",
+      "levelEffects": [
+        "The charged attack restores 10 Health on a critically hit.",
+        "The charged attack restores 20 Health on a critically hit.",
+        "The charged attack restores 40 Health on a critically hit."
+      ]
     },
     {
       "id": "tar-56",
@@ -1284,13 +1582,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-15"
       ],
-      "nearestBeaconId": "beacon-21"
+      "nearestBeaconId": "beacon-21",
+      "levelEffects": [
+        "Each strike inflicts 2 Weak stacks",
+        "Each strike has 15% Critical Chance Each strike deals 1× Critical Damage",
+        "Each strike deals 1× Critical Damage"
+      ]
     },
     {
       "id": "tar-57",
@@ -1306,13 +1610,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-17"
       ],
-      "nearestBeaconId": "beacon-26"
+      "nearestBeaconId": "beacon-26",
+      "levelEffects": [
+        "Each strike deals 3 damage",
+        "Each strike deals 250 Stagger Damage",
+        "Resolve cost reduced to 75"
+      ]
     },
     {
       "id": "tar-58",
@@ -1328,13 +1638,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-05"
       ],
-      "nearestBeaconId": "beacon-31"
+      "nearestBeaconId": "beacon-31",
+      "levelEffects": [
+        "Each strike deals 2 damage",
+        "The attack delivers 4 additional strikes",
+        "Resolve cost reduced to 75"
+      ]
     },
     {
       "id": "tar-59",
@@ -1351,11 +1667,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "Each strike inflicts 3 Perforation stacks",
+        "The thrown weapon strikes up to 4 targets",
+        "Each strike inflicts 1.5 damage"
+      ]
     },
     {
       "id": "tar-60",
@@ -1373,11 +1695,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-21"
+      "nearestBeaconId": "beacon-21",
+      "levelEffects": [
+        "The attack triggers a shockwave upon landing that deals 150 splash damage",
+        "Resolve cost reduced to 50",
+        "The attack deals 25 Break Damage to nearby foes upon landing"
+      ]
     },
     {
       "id": "tar-61",
@@ -1394,11 +1722,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-19"
+      "nearestBeaconId": "beacon-19",
+      "levelEffects": [
+        "Each shockwave deals 30 splash damage",
+        "Each shockwave covers a wider area",
+        "Each shockwave deals 80 splash damage"
+      ]
     },
     {
       "id": "tar-62",
@@ -1414,13 +1748,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-34"
       ],
-      "nearestBeaconId": "beacon-29"
+      "nearestBeaconId": "beacon-29",
+      "levelEffects": [
+        "The thrown weapon deals 200 splash damage on impact",
+        "The thrown weapon deals 3 damage to the struck target",
+        "Resolve cost reduced to 40"
+      ]
     },
     {
       "id": "tar-63",
@@ -1436,13 +1776,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-13"
       ],
-      "nearestBeaconId": "beacon-35"
+      "nearestBeaconId": "beacon-35",
+      "levelEffects": [
+        "Each chainsaw spin deals 0.12× of the weapon base damage",
+        "Each chainsaw spin deals 15 Stagger Damage",
+        "Each chainsaw spin deals 0.2× of the weapon base damage"
+      ]
     },
     {
       "id": "tar-64",
@@ -1480,13 +1826,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-11"
       ],
-      "nearestBeaconId": "beacon-38"
+      "nearestBeaconId": "beacon-38",
+      "levelEffects": [
+        "Each strike grants 3 Warp stacks",
+        "Each strike inflicts 2 Fragile stacks",
+        "Resolve cost increased to 80, but the ability continues with another barrage of ruthless dual-blade strikes"
+      ]
     },
     {
       "id": "tar-66",
@@ -1502,13 +1854,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-25"
       ],
-      "nearestBeaconId": "beacon-34"
+      "nearestBeaconId": "beacon-34",
+      "levelEffects": [
+        "The heavy round deals 70 splash damage in a small range",
+        "The heavy round deals 120 splash damage in a small range",
+        "The heavy round bursts into a wider explosion"
+      ]
     },
     {
       "id": "tar-67",
@@ -1525,13 +1883,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-38"
       ],
-      "nearestBeaconId": "beacon-26"
+      "nearestBeaconId": "beacon-26",
+      "levelEffects": [
+        "The charged shot deals {X} damage",
+        "The charged shot deals {X} damage",
+        "The charged shot deals {X} damage"
+      ]
     },
     {
       "id": "tar-68",
@@ -1547,13 +1911,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-03"
       ],
-      "nearestBeaconId": "beacon-32"
+      "nearestBeaconId": "beacon-32",
+      "levelEffects": [
+        "Each shot has 20% Critical Chance",
+        "Each shot has 35% Critical Chance",
+        "Each shot deals 1× Critical Damage"
+      ]
     },
     {
       "id": "tar-69",
@@ -1569,11 +1939,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-09"
+      "nearestBeaconId": "beacon-09",
+      "levelEffects": [
+        "The heavy round detonates 2 times, each explosive projectile deals 4× splash damage",
+        "The heavy round detonates 2 times, each explosive projectile deals 8 splash damage",
+        "The heavy round detonates 3 times, each explosive projectile deals 8 splash damage"
+      ]
     },
     {
       "id": "tar-70",
@@ -1589,13 +1965,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-32"
       ],
-      "nearestBeaconId": "beacon-29"
+      "nearestBeaconId": "beacon-29",
+      "levelEffects": [
+        "The tethered projectiles spin at 6s",
+        "The tethered projectiles spin at 8s",
+        "The tethered projectiles spin at 10s and deals more frequently damage"
+      ]
     },
     {
       "id": "tar-71",
@@ -1612,11 +1994,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "The heavy-caliber shot triggers 3 explosions around the target",
+        "The heavy-caliber shot triggers 5 explosions around the target",
+        "Each explosion deal 20 Break Damage"
+      ]
     },
     {
       "id": "tar-72",
@@ -1633,13 +2021,19 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "boss-27"
       ],
-      "nearestBeaconId": "beacon-38"
+      "nearestBeaconId": "beacon-38",
+      "levelEffects": [
+        "Chaining projectiles deal 20 damage",
+        "Projectiles chain between up to 4 targets",
+        "Chaining projectiles deal 40 damage"
+      ]
     },
     {
       "id": "tar-73",
@@ -1656,11 +2050,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-17"
+      "nearestBeaconId": "beacon-17",
+      "levelEffects": [
+        "The clinging projectile deals 100 damage upon exploding",
+        "The clinging projectile draws the aggression of all nearby enemies",
+        "The clinging projectile scatters 3 other clinging projectiles upon exploding"
+      ]
     },
     {
       "id": "tar-74",
@@ -1677,11 +2077,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-34"
+      "nearestBeaconId": "beacon-34",
+      "levelEffects": [
+        "The summoned foe attacks 2 times before vanishing",
+        "The summoned foe attacks 5 times before vanishing",
+        "Summon 2 foes instead of one"
+      ]
     },
     {
       "id": "tar-75",
@@ -1698,11 +2104,17 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "tarstone-list"
+        "tarstone-list",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [],
-      "nearestBeaconId": "beacon-11"
+      "nearestBeaconId": "beacon-11",
+      "levelEffects": [
+        "Each projectile deals 10 damage",
+        "Each projectile deals 5× Break Damage",
+        "Firing rate is increased by 0.7"
+      ]
     },
     {
       "id": "tar-ra-guitarstone",
@@ -1719,12 +2131,14 @@ export const catalog = {
       ],
       "requirement": "Night Mode and Troubadour's Lute",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-01"
-      ]
+      ],
+      "fixedEffect": "Unlocks one guitar melody for the lute, with another at each upgrade."
     },
     {
       "id": "tar-ra-mourning-bell",
@@ -1741,12 +2155,14 @@ export const catalog = {
       ],
       "requirement": "Night Mode; Ghost Beacon entrance.",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-03"
-      ]
+      ],
+      "fixedEffect": "During Night Mode, deal increased melee poise damage while melee attacks are 15% slower; both effects are dormant by day."
     },
     {
       "id": "tar-ra-widowmoon-stone",
@@ -1807,11 +2223,17 @@ export const catalog = {
       ],
       "requirement": "Night",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-08"
+      ],
+      "levelEffects": [
+        "After a parry, perfect guard, or perfect harden, the next melee hit restores 10% of maximum health.",
+        "After a parry, perfect guard, or perfect harden, the next melee hit restores 20% of maximum health.",
+        "After a parry, perfect guard, or perfect harden, the next melee hit restores 30% of maximum health."
       ]
     },
     {
@@ -1829,12 +2251,14 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-10"
-      ]
+      ],
+      "fixedEffect": "Regenerate additional Resolve while aiming a sidearm. Regeneration continues while firing."
     },
     {
       "id": "tar-ra-starless-eye",
@@ -1875,12 +2299,14 @@ export const catalog = {
       ],
       "requirement": "Sheephead Totem",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
       "relatedIds": [
         "dungeon-14"
-      ]
+      ],
+      "fixedEffect": "Consume 40 Resolve in sheep form to become the black sheep, unleash a halberd assault, and remain invulnerable during it."
     },
     {
       "id": "tar-ra-bloodoath-stone",
@@ -1917,10 +2343,12 @@ export const catalog = {
       ],
       "requirement": "",
       "sources": [
-        "rotten-dungeons"
+        "rotten-dungeons",
+        "tarstone-effects"
       ],
       "aliases": [],
-      "relatedIds": []
+      "relatedIds": [],
+      "fixedEffect": "While continuously locked on to the same enemy, deal 5% more damage per second, up to 25%; changing or losing lock-on resets it."
     },
     {
       "id": "tar-glimpse-stone",
@@ -1938,9 +2366,15 @@ export const catalog = {
         "If it is not stocked yet, return as you progress through the story and defeat bosses."
       ],
       "requirement": "250 Coins; Merrick's shop stock expands with progression.",
-      "sources": ["glimpse-stone-route"],
-      "aliases": ["Glimpse Tarstone"],
-      "relatedIds": []
+      "sources": [
+        "glimpse-stone-route",
+        "tarstone-effects"
+      ],
+      "aliases": [
+        "Glimpse Tarstone"
+      ],
+      "relatedIds": [],
+      "fixedEffect": "After 20 defeated enemies consume its durability, the stone breaks and grants 3 Glimpses."
     },
     {
       "id": "tar-egons-stone",
@@ -1958,9 +2392,15 @@ export const catalog = {
         "If it is not stocked yet, return as you progress through the story and defeat bosses."
       ],
       "requirement": "500 Coins; Merrick's shop stock expands with progression.",
-      "sources": ["egon-stone-route"],
-      "aliases": ["Egon Stone"],
-      "relatedIds": []
+      "sources": [
+        "egon-stone-route",
+        "tarstone-effects"
+      ],
+      "aliases": [
+        "Egon Stone"
+      ],
+      "relatedIds": [],
+      "fixedEffect": "Upon death inside a Dungeon, revive at its entrance and prevent Gloom loss for that death. Durability decreases on activation."
     },
     {
       "id": "tar-ra-wellspring-stone",
@@ -1975,9 +2415,13 @@ export const catalog = {
         "No acquisition route is documented yet. This entry tracks Wellspring Stone, which continuously regenerates Resolve."
       ],
       "requirement": "",
-      "sources": ["tarstone-effects", "rotten-missing-stones"],
+      "sources": [
+        "tarstone-effects",
+        "rotten-missing-stones"
+      ],
       "aliases": [],
-      "relatedIds": []
+      "relatedIds": [],
+      "fixedEffect": "Continuously regenerate Resolve, even when empty."
     },
     {
       "id": "tar-ra-forsaken-vow",
@@ -1992,9 +2436,19 @@ export const catalog = {
         "No acquisition route is documented yet. This entry tracks Forsaken Vow, which increases melee damage during Night Mode while disabling your sidearm and Shell ability."
       ],
       "requirement": "",
-      "sources": ["tarstone-effects", "rotten-missing-stones"],
-      "aliases": ["Forsaken Vow Stone"],
-      "relatedIds": []
+      "sources": [
+        "tarstone-effects",
+        "rotten-missing-stones"
+      ],
+      "aliases": [
+        "Forsaken Vow Stone"
+      ],
+      "relatedIds": [],
+      "levelEffects": [
+        "During Night Mode, gain 50% bonus melee attack damage; sidearm and shell ability remain disabled.",
+        "During Night Mode, gain 75% bonus melee attack damage; sidearm and shell ability remain disabled.",
+        "During Night Mode, gain 100% bonus melee attack damage; sidearm and shell ability remain disabled."
+      ]
     }
   ],
   "beacons": [
