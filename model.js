@@ -11,7 +11,7 @@ export const byId = new Map(all.map(item => [item.id, item]));
 export const normalize = value => String(value || "").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[’']/g, "").replace(/[^a-z0-9]/g, "");
 
 export function matches(item, filters, completed) {
-  const words = [item.name, ...(item.aliases || []), item.region, item.nearestBeacon, item.requirement, item.rewards, ...(item.steps || [])].join(" ");
+  const words = [item.name, ...(item.aliases || []), item.region, item.nearestBeacon, item.requirement, item.rewards, ...(item.steps || []), item.description, ...(item.levelEffects || []), item.fixedEffect].join(" ");
   return (!filters.search || normalize(words).includes(normalize(filters.search)))
     && (filters.region === "all" || item.region === filters.region)
     && (filters.scope === "all" || item.scope === filters.scope)
