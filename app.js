@@ -31,6 +31,30 @@ function element(tag, className, value) {
   if (value !== undefined) node.textContent = value;
   return node;
 }
+function appendTarstoneEffect(target, effect) {
+  const numberPattern = /\d+(?:\.\d+)?(?:%|×|x)?(?:s(?![A-Za-z]))?/gi;
+  const phraseStops = new Set(["a", "an", "and", "as", "at", "before", "but", "by", "each", "every", "for", "from", "if", "in", "into", "on", "or", "per", "that", "then", "to", "when", "while"]);
+  let lastIndex = 0;
+  let match;
+  while ((match = numberPattern.exec(effect))) {
+    let end = match.index + match[0].length;
+    let words = 0;
+    const phrasePattern = /\s+([A-Za-z][A-Za-z’'-]*)/g;
+    phrasePattern.lastIndex = end;
+    while (words < 5) {
+      const phrase = phrasePattern.exec(effect);
+      if (!phrase || /[.,;:!?]/.test(effect.slice(end, phrase.index))) break;
+      if (phraseStops.has(phrase[1].toLowerCase())) break;
+      end = phrasePattern.lastIndex;
+      words++;
+    }
+    target.append(document.createTextNode(effect.slice(lastIndex, match.index)));
+    target.append(element("span", "tarstone-stat-value", effect.slice(match.index, end)));
+    lastIndex = end;
+    numberPattern.lastIndex = end;
+  }
+  target.append(document.createTextNode(effect.slice(lastIndex)));
+}
 function linkTo(item, label) {
   const a = element("a", "", label || item.name);
   a.href = "#" + item.id;
@@ -269,7 +293,8 @@ function renderEntry(item) {
       const levels = element("ol", "tarstone-levels");
       item.levelEffects.forEach((effect, index) => {
         const level = element("li");
-        level.append(element("strong", "", `Level ${index + 1}: `), document.createTextNode(effect));
+        level.append(element("strong", "", `Level ${index + 1}: `));
+        appendTarstoneEffect(level, effect);
         levels.append(level);
       });
       body.append(levels);
