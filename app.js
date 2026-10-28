@@ -242,7 +242,15 @@ function readFilters() {
 function syncUrl(method = "replace") {
   const url = new URL(location.href);
   url.search = "";
-  const values = { page: active, search: document.getElementById("search").value.trim(), ...Object.fromEntries(Object.entries(urlFilterIds).map(([param, id]) => [param, document.getElementById(id).value])) };
+  const values = {
+    page: active,
+    search: document.getElementById("search").value.trim(),
+    region: document.getElementById("region").value,
+    content: document.getElementById("scope").value,
+    progress: document.getElementById("status").value,
+    type: document.getElementById("kind-filter").value,
+    order: document.getElementById("sort").value
+  };
   for (const [param, value] of Object.entries(values)) {
     if (value !== urlDefaults[param]) url.searchParams.set(param, value);
   }
@@ -566,22 +574,25 @@ function navigateToHash() {
   const id = target.id;
   const group = groups.find(entry => catalog[entry.key].some(item => item.id === id));
   active = group.key;
-  document.getElementById("search").value = "";
+  const filters = readFilters();
   const scope = document.getElementById("scope");
-  if (scope.value !== target.scope) scope.value = "all";
-  document.getElementById("status").value = "all";
-  document.getElementById("region").value = "all";
-  document.getElementById("kind-filter").value = "all";
+  if (filters.scope !== "all" && filters.scope !== target.scope) scope.value = "all";
+  if (filters.region !== "all" && filters.region !== target.region) document.getElementById("region").value = "all";
+  if (filters.status !== "all" && (filters.status === "done") !== !!completed[target.id]) document.getElementById("status").value = "all";
+  const targetKind = target.category || target.subtype || target.bossType;
+  if (filters.kind !== "all" && filters.kind !== targetKind) document.getElementById("kind-filter").value = "all";
   updateFilters();
+  if (!matches(target, readFilters(), completed)) document.getElementById("search").value = "";
   render();
   const card = document.getElementById(id);
+  if (!card) return;
   card.querySelector(".route").open = true;
   card.tabIndex = -1;
   card.focus({ preventScroll: true });
   requestAnimationFrame(() => card.scrollIntoView({ block: "start" }));
 }
 for (const id of ["search", "region", "scope", "status", "kind-filter", "sort"]) {
-  document.getElementById(id).addEventListener(id === "search" ? "input" : "change", render);
+  document.getElementById(id).addEventListener(id === "search" ? "input" : "change", () => render());
 }
 document.getElementById("export").onclick = () => {
   const data = encodeProgress(completed);
