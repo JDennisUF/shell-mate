@@ -34,6 +34,7 @@ function element(tag, className, value) {
   return node;
 }
 const tarstoneKeywords = [
+  ["faithful-doubles", "Faithful Doubles"], ["stray-doubles", "Stray Doubles"],
   ["critical-damage", "Critical Damage"], ["critical-chance", "Critical Chance"],
   ["break-damage", "Break Damage"], ["stagger-damage", "Stagger Damage"],
   ["bloodcurse", "Bloodcurse"], ["perforation", "Perforation"], ["lightning", "Lightning"],
@@ -43,14 +44,14 @@ const tarstoneKeywords = [
 ];
 const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
 const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
-const percentagePattern = /[-+]?\d+(?:\.\d+)?%/g;
+const highlightedNumberPattern = /(?<![\w.])[-+]?\d+(?:\.\d+)?(?:%|s\b)?/gi;
 function appendTarstoneText(target, text) {
   let lastIndex = 0;
   let match;
-  percentagePattern.lastIndex = 0;
-  while ((match = percentagePattern.exec(text))) {
+  highlightedNumberPattern.lastIndex = 0;
+  while ((match = highlightedNumberPattern.exec(text))) {
     target.append(document.createTextNode(text.slice(lastIndex, match.index)));
-    target.append(element("span", "tarstone-percent", match[0]));
+    target.append(element("span", "tarstone-number", match[0]));
     lastIndex = match.index + match[0].length;
   }
   target.append(document.createTextNode(text.slice(lastIndex)));
