@@ -61,7 +61,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .entry-row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:11px;min-height:64px;padding:9px 13px}
 .entry-check{appearance:none;width:23px;height:23px;border:1.5px solid #9cac9f;border-radius:3px;background:#181c1a;cursor:pointer;position:relative;margin:0}
 .entry-check:checked{background:#94b9a0;border-color:#94b9a0}
-.entry-check:checked:after{content:"✓";position:absolute;inset:-2px 0 0;text-align:center;color:#122019;font-size:19px;font-weight:800}
+.entry-check:checked:after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#122019;font-size:23px;font-weight:800;line-height:1}
 .entry-heading{min-width:0}
 .entry-name{font-size:1rem;font-weight:700;color:#f0eee7;line-height:1.25;margin:0}
 .entry.done .entry-name{color:#b3c9b9}
