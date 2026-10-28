@@ -31,6 +31,33 @@ function element(tag, className, value) {
   if (value !== undefined) node.textContent = value;
   return node;
 }
+const tarstoneKeywords = [
+  ["critical-damage", "Critical Damage"], ["critical-chance", "Critical Chance"],
+  ["break-damage", "Break Damage"], ["stagger-damage", "Stagger Damage"],
+  ["bloodcurse", "Bloodcurse"], ["perforation", "Perforation"], ["lightning", "Lightning"],
+  ["phantom", "Phantom"], ["fragile", "Fragile"], ["health", "Health"], ["resolve", "Resolve"],
+  ["weak", "Weak"], ["burn", "Burn"], ["warp", "Warp"], ["leech", "Leech"],
+  ["frost", "Frost"], ["poison", "Poison"], ["curse", "Curse"], ["trauma", "Trauma"]
+];
+const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
+const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
+function appendTarstoneKeywords(target, text) {
+  let lastIndex = 0;
+  tarstoneKeywordPattern.lastIndex = 0;
+  let match;
+  while ((match = tarstoneKeywordPattern.exec(text))) {
+    target.append(document.createTextNode(text.slice(lastIndex, match.index)));
+    target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, match[0]));
+    lastIndex = match.index + match[0].length;
+  }
+  target.append(document.createTextNode(text.slice(lastIndex)));
+}
+function tarstoneKeywordClassIn(text) {
+  tarstoneKeywordPattern.lastIndex = 0;
+  const match = tarstoneKeywordPattern.exec(text);
+  tarstoneKeywordPattern.lastIndex = 0;
+  return match ? tarstoneKeywordClasses.get(match[0].toLowerCase()) : "";
+}
 function appendTarstoneEffect(target, effect) {
   const numberPattern = /\d+(?:\.\d+)?(?:%|×|x)?(?:s(?![A-Za-z]))?/gi;
   const phraseStops = new Set(["a", "an", "and", "as", "at", "before", "but", "by", "each", "every", "for", "from", "if", "in", "into", "on", "or", "per", "that", "then", "to", "when", "while"]);
@@ -48,12 +75,16 @@ function appendTarstoneEffect(target, effect) {
       end = phrasePattern.lastIndex;
       words++;
     }
-    target.append(document.createTextNode(effect.slice(lastIndex, match.index)));
-    target.append(element("span", "tarstone-stat-value", effect.slice(match.index, end)));
+    appendTarstoneKeywords(target, effect.slice(lastIndex, match.index));
+    const statText = effect.slice(match.index, end);
+    const keywordClass = tarstoneKeywordClassIn(statText);
+    const stat = element("span", `tarstone-stat-value${keywordClass ? ` tarstone-keyword tarstone-keyword-${keywordClass}` : ""}`);
+    appendTarstoneKeywords(stat, statText);
+    target.append(stat);
     lastIndex = end;
     numberPattern.lastIndex = end;
   }
-  target.append(document.createTextNode(effect.slice(lastIndex)));
+  appendTarstoneKeywords(target, effect.slice(lastIndex));
 }
 function linkTo(item, label) {
   const a = element("a", "", label || item.name);
@@ -288,7 +319,11 @@ function renderEntry(item) {
   const summary = element("summary", "", "Route & details");
   const body = element("div", "route-body");
   if (item.kind === "tarstone") {
-    if (item.description) body.append(element("p", "tarstone-description", item.description));
+    if (item.description) {
+      const description = element("p", "tarstone-description");
+      appendTarstoneKeywords(description, item.description);
+      body.append(description);
+    }
     else body.append(element("p", "note", "Fextralife does not have a description for this Tarstone yet."));
     if (item.levelEffects?.length === 3) {
       body.append(element("h3", "", "Upgrade effects"));
@@ -301,7 +336,10 @@ function renderEntry(item) {
       });
       body.append(levels);
     } else if (item.fixedEffect) {
-      body.append(element("p", "", `Additional effect details: ${item.fixedEffect}`));
+      const extra = element("p");
+      extra.append(document.createTextNode("Additional effect details: "));
+      appendTarstoneKeywords(extra, item.fixedEffect);
+      body.append(extra);
     }
   }
   if (item.requirement) {
