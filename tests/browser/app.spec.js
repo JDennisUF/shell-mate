@@ -13,7 +13,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   }, backup(completed));
   await page.goto("./");
   await expect(page.locator(".entry")).toHaveCount(89);
-  await expect(page.locator("#category-progress .progress-stat").first()).toContainText("85 / 89");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 89");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(4);
   await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Fragile");
@@ -34,7 +34,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await expect(page.locator("#check-tar-01")).toBeChecked();
   await expect(page.locator("#check-tar-ra-forsaken-vow")).toBeChecked();
   await expect(page.locator("#check-tar-glimpse-stone")).not.toBeChecked();
-  await expect(page.locator("#category-progress .progress-stat").first()).toContainText("86 / 89");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("86 / 89");
 });
 
 test("DLC selection follows categories and updates guide totals", async ({ page }) => {

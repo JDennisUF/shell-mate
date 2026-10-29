@@ -1147,4 +1147,4 @@ export const shellItems = [
     ],
     "skills": []
   }
-];
+].map(item => ({ aliases: [], relatedIds: [], ...item }));

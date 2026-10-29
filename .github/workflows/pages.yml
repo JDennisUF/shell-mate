@@ -33,7 +33,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir _site
-          cp index.html styles.css app.js data.js model.js storage.js tarstone-art.js _site/
+          cp index.html styles.css app.js data.js model.js shells.js storage.js tarstone-art.js _site/
           cp -r assets _site/assets
       - uses: actions/upload-pages-artifact@v3
         with:

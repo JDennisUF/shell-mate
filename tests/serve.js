@@ -1,13 +1,13 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 
-const assets = new Set(["index.html", "styles.css", "app.js", "data.js", "model.js", "storage.js", "tarstone-art.js"]);
+const assets = new Set(["index.html", "styles.css", "app.js", "data.js", "model.js", "shells.js", "storage.js", "tarstone-art.js"]);
 const types = { html: "text/html", css: "text/css", js: "text/javascript", jpg: "image/jpeg", png: "image/png", webp: "image/webp" };
 
 createServer(async (request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
   const filename = pathname === "/shell-mate/" ? "index.html" : pathname.replace(/^\/shell-mate\//, "");
-  const imagePath = /^assets\/(?:bosses\/[a-z0-9-]+\.jpg|categories\/[a-z0-9-]+\.png|tarstones\/[a-z0-9-]+\.(?:png|webp))$/.test(filename);
+  const imagePath = /^assets\/(?:bosses\/[a-z0-9-]+\.jpg|categories\/[a-z0-9-]+\.png|shells\/[a-z0-9-]+\.(?:png|webp)|tarstones\/[a-z0-9-]+\.(?:png|webp)|weapons\/[a-z0-9-]+\.webp)$/.test(filename);
   if (!pathname.startsWith("/shell-mate/") || (!assets.has(filename) && !imagePath)) {
     response.writeHead(404).end();
     return;

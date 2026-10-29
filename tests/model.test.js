@@ -12,14 +12,20 @@ test("catalog entries have unique permanent IDs, checklist information, sources,
     assert.ok(["base", "rotten-autumn"].includes(item.scope));
     assert.ok(Number.isFinite(item.order));
     assert.ok(Array.isArray(item.aliases));
-    assert.ok(item.steps?.length);
-    assert.ok(item.sources?.length);
-    for (const source of item.sources) {
-      assert.ok(catalog.sources[source], item.id + ": " + source);
-      assert.equal(new URL(catalog.sources[source].url).protocol, "https:");
+    if (item.kind === "shell") {
+      assert.ok(item.image, item.id + ": image");
+      assert.ok(item.signature?.length, item.id + ": signature");
+      assert.ok(Array.isArray(item.skills), item.id + ": skills");
+    } else {
+      assert.ok(item.steps?.length, item.id + ": steps");
+      assert.ok(item.sources?.length, item.id + ": sources");
+      for (const source of item.sources) {
+        assert.ok(catalog.sources[source], item.id + ": " + source);
+        assert.equal(new URL(catalog.sources[source].url).protocol, "https:");
+      }
     }
     if (item.nearestBeacon) assert.equal(byId.get(item.nearestBeaconId)?.kind, "beacon", item.id);
-    for (const relatedId of item.relatedIds) {
+    for (const relatedId of item.relatedIds || []) {
       assert.ok(byId.has(relatedId), item.id + ": " + relatedId);
       assert.notEqual(relatedId, item.id);
     }
