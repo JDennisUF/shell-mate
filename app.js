@@ -21,6 +21,7 @@ const storage = {
 };
 const loaded = loadProgress(storage);
 let completed = loaded.completed;
+let skillRanks = loaded.skillRanks;
 let saveBlocked = loaded.blocked;
 const completionExclusions = new Set(["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]);
 const currentlyFindable = all.filter(item => !completionExclusions.has(item.id));
@@ -136,7 +137,10 @@ function showStorageWarning(message) {
   warning.hidden = !message;
 }
 function save() {
-  if (!saveBlocked) showStorageWarning(saveProgress(storage, completed));
+  if (!saveBlocked) showStorageWarning(saveProgress(storage, completed, skillRanks));
+}
+function shellPointsSpent(shellId) {
+  return Object.values(skillRanks[shellId] || {}).reduce((total, rank) => total + rank * (rank + 1) / 2, 0);
 }
 function numberDone(items) { return items.filter(item => completed[item.id]).length; }
 function renderProgress() {
@@ -305,6 +309,19 @@ function renderEntry(item) {
   const name = element("h3", "entry-name", item.name);
   const meta = element("div", "entry-meta", item.region + (item.nearestBeacon ? " · From " + item.nearestBeacon : ""));
   heading.append(name, meta);
+  let pointCounter;
+  const updatePointCounter = () => {
+    if (!pointCounter) return;
+    const spent = shellPointsSpent(item.id);
+    pointCounter.textContent = `Shell Points: ${spent} / ${item.maxShellPoints}`;
+    pointCounter.classList.toggle("over-limit", spent > item.maxShellPoints);
+  };
+  if (item.kind === "shell" && item.maxShellPoints) {
+    pointCounter = element("div", "shell-points");
+    pointCounter.setAttribute("aria-live", "polite");
+    updatePointCounter();
+    heading.append(pointCounter);
+  }
   let portrait;
   if (item.kind === "tarstone") {
     portrait = element("img", "tarstone-portrait");
@@ -402,7 +419,7 @@ function renderEntry(item) {
     }
     if (item.skills.length) {
       body.append(element("h3", "", "Shell Point skills"));
-      body.append(element("p", "shell-skill-note", "Skills are grouped by Bond Tier, with every rank effect shown."));
+      body.append(element("p", "shell-skill-note", "Skills are grouped by Bond Tier. Each rank costs its rank number in Shell Points; selecting a rank includes every lower rank."));
       const tiers = element("div", "shell-tiers");
       for (let tier = 1; tier <= 4; tier++) {
         const tierSkills = (item.skillDetails || []).filter(skill => skill.tier === tier);
@@ -412,7 +429,18 @@ function renderEntry(item) {
         const skills = element("ul", "shell-skills");
         for (const skill of tierSkills) {
           const itemNode = element("li", "shell-skill");
-          itemNode.append(element("h5", "shell-skill-title", `${skill.name} · ${skill.levels.length} ${skill.levels.length === 1 ? "rank" : "ranks"}`));
+          const skillHead = element("div", "shell-skill-head");
+          skillHead.append(element("h5", "shell-skill-title", skill.name));
+          const select = element("select", "shell-skill-select");
+          select.setAttribute("aria-label", `${item.shellName} ${skill.name} rank`);
+          select.append(new Option("No ranks", "0"));
+          skill.levels.forEach((_, index) => {
+            const rank = index + 1;
+            select.append(new Option(`Rank ${rank} · ${rank * (rank + 1) / 2} pts`, String(rank)));
+          });
+          select.value = String(skillRanks[item.id]?.[skill.name] || 0);
+          skillHead.append(select);
+          itemNode.append(skillHead);
           if (skill.description) {
             const description = element("p", "shell-skill-description");
             appendTarstoneKeywords(description, skill.description);
@@ -421,12 +449,23 @@ function renderEntry(item) {
           if (skill.levels?.length) {
             const ranks = element("ol", "shell-skill-ranks");
             skill.levels.forEach((effect, index) => {
-              const rank = element("li");
+              const rank = element("li", index < Number(select.value) ? "selected" : "");
               rank.append(element("strong", "", `Rank ${index + 1}: `));
               appendTarstoneKeywords(rank, effect);
               ranks.append(rank);
             });
             itemNode.append(ranks);
+            select.onchange = () => {
+              const selected = Number(select.value);
+              if (selected) (skillRanks[item.id] ||= {})[skill.name] = selected;
+              else {
+                delete skillRanks[item.id]?.[skill.name];
+                if (skillRanks[item.id] && !Object.keys(skillRanks[item.id]).length) delete skillRanks[item.id];
+              }
+              [...ranks.children].forEach((rank, index) => rank.classList.toggle("selected", index < selected));
+              updatePointCounter();
+              save();
+            };
           }
           skills.append(itemNode);
         }
@@ -612,7 +651,7 @@ for (const id of ["search", "region", "scope", "status", "kind-filter", "sort"])
   document.getElementById(id).addEventListener(id === "search" ? "input" : "change", () => render());
 }
 document.getElementById("export").onclick = () => {
-  const data = encodeProgress(completed);
+  const data = encodeProgress(completed, skillRanks);
   const url = URL.createObjectURL(new Blob([data], { type: "application/json" }));
   const a = element("a");
   a.href = url;
@@ -628,6 +667,7 @@ document.getElementById("import-file").onchange = async event => {
   try {
     const decoded = decodeProgress(JSON.parse(await file.text()));
     completed = decoded.result;
+    skillRanks = decoded.skillRanks;
     saveBlocked = false;
     save();
     render();

@@ -31,13 +31,28 @@ export function decodeProgress(data) {
       if (!byId.has(id)) ignored++;
       else if (value) result[id] = true;
     }
-    return { result, ignored };
+    const skillRanks = {};
+    if (Object.hasOwn(data, "skillRanks")) {
+      if (!validRecord(data.skillRanks)) throw new Error("Skill selections must be an object.");
+      for (const [shellId, ranks] of Object.entries(data.skillRanks)) {
+        if (!validRecord(ranks)) throw new Error("Skill selections must be an object.");
+        const shell = catalog.shells.find(item => item.id === shellId && item.maxShellPoints);
+        for (const [skillName, rank] of Object.entries(ranks)) {
+          if (!Number.isInteger(rank) || rank < 1) throw new Error("Skill levels must be positive whole numbers.");
+          const skill = shell?.skillDetails.find(item => item.name === skillName);
+          if (!skill) { ignored++; continue; }
+          if (rank > skill.levels.length) throw new Error("Skill level exceeds the available ranks.");
+          (skillRanks[shellId] ||= {})[skillName] = rank;
+        }
+      }
+    }
+    return { result, skillRanks, ignored };
   }
-  return legacyProgress(data);
+  return { ...legacyProgress(data), skillRanks: {} };
 }
 
-export function encodeProgress(completed) {
-  return JSON.stringify({ version: 2, completed }, null, 2);
+export function encodeProgress(completed, skillRanks = {}) {
+  return JSON.stringify({ version: 2, completed, ...(Object.keys(skillRanks).length ? { skillRanks } : {}) }, null, 2);
 }
 
 export function loadProgress(storage) {
@@ -46,24 +61,27 @@ export function loadProgress(storage) {
   try {
     current = storage.getItem(saveKey);
     if (current !== null) {
-      try { return { completed: decodeProgress(JSON.parse(current)).result, blocked: false, warning: "" }; }
-      catch { return { completed: {}, blocked: true, warning: "Saved progress could not be read. It has been left untouched. Export any new checks before leaving, or import a backup to replace the unreadable save." }; }
+      try {
+        const decoded = decodeProgress(JSON.parse(current));
+        return { completed: decoded.result, skillRanks: decoded.skillRanks, blocked: false, warning: "" };
+      }
+      catch { return { completed: {}, skillRanks: {}, blocked: true, warning: "Saved progress could not be read. It has been left untouched. Export any new checks before leaving, or import a backup to replace the unreadable save." }; }
     }
     old = storage.getItem(legacyKey);
   } catch {
-    return { completed: {}, blocked: false, warning: "Browser saving is unavailable. Export your progress before leaving this page." };
+    return { completed: {}, skillRanks: {}, blocked: false, warning: "Browser saving is unavailable. Export your progress before leaving this page." };
   }
   if (old !== null) {
     let migrated;
     try { migrated = legacyProgress(JSON.parse(old)).result; }
-    catch { return { completed: {}, blocked: true, warning: "Your older save could not be read and has been left untouched. Export new checks before leaving, or import a backup." }; }
+    catch { return { completed: {}, skillRanks: {}, blocked: true, warning: "Your older save could not be read and has been left untouched. Export new checks before leaving, or import a backup." }; }
     const warning = saveProgress(storage, migrated);
-    return { completed: migrated, blocked: false, warning };
+    return { completed: migrated, skillRanks: {}, blocked: false, warning };
   }
-  return { completed: {}, blocked: false, warning: "" };
+  return { completed: {}, skillRanks: {}, blocked: false, warning: "" };
 }
 
-export function saveProgress(storage, completed) {
-  try { storage.setItem(saveKey, encodeProgress(completed)); return ""; }
+export function saveProgress(storage, completed, skillRanks = {}) {
+  try { storage.setItem(saveKey, encodeProgress(completed, skillRanks)); return ""; }
   catch { return "Browser saving is unavailable. Export your progress before leaving this page."; }
 }

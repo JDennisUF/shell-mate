@@ -10,7 +10,17 @@ function memoryStorage(initial = {}) {
 test("backups round-trip base and DLC progress and report unknown IDs", () => {
   const completed = { "tar-01": true, "tar-ra-guitarstone": true, "ghost-04": true };
   assert.deepEqual(decodeProgress(JSON.parse(encodeProgress(completed))).result, completed);
-  assert.deepEqual(decodeProgress({ version: 2, completed: { ...completed, removed: true, "tar-02": false } }), { result: completed, ignored: 1 });
+  assert.deepEqual(decodeProgress({ version: 2, completed: { ...completed, removed: true, "tar-02": false } }), { result: completed, skillRanks: {}, ignored: 1 });
+});
+
+test("Shell skill ranks survive saves and backups while older progress remains readable", () => {
+  const skillRanks = { "shell-smert": { Novertime: 4, Devotion: 2 } };
+  const storage = memoryStorage();
+  assert.equal(saveProgress(storage, { "shell-smert": true }, skillRanks), "");
+  assert.deepEqual(loadProgress(storage).skillRanks, skillRanks);
+  assert.deepEqual(decodeProgress(JSON.parse(encodeProgress({}, skillRanks))).skillRanks, skillRanks);
+  assert.deepEqual(decodeProgress({ version: 2, completed: {} }).skillRanks, {});
+  assert.throws(() => decodeProgress({ version: 2, completed: {}, skillRanks: { "shell-smert": { Novertime: 5 } } }), /./);
 });
 
 test("older saves migrate and the original stays untouched", () => {

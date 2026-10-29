@@ -9,6 +9,7 @@ export const shellItems = [
     "order": 3,
     "category": "Playable Shell",
     "shellName": "Tiel",
+    "maxShellPoints": 40,
     "image": "assets/shells/tiel.webp",
     "signature": [
       "Shadow Dash: a precisely timed dodge grants Shadow and deals stagger damage.",
@@ -162,6 +163,7 @@ export const shellItems = [
     "order": 3,
     "category": "Playable Shell",
     "shellName": "Proxima",
+    "maxShellPoints": 44,
     "image": "assets/shells/proxima.webp",
     "signature": [
       "Grafted Armor: chance to mitigate incoming damage and prevent stagger.",
@@ -315,6 +317,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Genessa",
+    "maxShellPoints": 44,
     "image": "assets/shells/genessa.webp",
     "signature": [
       "Duality: on depletion, become Stray instead of being severed.",
@@ -470,6 +473,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Lazlo",
+    "maxShellPoints": 42,
     "image": "assets/shells/lazlo.webp",
     "signature": [
       "Retribution: heat armor to unleash shockwaves; overheat adds Burn and disables armor temporarily.",
@@ -624,6 +628,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Smert",
+    "maxShellPoints": 42,
     "image": "assets/shells/smert.webp",
     "signature": [
       "Miracle: sacrifice health to halt time and enter Fight Stance; unarmed attacks inflict Chaos.",
@@ -778,6 +783,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Eredrim",
+    "maxShellPoints": 42,
     "image": "assets/shells/eredrim.webp",
     "signature": [
       "Executioner: execute low-health enemies and gain Slaughterer stacks on Riposte.",
@@ -932,6 +938,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Sariel",
+    "maxShellPoints": 40,
     "image": "assets/shells/sariel.webp",
     "signature": [
       "Exodus of Thorns: send parasitic thorns after enemies, inflicting Curse and Pain on Sariel.",
@@ -1085,6 +1092,7 @@ export const shellItems = [
     "order": 4,
     "category": "Playable Shell",
     "shellName": "Gragu",
+    "maxShellPoints": 40,
     "image": "assets/shells/gragu.webp",
     "signature": [
       "Staggering Blow: charge a powerful punch; longer charge deals more damage.",
