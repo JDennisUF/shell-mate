@@ -265,9 +265,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-12",
       "levelEffects": [
-        "Melee attacks deal 0.5 Critical Damage",
-        "Melee attacks deal 0.8 Critical Damage",
-        "Melee attacks deal 1 Critical Damage"
+        "Melee attacks deal +50% Critical Damage",
+        "Melee attacks deal +80% Critical Damage",
+        "Melee attacks deal +100% Critical Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Headsman%27s_Stone",
       "description": "Improves melee Critical Damage."
