@@ -324,9 +324,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-12",
       "levelEffects": [
-        "The next melee attack deals 1.2 Stagger Damage",
-        "The next melee attack deals 1.3 Stagger Damage",
-        "The next melee attack deals 1.5 Stagger Damage"
+        "The next melee attack deals +20% Stagger Damage",
+        "The next melee attack deals +30% Stagger Damage",
+        "The next melee attack deals +50% Stagger Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Shattering_Stone",
       "description": "Improves melee Stagger Damage."
@@ -412,9 +412,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-28",
       "levelEffects": [
-        "Ranged attacks deal 0.2 Critical Damage",
-        "Ranged attacks deal 0.3 Critical Damage",
-        "Ranged attacks deal 0.4 Critical Damage"
+        "Ranged attacks deal +20% Critical Damage",
+        "Ranged attacks deal +30% Critical Damage",
+        "Ranged attacks deal +40% Critical Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Deadeye_Stone",
       "description": "Improves ranged Critical Damage."
@@ -442,9 +442,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-21",
       "levelEffects": [
-        "Ranged attacks deal 1.5 Stagger Damage",
-        "Ranged attacks deal 2 Stagger Damage",
-        "Ranged attacks deal 2.5 Stagger Damage"
+        "Ranged attacks deal 150% Stagger Damage",
+        "Ranged attacks deal 200% Stagger Damage",
+        "Ranged attacks deal 250% Stagger Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Siegebreaker%27s_Stone",
       "description": "Improves ranged Stagger Damage."
@@ -472,9 +472,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-17",
       "levelEffects": [
-        "Ranged damage increased up to 1.4 when Health is at 35% or below",
-        "Ranged damage increased up to 1.5 when Health is at 40% or below",
-        "Ranged damage increased up to 1.6 when Health is at 50% or below"
+        "Ranged damage increases by up to 40% when Health is at 35% or below",
+        "Ranged damage increases by up to 50% when Health is at 40% or below",
+        "Ranged damage increases by up to 60% when Health is at 50% or below"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Spite_Stone",
       "description": "Improves ranged damage the lower your Health is."
@@ -530,9 +530,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-08",
       "levelEffects": [
-        "Riposte damage increased by 0.05",
-        "Riposte damage increased by 0.08",
-        "Riposte damage increased by 0.15"
+        "Riposte damage increased by 5%",
+        "Riposte damage increased by 8%",
+        "Riposte damage increased by 15%"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Retribution_Stone",
       "description": "Improves Riposte damage."
@@ -845,9 +845,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-49",
       "levelEffects": [
-        "The heavy finisher has 0.3 Critical Chance",
-        "The heavy finisher has 0.35 Critical Chance",
-        "The heavy finisher has 0.4 Critical Chance"
+        "The heavy finisher has +30% Critical Chance",
+        "The heavy finisher has +35% Critical Chance",
+        "The heavy finisher has +40% Critical Chance"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Clerik%27s_Stone",
       "description": "Grants access to a special Heavy Combo Finisher with increased Critical Chance."
@@ -1022,9 +1022,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-07",
       "levelEffects": [
-        "Fire 3 projectiles per shot, each dealing 0.6 of the original damage.",
-        "Fire 5 projectiles per shot, each dealing 0.4 of the original damage.",
-        "Fire 7 projectiles per shot, each dealing 0.3 of the original damage."
+        "Fire 3 projectiles per shot, each dealing 60% of the original damage.",
+        "Fire 5 projectiles per shot, each dealing 40% of the original damage.",
+        "Fire 7 projectiles per shot, each dealing 30% of the original damage."
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Myriad_Stone",
       "description": "Your Sidearm fires multiple projectiles in an arc without consuming additional Resolve."
@@ -1051,9 +1051,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-15",
       "levelEffects": [
-        "Fire 2 projectiles per shot, each dealing 0.55 of the original damage.",
-        "Fire 3 projectiles per shot, each dealing 0.4 of the original damage.",
-        "Fire 4 projectiles per shot, each dealing 0.35 of the original damage."
+        "Fire 2 projectiles per shot, each dealing 55% of the original damage.",
+        "Fire 3 projectiles per shot, each dealing 40% of the original damage.",
+        "Fire 4 projectiles per shot, each dealing 35% of the original damage."
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Splitting_Stone",
       "description": "Your Sidearm fires multiple projectiles in an arc without consuming additional Resolve."
@@ -1138,9 +1138,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-22",
       "levelEffects": [
-        "Projectiles deal 0.08× of the original damage every 7s for 30s",
-        "Projectiles deal 0.12× of the original damage every 7s for 30s",
-        "Projectiles deal 0.15× of the original damage every 7s for 30s"
+        "Projectiles deal 8% of the original damage every 7s for 30s",
+        "Projectiles deal 12% of the original damage every 7s for 30s",
+        "Projectiles deal 15% of the original damage every 7s for 30s"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Corroded_Stone",
       "description": "Projectiles deal damage over time after striking their target."
@@ -1167,9 +1167,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-25",
       "levelEffects": [
-        "Projectiles spin for 3s and deal 0.09× of original damage",
-        "Projectiles spin for 4s and deal 0.1× of original damage",
-        "Projectiles spin for 5s and deal 0.11× of original damage"
+        "Projectiles spin for 3s and deal 9% of original damage",
+        "Projectiles spin for 4s and deal 10% of original damage",
+        "Projectiles spin for 5s and deal 11% of original damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Squall_Stone",
       "description": "Projectiles spin in place after hitting their target."
@@ -1197,9 +1197,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-37",
       "levelEffects": [
-        "Sidearm charging speed increased by 0.2",
-        "Sidearm charging speed increased by 0.35",
-        "Sidearm charging speed increased by 0.5"
+        "Sidearm charging speed increased by 20%",
+        "Sidearm charging speed increased by 35%",
+        "Sidearm charging speed increased by 50%"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Charged_Stone",
       "description": "Your Sidearm charges faster."
@@ -1708,8 +1708,8 @@ export const catalog = {
       ],
       "nearestBeaconId": "beacon-16",
       "levelEffects": [
-        "Infusion lasts for {X} shots",
-        "Infusion lasts for {X} shots",
+        "Infusion lasts for 4 shots",
+        "Infusion lasts for 8 shots",
         "Infusion is permanent"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Monarch%27s_Vestige",
@@ -1795,7 +1795,7 @@ export const catalog = {
       "nearestBeaconId": "beacon-01",
       "levelEffects": [
         "The charged attack has 15% Critical Chance",
-        "The charged attack deals 1.5× Critical Damage",
+        "The charged attack deals 150% Critical Damage",
         "Resolve cost reduced to 30"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Acolyte%27s_Stone",
@@ -1854,7 +1854,7 @@ export const catalog = {
       "levelEffects": [
         "Each strike inflicts 2 Weak stacks",
         "Each strike has 15% Critical Chance Each strike deals 1× Critical Damage",
-        "Each strike deals 1× Critical Damage"
+        "Each strike deals 100% Critical Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Magdalena%27s_Memento",
       "description": "Consume 100 Resolve to rise into the air and unleash a flurry of ruthless strikes."
@@ -1943,7 +1943,7 @@ export const catalog = {
       "levelEffects": [
         "Each strike inflicts 3 Perforation stacks",
         "The thrown weapon strikes up to 4 targets",
-        "Each strike inflicts 1.5 damage"
+        "Each strike inflicts 150% damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Infused_Stone",
       "description": "Consume 70 Resolve to throw your Weapon through multiple targets before it returns."
@@ -2060,9 +2060,9 @@ export const catalog = {
       ],
       "nearestBeaconId": "beacon-35",
       "levelEffects": [
-        "Each chainsaw spin deals 0.12× of the weapon base damage",
+        "Each chainsaw spin deals 12% of the weapon base damage",
         "Each chainsaw spin deals 15 Stagger Damage",
-        "Each chainsaw spin deals 0.2× of the weapon base damage"
+        "Each chainsaw spin deals 20% of the weapon base damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Scholar%27s_Wormstone",
       "description": "Consume Resolve over time to set the chainsaw in motion, augmenting your attacks."
@@ -2181,9 +2181,9 @@ export const catalog = {
       ],
       "nearestBeaconId": "beacon-26",
       "levelEffects": [
-        "The charged shot deals {X} damage",
-        "The charged shot deals {X} damage",
-        "The charged shot deals {X} damage"
+        "The charged shot deals 200% damage",
+        "The charged shot deals 300% damage",
+        "The charged shot deals 350% damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Confessor%27s_Keepsake",
       "description": "Consume 60 Resolve to charge your Sidearm and fire a devastating shot."
@@ -2213,7 +2213,7 @@ export const catalog = {
       "levelEffects": [
         "Each shot has 20% Critical Chance",
         "Each shot has 35% Critical Chance",
-        "Each shot deals 1× Critical Damage"
+        "Each shot deals 100% Critical Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Fusillade_Stone",
       "description": "At 80 Resolve or higher, unleash a flurry of consecutive shots."
@@ -2417,8 +2417,8 @@ export const catalog = {
       "nearestBeaconId": "beacon-11",
       "levelEffects": [
         "Each projectile deals 10 damage",
-        "Each projectile deals 5× Break Damage",
-        "Firing rate is increased by 0.7"
+        "Each projectile deals 5 Break Damage",
+        "Firing rate is increased by 70%"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Hand_of_Rock",
       "description": "Consume 80 Resolve to unleash a swarm of homing projectiles."
