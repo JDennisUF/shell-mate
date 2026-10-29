@@ -13,3 +13,9 @@ Shell portraits in `assets/shells/` are locally copied from Mortal Shell II Data
 Source directory: <https://www.gamerguides.com/images/map-cat-icon/>. Game imagery and trademarks belong to their respective owners.
 
 The displayed Bosses tab icon (`assets/categories/bosses-red-eyes.png`) is a generated edit of the original Bosses skull icon, with a white background, dark skull, and red eyes.
+
+## Weapons and Sidearms
+
+The 16 isolated item images in `assets/weapons/` show the weapons and sidearms themselves. They are copied locally from the equipment database at MortalShell2.org; the catalog uses the same image for each item and the guide does not depend on that site to display them.
+
+Source: <https://www.mortalshell2.org/tools/equipment-database/>. Game imagery and trademarks belong to their respective owners. GameSpot images remain the source for weapon and sidearm pickup routes, as listed in `data.js`.

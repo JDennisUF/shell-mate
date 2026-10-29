@@ -8,6 +8,8 @@ const urlFilterIds = { region: "region", content: "scope", progress: "status", t
 const urlDefaults = { page: "tarstones", search: "", region: "all", content: "all", progress: "all", type: "all", order: "catalog" };
 const categoryArtwork = {
   shells: "assets/shells/tiel.webp",
+  weapons: "assets/weapons/iconoclast.webp",
+  sidearms: "assets/weapons/naylshotte.webp",
   tarstones: "assets/categories/tarstones.png",
   beacons: "assets/categories/beacons.png",
   bosses: "assets/categories/bosses-red-eyes.png",
@@ -159,7 +161,7 @@ function renderProgress() {
     ? `Perfect completion — ${totalDone} / ${all.length}`
     : `Everything currently found is complete — ${totalDone} / ${all.length}`;
   document.getElementById("completion-message").textContent = allComplete
-    ? "Every Shell, Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
+    ? "Every Shell, Weapon, Sidearm, Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
     : `Wellspring Stone and Forsaken Vow are ignored for completion for now, but remain in the ${all.length} total until they are found.`;
   if ((knownComplete && !wasKnownComplete) || (allComplete && !wasAllComplete)) {
     completionBanner.classList.remove("celebrate");
@@ -229,10 +231,10 @@ function updateFilters() {
     label.textContent = "Fight type";
     setOptions(extra, [["all", "All types"], ["main", "Main"], ["optional", "Optional"], ["endgame", "Endgame"]], extra.value);
   } else {
-    label.textContent = "Dungeon";
-    setOptions(extra, [["all", "All dungeons"]], "all");
+    label.textContent = active === "dungeons" ? "Dungeon" : "Type";
+    setOptions(extra, [["all", active === "dungeons" ? "All dungeons" : "All types"]], "all");
   }
-  extra.disabled = active === "dungeons";
+  extra.disabled = !["tarstones", "beacons", "bosses"].includes(active);
 }
 function readFilters() {
   const filters = Object.fromEntries(["search", "region", "scope", "status"].map(id => [id, document.getElementById(id).value]));
@@ -342,6 +344,13 @@ function renderEntry(item) {
     portrait.loading = "lazy";
     portrait.decoding = "async";
   }
+  if (item.kind === "weapon" || item.kind === "sidearm") {
+    portrait = element("img", item.kind === "sidearm" ? "equipment-portrait sidearm-portrait" : "equipment-portrait");
+    portrait.src = new URL(item.image, import.meta.url).href;
+    portrait.alt = `${item.name} in Mortal Shell II`;
+    portrait.loading = "lazy";
+    portrait.decoding = "async";
+  }
   heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
   if (item.availabilityWarning) heading.append(element("span", "entry-warning", item.availabilityWarning));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
@@ -381,6 +390,9 @@ function renderEntry(item) {
       appendTarstoneKeywords(extra, item.fixedEffect);
       body.append(extra);
     }
+  }
+  if ((item.kind === "weapon" || item.kind === "sidearm") && item.description) {
+    body.append(element("p", "equipment-description", item.description));
   }
   if (item.kind === "shell") {
     for (const ability of item.signature) {

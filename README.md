@@ -16,7 +16,7 @@ Open http://localhost:8000. Stop the server with Ctrl+C. Open through a server r
 
 Under **Content**, choose **Rotten Autumn DLC only**, **Base game only**, or **Base game + DLC**. This choice stays selected when switching categories. Progress totals follow that content choice. Search, region, type, and completion filters work together.
 
-The guide includes eight playable Shells plus prologue-only Harros, with their signature abilities and Shell Point skill trees; 89 tarstones (77 base-game entries, including Glimpse Stone and Egon's Stone, and 12 DLC stones); 53 beacons (49 standard and four Ghost Beacons); 46 bosses; and 52 dungeons (37 base-game and 15 Rotten Autumn). Ghost Beacon and dungeon checks are independent, even where they describe the same place.
+The guide includes eight playable Shells plus prologue-only Harros, with their signature abilities and Shell Point skill trees; eight primary Weapons; eight Sidearms; 89 tarstones (77 base-game entries, including Glimpse Stone and Egon's Stone, and 12 DLC stones); 53 beacons (49 standard and four Ghost Beacons); 46 bosses; and 52 dungeons (37 base-game and 15 Rotten Autumn). Ghost Beacon and dungeon checks are independent, even where they describe the same place.
 
 Wellspring Stone and Forsaken Vow have checklist entries, but no acquisition route is documented yet. Glimpse Stone and Egon's Stone can be purchased from Merrick as his shop stock expands with progression. Existing saved checks remain intact when new entries are added.
 

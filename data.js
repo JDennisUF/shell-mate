@@ -97,9 +97,119 @@ export const catalog = {
     "tarstone-community-levels": {
       "title": "Community-reported tarstone levels (Reddit)",
       "url": "https://www.reddit.com/r/MortalShell/comments/1xbytpp/new_tarstones_i_found_so_far/"
+    },
+    "weapon-locations": {
+      "title": "AllThingsHow: primary weapon locations",
+      "url": "https://allthings.how/mortal-shell-2-weapon-locations-all-eight-primary-weapons/"
+    },
+    "sidearm-locations": {
+      "title": "PowerPyx: sidearm locations",
+      "url": "https://www.powerpyx.com/mortal-shell-2-all-sidearm-locations/"
+    },
+    "gear-locations": {
+      "title": "GameSpot: weapon and sidearm locations",
+      "url": "https://www.gamespot.com/articles/mortal-shell-2-all-weapon-sidearm-locations/"
     }
   },
   "shells": shellItems,
+  "weapons": [
+    {
+      "id": "weapon-01", "name": "The Iconoclast", "kind": "weapon", "region": "Prologue", "scope": "base", "order": 1,
+      "category": "Light sword", "image": "assets/weapons/iconoclast.webp", "description": "A light sword granted during the prologue.",
+      "steps": ["Continue the prologue and receive Harros; the Iconoclast is added automatically."], "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-02", "name": "Axe & Dagger", "kind": "weapon", "region": "Fainweald", "scope": "base", "order": 2,
+      "category": "Paired weapons", "image": "assets/weapons/axe-and-dagger.webp", "description": "A paired set combining a dagger with an axe.",
+      "nearestBeacon": "Mushroom Village", "nearestBeaconId": "beacon-05", "steps": ["Find the Chapel Key near Mushroom Village.", "Unlock the Shrine of Trials and solve its block puzzles.", "Defeat the Armored Knight in the final room and collect the weapon."],
+      "requirement": "Chapel Key", "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-03", "name": "Veteran’s Battle Axe", "kind": "weapon", "region": "Fainweald", "scope": "base", "order": 3,
+      "category": "Heavy axe", "image": "assets/weapons/veterans-battle-axe.webp", "description": "A heavy battle axe found in The King’s Crypt.",
+      "steps": ["Enter The King’s Crypt in northern Fainweald.", "Work through the dungeon to the final chamber and take the axe from the body or sarcophagus."],
+      "aliases": ["Veteran's Battle Axe"], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-04", "name": "Great Martyr’s Blade", "kind": "weapon", "region": "Fainweald", "scope": "base", "order": 4,
+      "category": "Greatsword", "image": "assets/weapons/great-martyrs-blade.webp", "description": "A heavy blade hidden inside Martyr’s Prison.",
+      "nearestBeacon": "Gloomshade Grove", "nearestBeaconId": "beacon-09", "steps": ["Enter Martyr’s Prison outside the Citadel of Penance.", "Use the coin pouch to reach the prison, clear the corridors, then collect the blade at the end."],
+      "aliases": ["Great Martyr's Blade"], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-05", "name": "Obsidian Hammer", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 5,
+      "category": "Hammer", "image": "assets/weapons/obsidian-hammer.webp", "description": "A hammer awarded for defeating the Prophet of Profane Infinities.",
+      "nearestBeacon": "Outskirts of Mammon", "nearestBeaconId": "beacon-12", "steps": ["Enter the Obsidianite Mines from the quarry west of the Outskirts of Mammon Beacon.", "Reach the Prophet of Profane Infinities at the end of the mines and defeat it."],
+      "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-06", "name": "Axatana", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 6,
+      "category": "Transforming weapon", "image": "assets/weapons/axatana.webp", "description": "A transforming weapon with dual-blade and axe forms.",
+      "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Reach the Forgotten Tower beyond the Bone Gate near Sester’s Gate.", "Open the gated room, defeat the Dagger Sester, and collect the Axatana from the niche."],
+      "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-07", "name": "Black Needle", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 7,
+      "category": "Spear", "image": "assets/weapons/black-needle.webp", "description": "A spear earned by cleansing the Sester’s Gate Beacon.",
+      "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Complete the Sester’s Gate Beacon dungeon and reach the arena encounter.", "Defeat the Twin Sesters and the Stray Sester to receive the Black Needle."],
+      "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    },
+    {
+      "id": "weapon-08", "name": "Clockwork Scythe", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 8,
+      "category": "Scythe", "image": "assets/weapons/clockwork-scythe.webp", "description": "A scythe dropped by Sariel, the Endless.",
+      "nearestBeacon": "The Silent Steps", "nearestBeaconId": "beacon-19", "steps": ["Defeat Sariel near The Silent Steps Beacon, then follow him into the Chamber of Becoming.", "Defeat Sariel again in the dungeon to receive the scythe."],
+      "aliases": [], "sources": ["weapon-locations", "gear-locations"]
+    }
+  ],
+  "sidearms": [
+    {
+      "id": "sidearm-01", "name": "Naylshotte", "kind": "sidearm", "region": "Prologue", "scope": "base", "order": 1,
+      "category": "Shotgun", "image": "assets/weapons/naylshotte.webp", "description": "A close-range sidearm that fires a spread of projectiles.",
+      "steps": ["Received automatically during the prologue."], "aliases": ["Nayleshotte"], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-02", "name": "Forgotten Crossbow", "kind": "sidearm", "region": "Fainweald", "scope": "base", "order": 2,
+      "category": "Crossbow", "image": "assets/weapons/forgotten-crossbow.webp", "description": "A crossbow hidden inside the Flooded Village.",
+      "nearestBeacon": "Blackridge Pass", "nearestBeaconId": "beacon-07", "steps": ["Enter Flooded Village northwest of Blackridge Pass Beacon using the arc to open its boarded entrance.", "After the second elevator, find the Damp Key in a box by a house in the underground village.", "Use the key on the central building and take the crossbow from the table."],
+      "requirement": "Damp Key", "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-03", "name": "Salvaged Trebuchaxe", "kind": "sidearm", "region": "Fainweald", "scope": "base", "order": 3,
+      "category": "Axe launcher", "image": "assets/weapons/salvaged-trebuchaxe.webp", "description": "A sidearm that launches axes.",
+      "nearestBeacon": "Gloomshade Grove", "nearestBeaconId": "beacon-09", "steps": ["Defeat the Bloodcursed Lithopod south of Gloomshade Grove to open the Ravaged Hideout.", "Clear the dungeon and collect the sidearm from a body in the final room."],
+      "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-04", "name": "Troubadour’s Lute", "kind": "sidearm", "region": "Fainweald", "scope": "base", "order": 4,
+      "category": "Instrument", "image": "assets/weapons/troubadours-lute.webp", "description": "A lute that can confuse enemies.",
+      "nearestBeacon": "One Legged Wolf", "nearestBeaconId": "beacon-11", "steps": ["Enter One Legged Wolf Tavern southeast of One Legged Wolf Beacon.", "Pick up the lute from the stage to the left of the performer."],
+      "aliases": ["Troubador’s Lute", "Troubadour's Lute", "Troubador's Lute"], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-05", "name": "Triarch Repeater", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 5,
+      "category": "Repeater", "image": "assets/weapons/triarch-repeater.webp", "description": "A repeating-fire ranged weapon found in Blackwell Cavern.",
+      "nearestBeacon": "Castigator’s Keep", "nearestBeaconId": "beacon-15", "steps": ["Reach Blackwell Cavern below Castigator’s Keep Beacon, near the cliff edge.", "Follow the dungeon route to the first lit area and collect the repeater from the ground."],
+      "aliases": ["Triach Repeater"], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-06", "name": "Ballistazooka", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 6,
+      "category": "Launcher", "image": "assets/weapons/ballistazooka.webp", "description": "A heavy launcher found in Sentry’s Grave.",
+      "nearestBeacon": "Gate of Mammon", "nearestBeaconId": "beacon-18", "steps": ["Enter Sentry’s Grave inside Lonesome Spire, northwest of Gate of Mammon Beacon.", "Defeat the Subjugated Guardian at the end of the dungeon to receive the sidearm."],
+      "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-07", "name": "Cursed Child", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 7,
+      "category": "Living weapon", "image": "assets/weapons/cursed-child.webp", "description": "A sidearm recovered from the Revered Beacon dungeon.",
+      "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Enter Revered Beacon from the ledge northwest of Sester’s Gate Beacon.", "Stay out of the tower’s golden light, circle counterclockwise to the tower, and attack its central pillar.", "Collect Cursed Child after disabling the light."],
+      "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
+    },
+    {
+      "id": "sidearm-08", "name": "Caged Hystrix", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 8,
+      "category": "Repeater", "image": "assets/weapons/caged-hystrix.webp", "description": "A rapid-fire sidearm found in the Chamber of Becoming.",
+      "nearestBeacon": "The Silent Steps", "nearestBeaconId": "beacon-19", "steps": ["Defeat Sariel near The Silent Steps Beacon, then follow him into the Chamber of Becoming.", "In the final room, break all four tombstones and defeat Sariel again.", "Collect the sidearm near the dungeon exit."],
+      "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
+    }
+  ],
   "tarstones": [
     {
       "id": "tar-01",

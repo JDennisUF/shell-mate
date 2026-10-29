@@ -1,6 +1,6 @@
 # Checklist content
 
-The catalog includes 89 tarstones, 53 beacons, 46 bosses, and 52 dungeons: 37 base-game dungeons and 15 Rotten Autumn dungeons. Ghost Beacons and their dungeons are separate checks. Totals count checklist entries.
+The catalog includes eight primary Weapons, eight Sidearms, 89 tarstones, 53 beacons, 46 bosses, and 52 dungeons: 37 base-game dungeons and 15 Rotten Autumn dungeons. Ghost Beacons and their dungeons are separate checks. Totals count checklist entries.
 
 The base-game dungeon routes follow the overworld dungeon list and include the tutorial’s Derelict Hideout. Each dungeon is a separate progress check; Beacon routes link back to their nearest Beacon.
 
