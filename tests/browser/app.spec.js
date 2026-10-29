@@ -193,6 +193,31 @@ test("Shell skill ranks count their lower ranks, show the cap, and survive refre
   await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 3 / 40");
 });
 
+test("Shell tiers align three skills across wide screens and stack them on narrow screens", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("./?page=shells");
+  const proxima = page.locator("#shell-proxima");
+  await proxima.locator(".route > summary").click();
+  const tiers = proxima.locator(".shell-tier");
+  await expect(tiers).toHaveCount(4);
+  for (let index = 0; index < 4; index++) await expect(tiers.nth(index).locator(".shell-skills > .shell-skill")).toHaveCount(3);
+  const firstTier = tiers.first().locator(".shell-skills > .shell-skill");
+  const wide = await Promise.all([0, 1, 2].map(index => firstTier.nth(index).boundingBox()));
+  expect(wide[0].x).toBeLessThan(wide[1].x);
+  expect(wide[1].x).toBeLessThan(wide[2].x);
+  expect(Math.abs(wide[0].y - wide[1].y)).toBeLessThan(1);
+  expect(Math.abs(wide[1].y - wide[2].y)).toBeLessThan(1);
+  const secondTierFirst = await tiers.nth(1).locator(".shell-skills > .shell-skill").first().boundingBox();
+  expect(secondTierFirst.y).toBeGreaterThan(wide[0].y);
+  expect(Math.abs(secondTierFirst.x - wide[0].x)).toBeLessThan(1);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const narrow = await Promise.all([0, 1, 2].map(index => firstTier.nth(index).boundingBox()));
+  expect(Math.abs(narrow[0].x - narrow[1].x)).toBeLessThan(1);
+  expect(Math.abs(narrow[1].x - narrow[2].x)).toBeLessThan(1);
+  expect(narrow[0].y).toBeLessThan(narrow[1].y);
+  expect(narrow[1].y).toBeLessThan(narrow[2].y);
+});
+
 test("direct and repeated links work under the repository path", async ({ page }) => {
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));
