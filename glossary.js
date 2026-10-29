@@ -19,7 +19,7 @@ export const glossary = [
   { id: "phantom", term: "Phantom", group: "Conditions", definition: "Stores splash and Stagger Damage, then releases the accumulated damage when the effect expires." },
   { id: "poison", term: "Poison", group: "Conditions", definition: "A long lasting effect that deals damage over time." },
   { id: "stasis", term: "Stasis", group: "Conditions", definition: "Slows a target by distorting time. More stacks increase the slowing effect." },
-  { id: "trauma", term: "Trauma", group: "Conditions", definition: "Deals Break Damage over time." },
+  { id: "trauma", term: "Trauma", group: "Conditions", definition: "Deals Break Damage over time, steadily filling the target’s Break meter." },
   { id: "warp", term: "Warp", group: "Conditions", definition: "Increases weapon attack speed as stacks build." },
   { id: "weak", term: "Weak", group: "Conditions", definition: "Reduces the damage dealt by an affected target." }
 ];
