@@ -218,6 +218,27 @@ test("Shell tiers align three skills across wide screens and stack them on narro
   expect(narrow[1].y).toBeLessThan(narrow[2].y);
 });
 
+test("colored terms show definitions on hover and focus, and the glossary lists them all", async ({ page }) => {
+  await page.goto("./?page=shells");
+  const genessa = page.locator("#shell-genessa");
+  await genessa.locator(".route > summary").click();
+  const term = genessa.locator('[data-glossary-id="faithful-doubles"]').first();
+  await term.hover();
+  await expect(page.locator("#glossary-tooltip")).toBeVisible();
+  await expect(page.locator("#glossary-tooltip")).toContainText("perform one weapon attack");
+  await page.mouse.move(0, 0);
+  await term.focus();
+  await expect(page.locator("#glossary-tooltip")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#glossary-tooltip")).toBeHidden();
+  await page.getByRole("link", { name: "open the glossary" }).click();
+  await expect(page).toHaveURL(/glossary\.html$/);
+  await expect(page.locator(".glossary-card")).toHaveCount(22);
+  await expect(page.locator("#term-faithful-doubles")).toContainText("perform one weapon attack");
+  await page.getByRole("link", { name: "Guide" }).click();
+  await expect(page).toHaveURL(/\/shell-mate\/$/);
+});
+
 test("direct and repeated links work under the repository path", async ({ page }) => {
   const errors = [];
   page.on("pageerror", error => errors.push(error.message));

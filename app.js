@@ -2,6 +2,7 @@ import { catalog } from "./data.js";
 import { groups, all, byId, matches, relatedItems, entryFromHash } from "./model.js";
 import { loadProgress, saveProgress, decodeProgress, encodeProgress } from "./storage.js";
 import { tarstoneArtwork } from "./tarstone-art.js";
+import { glossary, glossaryById } from "./glossary.js";
 
 let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
@@ -36,17 +37,67 @@ function element(tag, className, value) {
   if (value !== undefined) node.textContent = value;
   return node;
 }
-const tarstoneKeywords = [
-  ["faithful-doubles", "Faithful Doubles"], ["stray-doubles", "Stray Doubles"],
-  ["critical-damage", "Critical Damage"], ["critical-chance", "Critical Chance"],
-  ["break-damage", "Break Damage"], ["stagger-damage", "Stagger Damage"],
-  ["bloodcurse", "Bloodcurse"], ["perforation", "Perforation"], ["lightning", "Lightning"],
-  ["phantom", "Phantom"], ["fragile", "Fragile"], ["health", "Health"], ["resolve", "Resolve"],
-  ["weak", "Weak"], ["burn", "Burn"], ["warp", "Warp"], ["leech", "Leech"],
-  ["frost", "Frost"], ["stasis", "Stasis"], ["poison", "Poison"], ["curse", "Curse"], ["trauma", "Trauma"]
-];
+const tarstoneKeywords = glossary.map(({ id, term }) => [id, term]);
 const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
 const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
+function glossaryTerm(term, text) {
+  const id = tarstoneKeywordClasses.get(term.toLowerCase());
+  const node = element("span", `tarstone-keyword tarstone-keyword-${id} glossary-term`, text);
+  node.dataset.glossaryId = id;
+  node.tabIndex = 0;
+  node.setAttribute("role", "term");
+  return node;
+}
+const glossaryTooltip = element("div", "glossary-tooltip");
+glossaryTooltip.id = "glossary-tooltip";
+glossaryTooltip.setAttribute("role", "tooltip");
+glossaryTooltip.hidden = true;
+document.body.append(glossaryTooltip);
+let activeGlossaryTerm;
+function hideGlossaryTooltip() {
+  activeGlossaryTerm?.removeAttribute("aria-describedby");
+  activeGlossaryTerm = undefined;
+  glossaryTooltip.hidden = true;
+}
+function positionGlossaryTooltip() {
+  if (!activeGlossaryTerm) return;
+  if (!activeGlossaryTerm.isConnected) { hideGlossaryTooltip(); return; }
+  const rect = activeGlossaryTerm.getBoundingClientRect();
+  const left = Math.max(12, Math.min(rect.left, window.innerWidth - glossaryTooltip.offsetWidth - 12));
+  let top = rect.bottom + 9;
+  if (top + glossaryTooltip.offsetHeight > window.innerHeight - 12) top = rect.top - glossaryTooltip.offsetHeight - 9;
+  glossaryTooltip.style.left = `${left}px`;
+  glossaryTooltip.style.top = `${Math.max(12, top)}px`;
+}
+function showGlossaryTooltip(term) {
+  if (activeGlossaryTerm === term) return;
+  const entry = glossaryById.get(term.dataset.glossaryId);
+  if (!entry) return;
+  hideGlossaryTooltip();
+  activeGlossaryTerm = term;
+  glossaryTooltip.replaceChildren(element("strong", "glossary-tooltip-term", entry.term), element("p", "", entry.definition));
+  glossaryTooltip.hidden = false;
+  term.setAttribute("aria-describedby", glossaryTooltip.id);
+  positionGlossaryTooltip();
+}
+document.addEventListener("pointerover", event => {
+  const term = event.target.closest?.(".glossary-term");
+  if (term) showGlossaryTooltip(term);
+});
+document.addEventListener("pointerout", event => {
+  const term = event.target.closest?.(".glossary-term");
+  if (term === activeGlossaryTerm && document.activeElement !== term) hideGlossaryTooltip();
+});
+document.addEventListener("focusin", event => {
+  const term = event.target.closest?.(".glossary-term");
+  if (term) showGlossaryTooltip(term);
+});
+document.addEventListener("focusout", event => {
+  if (event.target === activeGlossaryTerm) hideGlossaryTooltip();
+});
+window.addEventListener("scroll", positionGlossaryTooltip, { passive: true, capture: true });
+window.addEventListener("resize", positionGlossaryTooltip);
+window.addEventListener("keydown", event => { if (event.key === "Escape") hideGlossaryTooltip(); });
 const highlightedNumberPattern = /(?<![\w.])[-+]?\d+(?:\.\d+)?(?:%|s\b)?/gi;
 function appendTarstoneText(target, text) {
   let lastIndex = 0;
@@ -70,10 +121,10 @@ function appendTarstoneKeywords(target, text) {
     const start = sharesKeywordColor ? match.index - value[0].length : match.index;
     if (sharesKeywordColor) {
       appendTarstoneText(target, text.slice(lastIndex, start));
-      target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, text.slice(start, match.index + match[0].length)));
+      target.append(glossaryTerm(match[0], text.slice(start, match.index + match[0].length)));
     } else {
       appendTarstoneText(target, text.slice(lastIndex, match.index));
-      target.append(element("span", `tarstone-keyword tarstone-keyword-${tarstoneKeywordClasses.get(match[0].toLowerCase())}`, match[0]));
+      target.append(glossaryTerm(match[0], match[0]));
     }
     lastIndex = match.index + match[0].length;
   }
@@ -435,7 +486,6 @@ function renderEntry(item) {
       const skillsHeader = element("div", "shell-skills-header");
       skillsHeader.append(element("h3", "", "Shell Point skills"), pointsRow);
       body.append(skillsHeader);
-      body.append(element("p", "shell-skill-note", "Skills are grouped by Bond Tier. Each rank costs its rank number in Shell Points; selecting a rank includes every lower rank."));
       const tiers = element("div", "shell-tiers");
       for (let tier = 1; tier <= 4; tier++) {
         const tierSkills = (item.skillDetails || []).filter(skill => skill.tier === tier);
@@ -640,6 +690,7 @@ function render(urlMethod = "replace") {
   const filtered = filteredItems();
   updateResults();
   const container = document.getElementById("entries");
+  hideGlossaryTooltip();
   container.replaceChildren();
   if (!filtered.length) {
     const message = document.getElementById("scope").value === "rotten-autumn" && active === "bosses"
