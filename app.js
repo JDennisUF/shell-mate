@@ -309,18 +309,32 @@ function renderEntry(item) {
   const name = element("h3", "entry-name", item.name);
   const meta = element("div", "entry-meta", item.region + (item.nearestBeacon ? " · From " + item.nearestBeacon : ""));
   heading.append(name, meta);
+  const clearRankSelections = [];
+  let pointsRow;
   let pointCounter;
+  let resetButton;
   const updatePointCounter = () => {
     if (!pointCounter) return;
     const spent = shellPointsSpent(item.id);
     pointCounter.textContent = `Shell Points: ${spent} / ${item.maxShellPoints}`;
     pointCounter.classList.toggle("over-limit", spent > item.maxShellPoints);
+    resetButton.disabled = spent === 0;
   };
   if (item.kind === "shell" && item.maxShellPoints) {
+    pointsRow = element("div", "shell-points-row");
     pointCounter = element("div", "shell-points");
     pointCounter.setAttribute("aria-live", "polite");
+    resetButton = element("button", "shell-reset", "Reset");
+    resetButton.type = "button";
+    resetButton.setAttribute("aria-label", `Reset ${item.shellName} skill ranks`);
+    resetButton.onclick = () => {
+      delete skillRanks[item.id];
+      clearRankSelections.forEach(clear => clear());
+      updatePointCounter();
+      save();
+    };
     updatePointCounter();
-    heading.append(pointCounter);
+    pointsRow.append(pointCounter, resetButton);
   }
   let portrait;
   if (item.kind === "tarstone") {
@@ -418,7 +432,9 @@ function renderEntry(item) {
       body.append(signature);
     }
     if (item.skills.length) {
-      body.append(element("h3", "", "Shell Point skills"));
+      const skillsHeader = element("div", "shell-skills-header");
+      skillsHeader.append(element("h3", "", "Shell Point skills"), pointsRow);
+      body.append(skillsHeader);
       body.append(element("p", "shell-skill-note", "Skills are grouped by Bond Tier. Each rank costs its rank number in Shell Points; selecting a rank includes every lower rank."));
       const tiers = element("div", "shell-tiers");
       for (let tier = 1; tier <= 4; tier++) {
@@ -429,18 +445,7 @@ function renderEntry(item) {
         const skills = element("ul", "shell-skills");
         for (const skill of tierSkills) {
           const itemNode = element("li", "shell-skill");
-          const skillHead = element("div", "shell-skill-head");
-          skillHead.append(element("h5", "shell-skill-title", skill.name));
-          const select = element("select", "shell-skill-select");
-          select.setAttribute("aria-label", `${item.shellName} ${skill.name} rank`);
-          select.append(new Option("No ranks", "0"));
-          skill.levels.forEach((_, index) => {
-            const rank = index + 1;
-            select.append(new Option(`Rank ${rank} · ${rank * (rank + 1) / 2} pts`, String(rank)));
-          });
-          select.value = String(skillRanks[item.id]?.[skill.name] || 0);
-          skillHead.append(select);
-          itemNode.append(skillHead);
+          itemNode.append(element("h5", "shell-skill-title", skill.name));
           if (skill.description) {
             const description = element("p", "shell-skill-description");
             appendTarstoneKeywords(description, skill.description);
@@ -448,24 +453,45 @@ function renderEntry(item) {
           }
           if (skill.levels?.length) {
             const ranks = element("ol", "shell-skill-ranks");
+            const rankButtons = [];
+            let selectedRank = skillRanks[item.id]?.[skill.name] || 0;
+            const updateRankButtons = () => {
+              rankButtons.forEach((button, index) => {
+                const selected = index < selectedRank;
+                button.setAttribute("aria-pressed", String(selected));
+                button.parentElement.classList.toggle("selected", selected);
+              });
+            };
+            clearRankSelections.push(() => {
+              selectedRank = 0;
+              updateRankButtons();
+            });
             skill.levels.forEach((effect, index) => {
-              const rank = element("li", index < Number(select.value) ? "selected" : "");
-              rank.append(element("strong", "", `Rank ${index + 1}: `));
-              appendTarstoneKeywords(rank, effect);
+              const rankNumber = index + 1;
+              const rank = element("li", index < selectedRank ? "selected" : "");
+              const button = element("button", "shell-rank-button", String(rankNumber));
+              button.type = "button";
+              button.setAttribute("aria-label", `${item.shellName} ${skill.name} rank ${rankNumber}`);
+              button.setAttribute("aria-pressed", String(index < selectedRank));
+              button.title = `Rank ${rankNumber} costs ${rankNumber} Shell ${rankNumber === 1 ? "Point" : "Points"}`;
+              button.onclick = () => {
+                selectedRank = selectedRank === rankNumber ? 0 : rankNumber;
+                if (selectedRank) (skillRanks[item.id] ||= {})[skill.name] = selectedRank;
+                else {
+                  delete skillRanks[item.id]?.[skill.name];
+                  if (skillRanks[item.id] && !Object.keys(skillRanks[item.id]).length) delete skillRanks[item.id];
+                }
+                updateRankButtons();
+                updatePointCounter();
+                save();
+              };
+              rankButtons.push(button);
+              const effectText = element("span", "shell-rank-effect");
+              appendTarstoneKeywords(effectText, effect);
+              rank.append(button, effectText);
               ranks.append(rank);
             });
             itemNode.append(ranks);
-            select.onchange = () => {
-              const selected = Number(select.value);
-              if (selected) (skillRanks[item.id] ||= {})[skill.name] = selected;
-              else {
-                delete skillRanks[item.id]?.[skill.name];
-                if (skillRanks[item.id] && !Object.keys(skillRanks[item.id]).length) delete skillRanks[item.id];
-              }
-              [...ranks.children].forEach((rank, index) => rank.classList.toggle("selected", index < selected));
-              updatePointCounter();
-              save();
-            };
           }
           skills.append(itemNode);
         }

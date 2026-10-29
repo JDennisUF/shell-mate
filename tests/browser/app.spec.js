@@ -153,25 +153,44 @@ test("old backups restore independent dungeon and Ghost Beacon checks", async ({
 
 test("Shell skill ranks count their lower ranks, show the cap, and survive refresh", async ({ page }) => {
   await page.goto("./?page=shells");
+  const tiel = page.locator("#shell-tiel");
+  await tiel.locator(".route > summary").click();
+  const lastingLegacy = tiel.locator(".shell-skill").filter({ hasText: "Lasting Legacy" });
+  await lastingLegacy.getByRole("button", { name: "Tiel Lasting Legacy rank 3" }).click();
+  await expect(lastingLegacy.locator(".shell-skill-ranks li.selected")).toHaveCount(3);
+  await expect(lastingLegacy.getByRole("button", { name: "Tiel Lasting Legacy rank 4" })).toHaveAttribute("aria-pressed", "false");
+  await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 6 / 40");
+  await lastingLegacy.getByRole("button", { name: "Tiel Lasting Legacy rank 3" }).click();
+  await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 0 / 40");
+  await lastingLegacy.getByRole("button", { name: "Tiel Lasting Legacy rank 2" }).click();
+  await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 3 / 40");
   const genessa = page.locator("#shell-genessa");
   await expect(genessa.locator(".shell-points")).toHaveText("Shell Points: 0 / 44");
   await genessa.locator(".route > summary").click();
-  await genessa.getByRole("combobox", { name: "Genessa Augmentation rank" }).selectOption("3");
+  await expect(genessa.locator(".shell-skills-header .shell-points")).toHaveCount(1);
+  await expect(genessa.locator(".shell-skills-header .shell-reset")).toHaveCount(1);
+  await expect(genessa.locator(".entry-heading .shell-points")).toHaveCount(0);
+  await genessa.getByRole("button", { name: "Genessa Augmentation rank 3" }).click();
   await expect(genessa.locator(".shell-points")).toHaveText("Shell Points: 6 / 44");
   await expect(genessa.locator(".shell-skill").first().locator(".selected")).toHaveCount(3);
-  const ranks = genessa.locator(".shell-skill-select");
+  const skills = genessa.locator(".shell-skill");
   for (let index = 1; index < 8; index++) {
-    const select = ranks.nth(index);
-    await select.selectOption(String((await select.locator("option").count()) - 1));
+    await skills.nth(index).locator(".shell-rank-button").last().click();
   }
   await expect(genessa.locator(".shell-points")).toHaveClass(/over-limit/);
   await page.reload();
   await expect(genessa.locator(".shell-points")).toHaveClass(/over-limit/);
   await genessa.locator(".route > summary").click();
-  await expect(genessa.getByRole("combobox", { name: "Genessa Augmentation rank" })).toHaveValue("3");
-  for (let index = 1; index < 8; index++) await ranks.nth(index).selectOption("0");
-  await expect(genessa.locator(".shell-points")).toHaveText("Shell Points: 6 / 44");
+  await expect(genessa.getByRole("button", { name: "Genessa Augmentation rank 3" })).toHaveAttribute("aria-pressed", "true");
+  await genessa.getByRole("button", { name: "Reset Genessa skill ranks" }).click();
+  await expect(genessa.locator(".shell-points")).toHaveText("Shell Points: 0 / 44");
   await expect(genessa.locator(".shell-points")).not.toHaveClass(/over-limit/);
+  await expect(genessa.locator('.shell-rank-button[aria-pressed="true"]')).toHaveCount(0);
+  await expect(genessa.getByRole("button", { name: "Reset Genessa skill ranks" })).toBeDisabled();
+  await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 3 / 40");
+  await page.reload();
+  await expect(genessa.locator(".shell-points")).toHaveText("Shell Points: 0 / 44");
+  await expect(tiel.locator(".shell-points")).toHaveText("Shell Points: 3 / 40");
 });
 
 test("direct and repeated links work under the repository path", async ({ page }) => {
