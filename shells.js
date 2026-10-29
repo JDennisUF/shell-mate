@@ -31,6 +31,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Escalation",
+        "description": "Each level improves Shadow Strike",
         "levels": [
           "Shadow Strike deals 125%",
           "Shadow Strike deals 140%",
@@ -40,6 +41,7 @@ export const shellItems = [
       },
       {
         "name": "Lasting Legacy",
+        "description": "Each level makes Tiel stay Shadowed for longer",
         "levels": [
           "Tiel gains 2 additional Shadow stacks from his abilities",
           "Tiel gains 3 additional Shadow stacks from his abilities",
@@ -50,6 +52,7 @@ export const shellItems = [
       },
       {
         "name": "Plague Bearer",
+        "description": "Each level makes Tiel stay Shadowed for longer",
         "levels": [
           "Tiel has +50% Poison mitigation",
           "Tiel has Poison immunity",
@@ -59,6 +62,7 @@ export const shellItems = [
       },
       {
         "name": "Deathmark",
+        "description": "Each level improves Shadow Strike",
         "levels": [
           "Shadow Strike has +23% Critical Hit chance",
           "Shadow Strike deals 120% Critical damage",
@@ -68,6 +72,7 @@ export const shellItems = [
       },
       {
         "name": "Nightstride",
+        "description": "Each level improves Shadow Dash",
         "levels": [
           "Shadow Dash activation window increased by 20%",
           "Shadow Dash deals 300% Stagger Damage",
@@ -78,6 +83,7 @@ export const shellItems = [
       },
       {
         "name": "Poison Burst",
+        "description": "Shadow Strike detonates all Poison stacks on the struck target",
         "levels": [
           "Each detonated Poison stack deals 4 damage",
           "Each detonated Poison stack deals 6 damage",
@@ -87,6 +93,7 @@ export const shellItems = [
       },
       {
         "name": "Lethality",
+        "description": "When killing an enemy with a Shadow Strike",
         "levels": [
           "Tiel restores 10 Resolve",
           "Tiel restores 20 Resolve",
@@ -96,6 +103,7 @@ export const shellItems = [
       },
       {
         "name": "Shadow Stalk",
+        "description": "Shadow Strike damage increases the longer Tiel stays Shadowed",
         "levels": [
           "Shadow Strike deals 2 more damage for every 0.5s spent while Shadowed",
           "Shadow Strike deals 3 more damage for every 0.5s spent while Shadowed",
@@ -105,6 +113,7 @@ export const shellItems = [
       },
       {
         "name": "Ambush",
+        "description": "When striking enemies from behind:",
         "levels": [
           "Tiel deals 150% damage",
           "Tiel has +25% Critical Hit chance",
@@ -114,6 +123,7 @@ export const shellItems = [
       },
       {
         "name": "Critical Role",
+        "description": "Each level improves Tiel attacks",
         "levels": [
           "After a Shadow Strike, the next melee attack strikes Critically",
           "After a Shadow Strike, the next ranged attack strikes Critically",
@@ -123,6 +133,7 @@ export const shellItems = [
       },
       {
         "name": "Shadow Clone",
+        "description": "Each level improves Shadow Dash",
         "levels": [
           "Shadow Dash leaves behind a Shadow Clone that inflicts 2 Poison stacks to enemies that strike it. The clone can resist up to 3 strikes.",
           "Shadow Dash leaves behind a Shadow Clone that inflicts 2 Poison stacks to enemies that strike it. The clone can resist up to 5 strikes.",
@@ -132,6 +143,7 @@ export const shellItems = [
       },
       {
         "name": "Seal Affinity",
+        "description": "Each level grants Tiel various Seals improvements",
         "levels": [
           "A field Guard, Parry or Harden grant Tiel 3 Shadow stacks",
           "A Perfect Guard, successful Parry or Perfect Harden deal 120% Break Damage",
@@ -172,6 +184,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Attunement",
+        "description": "Each level reduces the Resolve cost of Biosampler.",
         "levels": [
           "Biosampler costs 20% less Resolve",
           "Biosampler costs 30% less Resolve",
@@ -181,6 +194,7 @@ export const shellItems = [
       },
       {
         "name": "Exoshell",
+        "description": "Each level improves Proxima's Grafted Armor.",
         "levels": [
           "Prima has +100% mitigation chance while using Biosampler",
           "Proxima has 25% mitigation chance while aiming",
@@ -191,6 +205,7 @@ export const shellItems = [
       },
       {
         "name": "Ampereon",
+        "description": "Each level grants a new effect against Lightning.",
         "levels": [
           "Proxima has +50% Lightning migration",
           "Proxima has Lightning immunity",
@@ -200,6 +215,7 @@ export const shellItems = [
       },
       {
         "name": "Biohazard",
+        "description": "Each level improves Proxima's Biosampler.",
         "levels": [
           "Biosampler deals 15% more damage",
           "Biosampler inflicts 3 additional Lightning stacks",
@@ -210,6 +226,7 @@ export const shellItems = [
       },
       {
         "name": "Reflection",
+        "description": "Each level improves Proxima's Grafted Armor.",
         "levels": [
           "Projectiles have 15% chance to cause no damage to Proxima",
           "Projectiles have 35% chance to cause no damage to Proxima",
@@ -219,6 +236,7 @@ export const shellItems = [
       },
       {
         "name": "Biohunter",
+        "description": "Proxima has permanent damage increase against enemies she Biosamples",
         "levels": [
           "Proxima has 0.5% permanent damage increase per sample, up to 15%",
           "Proxima has 0.8% permanent damage increase per sample, up to 20%",
@@ -228,6 +246,7 @@ export const shellItems = [
       },
       {
         "name": "Seizure",
+        "description": "When Biosampler launches onto an enemy:",
         "levels": [
           "Biosampler inflicts 20 Stasis stacks",
           "Biosampler deals 50 splash damage and 100 Stagger Damage",
@@ -237,6 +256,7 @@ export const shellItems = [
       },
       {
         "name": "Shellshock",
+        "description": "Whenever Grafted Armor mitigates damage:",
         "levels": [
           "Proxima gains 10 Resolve",
           "Proxima gains 15 Resolve",
@@ -246,6 +266,7 @@ export const shellItems = [
       },
       {
         "name": "Collector",
+        "description": "Proxima can harvest Specimens from slain foes",
         "levels": [
           "Proxima has 20% chance to harvest a Specimen",
           "Proxima has 40% chance to harvest a Specimen",
@@ -255,6 +276,7 @@ export const shellItems = [
       },
       {
         "name": "Discharge",
+        "description": "Each level improves Proxima's Biosampler",
         "levels": [
           "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 6s",
           "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 9s"
@@ -263,6 +285,7 @@ export const shellItems = [
       },
       {
         "name": "Fortress",
+        "description": "Each level improves Proxima's Grafted Armor",
         "levels": [
           "Mitigated damage effectiveness increased by 110%",
           "Mitigated damage effectiveness increased by 115%",
@@ -273,6 +296,7 @@ export const shellItems = [
       },
       {
         "name": "Energize",
+        "description": "When reviving Proxima",
         "levels": [
           "Grafted Armor always mitigates damage for 8s",
           "Proxima releases a shockwave that inflicts 15 Lightning stacks",
@@ -313,6 +337,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Augmentation",
+        "description": "Each level improves Faithful Doubles",
         "levels": [
           "Faithful Doubles cost 15% less Resolve to summon",
           "Faithful Doubles cost 25% less Resolve to summon",
@@ -322,6 +347,7 @@ export const shellItems = [
       },
       {
         "name": "Catalyst",
+        "description": "Each level improves Stray Doubles",
         "levels": [
           "Stray Doubles cost 15% less Resolve to summon",
           "Stray Doubles cost 25% less Resolve to summon",
@@ -331,6 +357,7 @@ export const shellItems = [
       },
       {
         "name": "Timeless",
+        "description": "Each level grants a new effect against Stasis",
         "levels": [
           "Genessa has 50% Stasis mitigation",
           "Genessa has Stasis immunity",
@@ -340,6 +367,7 @@ export const shellItems = [
       },
       {
         "name": "Affinity",
+        "description": "Each level improves Faithful Doubles",
         "levels": [
           "Faithful Doubles deal 130% damage",
           "Faithful Doubles attack 2 times before vanishing",
@@ -350,6 +378,7 @@ export const shellItems = [
       },
       {
         "name": "Instigation",
+        "description": "Each level improves Genessa's Doubles",
         "levels": [
           "Faithful Doubles are summoned with 10 Warp stacks",
           "Faithful Doubles inflict 4 Phantom stacks",
@@ -360,6 +389,7 @@ export const shellItems = [
       },
       {
         "name": "Intangible",
+        "description": "When Genessa's Health is depleted:",
         "levels": [
           "Genessa summons 2 last Faithful Doubles",
           "Genessa summons 3 last Faithful Doubles",
@@ -369,6 +399,7 @@ export const shellItems = [
       },
       {
         "name": "Distraction",
+        "description": "Each level improves Faithful Doubles",
         "levels": [
           "Faithful Doubles have 50% chance to be attacked by enemies",
           "Faithful Doubles struck by enemies burst into a shockwave that inflicts 80% Stasis stacks",
@@ -378,6 +409,7 @@ export const shellItems = [
       },
       {
         "name": "Communion",
+        "description": "Each level improves Stray Doubles",
         "levels": [
           "Stray Doubles deal 150% melee damage",
           "Stray Doubles deal 200% melee damage",
@@ -388,6 +420,7 @@ export const shellItems = [
       },
       {
         "name": "Alteration",
+        "description": "Sester Genessa is no more and becomes Stray by default",
         "levels": [
           "Duration of Stray Doubles increased by 3s",
           "Duration of Stray Doubles increased by 5s",
@@ -397,6 +430,7 @@ export const shellItems = [
       },
       {
         "name": "Impetus",
+        "description": "Each level improves Faithful Doubles",
         "levels": [
           "Faithful Doubles have 15% chance to perform any equipped Weapon Ability",
           "Faithful Doubles have 20% chance to perform any equipped Weapon Ability",
@@ -406,6 +440,7 @@ export const shellItems = [
       },
       {
         "name": "Causality",
+        "description": "Each level improves Stray Doubles",
         "levels": [
           "Melee Stray Doubles have 25% chance to apply any equipped Weapon Infusion",
           "Melee Stray Doubles have 25% chance to apply any equipped Sidearm Infusion",
@@ -416,6 +451,7 @@ export const shellItems = [
       },
       {
         "name": "Mirage",
+        "description": "Each level improves Stray Doubles",
         "levels": [
           "Stray Doubles protect Stray Genessa from a single fatal blow",
           "Stray Genessa can summon an additional Stray Double",
@@ -456,6 +492,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Worthy Armor",
+        "description": "Each level reduces the Resolve cost of Lazlo's Retribution",
         "levels": [
           "Retribution costs 20% less Resolve",
           "Retribution costs 30% less Resolve",
@@ -465,6 +502,7 @@ export const shellItems = [
       },
       {
         "name": "Warmed Up",
+        "description": "Lazlo gets stronger as the Heat Meter increases",
         "levels": [
           "Lazlo deals up to 30% more damage",
           "Lazlo gains up to 35% more Resolve from melee attacks",
@@ -474,6 +512,7 @@ export const shellItems = [
       },
       {
         "name": "Inner Fire",
+        "description": "Each level grants Lazlo a new effect against Burn",
         "levels": [
           "Lazlo has 50% Burn mitigation",
           "Lazlo has Burn damage immunity",
@@ -483,6 +522,7 @@ export const shellItems = [
       },
       {
         "name": "Temperament",
+        "description": "Each level improves Lazlo's Retribution",
         "levels": [
           "Unleashed shockwaves deal 130% damage",
           "Unleashed shockwaves deal 160% damage",
@@ -493,6 +533,7 @@ export const shellItems = [
       },
       {
         "name": "Adaptation",
+        "description": "Each level reduces Lazlo's Armor cooldown duration",
         "levels": [
           "Armor cooldown reduced by 2s",
           "Armor cooldown reduced by 3s",
@@ -502,6 +543,7 @@ export const shellItems = [
       },
       {
         "name": "Incandescence",
+        "description": "When Lazlo's Armor comes off cooldown:",
         "levels": [
           "Lazlo's Heat Meter fills by 20%",
           "Lazlo's Heat Meter fills by 35%",
@@ -511,6 +553,7 @@ export const shellItems = [
       },
       {
         "name": "Breaker",
+        "description": "Each level improves Lazlo's Retribution",
         "levels": [
           "Unleashed shockwaves deal 15 Break Damage",
           "Unleashed shockwaves deal 20 Break Damage",
@@ -520,6 +563,7 @@ export const shellItems = [
       },
       {
         "name": "Furnace",
+        "description": "As long as Lazlo's Heat Meter is full:",
         "levels": [
           "Enemies suffer from 2 Burn stacks when striking Lazlo",
           "Damage reduction increases by +10%",
@@ -529,6 +573,7 @@ export const shellItems = [
       },
       {
         "name": "Detonation",
+        "description": "When Lazlo is severed from the Harbinger:",
         "levels": [
           "Lazlo's Armor unleashes one last shockwave that deals 120 damage",
           "The shockwave ignites the ground for 12s",
@@ -538,6 +583,7 @@ export const shellItems = [
       },
       {
         "name": "Inflamed",
+        "description": "Each level improves Lazlo's Retribution",
         "levels": [
           "Heat Meter no longer drains over time",
           "Overheated shockwaves no longer consume Resolve and inflict 10 Burn stacks",
@@ -548,6 +594,7 @@ export const shellItems = [
       },
       {
         "name": "Rekindle",
+        "description": "Lazlo's Heat Meter :",
         "levels": [
           "Restores 1 Health every 1s as it drains",
           "Restores 1 Resolve every 1s as it drains",
@@ -557,6 +604,7 @@ export const shellItems = [
       },
       {
         "name": "Rush",
+        "description": "When Lazlo's Armor goes on cooldown:",
         "levels": [
           "Lazlo gains 10 Warp stacks",
           "Lazlo gains 20 Warp stacks",
@@ -598,6 +646,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Novertime",
+        "description": "Each level improves Smert's Miracle",
         "levels": [
           "Miracle lasts 3s longer before going into Overtime",
           "Smert takes -20% the damage while in Overtime",
@@ -608,6 +657,7 @@ export const shellItems = [
       },
       {
         "name": "Devotion",
+        "description": "Each level improves Smert's Deadly Revelation",
         "levels": [
           "Faith regenerates 120% the Resolve",
           "Faith regenerates 130% the Resolve",
@@ -617,6 +667,7 @@ export const shellItems = [
       },
       {
         "name": "Absolution",
+        "description": "Each level grants a new effect against negative conditions",
         "levels": [
           "Smert has 15% mitigation against Poison, Burn, Lightning and Frost",
           "Smert's mitigation of negative conditions is increased by 40% while Faithful",
@@ -627,6 +678,7 @@ export const shellItems = [
       },
       {
         "name": "Striker",
+        "description": "Each level improves Smert's Miracle",
         "levels": [
           "Fists inflict +1 Chaos stacks",
           "Fists inflict +2 Chaos stacks",
@@ -636,6 +688,7 @@ export const shellItems = [
       },
       {
         "name": "Fervor",
+        "description": "Each level improves Smert's Deadly Revelation",
         "levels": [
           "Smert gains Faith at 20% or lower health",
           "Smert gains Faith at 25% or lower health",
@@ -645,6 +698,7 @@ export const shellItems = [
       },
       {
         "name": "Resilience",
+        "description": "Each level makes Smert more resistant from being severed",
         "levels": [
           "At 10% or lower Health, Smert has 15% chance to negate a fatal blow healing by 5 instead",
           "At 15% or lower Health, Smert has 25% chance to negate a fatal blow healing by 10 instead",
@@ -654,6 +708,7 @@ export const shellItems = [
       },
       {
         "name": "Kicker",
+        "description": "Gain access to a Kick while in Fight Stance",
         "levels": [
           "Kicks inflict 3 Chaos stacks",
           "Kicks detonate Chaos stacks immediately",
@@ -663,6 +718,7 @@ export const shellItems = [
       },
       {
         "name": "Tenacity",
+        "description": "While Faithful :",
         "levels": [
           "Miracle cost -10% Resolve to activate",
           "Miracle cost -20% Resolve to activate",
@@ -672,6 +728,7 @@ export const shellItems = [
       },
       {
         "name": "Last Vow",
+        "description": "Smert permanently enters his Fight Stance and no longer uses a melee weapon",
         "levels": [
           "Fight Stance attacks deal 20 damage and 15 Stagger Damage",
           "Fight Stance attacks have 15% chance to restore 5 health",
@@ -682,6 +739,7 @@ export const shellItems = [
       },
       {
         "name": "Beatdown",
+        "description": "Gain access to a Ground Punch while in Fight Stance that resumes time immediately",
         "levels": [
           "Ground Punch deals 5 Chaos stacks to all enemies in range",
           "Ground Punch deals 8 Chaos stacks to all enemies in range",
@@ -691,6 +749,7 @@ export const shellItems = [
       },
       {
         "name": "Blessing",
+        "description": "When Faithful :",
         "levels": [
           "Any healing received deals 10 splash damage around Smert",
           "Any healing received deals 15 splash damage around Smert",
@@ -700,6 +759,7 @@ export const shellItems = [
       },
       {
         "name": "Limitless",
+        "description": "While Miracle is active:",
         "levels": [
           "For every 32 Chaos stacks inflicted Smert has 5% chance to replenish Miracle’s duration by 3s",
           "For every 28 Chaos stacks inflicted Smert has 10% chance to replenish Miracle’s duration by 3s",
@@ -740,6 +800,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Alacrity",
+        "description": "Each level reduces the Resolve cost of Eredrim's abilities",
         "levels": [
           "Shoulder Bash charges 20% faster",
           "-20% Shoulder Bash Resolve cost",
@@ -749,6 +810,7 @@ export const shellItems = [
       },
       {
         "name": "Massacre",
+        "description": "Each level improves Executioner",
         "levels": [
           "A Riposte grants 2 Slaughterer stacks",
           "A Riposte grants 3 Slaughterer stacks",
@@ -758,6 +820,7 @@ export const shellItems = [
       },
       {
         "name": "Apathy",
+        "description": "Each level grants a new effect against Frost",
         "levels": [
           "Eredrim has 50% Frost mitigation",
           "Eredrim has Frost immunity",
@@ -767,6 +830,7 @@ export const shellItems = [
       },
       {
         "name": "Anguish",
+        "description": "Each level improves Shoulder Bash",
         "levels": [
           "Shoulder Bash deals 150% damage",
           "Shoulder Bash inflicts 10 Weak stacks",
@@ -776,6 +840,7 @@ export const shellItems = [
       },
       {
         "name": "Tank",
+        "description": "Slaughterer stacks also provide damage reduction",
         "levels": [
           "0.15% damage reduction per stack",
           "0.18% damage reduction per stack",
@@ -785,6 +850,7 @@ export const shellItems = [
       },
       {
         "name": "Consecration",
+        "description": "When Eredrim uses Mether's Pulse :",
         "levels": [
           "Eredrim restores 15 Resolve",
           "Eredrim restores 15 Resolve",
@@ -794,6 +860,7 @@ export const shellItems = [
       },
       {
         "name": "Radiance",
+        "description": "Each level improves Ethereal Diapason",
         "levels": [
           "Ethereal Diapason deals 30 damage, 50 Break Damage to all enemies in range",
           "Ethereal Diapason deals 50 damage, 60 Break Damage to all enemies in range",
@@ -804,6 +871,7 @@ export const shellItems = [
       },
       {
         "name": "Carnage",
+        "description": "Each level improves Executioner",
         "levels": [
           "Executed enemies rupture in a violent burst, spraying blood that deals 50 splash damage",
           "Executed enemies rupture in a violent burst, spraying blood that deals 70 splash damage",
@@ -813,6 +881,7 @@ export const shellItems = [
       },
       {
         "name": "Resonance",
+        "description": "Enemies broken by the Ethereal Diapason:",
         "levels": [
           "Suffer from 5 Stasis stacks that last for 6s",
           "Suffer from 10 Stasis stacks that last for 8s",
@@ -822,6 +891,7 @@ export const shellItems = [
       },
       {
         "name": "Oppression",
+        "description": "Each level improves Shoulder Bash",
         "levels": [
           "Shoulder Bash deals 110% Break Damage",
           "Shoulder Bash deals 120% Break Damage",
@@ -831,6 +901,7 @@ export const shellItems = [
       },
       {
         "name": "Persistence",
+        "description": "Each level improves Executioner",
         "levels": [
           "Only 50% of Slaughterer stacks are removed upon resting",
           "Only 50% of Slaughterer stacks are removed upon being severed",
@@ -841,6 +912,7 @@ export const shellItems = [
       },
       {
         "name": "Seal Affinity",
+        "description": "Each level grants Eredrim various Seals improvements",
         "levels": [
           "Parry window is slightly longer",
           "A Riposte deals +20% damage",
@@ -882,6 +954,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Growth",
+        "description": "Each level improves Exodus of Thorns",
         "levels": [
           "Expelled thorns deal 20% more damage",
           "Expelled thorns deal 40% more damage",
@@ -891,6 +964,7 @@ export const shellItems = [
       },
       {
         "name": "Reaper",
+        "description": "Each level makes easier to cure Sariel's Pain",
         "levels": [
           "Damaging an enemy cures 25% more Pain",
           "Damaging an enemy has 50% chance to cure all Pain",
@@ -900,6 +974,7 @@ export const shellItems = [
       },
       {
         "name": "Scourge",
+        "description": "Each level grants a new effect against Curse",
         "levels": [
           "Sariel has 50% Curse mitigation",
           "Sariel has Curse immunity",
@@ -909,6 +984,7 @@ export const shellItems = [
       },
       {
         "name": "Synthesis",
+        "description": "Each level improves Exodus of Thorns",
         "levels": [
           "Sariel thorns regrow 10% faster",
           "Sariel thorns regrow 20% faster",
@@ -918,6 +994,7 @@ export const shellItems = [
       },
       {
         "name": "Remedy",
+        "description": "When Sariel cures all Pain :",
         "levels": [
           "Sariel generates a shockwave which inflicts 5 Trauma stacks",
           "Sariel generates a shockwave which inflicts 7 Trauma stacks",
@@ -927,6 +1004,7 @@ export const shellItems = [
       },
       {
         "name": "Frailty",
+        "description": "When Sariel has no Pain :",
         "levels": [
           "70% of incoming damage is applied as Pain.",
           "80% of incoming damage is applied as Pain.",
@@ -936,6 +1014,7 @@ export const shellItems = [
       },
       {
         "name": "Torment",
+        "description": "Each level improves Exodus of Thorns",
         "levels": [
           "Thorns deal up to 300% Stagger Damage based on Sariel's Pain amount",
           "Thorns deal up to 200% damage based on Sariel's Pain amount",
@@ -945,6 +1024,7 @@ export const shellItems = [
       },
       {
         "name": "Reversal",
+        "description": "Each level mitigates the negative effects of Pain",
         "levels": [
           "30% of the self-inflicted damage of a Cursed enemy, cures Sariel's Pain",
           "35% of the self-inflicted damage of a Cursed enemy, cures Sariel's Pain",
@@ -955,6 +1035,7 @@ export const shellItems = [
       },
       {
         "name": "Agonize",
+        "description": "As long as Sariel is at max Pain :",
         "levels": [
           "Resolve slowly refills over time up to 30%",
           "Resolve slowly refills over time up to 35%",
@@ -964,6 +1045,7 @@ export const shellItems = [
       },
       {
         "name": "Thornfall",
+        "description": "Sariel releases a burst of thorns into the sky, which then rain down upon the current target",
         "levels": [
           "Expelled thorns deal 5 splash damage on impact",
           "Expelled thorns deal 8 splash damage on impact",
@@ -974,6 +1056,7 @@ export const shellItems = [
       },
       {
         "name": "Restoration",
+        "description": "When Sariel uses Mether's Pulse :",
         "levels": [
           "Sariel cures 30% of Pain",
           "Sariel cures 50% of Pain",
@@ -983,6 +1066,7 @@ export const shellItems = [
       },
       {
         "name": "Affliction",
+        "description": "Damaging a Cursed enemy deals damage to all other cursed enemies",
         "levels": [
           "Other Cursed enemies take up to 30% of the original damage",
           "Other Cursed enemies take up to 40% of the original damage",
@@ -1023,6 +1107,7 @@ export const shellItems = [
     "skillDetails": [
       {
         "name": "Escalation",
+        "description": "Each level improves Staggering Blow",
         "levels": [
           "Staggering Blow deals 150% damage",
           "Staggering Blow deals 165% damage",
@@ -1032,6 +1117,7 @@ export const shellItems = [
       },
       {
         "name": "Bloodthirst",
+        "description": "Each level improves Revered Heart",
         "levels": [
           "Each kill replenishes Revered Heart by an additional 20%",
           "Each kill replenishes Revered Heart by an additional 50%",
@@ -1041,6 +1127,7 @@ export const shellItems = [
       },
       {
         "name": "Heartwork",
+        "description": "Each level grants a new effect against Bloodcurse",
         "levels": [
           "Gragu has 50% Bloodcurse mitigation",
           "Gragu has Bloodcurse immunity",
@@ -1050,6 +1137,7 @@ export const shellItems = [
       },
       {
         "name": "Attunement",
+        "description": "Each level reduces the Resolve cost of Staggering Blow",
         "levels": [
           "Staggering Blow costs 20% less Resolve",
           "Staggering Blow costs 30% less Resolve",
@@ -1059,6 +1147,7 @@ export const shellItems = [
       },
       {
         "name": "Harvest",
+        "description": "Each level improves Revered Heart",
         "levels": [
           "Revered Heart restores 15 additional Health",
           "Revered Heart can be used up to 4 times",
@@ -1069,6 +1158,7 @@ export const shellItems = [
       },
       {
         "name": "Maniac",
+        "description": "Melee attacks deal more damage against enemies Gragu has never killed before",
         "levels": [
           "Melee attacks deal 120% damage",
           "Melee attacks deal 130% damage",
@@ -1078,6 +1168,7 @@ export const shellItems = [
       },
       {
         "name": "Anger",
+        "description": "Each level improves Staggering Blow",
         "levels": [
           "Staggering Blow inflicts 5 Weak stacks",
           "Staggering Blow inflicts 5 Fragile stacks",
@@ -1087,6 +1178,7 @@ export const shellItems = [
       },
       {
         "name": "Bloodlust",
+        "description": "When Gragu uses Revered Heart :",
         "levels": [
           "Gragu's next melee attack deals 200% damage",
           "Gragu has 50% chance to cure all negative conditions",
@@ -1096,6 +1188,7 @@ export const shellItems = [
       },
       {
         "name": "Devourer",
+        "description": "While Revered Heart power is full:",
         "levels": [
           "Gragu kills grant 15% additional Gloom",
           "Gragu kills grant 15 additional Resolve",
@@ -1105,6 +1198,7 @@ export const shellItems = [
       },
       {
         "name": "Heartless",
+        "description": "Staggering Blow rips out the victim’s heart when used against small and medium humanoids and:",
         "levels": [
           "Gragu kills them immediately",
           "Gragu restores 15 Health",
@@ -1114,6 +1208,7 @@ export const shellItems = [
       },
       {
         "name": "Hunger",
+        "description": "Each level improves Revered Heart",
         "levels": [
           "While Revered Heart is depleted, Gragu has +30% Critical Hit chance",
           "While Revered Heart is depleted, Gragu has +40% Critical Hit chance",
@@ -1123,6 +1218,7 @@ export const shellItems = [
       },
       {
         "name": "Fortify",
+        "description": "Each level improves Revered Heart",
         "levels": [
           "Resting at a Beacon replenishes Revered Heart up to 1 uses",
           "Resting at a Beacon replenishes Revered Heart up to 2 uses",

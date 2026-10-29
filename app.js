@@ -413,6 +413,11 @@ function renderEntry(item) {
         for (const skill of tierSkills) {
           const itemNode = element("li", "shell-skill");
           itemNode.append(element("h5", "shell-skill-title", `${skill.name} · ${skill.levels.length} ${skill.levels.length === 1 ? "rank" : "ranks"}`));
+          if (skill.description) {
+            const description = element("p", "shell-skill-description");
+            appendTarstoneKeywords(description, skill.description);
+            itemNode.append(description);
+          }
           if (skill.levels?.length) {
             const ranks = element("ol", "shell-skill-ranks");
             skill.levels.forEach((effect, index) => {
