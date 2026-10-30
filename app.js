@@ -13,7 +13,7 @@ const categoryArtwork = {
   sidearms: "assets/weapons/naylshotte.webp",
   tarstones: "assets/categories/tarstones.png",
   beacons: "assets/categories/beacons.png",
-  bosses: "assets/categories/bosses-red-eyes.png",
+  bosses: "assets/categories/bosses-transparent.png",
   dungeons: "assets/categories/dungeons.png"
 };
 const storage = {
@@ -245,7 +245,12 @@ function renderTabs() {
     icon.src = new URL(categoryArtwork[group.key], import.meta.url).href;
     icon.alt = "";
     icon.setAttribute("aria-hidden", "true");
-    button.prepend(icon, document.createTextNode(" "));
+    if (["shells", "weapons", "sidearms", "tarstones", "beacons", "bosses"].includes(group.key)) {
+      const frame = element("span", "tab-icon category-icon-frame");
+      icon.className = "category-icon";
+      frame.append(icon);
+      button.prepend(frame, document.createTextNode(" "));
+    } else button.prepend(icon, document.createTextNode(" "));
     button.type = "button";
     button.dataset.category = group.key;
     button.setAttribute("aria-current", active === group.key ? "page" : "false");
