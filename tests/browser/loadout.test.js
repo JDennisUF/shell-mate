@@ -63,3 +63,70 @@ test('concise mode shows effect text without stone or type labels and persists',
   await page.getByRole('checkbox', { name: 'Summary' }).uncheck();
   await expect(effects).toContainText('Wounding Stone');
 });
+
+test('weapon and sidearm selections are remembered separately across switches and reloads', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
+  await page.getByRole('button', { name: 'Weapon stones Ability: empty' }).click();
+  await page.getByRole('button', { name: 'Clockwork Shardstone', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
+  await page.getByRole('button', { name: 'Solnir Shard', exact: true }).click();
+  await page.getByRole('button', { name: 'Melee weapon: Clockwork Scythe' }).click();
+  await page.getByRole('button', { name: 'Axatana', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
+  await page.getByRole('button', { name: 'Ballistazooka', exact: true }).click();
+  await page.reload();
+  await page.getByRole('button', { name: 'Melee weapon: Axatana' }).click();
+  await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Weapon stones Ability: Clockwork Shardstone' })).toBeVisible();
+  await page.getByRole('button', { name: 'Sidearm: Ballistazooka' }).click();
+  await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Sidearm stones Ability: Solnir Shard' })).toBeVisible();
+  await page.getByRole('button', { name: 'Clear loadout' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Weapon stones Ability: empty' })).toBeVisible();
+});
+
+test('weapon stone preview shows effects and colored rank details on hover and focus', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Axatana', exact: true }).click();
+  await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
+  const stone = page.getByRole('dialog').getByRole('button', { name: 'Wounding Stone', exact: true });
+  await stone.hover();
+  const preview = page.getByRole('tooltip');
+  await expect(preview).toContainText('Rank 1:');
+  await expect(preview).toContainText('Rank 2:');
+  await expect(preview).toContainText('Rank 3:');
+  await expect(preview.locator('.tarstone-keyword-perforation').first()).toBeVisible();
+  await page.mouse.move(0, 0);
+  await stone.focus();
+  await expect(preview).toBeVisible();
+});
+
+test('sidearm stone preview shows colored effects and ranks on hover and focus', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
+  const stone = page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true });
+  await stone.hover();
+  const preview = page.getByRole('tooltip');
+  await expect(preview).toContainText('Rank 1:');
+  await expect(preview).toContainText('Rank 2:');
+  await expect(preview).toContainText('Rank 3:');
+  await expect(preview.locator('.tarstone-keyword').first()).toBeVisible();
+  await page.mouse.move(0, 0);
+  await stone.focus();
+  await expect(preview).toBeVisible();
+});
+
+test('loadout picker arrows render correctly', async ({ page }) => {
+  await page.goto('loadout.html');
+  const arrow = await page.locator('.picker-trigger').first().evaluate(button => getComputedStyle(button, '::after').content);
+  expect(arrow).toBe('" ▾"');
+});

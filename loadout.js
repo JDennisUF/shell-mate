@@ -6,7 +6,7 @@ const compat = await fetch('./tarstone-compatibility.json').then(r => r.json());
 const norm = s => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
 const lookup = stone => Object.entries(compat).find(([name]) => [stone.name, ...(stone.aliases || [])].some(n => norm(n) === norm(name)))?.[1];
 const slots = ['melee-Abilities','melee-Infusions','melee-Combat','sidearm-Abilities','sidearm-Infusions','sidearm-Combat', ...[1,2,3,4].map(i => `support-${i}`)];
-const defaultState = () => ({ melee: '', sidearm: '', stones: {}, levels: {}, concise: false });
+const defaultState = () => ({ melee: '', sidearm: '', stones: {}, levels: {}, gearStones: { melee: {}, sidearm: {} }, concise: false });
 let state; try { state = { ...defaultState(), ...JSON.parse(localStorage.getItem('shell-mate-loadout') || '{}') }; } catch { state = defaultState(); }
 const save = () => { try { localStorage.setItem('shell-mate-loadout', JSON.stringify(state)); } catch {} };
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
@@ -17,7 +17,29 @@ for (const [key, id] of Object.entries(state.stones)) {
  const category = key.startsWith('support-') ? 'Support' : key.split('-')[1];
  if (!stone || stone.category !== category) delete state.stones[key];
 }
+state.gearStones ||= { melee: {}, sidearm: {} };
+for (const type of ['melee', 'sidearm']) {
+ state.gearStones[type] ||= {};
+ if (state[type] && !state.gearStones[type][state[type]]) rememberGear(type);
+}
 save();
+function rememberGear(type) {
+ if (!state[type]) return;
+ state.gearStones[type][state[type]] = Object.fromEntries(slots.filter(key => key.startsWith(type + '-') && state.stones[key]).map(key => [key, state.stones[key]]));
+}
+function selectGear(type, value, list) {
+ rememberGear(type);
+ state[type] = value;
+ const keys = slots.filter(key => key.startsWith(type + '-'));
+ for (const key of keys) delete state.stones[key];
+ const gear = list.find(item => item.id === value);
+ for (const key of keys) {
+  const id = state.gearStones[type][value]?.[key];
+  const stone = stoneById(id);
+  if (gear && stone && stone.category === key.split('-')[1] && status(stone, type, gear) !== 'no' && !Object.values(state.stones).includes(id)) state.stones[key] = id;
+ }
+ save(); render();
+}
 function status(stone, type, gear) {
   if (type === 'support') return 'compatible';
   const info = lookup(stone);
@@ -37,14 +59,35 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
   const header = el('div', 'picker-header'); header.append(el('h2', '', `Choose ${label}`));
   const close = el('button', 'picker-close', 'Close'); close.type = 'button'; close.addEventListener('click', () => dialog.close()); header.append(close); dialog.append(header);
   const grid = el('div', 'picker-grid');
+  const preview = /^(Weapon|Sidearm) stones /.test(label) ? el('div', 'stone-preview') : null;
+  if (preview) { preview.id = 'stone-picker-preview'; preview.hidden = true; preview.setAttribute('role', 'tooltip'); }
   const empty = el('button', 'picker-option picker-empty', '✕'); empty.type = 'button'; empty.append(el('span', '', 'Empty slot')); empty.addEventListener('click', () => { dialog.close(); onSelect(''); }); grid.append(empty);
   for (const item of items) {
    const option = el('button', 'picker-option' + (selected?.id === item.id ? ' is-selected' : '')); option.type = 'button';
    const img = el('img'); img.src = imageFor(item) || 'assets/categories/tarstones.png'; img.alt = ''; img.loading = 'lazy';
-   option.append(img, el('span', '', item.name)); const note = noteFor(item); if (note) option.append(el('small', '', note));
+   option.append(img, el('span', '', item.name));
+   if (preview) {
+    option.setAttribute('aria-describedby', preview.id);
+    const showPreview = () => {
+     preview.replaceChildren(el('strong', '', item.name));
+     if (item.description) preview.append(effectText(item.description));
+     const levels = item.levelEffects || [];
+     if (levels.length) levels.forEach((effect, index) => {
+      const row = effectText(effect); row.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(row);
+     });
+     else if (item.fixedEffect) preview.append(effectText(item.fixedEffect));
+     else if (!item.description) preview.append(effectText('Effect details not yet documented.'));
+     preview.hidden = false;
+    };
+    option.addEventListener('mouseenter', showPreview);
+    option.addEventListener('focus', showPreview);
+    option.addEventListener('mouseleave', () => { if (document.activeElement !== option) preview.hidden = true; });
+    option.addEventListener('blur', () => { preview.hidden = true; });
+   }
+   const note = noteFor(item); if (note) option.append(el('small', '', note));
    option.addEventListener('click', () => { dialog.close(); onSelect(item.id); }); grid.append(option);
   }
-  dialog.append(grid); document.body.append(dialog); dialog.addEventListener('close', () => { dialog.remove(); if (button.isConnected) button.focus(); }); dialog.showModal(); close.focus();
+  dialog.append(grid); if (preview) dialog.append(preview); document.body.append(dialog); dialog.addEventListener('close', () => { dialog.remove(); if (button.isConnected) button.focus(); }); dialog.showModal(); close.focus();
  });
  return button;
 }
@@ -86,7 +129,7 @@ function render() {
   const card = el('div','gear-card'); const gear = list.find(x=>x.id===state[type]);
   if (gear?.image) { const img=el('img','gear-image'); img.src=gear.image; img.alt=''; card.append(img); } else card.append(el('div','gear-placeholder','⚔'));
   const body=el('div','gear-body'); const lab=el('div','slot-label',label);
-  lab.append(picker(label, gear, list, item => item.image, value => {state[type]=value; for(const key of slots.filter(k=>k.startsWith(type+'-'))) { const stone=stoneById(state.stones[key]); if(stone && (!value || status(stone,type,list.find(x=>x.id===value))==='no')) delete state.stones[key]; } save(); render();})); body.append(lab); card.append(body); gearRoot.append(card);
+  lab.append(picker(label, gear, list, item => item.image, value => selectGear(type, value, list))); body.append(lab); card.append(body); gearRoot.append(card);
  }
  const root=document.querySelector('#slots'); root.replaceChildren();
  for (const [type,title] of [['melee','Weapon stones'],['sidearm','Sidearm stones'],['support','Support stones']]) {
@@ -99,7 +142,7 @@ function render() {
    const label=el('div','slot-label',type==='support'?`Support ${key.split('-')[1]}`:category.replace('Infusions','Infusion').replace('Abilities','Ability'));
    const candidates=catalog.tarstones.filter(s=>s.category===category && (!Object.entries(state.stones).some(([k,id])=>k!==key && id===s.id)) && status(s,type,gear)!=='no');
    candidates.sort((a,b)=>a.name.localeCompare(b.name));
-   label.append(picker(`${title} ${label.textContent}`, selected, candidates, item => tarstoneArtwork[item.id], value => {state.stones[key]=value;save();render();}, type!=='support'&&!gear, item => status(item,type,gear)==='unknown' ? 'Compatibility unknown' : '')); row.append(label); section.append(row);
+   label.append(picker(`${title} ${label.textContent}`, selected, candidates, item => tarstoneArtwork[item.id], value => {state.stones[key]=value;if(type !== 'support') rememberGear(type);save();render();}, type!=='support'&&!gear, item => status(item,type,gear)==='unknown' ? 'Compatibility unknown' : '')); row.append(label); section.append(row);
   } root.append(section);
  }
  const effects=document.querySelector('#effects'); effects.replaceChildren(); effects.classList.toggle('is-concise', !!state.concise); document.querySelector('#concise').checked = !!state.concise; let count=0;
