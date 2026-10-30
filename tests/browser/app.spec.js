@@ -16,13 +16,13 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 89");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(4);
-  await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Fragile");
+  await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Support");
   await expect(page.locator(".entry")).toHaveCount(2);
   await page.locator("#tar-egons-stone > .route > summary").click();
   await expect(page.locator("#tar-egons-stone .route-body")).toContainText("Merrick");
   await expect(page.locator('#tar-egons-stone a[href="#beacon-01"]').first()).toBeVisible();
   await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("all");
-  await page.getByLabel("Search guide").fill("Forsaken Vow Stone");
+  await page.getByLabel("Search guide").fill("Forsaken Vow");
   await expect(page.locator(".entry")).toHaveCount(1);
   await page.locator("#tar-ra-forsaken-vow > .route > summary").click();
   await expect(page.locator("#tar-ra-forsaken-vow .route-body")).toContainText("No acquisition route is documented yet");
