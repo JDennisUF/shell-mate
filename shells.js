@@ -219,7 +219,7 @@ export const shellItems = [
         "name": "Biohazard",
         "description": "Each level improves Proxima's Biosampler.",
         "levels": [
-          "Biosampler deals 15% more damage",
+          "Biosampler deals 150% more damage",
           "Biosampler inflicts 3 additional Lightning stacks",
           "Biosampler deals 180% more damage",
           "Biosampler inflicts 5 additional Lightning stacks"
