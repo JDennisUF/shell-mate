@@ -70,14 +70,22 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
     option.setAttribute('aria-describedby', preview.id);
     const showPreview = () => {
      preview.replaceChildren(el('strong', '', item.name));
-     if (item.description) preview.append(effectText(item.description));
+     if (item.description) preview.append(effectText(item.description, true));
      const levels = item.levelEffects || [];
      if (levels.length) levels.forEach((effect, index) => {
-      const row = effectText(effect); row.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(row);
+      const row = effectText(effect, true); row.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(row);
      });
-     else if (item.fixedEffect) preview.append(effectText(item.fixedEffect));
+     else if (item.fixedEffect) preview.append(effectText(item.fixedEffect, true));
      else if (!item.description) preview.append(effectText('Effect details not yet documented.'));
      preview.hidden = false;
+     const rect = option.getBoundingClientRect();
+     const width = preview.offsetWidth;
+     const height = preview.offsetHeight;
+     const left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8));
+     const below = rect.bottom + 8;
+     const top = below + height <= window.innerHeight - 8 ? below : Math.max(8, rect.top - height - 8);
+     preview.style.left = `${left}px`;
+     preview.style.top = `${top}px`;
     };
     option.addEventListener('mouseenter', showPreview);
     option.addEventListener('focus', showPreview);
@@ -87,20 +95,29 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
    const note = noteFor(item); if (note) option.append(el('small', '', note));
    option.addEventListener('click', () => { dialog.close(); onSelect(item.id); }); grid.append(option);
   }
-  dialog.append(grid); if (preview) dialog.append(preview); document.body.append(dialog); dialog.addEventListener('close', () => { dialog.remove(); if (button.isConnected) button.focus(); }); dialog.showModal(); close.focus();
+  dialog.append(grid); if (preview) { dialog.append(preview); dialog.addEventListener('scroll', () => { preview.hidden = true; }); } document.body.append(dialog); dialog.addEventListener('close', () => { dialog.remove(); if (button.isConnected) button.focus(); }); dialog.showModal(); close.focus();
  });
  return button;
 }
 const keywordMap = new Map(glossary.map(item => [item.term.toLowerCase(), item.id]));
 const keywordPattern = new RegExp(`\\b(${[...glossary].sort((a,b) => b.term.length - a.term.length).map(item => item.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join('|')})\\b`, 'gi');
-function effectText(text) {
+function effectText(text, highlightNumbers = false) {
  const p = el('p', 'effect-description'); let last = 0;
+ const appendText = value => {
+  if (!highlightNumbers) { p.append(document.createTextNode(value)); return; }
+  let end = 0;
+  for (const number of value.matchAll(/[+-]?\d+(?:[.,]\d+)*(?:%|\b)/g)) {
+   p.append(document.createTextNode(value.slice(end, number.index)), el('span', 'stone-stat', number[0]));
+   end = number.index + number[0].length;
+  }
+  p.append(document.createTextNode(value.slice(end)));
+ };
  for (const match of text.matchAll(keywordPattern)) {
-  p.append(document.createTextNode(text.slice(last, match.index)));
+  appendText(text.slice(last, match.index));
   p.append(el('span', `tarstone-keyword tarstone-keyword-${keywordMap.get(match[0].toLowerCase())}`, match[0]));
   last = match.index + match[0].length;
  }
- p.append(document.createTextNode(text.slice(last))); return p;
+ appendText(text.slice(last)); return p;
 }
 // Indexes of upgrades that remain distinct at level 3; unspecified stones use only the final upgrade.
 const retainedUpgrades = {
@@ -146,10 +163,13 @@ function render() {
   } root.append(section);
  }
  const effects=document.querySelector('#effects'); effects.replaceChildren(); effects.classList.toggle('is-concise', !!state.concise); document.querySelector('#concise').checked = !!state.concise; let count=0;
- for (const [title, keys] of [['Abilities', ['melee-Abilities', 'sidearm-Abilities']], ['Infusions', ['melee-Infusions', 'sidearm-Infusions']], ['Combat', ['melee-Combat', 'sidearm-Combat']], ['Support', slots.filter(key => key.startsWith('support-'))]]) {
+ const groups = state.concise
+  ? [['Weapon', slots.filter(key => key.startsWith('melee-'))], ['Sidearm', slots.filter(key => key.startsWith('sidearm-'))], ['Support', slots.filter(key => key.startsWith('support-'))]]
+  : [['Abilities', ['melee-Abilities', 'sidearm-Abilities']], ['Infusions', ['melee-Infusions', 'sidearm-Infusions']], ['Combat', ['melee-Combat', 'sidearm-Combat']], ['Support', slots.filter(key => key.startsWith('support-'))]];
+ for (const [title, keys] of groups) {
   const selectedKeys = keys.filter(key => stoneById(state.stones[key]));
   if (!selectedKeys.length) continue;
-  const group = el('section', 'effect-group'); if (!state.concise) group.append(el('h3', 'effect-divider', title)); effects.append(group);
+  const group = el('section', 'effect-group'); group.append(el('h3', 'effect-divider', title)); effects.append(group);
  for(const key of selectedKeys) { const stone=stoneById(state.stones[key]); count++; const card=el('article','effect-card');
   if (!state.concise) {
    if (!key.startsWith('support')) card.append(el('p','effect-type',key.startsWith('melee')?'Weapon':'Sidearm'));

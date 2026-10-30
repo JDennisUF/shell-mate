@@ -56,7 +56,8 @@ test('concise mode shows effect text without stone or type labels and persists',
   const effects = page.locator('#effects');
   await expect(effects).toContainText('Inflict 7 Perforation stacks per strike');
   await expect(effects).not.toContainText('Wounding Stone');
-  await expect(effects.locator('.effect-divider, .effect-type')).toHaveCount(0);
+  await expect(effects.locator('.effect-divider')).toHaveText(['Weapon']);
+  await expect(effects.locator('.effect-type')).toHaveCount(0);
   await expect(effects.locator('.tarstone-keyword-perforation').first()).toBeVisible();
   await page.reload();
   await expect(page.getByRole('checkbox', { name: 'Summary' })).toBeChecked();
@@ -99,10 +100,15 @@ test('weapon stone preview shows effects and colored rank details on hover and f
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Wounding Stone', exact: true });
   await stone.hover();
   const preview = page.getByRole('tooltip');
+  const stoneBox = await stone.boundingBox();
+  const previewBox = await preview.boundingBox();
+  expect(Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y))).toBeLessThanOrEqual(9);
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');
   await expect(preview.locator('.tarstone-keyword-perforation').first()).toBeVisible();
+  await expect(preview.locator('.stone-stat').filter({ hasText: '7' }).first()).toBeVisible();
+  expect(await preview.locator('.stone-stat').first().evaluate(node => getComputedStyle(node).color)).toBe('rgb(255, 225, 107)');
   await page.mouse.move(0, 0);
   await stone.focus();
   await expect(preview).toBeVisible();
@@ -116,6 +122,9 @@ test('sidearm stone preview shows colored effects and ranks on hover and focus',
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true });
   await stone.hover();
   const preview = page.getByRole('tooltip');
+  const stoneBox = await stone.boundingBox();
+  const previewBox = await preview.boundingBox();
+  expect(Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y))).toBeLessThanOrEqual(9);
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');
@@ -129,4 +138,27 @@ test('loadout picker arrows render correctly', async ({ page }) => {
   await page.goto('loadout.html');
   const arrow = await page.locator('.picker-trigger').first().evaluate(button => getComputedStyle(button, '::after').content);
   expect(arrow).toBe('" ▾"');
+});
+
+
+test('summary groups selected effects by weapon, sidearm and support', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Axatana', exact: true }).click();
+  await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
+  await page.getByRole('button', { name: 'Wounding Stone', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
+  await page.getByRole('button', { name: 'Solnir Shard', exact: true }).click();
+  await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  await page.getByRole('button', { name: 'Auspicious Stone', exact: true }).click();
+  await page.getByRole('checkbox', { name: 'Summary' }).check();
+  const groups = page.locator('#effects .effect-group');
+  await expect(groups.locator('.effect-divider')).toHaveText(['Weapon', 'Sidearm', 'Support']);
+  await expect(groups.nth(0)).toContainText('Perforation');
+  await expect(groups.nth(1)).toContainText('120 splash damage');
+  await expect(groups.nth(2)).toContainText('Critical Chance');
+  await page.reload();
+  await expect(page.locator('#effects .effect-divider')).toHaveText(['Weapon', 'Sidearm', 'Support']);
 });
