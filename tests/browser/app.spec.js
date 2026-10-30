@@ -292,3 +292,14 @@ for (const width of [320, 390, 1280]) {
     await page.screenshot({ path: "test-results/layout-" + width + ".png", fullPage: true });
   });
 }
+
+test('loadout tab follows Dungeons and opens the loadout page', async ({ page }) => {
+  await page.goto('./');
+  const tabs = page.locator('#tabs');
+  const link = tabs.getByRole('link', { name: 'Loadout' });
+  await expect(link.locator('img')).toHaveAttribute('src', /assets\/tarstones\/unknown-placeholder\.webp$/);
+  await expect.poll(() => link.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  await expect(tabs.locator('[data-category="dungeons"] + [data-category="loadout"]')).toBeVisible();
+  await link.click();
+  await expect(page).toHaveURL(/\/loadout\.html$/);
+});
