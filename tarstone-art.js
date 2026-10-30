@@ -76,5 +76,6 @@ export const tarstoneArtwork = {
   "tar-72": "assets/tarstones/tar-72.webp",
   "tar-73": "assets/tarstones/tar-73.webp",
   "tar-74": "assets/tarstones/tar-74.webp",
-  "tar-75": "assets/tarstones/tar-75.webp"
+  "tar-75": "assets/tarstones/tar-75.webp",
+  "tar-ra-channelers-stone": "assets/tarstones/tar-ra-channelers-stone.webp"
 };

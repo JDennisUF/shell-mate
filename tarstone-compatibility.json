@@ -1,0 +1,490 @@
+{
+  "Wounding Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Grudge Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Duality Stone": {
+    "slot": "melee",
+    "fits": [
+      "Axe & Dagger",
+      "Axatana"
+    ]
+  },
+  "Unyielding Stone": {
+    "slot": "melee",
+    "fits": [
+      "Axe & Dagger",
+      "Black Needle",
+      "The Iconoclast"
+    ]
+  },
+  "Parasitic Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Thief's Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Stillblade's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade",
+      "Black Needle",
+      "Clockwork Scythe",
+      "Obsidian Hammer",
+      "The Iconoclast",
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Zealot's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade",
+      "Black Needle",
+      "Clockwork Scythe",
+      "Obsidian Hammer",
+      "The Iconoclast",
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Clerik's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade",
+      "Black Needle",
+      "Clockwork Scythe",
+      "Obsidian Hammer",
+      "The Iconoclast",
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Tyrant's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade",
+      "Black Needle",
+      "Clockwork Scythe",
+      "Obsidian Hammer",
+      "The Iconoclast",
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Arbiter's Prize": {
+    "slot": "melee",
+    "fits": [
+      "Axe & Dagger",
+      "The Iconoclast",
+      "Clockwork Scythe"
+    ]
+  },
+  "Serpent Stone": {
+    "slot": "melee",
+    "fits": [
+      "Axe & Dagger",
+      "Black Needle"
+    ]
+  },
+  "Voltaic Crown": {
+    "slot": "melee",
+    "fits": [
+      "Clockwork Scythe",
+      "Great Martyr's Blade",
+      "Axatana"
+    ]
+  },
+  "Warden's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade"
+    ]
+  },
+  "Curseblood Stone": {
+    "slot": "melee",
+    "fits": [
+      "The Iconoclast",
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Nightgrasp Stone": {
+    "slot": "melee",
+    "fits": [
+      "Black Needle"
+    ]
+  },
+  "Torpor Stone": {
+    "slot": "melee",
+    "fits": [
+      "Obsidian Hammer",
+      "Axatana"
+    ]
+  },
+  "Wretchcaller's Stone": {
+    "slot": "melee",
+    "fits": [
+      "Obsidian Hammer"
+    ]
+  },
+  "Inflamed Clawstone": {
+    "slot": "melee",
+    "fits": [
+      "Veteran's Battle Axe"
+    ]
+  },
+  "Acolyte's Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Unwieldy Stone": {
+    "slot": "melee",
+    "fits": []
+  },
+  "Magdalena's Memento": {
+    "slot": "melee",
+    "fits": [
+      "Axe & Dagger"
+    ]
+  },
+  "Captive's Scabstone": {
+    "slot": "melee",
+    "fits": [
+      "Great Martyr's Blade"
+    ]
+  },
+  "Conqueror's Reward": {
+    "slot": "melee",
+    "fits": [
+      "Black Needle"
+    ]
+  },
+  "Infused Stone": {
+    "slot": "melee",
+    "fits": [
+      "Black Needle"
+    ]
+  },
+  "Shrike Stone": {
+    "slot": "melee",
+    "fits": [
+      "The Iconoclast",
+      "Axatana"
+    ]
+  },
+  "Colossus Stone": {
+    "slot": "melee",
+    "fits": [
+      "Obsidian Hammer"
+    ]
+  },
+  "Lost Clotstone": {
+    "slot": "melee",
+    "fits": [
+      "Veteran's Battle Axe",
+      "Obsidian Hammer"
+    ]
+  },
+  "Scholar's Wormstone": {
+    "slot": "melee",
+    "fits": [
+      "Clockwork Scythe"
+    ]
+  },
+  "Clockwork Shardstone": {
+    "slot": "melee",
+    "fits": [
+      "Clockwork Scythe"
+    ]
+  },
+  "Hexapod Core": {
+    "slot": "melee",
+    "fits": [
+      "Axatana"
+    ]
+  },
+  "Enfeebling Stone": {
+    "slot": "sidearm",
+    "fits": []
+  },
+  "Shuddering Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Salvaged Trebuchaxe",
+      "Ballistazooka",
+      "Troubadour's Lute"
+    ]
+  },
+  "Pulse Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Salvaged Trebuchaxe",
+      "Ballistazooka"
+    ]
+  },
+  "Ironpiercer's Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Caged Hystrix",
+      "Salvaged Trebuchaxe",
+      "Naylshotte",
+      "Ballistazooka"
+    ]
+  },
+  "Myriad Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Caged Hystrix"
+    ]
+  },
+  "Splitting Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Caged Hystrix"
+    ]
+  },
+  "Rupturing Stone": {
+    "slot": "sidearm",
+    "fits": []
+  },
+  "Blackblood Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Naylshotte"
+    ]
+  },
+  "Corroded Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Naylshotte",
+      "Forgotten Crossbow",
+      "Salvaged Trebuchaxe",
+      "Ballistazooka"
+    ]
+  },
+  "Squall Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Salvaged Trebuchaxe"
+    ]
+  },
+  "Charged Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Salvaged Trebuchaxe",
+      "Cursed Child",
+      "Forgotten Crossbow",
+      "Ballistazooka",
+      "Naylshotte"
+    ]
+  },
+  "Unstable Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Caged Hystrix",
+      "Forgotten Crossbow",
+      "Triarch Repeater"
+    ]
+  },
+  "Volatile Fragment": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Caged Hystrix",
+      "Salvaged Trebuchaxe",
+      "Naylshotte",
+      "Ballistazooka",
+      "Troubadour's Lute"
+    ]
+  },
+  "Hag Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Caged Hystrix"
+    ]
+  },
+  "Emberseed Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Naylshotte",
+      "Ballistazooka"
+    ]
+  },
+  "Viletongue Hedron": {
+    "slot": "sidearm",
+    "fits": [
+      "Naylshotte",
+      "Cursed Child"
+    ]
+  },
+  "Voltaic Amber": {
+    "slot": "sidearm",
+    "fits": [
+      "Salvaged Trebuchaxe",
+      "Triarch Repeater"
+    ]
+  },
+  "Frostshard Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Triarch Repeater"
+    ]
+  },
+  "Monarch's Vestige": {
+    "slot": "sidearm",
+    "fits": [
+      "Salvaged Trebuchaxe"
+    ]
+  },
+  "Accursed Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Caged Hystrix",
+      "Cursed Child"
+    ]
+  },
+  "Weeping Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Ballistazooka"
+    ]
+  },
+  "Solnir Shard": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Naylshotte",
+      "Caged Hystrix"
+    ]
+  },
+  "Confessor's Keepsake": {
+    "slot": "sidearm",
+    "fits": [
+      "Forgotten Crossbow",
+      "Naylshotte",
+      "Cursed Child",
+      "Ballistazooka"
+    ]
+  },
+  "Fusillade Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Naylshotte",
+      "Forgotten Crossbow",
+      "Salvaged Trebuchaxe",
+      "Ballistazooka"
+    ]
+  },
+  "Barrage Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Naylshotte",
+      "Forgotten Crossbow"
+    ]
+  },
+  "Tarred Fragment": {
+    "slot": "sidearm",
+    "fits": [
+      "Salvaged Trebuchaxe"
+    ]
+  },
+  "Fulminant Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Ballistazooka"
+    ]
+  },
+  "Strange Remnant": {
+    "slot": "sidearm",
+    "fits": [
+      "Caged Hystrix"
+    ]
+  },
+  "Infested Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Ballistazooka"
+    ]
+  },
+  "Summoning Stone": {
+    "slot": "sidearm",
+    "fits": [
+      "Cursed Child"
+    ]
+  },
+  "Hand of Rock": {
+    "slot": "sidearm",
+    "fits": [
+      "Troubadour's Lute"
+    ]
+  },
+  "Auspicious Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Headsman's Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Devout Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Shattering Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Berserker's Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Marksman's Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Deadeye Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Siegebreaker's Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Spite Stone": {
+    "slot": "support",
+    "fits": []
+  },
+  "Bulwark Stone": {
+    "slot": "support",
+    "fits": null
+  },
+  "Retribution Stone": {
+    "slot": "support",
+    "fits": null
+  },
+  "Gloombound Stone": {
+    "slot": "support",
+    "fits": null
+  },
+  "Guitarstone": { "slot": "support", "fits": [] },
+  "Mourning Bell": { "slot": "support", "fits": [] },
+  "Black Lantern": { "slot": "support", "fits": [] },
+  "Channeler's Stone": { "slot": "support", "fits": [] },
+  "Black Fleece": { "slot": "support", "fits": [] },
+  "Knowledge Stone": { "slot": "support", "fits": [] },
+  "Widowmoon Stone": { "slot": "both", "fits": [] },
+  "Bloodoath Stone": { "slot": "both", "fits": [] },
+  "Justiciar's Stone": {
+    "slot": "support",
+    "fits": null
+  }
+}

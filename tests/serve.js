@@ -1,8 +1,8 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 
-const assets = new Set(["index.html", "glossary.html", "styles.css", "app.js", "glossary-page.js", "glossary.js", "data.js", "model.js", "shells.js", "storage.js", "tarstone-art.js"]);
-const types = { html: "text/html", css: "text/css", js: "text/javascript", jpg: "image/jpeg", png: "image/png", webp: "image/webp" };
+const assets = new Set(["index.html", "glossary.html", "styles.css", "app.js", "glossary-page.js", "glossary.js", "data.js", "model.js", "shells.js", "storage.js", "tarstone-art.js", "loadout.html", "loadout.js", "loadout.css", "tarstone-compatibility.json"]);
+const types = { html: "text/html", css: "text/css", js: "text/javascript", json: "application/json", jpg: "image/jpeg", png: "image/png", webp: "image/webp" };
 
 createServer(async (request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;

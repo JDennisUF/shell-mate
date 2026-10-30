@@ -2430,7 +2430,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Fainweald",
       "order": 76,
-      "category": "Uncategorized",
+      "category": "Support",
       "nearestBeacon": "One Legged Wolf",
       "nearestBeaconId": "beacon-11",
       "steps": [
@@ -2462,7 +2462,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Fainweald",
       "order": 77,
-      "category": "Uncategorized",
+      "category": "Support",
       "nearestBeacon": "Gloomshade Grove",
       "nearestBeaconId": "beacon-09",
       "steps": [
@@ -2494,7 +2494,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Fainweald",
       "order": 78,
-      "category": "Uncategorized",
+      "category": "Combat",
       "nearestBeacon": "Outskirts of Nochte",
       "nearestBeaconId": "beacon-06",
       "steps": [
@@ -2524,7 +2524,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Ruins of Mammon",
       "order": 79,
-      "category": "Uncategorized",
+      "category": "Combat",
       "nearestBeacon": "Gate of Mammon",
       "nearestBeaconId": "beacon-18",
       "steps": [
@@ -2554,7 +2554,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Ruins of Mammon",
       "order": 80,
-      "category": "Uncategorized",
+      "category": "Support",
       "nearestBeacon": "Gate of Mammon",
       "nearestBeaconId": "beacon-18",
       "steps": [
@@ -2584,7 +2584,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Ruins of Mammon",
       "order": 81,
-      "category": "Uncategorized",
+      "category": "Support",
       "nearestBeacon": "The Silent Steps",
       "nearestBeaconId": "beacon-19",
       "steps": [
@@ -2616,7 +2616,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Ruins of Mammon",
       "order": 82,
-      "category": "Uncategorized",
+      "category": "Combat",
       "nearestBeacon": "The Silent Steps",
       "nearestBeaconId": "beacon-19",
       "steps": [
@@ -2648,7 +2648,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Glutted Mire",
       "order": 83,
-      "category": "Uncategorized",
+      "category": "Support",
       "nearestBeacon": "Sunken Village",
       "nearestBeaconId": "beacon-22",
       "steps": [
@@ -2680,7 +2680,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Prisoners’ Domain",
       "order": 84,
-      "category": "Uncategorized",
+      "category": "Combat",
       "nearestBeacon": "Hangman's Scaffold",
       "nearestBeaconId": "beacon-24",
       "steps": [
@@ -2710,7 +2710,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Unspecified",
       "order": 85,
-      "category": "Uncategorized",
+      "category": "Support",
       "steps": [
         "Found in The Forgotten Tower."
       ],
@@ -2732,7 +2732,7 @@ export const catalog = {
       "scope": "base",
       "region": "Marrow Keep",
       "order": 86,
-      "category": "Fragile",
+      "category": "Support",
       "nearestBeacon": "Marrow Keep",
       "nearestBeaconId": "beacon-01",
       "steps": [
@@ -2760,7 +2760,7 @@ export const catalog = {
       "scope": "base",
       "region": "Marrow Keep",
       "order": 87,
-      "category": "Fragile",
+      "category": "Support",
       "nearestBeacon": "Marrow Keep",
       "nearestBeaconId": "beacon-01",
       "steps": [
@@ -2789,7 +2789,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Unspecified",
       "order": 88,
-      "category": "Support",
+      "category": "Unknown",
       "steps": [
         "No acquisition route is documented yet. This entry tracks Wellspring Stone, which continuously regenerates Resolve."
       ],
@@ -2812,7 +2812,7 @@ export const catalog = {
       "scope": "rotten-autumn",
       "region": "Unspecified",
       "order": 89,
-      "category": "Support",
+      "category": "Unknown",
       "steps": [
         "No acquisition route is documented yet. This entry tracks Forsaken Vow, which increases melee damage during Night Mode while disabling your sidearm and Shell ability."
       ],

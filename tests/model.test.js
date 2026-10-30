@@ -61,11 +61,11 @@ test("expanded Tarstone catalog includes missing update stones without duplicate
   assert.equal(new Set(catalog.tarstones.map(item => item.name.toLowerCase())).size, 89);
   assert.equal(new Set(catalog.tarstones.map(item => item.order)).size, 89);
   for (const id of ["tar-glimpse-stone", "tar-egons-stone"]) {
-    assert.ok(matches(byId.get(id), { ...filters, scope: "base", kind: "Fragile" }, {}));
+    assert.ok(matches(byId.get(id), { ...filters, scope: "base", kind: "Support" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, "beacon-01");
   }
   for (const id of ["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]) {
-    assert.ok(matches(byId.get(id), { ...filters, scope: "rotten-autumn", kind: "Support" }, {}));
+    assert.ok(matches(byId.get(id), { ...filters, scope: "rotten-autumn", kind: "Unknown" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, undefined);
     assert.match(byId.get(id).steps[0], /No acquisition route is documented/);
   }
