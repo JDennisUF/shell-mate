@@ -21,6 +21,7 @@ save();
 function status(stone, type, gear) {
   if (type === 'support') return 'compatible';
   const info = lookup(stone);
+  if (info?.slot === 'none') return 'no';
   if (!info || !['melee','sidearm','both'].includes(info.slot)) return 'unknown';
   if (info.slot !== 'both' && info.slot !== type) return 'no';
   if (!info.fits) return 'unknown';

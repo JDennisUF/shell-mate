@@ -2,6 +2,17 @@
 // Main set: https://mortalshelldb.com/tarstones
 // Headman's Stone and Unwieldy Stone: https://ms2db.com/tarstones
 export const tarstoneArtwork = {
+  "tar-glimpse-stone": "assets/tarstones/glimpse-stone.png",
+  "tar-egons-stone": "assets/tarstones/egons-stone.png",
+  "tar-ra-mourning-bell": "assets/tarstones/mourning-bell.png",
+  "tar-ra-knowledge-stone": "assets/tarstones/knowledge-stone.png",
+  "tar-ra-guitarstone": "assets/tarstones/guitarstone.png",
+  "tar-ra-black-lantern": "assets/tarstones/black-lantern.png",
+  "tar-ra-black-fleece": "assets/tarstones/black-fleece.png",
+  "tar-ra-bloodoath-stone": "assets/tarstones/bloodoath-stone.png",
+  "tar-ra-starless-eye": "assets/tarstones/starless-eye.png",
+  "tar-ra-widowmoon-stone": "assets/tarstones/widowmoon-stone.png",
+  "tar-ra-waning-stone": "assets/tarstones/waning-stone.png",
   "tar-01": "assets/tarstones/tar-01.webp",
   "tar-02": "assets/tarstones/tar-02.webp",
   "tar-03": "assets/tarstones/tar-03.webp",

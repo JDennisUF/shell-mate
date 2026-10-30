@@ -483,6 +483,10 @@
   "Knowledge Stone": { "slot": "support", "fits": [] },
   "Widowmoon Stone": { "slot": "both", "fits": [] },
   "Bloodoath Stone": { "slot": "both", "fits": [] },
+  "Waning Stone": { "slot": "sidearm", "fits": [] },
+  "Starless Eye": { "slot": "sidearm", "fits": [] },
+  "Wellspring Stone": { "slot": "none", "fits": [] },
+  "Forsaken Vow": { "slot": "none", "fits": [] },
   "Justiciar's Stone": {
     "slot": "support",
     "fits": null
