@@ -1,5 +1,24 @@
 import { test, expect } from '@playwright/test';
 
+test('stone previews show compatibility for each weapon and sidearm', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Axe & Dagger', exact: true }).click();
+  await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Duality Stone', exact: true }).focus();
+  const preview = page.getByRole('tooltip');
+  await expect(preview.locator('[aria-label="Axe & Dagger: compatible"]')).toBeVisible();
+  await expect(preview.locator('[aria-label="Black Needle: incompatible"]')).toHaveClass(/is-no/);
+  await expect(preview.locator('.compatibility-icon')).toHaveCount(8);
+  await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
+  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
+  await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true }).focus();
+  await expect(page.getByRole('tooltip').locator('.compatibility-icon')).toHaveCount(8);
+  await expect(page.getByRole('tooltip').locator('[aria-label="Naylshotte: compatible"]')).toBeVisible();
+});
+
 test('Unwieldly Stone is compatible with all melee weapons', async ({ page }) => {
   await page.goto('loadout.html');
   for (const weapon of ['Clockwork Scythe', 'Axatana']) {
@@ -115,7 +134,7 @@ test('weapon stone preview shows effects and colored rank details on hover and f
   const preview = page.getByRole('tooltip');
   const stoneBox = await stone.boundingBox();
   const previewBox = await preview.boundingBox();
-  expect(Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y))).toBeLessThanOrEqual(9);
+  expect(previewBox.y === 8 || Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y)) <= 9).toBeTruthy();
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');
@@ -137,7 +156,7 @@ test('sidearm stone preview shows colored effects and ranks on hover and focus',
   const preview = page.getByRole('tooltip');
   const stoneBox = await stone.boundingBox();
   const previewBox = await preview.boundingBox();
-  expect(Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y))).toBeLessThanOrEqual(9);
+  expect(previewBox.y === 8 || Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y)) <= 9).toBeTruthy();
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');

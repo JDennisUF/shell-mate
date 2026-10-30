@@ -70,6 +70,20 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
     option.setAttribute('aria-describedby', preview.id);
     const showPreview = () => {
      preview.replaceChildren(el('strong', '', item.name));
+     const type = label.startsWith('Weapon stones ') ? 'melee' : 'sidearm';
+     const gearList = type === 'melee' ? catalog.weapons : catalog.sidearms;
+     const compatibility = el('div', 'stone-compatibility');
+     compatibility.setAttribute('aria-label', `${type === 'melee' ? 'Weapon' : 'Sidearm'} compatibility`);
+     for (const gear of gearList) {
+      const result = status(item, type, gear);
+      const icon = el('span', `compatibility-icon is-${result}`);
+      const description = `${gear.name}: ${result === 'no' ? 'incompatible' : result === 'unknown' ? 'compatibility unknown' : 'compatible'}`;
+      icon.setAttribute('aria-label', description); icon.title = description;
+      const image = el('img'); image.src = gear.image; image.alt = ''; icon.append(image);
+      if (result === 'unknown') icon.append(el('span', 'compatibility-unknown', '?'));
+      compatibility.append(icon);
+     }
+     preview.append(compatibility);
      if (item.description) preview.append(effectText(item.description, true));
      const levels = item.levelEffects || [];
      if (levels.length) levels.forEach((effect, index) => {
