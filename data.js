@@ -1818,7 +1818,7 @@ export const catalog = {
         "tarstone-list",
         "tarstone-effects"
       ],
-      "aliases": [],
+      "aliases": ["Unwieldy Stone"],
       "relatedIds": [],
       "nearestBeaconId": "beacon-01",
       "levelEffects": [

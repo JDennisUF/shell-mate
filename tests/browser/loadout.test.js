@@ -1,5 +1,18 @@
 import { test, expect } from '@playwright/test';
 
+test('Unwieldly Stone is compatible with all melee weapons', async ({ page }) => {
+  await page.goto('loadout.html');
+  for (const weapon of ['Clockwork Scythe', 'Axatana']) {
+    await page.getByRole('button', { name: /^Melee weapon:/ }).click();
+    await page.getByRole('button', { name: weapon, exact: true }).click();
+    await page.getByRole('button', { name: 'Weapon stones Ability: empty' }).click();
+    const stone = page.getByRole('dialog').getByRole('button', { name: /Unwieldly Stone/ });
+    await expect(stone).toBeVisible();
+    await expect(stone).not.toContainText('Compatibility unknown');
+    await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
+  }
+});
+
 test('Clockwork Shardstone is available in the Clockwork Scythe ability slot only', async ({ page }) => {
   await page.goto('loadout.html');
   await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
