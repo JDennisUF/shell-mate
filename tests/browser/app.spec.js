@@ -230,7 +230,7 @@ test("colored terms show definitions on hover and focus, and the glossary lists 
   await expect(page.locator("#glossary-tooltip")).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page.locator("#glossary-tooltip")).toBeHidden();
-  await page.getByRole("link", { name: "open the glossary" }).click();
+  await page.getByRole("link", { name: "Open glossary" }).click();
   await expect(page).toHaveURL(/glossary\.html$/);
   await expect(page.locator(".glossary-card")).toHaveCount(22);
   await expect(page.locator("#term-faithful-doubles")).toContainText("perform one weapon attack");
