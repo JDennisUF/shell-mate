@@ -1,6 +1,6 @@
 import { catalog } from './data.js';
 import { tarstoneArtwork } from './tarstone-art.js';
-import { glossary } from './glossary.js';
+import { glossary, keywordAliases } from './glossary.js';
 
 const compat = await fetch('./tarstone-compatibility.json').then(r => r.json());
 const norm = s => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
@@ -115,9 +115,9 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
  });
  return button;
 }
-const keywordMap = new Map(glossary.map(item => [item.term.toLowerCase(), item.id]));
-const keywordPattern = new RegExp(`\\b(${[...glossary].sort((a,b) => b.term.length - a.term.length).map(item => item.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join('|')})\\b`, 'gi');
-function effectText(text, highlightNumbers = false) {
+const keywordMap = new Map([...glossary.map(item => [item.term.toLowerCase(), item.id]), ...keywordAliases.map(([id, term]) => [term.toLowerCase(), id])]);
+const keywordPattern = new RegExp(`\\b(${[...keywordMap.keys()].sort((a,b) => b.length - a.length).map(term => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join('|')})\\b`, 'gi');
+function effectText(text, highlightNumbers = true) {
  const p = el('p', 'effect-description'); let last = 0;
  const appendText = value => {
   if (!highlightNumbers) { p.append(document.createTextNode(value)); return; }

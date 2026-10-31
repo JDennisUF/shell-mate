@@ -124,7 +124,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .route-body ol{margin:5px 0 12px;padding-left:1.2rem}
 .route-body .tarstone-levels{list-style:none;padding-left:0}
 .tarstone-stat-value{color:#d9ff68;font-weight:750;text-shadow:0 0 8px #b7eb4d55}
-.tarstone-number{color:#ffe16b;font-weight:750;text-shadow:0 0 8px #ffe16b44}
+.tarstone-number{color:#fff;font-weight:750;text-shadow:none}
 .tarstone-keyword{font-weight:700}
 .glossary-term{cursor:help;text-decoration:underline dotted;text-decoration-color:currentColor;text-underline-offset:3px}
 .glossary-term:focus-visible{outline:2px solid #e9bb69;outline-offset:3px;border-radius:2px}
@@ -132,16 +132,23 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .glossary-tooltip[hidden]{display:none}
 .glossary-tooltip-term{display:block;color:#e9bb69;font-size:.88rem;margin-bottom:4px}
 .glossary-tooltip p{margin:0}
-.tarstone-keyword-faithful-doubles{color:#68cfff}
-.tarstone-keyword-stray-doubles{color:#ff4c55}
+.tarstone-keyword-gloom,.tarstone-keyword-damage-reduction,.tarstone-keyword-massive,.tarstone-keyword-methers-pulse,.tarstone-keyword-severed,.tarstone-keyword-negative-conditions,.tarstone-keyword-retribution,.tarstone-keyword-armor,.tarstone-keyword-heat-meter,.tarstone-keyword-riposte,.tarstone-keyword-seals,.tarstone-keyword-small,.tarstone-keyword-medium,.tarstone-keyword-slightly,.tarstone-keyword-depleted,.tarstone-keyword-immediately,.tarstone-keyword-immunity,.tarstone-keyword-specimen,.tarstone-keyword-reviving,.tarstone-keyword-grafted-armor,.tarstone-keyword-biosampler,.tarstone-keyword-doubled,.tarstone-keyword-lingering-shadow,.tarstone-keyword-shadow-dash,.tarstone-keyword-shadow-clone,.tarstone-keyword-shadow-strike,.tarstone-keyword-perfect-guard,.tarstone-keyword-parry,.tarstone-keyword-perfect-harden{color:#fff}
+.tarstone-keyword-faithful-doubles{color:#fff}
+.tarstone-keyword-stray,.tarstone-keyword-stray-doubles{color:#fff}
 .tarstone-keyword-weak,.tarstone-keyword-burn,.tarstone-keyword-health,.tarstone-keyword-perforation{color:#ff737b}
-.tarstone-keyword-warp{color:#b8a0ff}
+.tarstone-keyword-chaos,.tarstone-keyword-warp{color:#b8a0ff}
+.tarstone-keyword-faithful{color:#b5e5ff}
+.tarstone-keyword-staggering-blow,.tarstone-keyword-revered-heart,.tarstone-keyword-exodus-of-thorns,.tarstone-keyword-ethereal-diapason,.tarstone-keyword-executioner,.tarstone-keyword-shoulder-bash,.tarstone-keyword-fight-stance,.tarstone-keyword-kick,.tarstone-keyword-miracle,.tarstone-keyword-deadly-revelation{color:#fff}
 .tarstone-keyword-leech{color:#ff9b55}
-.tarstone-keyword-break-damage,.tarstone-keyword-lightning,.tarstone-keyword-critical-damage,.tarstone-keyword-critical-chance{color:#ffe16b}
+.tarstone-keyword-break-damage{color:#ffc36a}
+.tarstone-keyword-shock,.tarstone-keyword-critical-hit,.tarstone-keyword-lightning,.tarstone-keyword-critical-damage,.tarstone-keyword-critical-chance{color:#ffe16b}
 .tarstone-keyword-stagger-damage,.tarstone-keyword-resolve{color:#c39a79}
 .tarstone-keyword-frost,.tarstone-keyword-stasis{color:#72bfff}
 .tarstone-keyword-phantom{color:#9be4ff}
+.tarstone-keyword-shadow{color:#a277c4}
 .tarstone-keyword-poison{color:#83df82}
+.tarstone-keyword-pain{color:#d5669b}
+.tarstone-keyword-slaughterer{color:#ff4050}
 .tarstone-keyword-bloodcurse{color:#df5961}
 .tarstone-keyword-curse{color:#c18aff}
 .tarstone-keyword-trauma{color:#ffc36a}

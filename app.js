@@ -2,7 +2,7 @@ import { catalog } from "./data.js";
 import { groups, all, byId, matches, relatedItems, entryFromHash } from "./model.js";
 import { loadProgress, saveProgress, decodeProgress, encodeProgress } from "./storage.js";
 import { tarstoneArtwork } from "./tarstone-art.js";
-import { glossary, glossaryById } from "./glossary.js";
+import { glossary, glossaryById, keywordAliases } from "./glossary.js";
 
 let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
@@ -42,7 +42,7 @@ function element(tag, className, value) {
   if (value !== undefined) node.textContent = value;
   return node;
 }
-const tarstoneKeywords = glossary.map(({ id, term }) => [id, term]);
+const tarstoneKeywords = [...glossary.map(({ id, term }) => [id, term]), ...keywordAliases].sort((a, b) => b[1].length - a[1].length);
 const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
 const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
 function glossaryTerm(term, text) {
@@ -120,17 +120,8 @@ function appendTarstoneKeywords(target, text) {
   tarstoneKeywordPattern.lastIndex = 0;
   let match;
   while ((match = tarstoneKeywordPattern.exec(text))) {
-    const preceding = text.slice(lastIndex, match.index);
-    const value = preceding.match(/([-+]?\d+(?:\.\d+)?(?:%|×|x)?)(\s+)$/i);
-    const sharesKeywordColor = value && !value[1].endsWith("%");
-    const start = sharesKeywordColor ? match.index - value[0].length : match.index;
-    if (sharesKeywordColor) {
-      appendTarstoneText(target, text.slice(lastIndex, start));
-      target.append(glossaryTerm(match[0], text.slice(start, match.index + match[0].length)));
-    } else {
-      appendTarstoneText(target, text.slice(lastIndex, match.index));
-      target.append(glossaryTerm(match[0], match[0]));
-    }
+    appendTarstoneText(target, text.slice(lastIndex, match.index));
+    target.append(glossaryTerm(match[0], match[0]));
     lastIndex = match.index + match[0].length;
   }
   appendTarstoneText(target, text.slice(lastIndex));

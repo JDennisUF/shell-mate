@@ -232,7 +232,7 @@ test("colored terms show definitions on hover and focus, and the glossary lists 
   await expect(page.locator("#glossary-tooltip")).toBeHidden();
   await page.getByRole("link", { name: "Open glossary" }).click();
   await expect(page).toHaveURL(/glossary\.html$/);
-  await expect(page.locator(".glossary-card")).toHaveCount(22);
+  await expect(page.locator(".glossary-card")).toHaveCount(69);
   await expect(page.locator("#term-faithful-doubles")).toContainText("perform one weapon attack");
   await page.getByRole("link", { name: "Guide" }).click();
   await expect(page).toHaveURL(/\/shell-mate\/$/);
@@ -417,4 +417,39 @@ test('guide progress can be expanded and collapsed', async ({ page }) => {
   await expect(page.locator('#overall-progress')).toBeVisible();
   await progress.locator('summary').click();
   await expect(page.locator('#category-progress')).toBeHidden();
+});
+
+test("shell skill numbers stay white next to colored keywords", async ({ page }) => {
+  await page.goto("./?page=shells");
+  const tiel = page.locator("#shell-tiel");
+  await tiel.locator(".route > summary").click();
+  for (const [skill, keyword, color] of [["Escalation", "Poison", "rgb(131, 223, 130)"], ["Deathmark", "Fragile", "rgb(209, 179, 139)"]]) {
+    const row = tiel.locator(".shell-skill").filter({ hasText: skill }).locator(".shell-rank-effect").filter({ hasText: `10 ${keyword}` });
+    await expect(row.locator(".tarstone-number")).toHaveText("10");
+    await expect(row.locator(".tarstone-number")).toHaveCSS("color", "rgb(255, 255, 255)");
+    await expect(row.locator(".tarstone-keyword")).toHaveText(keyword);
+    await expect(row.locator(".tarstone-keyword")).toHaveCSS("color", color);
+  }
+});
+
+test("Poisonous uses the Poison keyword styling and definition", async ({ page }) => {
+  await page.goto("./?page=shells");
+  const tiel = page.locator("#shell-tiel");
+  await tiel.locator(".route > summary").click();
+  const term = tiel.locator('[data-glossary-id="poison"]').filter({ hasText: "Poisonous" }).first();
+  await expect(term).toHaveCSS("color", "rgb(131, 223, 130)");
+  await term.hover();
+  await expect(page.locator("#glossary-tooltip")).toContainText("Poison");
+});
+
+test("Tiel's Shadow abilities are white while Shadow and Shadowed remain purple", async ({ page }) => {
+  await page.goto("./?page=shells");
+  const tiel = page.locator("#shell-tiel");
+  await tiel.locator(".route > summary").click();
+  for (const id of ["lingering-shadow", "shadow-dash", "shadow-clone", "shadow-strike"]) {
+    await expect(tiel.locator(`[data-glossary-id="${id}"]`).first()).toHaveCSS("color", "rgb(255, 255, 255)");
+  }
+  for (const word of ["Shadow", "Shadowed"]) {
+    await expect(tiel.locator('[data-glossary-id="shadow"]').getByText(word, { exact: true }).first()).toHaveCSS("color", "rgb(162, 119, 196)");
+  }
 });

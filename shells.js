@@ -148,7 +148,7 @@ export const shellItems = [
         "levels": [
           "A field Guard, Parry or Harden grant Tiel 3 Shadow stacks",
           "A Perfect Guard, successful Parry or Perfect Harden deal 120% Break Damage",
-          "A Perfect Guard, successful Parry or Perfect Harden have 15% chance to fully Break an enemy."
+          "Each consecutive Perfect Guard, Parry or Perfect Harden without being struck accumulates 5 additional Break Damage."
         ],
         "tier": 4
       }
@@ -248,7 +248,7 @@ export const shellItems = [
       },
       {
         "name": "Seizure",
-        "description": "When Biosampler launches onto an enemy:",
+        "description": "Each level improves Proxima's Biosampler.",
         "levels": [
           "Biosampler inflicts 20 Stasis stacks",
           "Biosampler deals 50 splash damage and 100 Stagger Damage",
@@ -281,7 +281,8 @@ export const shellItems = [
         "description": "Each level improves Proxima's Biosampler",
         "levels": [
           "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 6s",
-          "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 9s"
+          "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 9s",
+          "Biosampler knocks back the struck enemy and triggers a Lightning storm that lasts for 10s"
         ],
         "tier": 4
       },
@@ -405,7 +406,7 @@ export const shellItems = [
         "description": "Each level improves Faithful Doubles",
         "levels": [
           "Faithful Doubles have 50% chance to be attacked by enemies",
-          "Faithful Doubles struck by enemies burst into a shockwave that inflicts 80% Stasis stacks",
+          "Faithful Doubles have 80% chance to be attacked by enemies",
           "Faithful Doubles struck by enemies burst into a shockwave that inflicts 15 Stasis stacks"
         ],
         "tier": 3

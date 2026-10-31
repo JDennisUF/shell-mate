@@ -140,7 +140,7 @@ test('weapon stone preview shows effects and colored rank details on hover and f
   await expect(preview).toContainText('Rank 3:');
   await expect(preview.locator('.tarstone-keyword-perforation').first()).toBeVisible();
   await expect(preview.locator('.stone-stat').filter({ hasText: '7' }).first()).toBeVisible();
-  expect(await preview.locator('.stone-stat').first().evaluate(node => getComputedStyle(node).color)).toBe('rgb(255, 225, 107)');
+  expect(await preview.locator('.stone-stat').first().evaluate(node => getComputedStyle(node).color)).toBe('rgb(255, 255, 255)');
   await page.mouse.move(0, 0);
   await stone.focus();
   await expect(preview).toBeVisible();
