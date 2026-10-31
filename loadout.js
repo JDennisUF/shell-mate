@@ -59,7 +59,7 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
   const header = el('div', 'picker-header'); header.append(el('h2', '', `Choose ${label}`));
   const close = el('button', 'picker-close', 'Close'); close.type = 'button'; close.addEventListener('click', () => dialog.close()); header.append(close); dialog.append(header);
   const grid = el('div', 'picker-grid');
-  const preview = /^(Weapon|Sidearm) stones /.test(label) ? el('div', 'stone-preview') : null;
+  const preview = /^(Weapon|Sidearm|Support) stones /.test(label) ? el('div', 'stone-preview') : null;
   if (preview) { preview.id = 'stone-picker-preview'; preview.hidden = true; preview.setAttribute('role', 'tooltip'); }
   const empty = el('button', 'picker-option picker-empty', '✕'); empty.type = 'button'; empty.append(el('span', '', 'Empty slot')); empty.addEventListener('click', () => { dialog.close(); onSelect(''); }); grid.append(empty);
   for (const item of items) {
@@ -70,6 +70,7 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
     option.setAttribute('aria-describedby', preview.id);
     const showPreview = () => {
      preview.replaceChildren(el('strong', '', item.name));
+     if (!label.startsWith('Support stones ')) {
      const type = label.startsWith('Weapon stones ') ? 'melee' : 'sidearm';
      const gearList = type === 'melee' ? catalog.weapons : catalog.sidearms;
      const compatibility = el('div', 'stone-compatibility');
@@ -84,6 +85,7 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
       compatibility.append(icon);
      }
      preview.append(compatibility);
+     }
      if (item.description) preview.append(effectText(item.description, true));
      const levels = item.levelEffects || [];
      if (levels.length) levels.forEach((effect, index) => {

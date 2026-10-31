@@ -194,3 +194,17 @@ test('summary groups selected effects by weapon, sidearm and support', async ({ 
   await page.reload();
   await expect(page.locator('#effects .effect-divider')).toHaveText(['Weapon', 'Sidearm', 'Support']);
 });
+
+test('support stone preview shows effects on hover and focus', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  const stone = page.getByRole('dialog').locator('.picker-option:not(.picker-empty)').first();
+  await stone.hover();
+  const preview = page.getByRole('tooltip');
+  await expect(preview).toBeVisible();
+  await expect(preview.locator('.effect-description').first()).toBeVisible();
+  await expect(preview.locator('.stone-compatibility')).toHaveCount(0);
+  await page.mouse.move(0, 0);
+  await stone.focus();
+  await expect(preview).toBeVisible();
+});
