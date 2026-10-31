@@ -41,7 +41,7 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(12);
-  await expect(page.locator("#overall-count")).toHaveText("0 / 29");
+  await expect(page.locator("#overall-count")).toHaveText("0 / 37");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
   await expect(page.locator(".entry")).toHaveCount(4);
   await expect(page.locator("#scope")).toHaveValue("rotten-autumn");
@@ -292,13 +292,13 @@ for (const width of [320, 390, 1280]) {
   });
 }
 
-test('loadout tab follows Dungeons and opens the loadout page', async ({ page }) => {
+test('loadout tab follows Achievements and opens the loadout page', async ({ page }) => {
   await page.goto('./');
   const tabs = page.locator('#tabs');
   const link = tabs.getByRole('link', { name: 'Loadout' });
   await expect(link.locator('img')).toHaveAttribute('src', /assets\/tarstones\/unknown-placeholder\.webp$/);
   await expect.poll(() => link.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(tabs.locator('[data-category="dungeons"] + [data-category="loadout"]')).toBeVisible();
+  await expect(tabs.locator('[data-category="achievements"] + [data-category="loadout"]')).toBeVisible();
   await link.click();
   await expect(page).toHaveURL(/\/loadout\.html$/);
 });
@@ -343,6 +343,7 @@ test('completion totals exclude the two undiscovered stones', async ({ page }) =
   await page.addInitScript(data => localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)), backup(Object.fromEntries(entries.map(item => [item.id, true]))));
   await page.goto('./');
   await expect(page.locator('#overall-count')).toHaveText(`${entries.length} / ${entries.length}`);
+  await page.locator('details.overview summary').click();
   const banner = page.locator('#completion-banner');
   await expect(banner).toBeVisible();
   await expect(banner).toContainText('Congratulations Shell Master!');
@@ -404,4 +405,17 @@ test('named loadouts can be exported, imported, and selectively loaded', async (
   await page.getByRole('button', { name: 'Clear', exact: true }).click();
   await page.getByRole('button', { name: 'Load', exact: true }).click();
   await expect(page.locator('#gear .picker-trigger').first()).toHaveAttribute('aria-label', selected);
+});
+
+test('guide progress can be expanded and collapsed', async ({ page }) => {
+  await page.goto('./');
+  const progress = page.locator('details.overview');
+  await expect(progress).not.toHaveAttribute('open', '');
+  await expect(page.locator('#overall-count')).toBeVisible();
+  await expect(page.locator('#category-progress')).toBeHidden();
+  await progress.locator('summary').click();
+  await expect(page.locator('#category-progress')).toBeVisible();
+  await expect(page.locator('#overall-progress')).toBeVisible();
+  await progress.locator('summary').click();
+  await expect(page.locator('#category-progress')).toBeHidden();
 });

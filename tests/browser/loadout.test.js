@@ -118,7 +118,7 @@ test('weapon and sidearm selections are remembered separately across switches an
   await page.getByRole('button', { name: 'Sidearm: Ballistazooka' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Sidearm stones Ability: Solnir Shard' })).toBeVisible();
-  await page.getByRole('button', { name: 'Clear loadout' }).click();
+  await page.getByRole('button', { name: 'Clear', exact: true }).click();
   await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
   await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Weapon stones Ability: empty' })).toBeVisible();
