@@ -54,6 +54,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .guide-head p:last-child{margin:0;color:#b8c2ba;font-size:.9rem}
 .file-actions{display:flex;gap:7px;flex:none}
 .file-actions button{font-size:.86rem}
+.file-actions #select-all{margin-right:12px}
 .filters{display:grid;grid-template-columns:minmax(180px,2fr) minmax(100px,1fr) minmax(210px,1.5fr) repeat(3,minmax(100px,1fr));gap:9px;align-items:end;background:#202625;border-top:1px solid #46534e;border-bottom:1px solid #46534e;padding:13px 0}
 .filters label{display:flex;flex-direction:column;gap:5px;min-width:0}
 .filters label span{font-size:.72rem;color:#bcc7bf;font-weight:700}

@@ -23,9 +23,9 @@
       <div class="overview-top"><h2 id="progress-title">Your guide progress</h2><strong id="overall-count"></strong></div>
       <p id="progress-scope" class="progress-note"></p>
       <progress id="overall-progress" value="0" max="1" aria-label="Overall completion"></progress>
-      <div class="completion-banner" id="completion-banner" role="status" aria-live="polite" hidden>
+      <div class="completion-banner" id="completion-banner" role="status" aria-live="polite" tabindex="0" title="Wellspring Stone and Forsaken Vow are excluded from progress totals until they are officially found." hidden>
         <span class="completion-spark" aria-hidden="true">✦</span>
-        <div><strong id="completion-title"></strong><p id="completion-message"></p></div>
+        <div><strong id="completion-title"></strong></div>
         <span class="completion-spark completion-spark-end" aria-hidden="true">✦</span>
       </div>
       <div id="category-progress" class="progress-grid"></div>
@@ -34,7 +34,7 @@
     <p class="guide-note">Track your progress through the checklist. Open each route for directions, requirements, and source links. Hover over colored terms for definitions, or <a href="./glossary.html">open the glossary</a> to see them all.</p>
     <nav class="tabs" aria-label="Guide categories" id="tabs"></nav>
     <section class="guide" aria-labelledby="category-title">
-      <div class="guide-head"><div><p class="eyebrow" id="category-eyebrow"></p><h2 id="category-title"></h2><p id="category-description"></p></div><div class="file-actions"><button id="export" type="button">Export</button><button id="import" type="button">Import</button><input id="import-file" type="file" accept=".json,application/json" hidden></div></div>
+      <div class="guide-head"><div><h2 id="category-title"></h2></div><div class="file-actions"><button id="select-all" type="button">Select all</button><button id="export" type="button">Export</button><button id="import" type="button">Import</button><input id="import-file" type="file" accept=".json,application/json" hidden></div></div>
       <div class="filters" role="search">
         <label class="search-field"><span>Search guide</span><input id="search" type="search" placeholder="Name, region, or landmark" autocomplete="off"></label>
         <label><span>Region</span><select id="region"></select></label>
@@ -43,7 +43,6 @@
         <label><span id="kind-label">Type</span><select id="kind-filter"></select></label>
         <label><span>Order</span><select id="sort"><option value="catalog">Catalog order</option><option value="name">Name</option></select></label>
       </div>
-      <p class="backup-note">Export saves a backup file. Import replaces your current checks with a backup.</p>
       <p class="results" id="results" aria-live="polite" tabindex="-1"></p>
       <div id="entries" class="entries"></div>
     </section>

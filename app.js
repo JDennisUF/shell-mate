@@ -25,6 +25,9 @@ let completed = loaded.completed;
 let skillRanks = loaded.skillRanks;
 let saveBlocked = loaded.blocked;
 const completionExclusions = new Set(["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]);
+const clearUnavailable = () => { for (const id of completionExclusions) delete completed[id]; };
+const hadUnavailableChecks = [...completionExclusions].some(id => completed[id]);
+clearUnavailable();
 const currentlyFindable = all.filter(item => !completionExclusions.has(item.id));
 let wasKnownComplete = currentlyFindable.every(item => !!completed[item.id]);
 let wasAllComplete = all.every(item => !!completed[item.id]);
@@ -197,7 +200,7 @@ function numberDone(items) { return items.filter(item => completed[item.id]).len
 function renderProgress() {
   const scope = document.getElementById("scope").value;
   const scoped = items => items.filter(item => scope === "all" || item.scope === scope);
-  const items = scoped(all);
+  const items = scoped(currentlyFindable);
   const count = numberDone(items);
   const totalDone = numberDone(all);
   const allComplete = totalDone === all.length;
@@ -212,12 +215,7 @@ function renderProgress() {
   completionBanner.hidden = !knownComplete;
   completionBanner.classList.toggle("provisional", knownComplete && !allComplete);
   completionBanner.classList.toggle("perfect", allComplete);
-  document.getElementById("completion-title").textContent = allComplete
-    ? `Perfect completion — ${totalDone} / ${all.length}`
-    : `Everything currently found is complete — ${totalDone} / ${all.length}`;
-  document.getElementById("completion-message").textContent = allComplete
-    ? "Every Shell, Weapon, Sidearm, Tarstone, Beacon, Boss, and Dungeon is checked. Take a victory lap, Shellbearer."
-    : `Wellspring Stone and Forsaken Vow are ignored for completion for now, but remain in the ${all.length} total until they are found.`;
+  document.getElementById("completion-title").textContent = `Victory, Shellbearer! The realm is conquered — ${knownDone} / ${currentlyFindable.length}`;
   if ((knownComplete && !wasKnownComplete) || (allComplete && !wasAllComplete)) {
     completionBanner.classList.remove("celebrate");
     void completionBanner.offsetWidth;
@@ -229,7 +227,7 @@ function renderProgress() {
   stats.replaceChildren();
   for (const group of groups) {
     const cell = element("div", "progress-stat");
-    const groupItems = scoped(catalog[group.key]);
+    const groupItems = scoped(catalog[group.key].filter(item => !completionExclusions.has(item.id)));
     const strong = element("strong", "", numberDone(groupItems) + " / " + groupItems.length);
     cell.append(strong, document.createTextNode(group.title));
     stats.append(cell);
@@ -242,7 +240,9 @@ function renderTabs() {
   for (const group of groups) {
     const button = element("button", "tab", group.title);
     const icon = element("img", "tab-icon");
-    icon.src = new URL(categoryArtwork[group.key], import.meta.url).href;
+    const artwork = group.key === "dungeons" && catalog.dungeons.every(item => completed[item.id])
+      ? "assets/categories/dungeons-complete.png" : categoryArtwork[group.key];
+    icon.src = new URL(artwork, import.meta.url).href;
     icon.alt = "";
     icon.setAttribute("aria-hidden", "true");
     if (["shells", "weapons", "sidearms", "tarstones", "beacons", "bosses"].includes(group.key)) {
@@ -353,7 +353,8 @@ function renderEntry(item) {
   check.type = "checkbox";
   check.id = "check-" + item.id;
   check.checked = !!completed[item.id];
-  check.setAttribute("aria-label", (check.checked ? "Mark incomplete: " : "Mark complete: ") + item.name);
+  check.disabled = completionExclusions.has(item.id);
+  check.setAttribute("aria-label", (check.disabled ? "Unavailable: " : check.checked ? "Mark incomplete: " : "Mark complete: ") + item.name);
   check.onchange = () => {
     if (check.checked) completed[item.id] = true;
     else delete completed[item.id];
@@ -361,6 +362,10 @@ function renderEntry(item) {
     card.classList.toggle("done", check.checked);
     check.setAttribute("aria-label", (check.checked ? "Mark incomplete: " : "Mark complete: ") + item.name);
     renderProgress();
+    if (item.kind === "dungeon") {
+      const icon = document.querySelector('[data-category="dungeons"] img');
+      if (icon) icon.src = new URL(catalog.dungeons.every(dungeon => completed[dungeon.id]) ? "assets/categories/dungeons-complete.png" : categoryArtwork.dungeons, import.meta.url).href;
+    }
     if (matches(item, readFilters(), completed)) updateResults();
     else {
       const cards = [...document.querySelectorAll(".entry")];
@@ -690,8 +695,22 @@ function filteredItems() {
 }
 function updateResults() {
   const filtered = filteredItems();
+  const bulk = document.getElementById("select-all");
+  const eligible = filtered.filter(item => !completionExclusions.has(item.id));
+  bulk.disabled = !eligible.length;
+  bulk.textContent = eligible.length && eligible.every(item => completed[item.id]) ? "Deselect all" : "Select all";
   document.getElementById("results").textContent = filtered.length + " of " + catalog[active].length + " entries shown · " + numberDone(filtered) + " shown entries complete";
 }
+document.getElementById("select-all").addEventListener("click", () => {
+  const items = filteredItems().filter(item => !completionExclusions.has(item.id));
+  const select = !items.every(item => completed[item.id]);
+  for (const item of items) {
+    if (select) completed[item.id] = true;
+    else delete completed[item.id];
+  }
+  save();
+  render();
+});
 function render(urlMethod = "replace") {
   for (const card of document.querySelectorAll(".entry")) {
     disclosureState.set(card.id, { route: card.querySelector(".route").open, tips: card.querySelector(".tips")?.open || false });
@@ -699,9 +718,7 @@ function render(urlMethod = "replace") {
   renderProgress();
   renderTabs();
   const group = groups.find(entry => entry.key === active);
-  document.getElementById("category-eyebrow").textContent = "TRACKING GUIDE";
   document.getElementById("category-title").textContent = group.title;
-  document.getElementById("category-description").textContent = group.description;
   const filtered = filteredItems();
   updateResults();
   const container = document.getElementById("entries");
@@ -759,6 +776,7 @@ document.getElementById("import-file").onchange = async event => {
   try {
     const decoded = decodeProgress(JSON.parse(await file.text()));
     completed = decoded.result;
+    clearUnavailable();
     skillRanks = decoded.skillRanks;
     saveBlocked = false;
     save();
@@ -776,3 +794,4 @@ restoreUrlState();
 render();
 navigateToHash();
 showStorageWarning(loaded.warning);
+if (hadUnavailableChecks && !saveBlocked) save();

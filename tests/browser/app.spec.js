@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { catalog } from "../../data.js";
+import { all } from "../../model.js";
 
 const backup = completed => ({ version: 2, completed });
 const upload = async (page, data) => page.locator("#import-file").setInputFiles({ name: "progress.json", mimeType: "application/json", buffer: Buffer.from(typeof data === "string" ? data : JSON.stringify(data)) });
@@ -13,7 +14,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   }, backup(completed));
   await page.goto("./");
   await expect(page.locator(".entry")).toHaveCount(89);
-  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 89");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 87");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(4);
   await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Support");
@@ -27,14 +28,12 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await page.locator("#tar-ra-forsaken-vow > .route > summary").click();
   await expect(page.locator("#tar-ra-forsaken-vow .route-body")).toContainText("No acquisition route is documented yet");
   await expect(page.locator("#tar-ra-forsaken-vow .sources a")).toHaveCount(2);
-  await page.locator("#check-tar-ra-forsaken-vow").focus();
-  await page.keyboard.press("Space");
-  await expect(page.locator(".entry")).toHaveCount(0);
+  await expect(page.locator("#check-tar-ra-forsaken-vow")).toBeDisabled();
   await page.goto("./?page=tarstones");
   await expect(page.locator("#check-tar-01")).toBeChecked();
-  await expect(page.locator("#check-tar-ra-forsaken-vow")).toBeChecked();
+  await expect(page.locator("#check-tar-ra-forsaken-vow")).not.toBeChecked();
   await expect(page.locator("#check-tar-glimpse-stone")).not.toBeChecked();
-  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("86 / 89");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 87");
 });
 
 test("DLC selection follows categories and updates guide totals", async ({ page }) => {
@@ -42,7 +41,7 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(12);
-  await expect(page.locator("#overall-count")).toHaveText("0 / 31");
+  await expect(page.locator("#overall-count")).toHaveText("0 / 29");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
   await expect(page.locator(".entry")).toHaveCount(4);
   await expect(page.locator("#scope")).toHaveValue("rotten-autumn");
@@ -302,4 +301,66 @@ test('loadout tab follows Dungeons and opens the loadout page', async ({ page })
   await expect(tabs.locator('[data-category="dungeons"] + [data-category="loadout"]')).toBeVisible();
   await link.click();
   await expect(page).toHaveURL(/\/loadout\.html$/);
+});
+
+test('dungeon tab artwork reflects completion of every dungeon', async ({ page }) => {
+  const last = catalog.dungeons.at(-1);
+  const completed = Object.fromEntries(catalog.dungeons.slice(0, -1).map(item => [item.id, true]));
+  await page.addInitScript(data => localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)), backup(completed));
+  await page.goto('./?page=dungeons');
+  const icon = page.locator('[data-category="dungeons"] img');
+  await expect(icon).toHaveAttribute('src', /dungeons\.png$/);
+  await page.locator(`#check-${last.id}`).check();
+  await expect(icon).toHaveAttribute('src', /dungeons-complete\.png$/);
+  await page.locator(`#check-${last.id}`).uncheck();
+  await expect(icon).toHaveAttribute('src', /dungeons\.png$/);
+});
+
+test('bulk selection follows filters, persists, and leaves other categories alone', async ({ page }) => {
+  await page.goto('./?page=weapons');
+  await page.getByLabel('Search guide').fill('Axatana');
+  await page.getByRole('button', { name: 'Select all' }).click();
+  await expect(page.getByRole('button', { name: 'Deselect all' })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('checkbox')).toBeChecked();
+  await page.getByRole('button', { name: 'Deselect all' }).click();
+  await expect(page.getByRole('checkbox')).not.toBeChecked();
+  await page.getByLabel('Search guide').fill('');
+  await page.getByRole('button', { name: 'Select all' }).click();
+  await expect(page.getByRole('checkbox')).toHaveCount(catalog.weapons.length);
+  for (const checkbox of await page.getByRole('checkbox').all()) await expect(checkbox).toBeChecked();
+  await page.getByRole('button', { name: 'Deselect all' }).click();
+  for (const checkbox of await page.getByRole('checkbox').all()) await expect(checkbox).not.toBeChecked();
+  await page.getByRole('button', { name: 'Dungeons', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Select all' })).toBeVisible();
+  await page.getByLabel('Search guide').fill('no matching dungeon xyz');
+  await expect(page.getByRole('button', { name: 'Select all' })).toBeDisabled();
+});
+
+test('completion totals exclude the two undiscovered stones', async ({ page }) => {
+  const excluded = new Set(['tar-ra-wellspring-stone', 'tar-ra-forsaken-vow']);
+  const entries = all.filter(item => !excluded.has(item.id));
+  await page.addInitScript(data => localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)), backup(Object.fromEntries(entries.map(item => [item.id, true]))));
+  await page.goto('./');
+  await expect(page.locator('#overall-count')).toHaveText(`${entries.length} / ${entries.length}`);
+  const banner = page.locator('#completion-banner');
+  await expect(banner).toBeVisible();
+  await expect(banner).toContainText('Victory, Shellbearer!');
+  await expect(banner).toHaveAttribute('title', /Wellspring Stone and Forsaken Vow/);
+});
+
+test('unavailable stones stay unchecked after loading, bulk selection and import', async ({ page }) => {
+  const ids = ['tar-ra-wellspring-stone', 'tar-ra-forsaken-vow'];
+  await page.addInitScript(data => { if (!localStorage.getItem('shell-mate-progress-v2')) localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)); }, backup(Object.fromEntries(ids.map(id => [id, true]))));
+  await page.goto('./?page=tarstones');
+  for (const id of ids) {
+    await expect(page.locator(`#check-${id}`)).toBeDisabled();
+    await expect(page.locator(`#check-${id}`)).not.toBeChecked();
+  }
+  await page.getByRole('button', { name: 'Select all' }).click();
+  for (const id of ids) await expect(page.locator(`#check-${id}`)).not.toBeChecked();
+  await upload(page, backup(Object.fromEntries(ids.map(id => [id, true]))));
+  for (const id of ids) await expect(page.locator(`#check-${id}`)).not.toBeChecked();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('shell-mate-progress-v2')).completed);
+  for (const id of ids) expect(saved[id]).toBeUndefined();
 });
