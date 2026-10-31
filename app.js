@@ -266,16 +266,6 @@ function renderTabs() {
     };
     nav.append(button);
   }
-  const loadout = element("a", "tab", "Loadout");
-  loadout.href = "./loadout.html";
-  loadout.dataset.category = "loadout";
-  const loadoutFrame = element("span", "tab-icon loadout-icon-frame");
-  const loadoutIcon = element("img", "loadout-icon");
-  loadoutIcon.src = new URL("assets/tarstones/unknown-placeholder.webp", import.meta.url).href;
-  loadoutIcon.alt = "";
-  loadoutFrame.append(loadoutIcon);
-  loadout.prepend(loadoutFrame);
-  nav.append(loadout);
   if (focusedCategory) nav.querySelector('[data-category="' + focusedCategory + '"]')?.focus();
 }
 function setOptions(select, values, selected) {

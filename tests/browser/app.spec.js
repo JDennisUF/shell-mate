@@ -292,13 +292,12 @@ for (const width of [320, 390, 1280]) {
   });
 }
 
-test('loadout tab follows Achievements and opens the loadout page', async ({ page }) => {
+test('header loadout button opens the loadout page', async ({ page }) => {
   await page.goto('./');
-  const tabs = page.locator('#tabs');
-  const link = tabs.getByRole('link', { name: 'Loadout' });
+  const link = page.getByRole('link', { name: 'Open loadout' });
   await expect(link.locator('img')).toHaveAttribute('src', /assets\/tarstones\/unknown-placeholder\.webp$/);
   await expect.poll(() => link.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(tabs.locator('[data-category="achievements"] + [data-category="loadout"]')).toBeVisible();
+  await expect(page.locator('#tabs [data-category="loadout"]')).toHaveCount(0);
   await link.click();
   await expect(page).toHaveURL(/\/loadout\.html$/);
 });
