@@ -345,7 +345,7 @@ test('completion totals exclude the two undiscovered stones', async ({ page }) =
   await expect(page.locator('#overall-count')).toHaveText(`${entries.length} / ${entries.length}`);
   const banner = page.locator('#completion-banner');
   await expect(banner).toBeVisible();
-  await expect(banner).toContainText('Victory, Shellbearer!');
+  await expect(banner).toContainText('Congratulations Shell Master!');
   await expect(banner).toHaveAttribute('title', /Wellspring Stone and Forsaken Vow/);
 });
 

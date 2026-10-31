@@ -217,7 +217,7 @@ function renderProgress() {
   completionBanner.hidden = !knownComplete;
   completionBanner.classList.toggle("provisional", knownComplete && !allComplete);
   completionBanner.classList.toggle("perfect", allComplete);
-  document.getElementById("completion-title").textContent = `Victory, Shellbearer! The realm is conquered — ${knownDone} / ${currentlyFindable.length}`;
+  document.getElementById("completion-title").textContent = "Congratulations Shell Master!";
   if ((knownComplete && !wasKnownComplete) || (allComplete && !wasAllComplete)) {
     completionBanner.classList.remove("celebrate");
     void completionBanner.offsetWidth;

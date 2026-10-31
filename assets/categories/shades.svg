@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="M3 12c0-6 3-9 7-9s7 3 7 9v4c0 6-3 10-7 10s-7-4-7-10z" fill="#eee9d8" stroke="#77786d" stroke-width="1.4"/>
-  <path d="M15 14c0-6 3-9 7-9s7 3 7 9v4c0 6-3 10-7 10s-7-4-7-10z" fill="#424b46" stroke="#242e2a" stroke-width="1.4"/>
-  <path d="M6 13h3m3 0h2M8 20q2 1 4 0" fill="none" stroke="#62675e" stroke-width="1.3" stroke-linecap="round"/>
-  <path d="M18 15h3m3 0h2M20 22q2 1 4 0" fill="none" stroke="#c8cbbd" stroke-width="1.3" stroke-linecap="round"/>
+  <!-- Paired hooded, porcelain-like masks inspired by Genessa. -->
+  <path d="M2 14C2 6 5 2 10 2s8 4 8 12l-2 10-6 5-6-5z" fill="#858b80" stroke="#565e55" stroke-width="1.2"/>
+  <path d="M5 12c0-5 2-7 5-7s5 2 5 7v6c0 4-2 7-5 8-3-1-5-4-5-8z" fill="#eee9da" stroke="#a4a79b" stroke-width="1"/>
+  <path d="M14 15C14 7 17 3 22 3s8 4 8 12l-2 10-6 5-6-5z" fill="#59645c" stroke="#303b35" stroke-width="1.2"/>
+  <path d="M17 13c0-5 2-7 5-7s5 2 5 7v6c0 4-2 7-5 8-3-1-5-4-5-8z" fill="#343e39" stroke="#9aa298" stroke-width="1"/>
+  <path d="M7 13l2 1m3 0 2-1M9 20h2" fill="none" stroke="#656b63" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M19 14l2 1m3 0 2-1m-5 7h2" fill="none" stroke="#d5d9cc" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M10 7v3m12-2v3" stroke="#b5bbae" stroke-width=".8"/>
 </svg>
