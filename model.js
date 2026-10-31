@@ -1,6 +1,8 @@
 import { catalog } from "./data.js";
 
 export const groups = [
+  { key: "shades", title: "Shades", description: "Track Shell Shades and their Blackmarrow chests." },
+  { key: "achievements", title: "Achievements", description: "Track achievements and their unlock requirements." },
   { key: "shells", title: "Shells", description: "Track all eight playable Shells and prologue-only Harros, with signature abilities and skills grouped by Bond Tier." },
   { key: "weapons", title: "Weapons", description: "Track the eight primary melee weapons and where to find them." },
   { key: "sidearms", title: "Sidearms", description: "Track all eight ranged sidearms and where to find them." },

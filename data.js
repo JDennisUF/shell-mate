@@ -1,7 +1,12 @@
+import { shades, achievements } from "./extras.js";
 import { shellItems } from "./shells.js";
 
 export const catalog = {
+  shades, achievements,
   "sources": {
+    "shade-guide": {"title":"Shell Shade guide", "url":"https://allthings.how/mortal-shell-2-cosmetics-every-shell-shade-obsidian-skin-and-mask-explained/"},
+    "shade-keys": {"title":"Blackmarrow Key locations", "url":"https://www.gamesradar.com/games/rpg/mortal-shell-2-shades/"},
+    "achievement-guide": {"title":"Achievement guide", "url":"https://mortalshell2wiki.net/guides/achievements"},
     "tarstone-list": {
       "title": "PowerPyx: all tarstones",
       "url": "https://www.powerpyx.com/mortal-shell-2-all-tarstone-locations/"

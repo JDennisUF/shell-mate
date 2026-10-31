@@ -8,6 +8,8 @@ let active = "tarstones";
 const urlFilterIds = { region: "region", content: "scope", progress: "status", type: "kind-filter", order: "sort" };
 const urlDefaults = { page: "tarstones", search: "", region: "all", content: "all", progress: "all", type: "all", order: "catalog" };
 const categoryArtwork = {
+  shades: "assets/categories/shades.svg",
+  achievements: "assets/categories/achievements.svg",
   shells: "assets/shells/tiel.webp",
   weapons: "assets/weapons/iconoclast.webp",
   sidearms: "assets/weapons/naylshotte.webp",
@@ -456,6 +458,7 @@ function renderEntry(item) {
   heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
   if (item.availabilityWarning) heading.append(element("span", "entry-warning", item.availabilityWarning));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
+  if (item.kind === "achievement") heading.append(element("p", "", item.description));
   row.append(check, heading, tag);
   if (portrait) row.append(portrait);
   if (item.kind === "boss") {
