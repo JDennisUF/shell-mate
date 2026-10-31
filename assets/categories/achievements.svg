@@ -1,7 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="M8 5H4v3c0 5 3 8 7 8M24 5h4v3c0 5-3 8-7 8" fill="none" stroke="#9b6d1c" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="M8 3h16v7c0 6-3.5 9-8 9s-8-3-8-9z" fill="#d8a83c" stroke="#8a5c18" stroke-width="1.5"/>
-  <path d="M10 5h3v7c0 2 1 4 2 5-3-1-5-3-5-7z" fill="#f4d779"/>
-  <path d="M14 19h4v5h4v3H10v-3h4z" fill="#c5932c" stroke="#8a5c18" stroke-width="1.5" stroke-linejoin="round"/>
-  <path d="M8 28h16" stroke="#765018" stroke-width="2" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#77766b"/><stop offset=".45" stop-color="#c2b9a3"/><stop offset="1" stop-color="#514e46"/></linearGradient>
+  </defs>
+  <g fill="none" stroke="#625f54" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 7C4 3 2 5 4 8c1 2 2 3 1 6S2 21 4 24c1 2 3 1 4 0"/>
+    <path d="M24 7c4-4 6-2 4 1-1 2-2 3-1 6s3 7 1 10c-1 2-3 1-4 0"/>
+  </g>
+  <path d="M6 8q10-4 20 0l-2 3c-1 4-4 6-7 7v5l3 4-4 2-4-2 3-4v-5c-3-1-6-3-7-7z" fill="url(#metal)" stroke="#504c43" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M6 8q10 3 20 0-1 4-10 4S7 11 6 8z" fill="#8e8778" stroke="#504c43" stroke-width="1.1"/>
+  <path d="M9 8q7-2 14 0-2 2-7 2T9 8z" fill="#3d3c36"/>
+  <path d="M10 13q2 3 5 4m1 3v5m-3 2h6" fill="none" stroke="#d2c9b3" stroke-width=".8" stroke-linecap="round"/>
+  <path d="M12 28q4 2 8 0" fill="none" stroke="#504c43" stroke-width="1.4" stroke-linecap="round"/>
 </svg>

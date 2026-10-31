@@ -20,13 +20,16 @@ h1{font-family:Georgia,serif;font-size:2.6rem;line-height:1.1;margin-bottom:8px;
 h1 span{color:#d1aa68;font-size:.6em;vertical-align:middle}
 .intro{color:#c2c8c0;margin:0}
 .overview{padding:24px 0 18px;border-bottom:1px solid #46534e}
-.overview-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.overview-top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.overview-top .completion-banner:not([hidden]){margin-left:auto}
+.overview-top #overall-count{margin-left:auto}
+.overview-top .completion-banner:not([hidden]) + #overall-count{margin-left:0}
 .overview h2,.guide h2{font-family:Georgia,serif;font-weight:500}
 .overview h2{font-size:1.2rem;margin:0}
 .overview strong{font-variant-numeric:tabular-nums;color:#e9bb69}
 progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8bba9c}
 .completion-banner[hidden]{display:none}
-.completion-banner:not([hidden]){display:flex;align-items:center;gap:13px;margin:12px 0 18px;padding:13px 16px;border:1px solid #c29b51;border-radius:7px;background:linear-gradient(110deg,#393324,#282d27 58%,#342a20);color:#f6ebcf;box-shadow:0 0 18px #d2a74a22}
+.completion-banner:not([hidden]){display:flex;align-items:center;gap:8px;margin:0;padding:6px 10px;border:1px solid #c29b51;border-radius:7px;background:linear-gradient(110deg,#393324,#282d27 58%,#342a20);color:#f6ebcf;box-shadow:0 0 18px #d2a74a22}
 .completion-banner strong{color:#f3d58d;font-size:1rem}
 .completion-banner p{margin:3px 0 0;color:#d2d7c8;font-size:.84rem}
 .completion-spark{flex:none;color:#f0ca68;font-size:1.8rem;text-shadow:0 0 12px #edc55b99}

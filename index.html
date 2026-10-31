@@ -20,14 +20,15 @@
   </header>
   <main class="shell" id="catalog">
     <section class="overview" aria-labelledby="progress-title">
-      <div class="overview-top"><h2 id="progress-title">Your guide progress</h2><strong id="overall-count"></strong></div>
+      <div class="overview-top"><h2 id="progress-title">Your guide progress</h2>
+        <div class="completion-banner" id="completion-banner" role="status" aria-live="polite" tabindex="0" title="Wellspring Stone and Forsaken Vow are excluded from progress totals until they are officially found." hidden>
+          <span class="completion-spark" aria-hidden="true">✦</span>
+          <div><strong id="completion-title"></strong></div>
+          <span class="completion-spark completion-spark-end" aria-hidden="true">✦</span>
+        </div>
+        <strong id="overall-count"></strong></div>
       <p id="progress-scope" class="progress-note"></p>
       <progress id="overall-progress" value="0" max="1" aria-label="Overall completion"></progress>
-      <div class="completion-banner" id="completion-banner" role="status" aria-live="polite" tabindex="0" title="Wellspring Stone and Forsaken Vow are excluded from progress totals until they are officially found." hidden>
-        <span class="completion-spark" aria-hidden="true">✦</span>
-        <div><strong id="completion-title"></strong></div>
-        <span class="completion-spark completion-spark-end" aria-hidden="true">✦</span>
-      </div>
       <div id="category-progress" class="progress-grid"></div>
     </section>
     <p class="storage-warning" id="storage-warning" role="status" hidden></p>
