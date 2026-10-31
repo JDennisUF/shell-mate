@@ -7,7 +7,7 @@ const types = { html: "text/html", css: "text/css", js: "text/javascript", json:
 createServer(async (request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
   const filename = pathname === "/shell-mate/" ? "index.html" : pathname.replace(/^\/shell-mate\//, "");
-  const imagePath = /^assets\/(?:bosses\/[a-z0-9-]+\.jpg|categories\/[a-z0-9-]+\.(?:png|svg)|shells\/[a-z0-9-]+\.(?:png|webp)|tarstones\/[a-z0-9-]+\.(?:png|webp)|weapons\/[a-z0-9-]+\.webp)$/.test(filename);
+  const imagePath = /^assets\/(?:icons\/[a-z0-9-]+\.svg|bosses\/[a-z0-9-]+\.jpg|categories\/[a-z0-9-]+\.(?:png|svg)|shells\/[a-z0-9-]+\.(?:png|webp)|tarstones\/[a-z0-9-]+\.(?:png|webp)|weapons\/[a-z0-9-]+\.webp)$/.test(filename);
   if (!pathname.startsWith("/shell-mate/") || (!assets.has(filename) && !imagePath)) {
     response.writeHead(404).end();
     return;

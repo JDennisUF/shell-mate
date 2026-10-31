@@ -295,7 +295,7 @@ for (const width of [320, 390, 1280]) {
 test('header loadout button opens the loadout page', async ({ page }) => {
   await page.goto('./');
   const link = page.getByRole('link', { name: 'Open loadout' });
-  await expect(link.locator('img')).toHaveAttribute('src', /assets\/tarstones\/unknown-placeholder\.webp$/);
+  await expect(link.locator('img')).toHaveAttribute('src', /assets\/icons\/loadout\.svg$/);
   await expect.poll(() => link.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   await expect(page.locator('#tabs [data-category="loadout"]')).toHaveCount(0);
   await link.click();

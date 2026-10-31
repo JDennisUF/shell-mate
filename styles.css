@@ -200,6 +200,6 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 
 .loadout-button{display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex:none;width:48px;height:48px;margin-top:2px;border:1px solid #8fae9c;border-radius:5px;background:#26362f}
 .loadout-button:hover{border-color:#c5ddc9;background:#344a3d}
-.loadout-button img{width:100%;height:100%;object-fit:contain;transform:scale(1.2)}
+.loadout-button img{width:32px;height:32px;filter:brightness(0) saturate(100%) invert(89%) sepia(11%) saturate(477%) hue-rotate(77deg) brightness(97%)}
 .header-actions .kofi-button{margin-left:12px}
 @media(max-width:540px){.header-actions{gap:4px}.header-actions .kofi-button{margin-left:4px}.site-header .shell{gap:8px}}
