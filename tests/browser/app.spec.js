@@ -427,8 +427,9 @@ test("shell skill numbers stay white next to colored keywords", async ({ page })
     const row = tiel.locator(".shell-skill").filter({ hasText: skill }).locator(".shell-rank-effect").filter({ hasText: `10 ${keyword}` });
     await expect(row.locator(".tarstone-number")).toHaveText("10");
     await expect(row.locator(".tarstone-number")).toHaveCSS("color", "rgb(255, 255, 255)");
-    await expect(row.locator(".tarstone-keyword")).toHaveText(keyword);
-    await expect(row.locator(".tarstone-keyword")).toHaveCSS("color", color);
+    const keywordNode = row.locator(`[data-glossary-id="${keyword.toLowerCase()}"]`);
+    await expect(keywordNode).toHaveText(keyword);
+    await expect(keywordNode).toHaveCSS("color", color);
   }
 });
 
