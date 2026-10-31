@@ -1,5 +1,16 @@
 const shadePairs = [['Genessa','Porcelain Prime'],['Lazlo','Second Son'],['Smert','Sanguine Prophet'],['Eredrim','King in Yellow'],['Gragu','Warden'],['Tiel','Ophidian'],['Proxima','Bonegrafted'],['Sariel','Apocryphal']];
 export const shades = shadePairs.map(([shell, name], i) => ({order:i, aliases:[],id:`shade-${shell.toLowerCase()}`, name, kind:'shade', category:shell, region:'Marrow Keep', scope:'base', steps:[`Find the ${shell} Shell first.`, `Go to the elevator room in Marrow Keep and open the chest labeled ${shell} with a Blackmarrow Key.`, 'Change the Shade at any Beacon.', 'Keys have been reported in the Desolate Ruins, Child’s Feeding Ground, behind the Ova at Conquered Temple, beneath the tower near Sester’s Abbey, and at the Abandoned Outpost merchant or Shrine of Sorrows in Night Mode.'], sources:['shade-guide','shade-keys']}));
+const autumnShades = [
+  ["Eredrim", "Anointed Butcher", "Fainweald", "dungeon-02", ["In Night Mode, head down the slope from Gloomshade Grove to the giant mushroom and accept its invitation.", "Explore Primeval Dungeon and collect the Shade."]],
+  ["Lazlo", "White Knight", "Fainweald", "dungeon-03", ["In Night Mode, travel from Gloomshade Grove through the Citadel of Penance, taking the right-hand route to the Obscured Market Ghost Beacon.", "Enter and collect the Shade."]],
+  ["Tiel", "Red Kingsnake", "Fainweald", "dungeon-04", ["In Night Mode, cross the bridge from Outskirts of Nochte into Hag’s Path swamp and interact with the Shrouded Mire Ghost Beacon.", "Explore the area and collect the Shade."]],
+  ["Smert", "Lunar Emissary", "Ruins of Mammon", "dungeon-06", ["In Night Mode, interact with the mechanism behind the High Lord’s Courtyard beacon pillar to enter The Sideway.", "Collect the Shade before leaving: the guide reports that the dungeon cannot be re-entered."]],
+  ["Sariel", "Gilded Scarab", "Ruins of Mammon", "dungeon-11", ["In Night Mode, turn around from The Silent Steps, head forward and drop down. Interact with the statue to reveal a path.", "Follow it past four witches to the Secret Alcove Ghost Beacon; enter and collect the Shade."]],
+  ["Genessa", "Sapphire Herald", "Ruins of Mammon", "dungeon-12", ["In Night Mode, turn around from Sester’s Gate, climb the stone stairs, turn left and go through the doorway.", "Interact with the Concealed Lookout Ghost Beacon on the right and collect the Shade."]],
+  ["Gragu", "Regal Druzhina", "Ruins of Mammon", "dungeon-13", ["In Night Mode, enter the Cleansed Gate beside Sester’s Gate.", "Follow the Valley of the Revered path to the torch-lit entrance of Icebound Chamber and collect the Shade inside."]],
+  ["Proxima", "Queen of Hearts", "Prisoners’ Domain", "dungeon-15", ["From Hangman’s Scaffold, climb the nearby stairs, cross the bridge, turn left and climb again. Enter Neglected Ward on the right.", "Collect the Shade during the boss fight: the doors lock afterward and re-entry is uncertain."]]
+];
+shades.push(...autumnShades.map(([shell, name, region, dungeon, steps], i) => ({id:`shade-rotten-${shell.toLowerCase()}`, order:i+8, aliases:[], name, kind:'shade', category:shell, region, scope:'rotten-autumn', steps, relatedIds:[dungeon], sources:['rotten-dungeons']})));
 const list = `You’re More Than a Weapon|Claim your first Shell, weapon and sidearm
 Home at Last|Reach Marrow Keep
 Mid Summer?|Enter the Festival

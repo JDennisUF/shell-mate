@@ -631,7 +631,8 @@ function renderEntry(item) {
   }
   body.append(sources);
   details.append(summary, body);
-  card.append(row, details);
+  card.append(row);
+  if (item.kind !== "achievement") card.append(details);
   return card;
 }
 
@@ -716,7 +717,7 @@ document.getElementById("select-all").addEventListener("click", () => {
 });
 function render(urlMethod = "replace") {
   for (const card of document.querySelectorAll(".entry")) {
-    disclosureState.set(card.id, { route: card.querySelector(".route").open, tips: card.querySelector(".tips")?.open || false });
+    disclosureState.set(card.id, { route: card.querySelector(".route")?.open || false, tips: card.querySelector(".tips")?.open || false });
   }
   renderProgress();
   renderTabs();
@@ -754,7 +755,8 @@ function navigateToHash() {
   render();
   const card = document.getElementById(id);
   if (!card) return;
-  card.querySelector(".route").open = true;
+  const route = card.querySelector(".route");
+  if (route) route.open = true;
   card.tabIndex = -1;
   card.focus({ preventScroll: true });
   requestAnimationFrame(() => card.scrollIntoView({ block: "start" }));

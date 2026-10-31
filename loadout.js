@@ -214,3 +214,79 @@ function render() {
 }
 document.querySelector('#concise').addEventListener('change', event => { state.concise = event.target.checked; save(); render(); });
 document.querySelector('#reset').addEventListener('click',()=>{state=defaultState();save();render();}); render();
+
+const libraryKey = 'shell-mate-saved-loadouts-v1';
+const nameInput = document.querySelector('#loadout-name');
+const savedSelect = document.querySelector('#saved-loadouts');
+const message = document.querySelector('#loadout-message');
+function readLibrary() {
+ try { const value = JSON.parse(localStorage.getItem(libraryKey) || '[]'); return Array.isArray(value) ? value : []; }
+ catch { return []; }
+}
+function writeLibrary(library) {
+ try { localStorage.setItem(libraryKey, JSON.stringify(library)); return true; }
+ catch { message.textContent = 'Could not save loadouts in this browser.'; return false; }
+}
+function currentLoadout() {
+ return { melee: state.melee, sidearm: state.sidearm, stones: Object.fromEntries(slots.filter(key => state.stones[key]).map(key => [key, state.stones[key]])) };
+}
+function validateLoadout(value) {
+ if (!value || typeof value !== 'object' || Array.isArray(value) || typeof value.melee !== 'string' || typeof value.sidearm !== 'string' || !value.stones || typeof value.stones !== 'object' || Array.isArray(value.stones)) throw new Error('Invalid loadout file.');
+ if ((value.melee && !catalog.weapons.some(x => x.id === value.melee)) || (value.sidearm && !catalog.sidearms.some(x => x.id === value.sidearm))) throw new Error('The loadout contains unknown equipment.');
+ const seen = new Set();
+ for (const [key, id] of Object.entries(value.stones)) {
+  const stone = stoneById(id), type = key.split('-')[0];
+  const gear = (type === 'melee' ? catalog.weapons : catalog.sidearms).find(x => x.id === value[type]);
+  if (!slots.includes(key) || !stone || stone.category !== (type === 'support' ? 'Support' : key.split('-')[1]) || seen.has(id) || (type !== 'support' && (!gear || status(stone, type, gear) === 'no'))) throw new Error('The loadout contains an invalid Tarstone selection.');
+  seen.add(id);
+ }
+ return { melee: value.melee, sidearm: value.sidearm, stones: { ...value.stones } };
+}
+function refreshLibrary(selected = '') {
+ savedSelect.replaceChildren(new Option('Choose a loadout', ''));
+ for (const entry of readLibrary()) if (typeof entry.name === 'string') savedSelect.add(new Option(entry.name, entry.name));
+ savedSelect.value = selected;
+}
+function storeNamed(name, loadout) {
+ const library = readLibrary();
+ const index = library.findIndex(entry => entry.name === name);
+ if (index < 0) library.push({ name, loadout }); else library[index] = { name, loadout };
+ if (!writeLibrary(library)) return false;
+ refreshLibrary(name); return true;
+}
+function getName() { const name = nameInput.value.trim(); if (!name) message.textContent = 'Enter a loadout name first.'; return name; }
+document.querySelector('#save-loadout').addEventListener('click', () => {
+ const name = getName(); if (name && storeNamed(name, currentLoadout())) message.textContent = `Saved “${name}”.`;
+});
+document.querySelector('#export-loadout').addEventListener('click', () => {
+ const name = getName(); if (!name) return;
+ const url = URL.createObjectURL(new Blob([JSON.stringify({ version: 1, type: 'shell-mate-loadout', name, loadout: currentLoadout() }, null, 2)], { type: 'application/json' }));
+ const link = el('a'); link.href = url; link.download = 'shell-mate-loadout.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+ message.textContent = `Exported “${name}”.`;
+});
+document.querySelector('#import-loadout').addEventListener('click', () => document.querySelector('#loadout-file').click());
+document.querySelector('#loadout-file').addEventListener('change', async event => {
+ const file = event.target.files[0]; if (!file) return;
+ try {
+  const data = JSON.parse(await file.text());
+  if (data?.version !== 1 || data.type !== 'shell-mate-loadout' || typeof data.name !== 'string' || !data.name.trim() || data.name.length > 100) throw new Error('Invalid loadout file.');
+  const loadout = validateLoadout(data.loadout), name = data.name.trim();
+  if (storeNamed(name, loadout)) { nameInput.value = name; message.textContent = `Imported “${name}”. Select Load to use it.`; }
+ } catch (error) { message.textContent = error instanceof SyntaxError ? 'Invalid loadout file.' : error.message; }
+ event.target.value = '';
+});
+document.querySelector('#load-loadout').addEventListener('click', () => {
+ const entry = readLibrary().find(item => item.name === savedSelect.value);
+ if (!entry) { message.textContent = 'Choose a saved loadout first.'; return; }
+ try {
+  const loadout = validateLoadout(entry.loadout);
+  state = { ...defaultState(), ...loadout, concise: state.concise };
+  rememberGear('melee'); rememberGear('sidearm'); save(); render(); nameInput.value = entry.name;
+  message.textContent = `Loaded “${entry.name}”.`;
+ } catch (error) { message.textContent = error.message; }
+});
+document.querySelector('#delete-loadout').addEventListener('click', () => {
+ const name = savedSelect.value; if (!name) { message.textContent = 'Choose a saved loadout first.'; return; }
+ if (writeLibrary(readLibrary().filter(entry => entry.name !== name))) { refreshLibrary(); message.textContent = `Deleted “${name}”.`; }
+});
+refreshLibrary();

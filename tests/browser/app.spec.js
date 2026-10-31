@@ -364,3 +364,44 @@ test('unavailable stones stay unchecked after loading, bulk selection and import
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('shell-mate-progress-v2')).completed);
   for (const id of ids) expect(saved[id]).toBeUndefined();
 });
+
+
+test("achievement entries allow tab changes, filtering and direct links", async ({ page }) => {
+  await page.goto("./?page=achievements");
+  await expect(page.locator("#category-title")).toHaveText("Achievements");
+  await expect(page.locator("#entries .route")).toHaveCount(0);
+  await page.getByLabel("Search guide").fill("Arrival");
+  await expect(page.locator("#entries .entry")).toHaveCount(1);
+  await page.locator('[data-category="shells"]').click();
+  await expect(page.locator("#category-title")).toHaveText("Shells");
+  await page.locator('[data-category="achievements"]').click();
+  await expect(page.locator("#category-title")).toHaveText("Achievements");
+  await page.goto("./#achievement-1");
+  await expect(page.locator("#achievement-1")).toBeFocused();
+  await page.locator('[data-category="dungeons"]').click();
+  await expect(page.locator("#category-title")).toHaveText("Dungeons");
+});
+
+test('named loadouts can be exported, imported, and selectively loaded', async ({ page }) => {
+  await page.goto('./loadout.html');
+  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('dialog').locator('.picker-option:not(.picker-empty)').first().click();
+  const selected = await page.locator('#gear .picker-trigger').first().getAttribute('aria-label');
+  await page.locator('#loadout-name').fill('My build');
+  await page.getByRole('button', { name: 'Save', exact: true }).click();
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export', exact: true }).click();
+  const download = await downloadPromise;
+  const stream = await download.createReadStream();
+  const chunks = []; for await (const chunk of stream) chunks.push(chunk);
+  const content = Buffer.concat(chunks);
+  await page.getByRole('button', { name: 'Clear', exact: true }).click();
+  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await expect(page.locator('#gear .picker-trigger').first()).toHaveAttribute('aria-label', selected);
+  await page.getByRole('button', { name: 'Delete', exact: true }).click();
+  await page.locator('#loadout-file').setInputFiles({ name: 'build.json', mimeType: 'application/json', buffer: content });
+  await expect(page.locator('#saved-loadouts')).toHaveValue('My build');
+  await page.getByRole('button', { name: 'Clear', exact: true }).click();
+  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await expect(page.locator('#gear .picker-trigger').first()).toHaveAttribute('aria-label', selected);
+});
