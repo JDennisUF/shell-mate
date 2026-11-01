@@ -11,6 +11,19 @@ export const catalog = {
       "title": "PowerPyx: all tarstones",
       "url": "https://www.powerpyx.com/mortal-shell-2-all-tarstone-locations/"
     },
+    "beacon-video-01": {"title": "Video route", "url": "https://www.youtube.com/watch?v=cHt1SQ2BNB8"},
+    "beacon-video-02": {"title": "Video route", "url": "https://www.youtube.com/watch?v=SBpViHDKs_A"},
+    "beacon-video-03": {"title": "Video route", "url": "https://www.youtube.com/watch?v=ZVte_UYhyV8"},
+    "beacon-video-04": {"title": "Video route", "url": "https://www.youtube.com/watch?v=PLzhhNpfjjk"},
+    "beacon-video-05": {"title": "Video route", "url": "https://www.youtube.com/watch?v=rh3dqh8TKhc"},
+    "beacon-video-06": {"title": "Video route", "url": "https://www.youtube.com/watch?v=p2vKRAPFOsQ"},
+    "beacon-video-07": {"title": "Video route", "url": "https://www.youtube.com/watch?v=lyE53r37CDI"},
+    "beacon-video-08": {"title": "Video route", "url": "https://www.youtube.com/watch?v=ID6Q_B6wiOg"},
+    "beacon-video-10": {"title": "Video route", "url": "https://www.youtube.com/watch?v=41qahjLXMH8"},
+    "beacon-video-12": {"title": "Video route", "url": "https://www.youtube.com/watch?v=CM-RjkfVqX4"},
+    "beacon-video-13": {"title": "Video route", "url": "https://www.youtube.com/watch?v=q0km86I6r1M"},
+    "beacon-video-14": {"title": "Video route", "url": "https://www.youtube.com/watch?v=pwt7fY-4fqY"},
+    "beacon-video-15": {"title": "Video route", "url": "https://www.youtube.com/watch?v=XsP3E3Ra-Jk"},
     "beacon-updated-map": {"title": "The Outerhaven: updated beacon map", "url": "https://www.theouterhaven.net/mortal-shell-ii-all-beacon-locations-and-complete-map/"},
     "beacon-updated-checklist": {"title": "Gamer Guides: beacon locations", "url": "https://www.gamerguides.com/mortal-shell-ii/checklists/beacons-locations"},
     "beacon-list": {
@@ -144,25 +157,25 @@ export const catalog = {
       "aliases": ["Great Martyr's Blade"], "sources": ["weapon-locations", "gear-locations"]
     },
     {
-      "id": "weapon-05", "name": "Obsidian Hammer", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 5,
+      "id": "weapon-05", "name": "Obsidian Hammer", "kind": "weapon", "region": "Ruins of Mammon", "scope": "base", "order": 5,
       "category": "Hammer", "image": "assets/weapons/obsidian-hammer.webp", "description": "A hammer awarded for defeating the Prophet of Profane Infinities.",
       "nearestBeacon": "Outskirts of Mammon", "nearestBeaconId": "beacon-12", "steps": ["Enter the Obsidianite Mines from the quarry west of the Outskirts of Mammon Beacon.", "Reach the Prophet of Profane Infinities at the end of the mines and defeat it."],
       "aliases": [], "sources": ["weapon-locations", "gear-locations"]
     },
     {
-      "id": "weapon-06", "name": "Axatana", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 6,
+      "id": "weapon-06", "name": "Axatana", "kind": "weapon", "region": "Ruins of Mammon", "scope": "base", "order": 6,
       "category": "Transforming weapon", "image": "assets/weapons/axatana.webp", "description": "A transforming weapon with dual-blade and axe forms.",
       "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Reach the Forgotten Tower beyond the Bone Gate near Sester’s Gate.", "Open the gated room, defeat the Dagger Sester, and collect the Axatana from the niche."],
       "aliases": [], "sources": ["weapon-locations", "gear-locations"]
     },
     {
-      "id": "weapon-07", "name": "Black Needle", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 7,
+      "id": "weapon-07", "name": "Black Needle", "kind": "weapon", "region": "Ruins of Mammon", "scope": "base", "order": 7,
       "category": "Spear", "image": "assets/weapons/black-needle.webp", "description": "A spear earned by cleansing the Sester’s Gate Beacon.",
       "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Complete the Sester’s Gate Beacon dungeon and reach the arena encounter.", "Defeat the Twin Sesters and the Stray Sester to receive the Black Needle."],
       "aliases": [], "sources": ["weapon-locations", "gear-locations"]
     },
     {
-      "id": "weapon-08", "name": "Clockwork Scythe", "kind": "weapon", "region": "Mammon", "scope": "base", "order": 8,
+      "id": "weapon-08", "name": "Clockwork Scythe", "kind": "weapon", "region": "Ruins of Mammon", "scope": "base", "order": 8,
       "category": "Scythe", "image": "assets/weapons/clockwork-scythe.webp", "description": "A scythe dropped by Sariel, the Endless.",
       "nearestBeacon": "The Silent Steps", "nearestBeaconId": "beacon-19", "steps": ["Defeat Sariel near The Silent Steps Beacon, then follow him into the Chamber of Becoming.", "Defeat Sariel again in the dungeon to receive the scythe."],
       "aliases": [], "sources": ["weapon-locations", "gear-locations"]
@@ -193,25 +206,25 @@ export const catalog = {
       "aliases": ["Troubador’s Lute", "Troubadour's Lute", "Troubador's Lute"], "sources": ["sidearm-locations", "gear-locations"]
     },
     {
-      "id": "sidearm-05", "name": "Triarch Repeater", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 5,
+      "id": "sidearm-05", "name": "Triarch Repeater", "kind": "sidearm", "region": "Ruins of Mammon", "scope": "base", "order": 5,
       "category": "Repeater", "image": "assets/weapons/triarch-repeater.webp", "description": "A repeating-fire ranged weapon found in Blackwell Cavern.",
       "nearestBeacon": "Castigator’s Keep", "nearestBeaconId": "beacon-15", "steps": ["Reach Blackwell Cavern below Castigator’s Keep Beacon, near the cliff edge.", "Follow the dungeon route to the first lit area and collect the repeater from the ground."],
       "aliases": ["Triach Repeater"], "sources": ["sidearm-locations", "gear-locations"]
     },
     {
-      "id": "sidearm-06", "name": "Ballistazooka", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 6,
+      "id": "sidearm-06", "name": "Ballistazooka", "kind": "sidearm", "region": "Ruins of Mammon", "scope": "base", "order": 6,
       "category": "Launcher", "image": "assets/weapons/ballistazooka.webp", "description": "A heavy launcher found in Sentry’s Grave.",
       "nearestBeacon": "Gate of Mammon", "nearestBeaconId": "beacon-18", "steps": ["Enter Sentry’s Grave inside Lonesome Spire, northwest of Gate of Mammon Beacon.", "Defeat the Subjugated Guardian at the end of the dungeon to receive the sidearm."],
       "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
     },
     {
-      "id": "sidearm-07", "name": "Cursed Child", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 7,
+      "id": "sidearm-07", "name": "Cursed Child", "kind": "sidearm", "region": "Ruins of Mammon", "scope": "base", "order": 7,
       "category": "Living weapon", "image": "assets/weapons/cursed-child.webp", "description": "A sidearm recovered from the Revered Beacon dungeon.",
       "nearestBeacon": "Sester’s Gate", "nearestBeaconId": "beacon-13", "steps": ["Enter Revered Beacon from the ledge northwest of Sester’s Gate Beacon.", "Stay out of the tower’s golden light, circle counterclockwise to the tower, and attack its central pillar.", "Collect Cursed Child after disabling the light."],
       "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
     },
     {
-      "id": "sidearm-08", "name": "Caged Hystrix", "kind": "sidearm", "region": "Mammon", "scope": "base", "order": 8,
+      "id": "sidearm-08", "name": "Caged Hystrix", "kind": "sidearm", "region": "Ruins of Mammon", "scope": "base", "order": 8,
       "category": "Repeater", "image": "assets/weapons/caged-hystrix.webp", "description": "A rapid-fire sidearm found in the Chamber of Becoming.",
       "nearestBeacon": "The Silent Steps", "nearestBeaconId": "beacon-19", "steps": ["Defeat Sariel near The Silent Steps Beacon, then follow him into the Chamber of Becoming.", "In the final room, break all four tombstones and defeat Sariel again.", "Collect the sidearm near the dungeon exit."],
       "aliases": [], "sources": ["sidearm-locations", "gear-locations"]
@@ -4040,21 +4053,21 @@ export const catalog = {
         "boss-24"
       ]
     },
-    {"id": "beacon-update-01", "name": "Gloomshade Falls", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 50, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-02", "name": "The Hag’s Path", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 51, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-03", "name": "Ruins of Nochte", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 52, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-04", "name": "Desolate Peak", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 53, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-05", "name": "Stones of Remembrance", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 54, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-06", "name": "Contested Clearing", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 55, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-07", "name": "Cavern Entrance", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 56, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-08", "name": "Matka’s Monument", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 57, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-09", "name": "High Lord’s Terrace", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 58, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-10", "name": "Deserted Slums", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 59, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-11", "name": "Lonesome Spire", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 60, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-12", "name": "Revenant Graves", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 61, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-13", "name": "Sester’s Refuge", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 62, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-14", "name": "Barren Crest", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 63, "subtype": "standard", "steps": ["See the updated beacon map for its location."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
-    {"id": "beacon-update-15", "name": "Vestige of Infinity", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 64, "subtype": "standard", "steps": ["In Starved Harridan’s arena, break the illusory wall on the north side to find the beacon."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-01", "name": "Gloomshade Falls", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 50, "subtype": "standard", "steps": ["Look in Gloomshade Grove, southeast of the Gloomshade Grove beacon. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-01", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-02", "name": "The Hag’s Path", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 51, "subtype": "standard", "steps": ["Look along the Hag’s Path, near the Outskirts of Nochte. The beacon is reported behind the Disciple’s Stash dungeon. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-02", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-03", "name": "Ruins of Nochte", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 52, "subtype": "standard", "steps": ["Look in the Ruins of Nochte, in the Hag’s Path area. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-03", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-04", "name": "Desolate Peak", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 53, "subtype": "standard", "steps": ["Look around Desolate Peak in Fainweald. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-04", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-05", "name": "Stones of Remembrance", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 54, "subtype": "standard", "steps": ["Look around Blackridge Hamlet, near the Stones of Remembrance. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-05", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-06", "name": "Contested Clearing", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 55, "subtype": "standard", "steps": ["Look in Gloomshade Grove, east of the Citadel of Penance. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-06", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-07", "name": "Cavern Entrance", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 56, "subtype": "standard", "steps": ["Look for the Cavern Entrance in the Blackridge area. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-07", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-08", "name": "Matka’s Monument", "kind": "beacon", "region": "Fainweald", "scope": "base", "order": 57, "subtype": "standard", "steps": ["Look near the One Legged Wolf Tavern at Matka’s Monument. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-08", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-09", "name": "High Lord’s Terrace", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 58, "subtype": "standard", "steps": ["Look in Deserted Slums, near the Abandoned Outpost and High Lord’s Courtyard. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-10", "name": "Deserted Slums", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 59, "subtype": "standard", "steps": ["From Outskirts of Mammon, take the Bone Gate toward Deserted Slums and search the settlement beyond Abandoned Outpost. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-10", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-11", "name": "Lonesome Spire", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 60, "subtype": "standard", "steps": ["Look in Lonesome Spire, east of the Gate of Mammon. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-12", "name": "Revenant Graves", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 61, "subtype": "standard", "steps": ["Look in the Revenant Graves area near Sester’s Refuge. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-12", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-13", "name": "Sester’s Refuge", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 62, "subtype": "standard", "steps": ["From Abbey Entrance, continue into Sester’s Refuge; search the refuge before reaching Sester’s Gate. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-13", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-14", "name": "Barren Crest", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 63, "subtype": "standard", "steps": ["Look in the Silent Steps area for Barren Crest. Exact route not verified."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-14", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
+    {"id": "beacon-update-15", "name": "Vestige of Infinity", "kind": "beacon", "region": "Ruins of Mammon", "scope": "base", "order": 64, "subtype": "standard", "steps": ["In Starved Harridan’s arena, break the illusory wall on the north side to find the beacon."], "requirement": "Find and activate the beacon", "alreadyCleansed": false, "sources": ["beacon-video-15", "beacon-updated-map", "beacon-updated-checklist"], "aliases": [], "relatedIds": []},
     {
       "id": "ghost-01",
       "name": "Obscured Market Ghost Beacon",

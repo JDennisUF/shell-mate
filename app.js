@@ -270,7 +270,7 @@ function setOptions(select, values, selected) {
 }
 function updateFilters() {
   const items = catalog[active];
-  const regions = [...new Set(all.map(item => item.region))].sort((a, b) => a.localeCompare(b));
+  const regions = [...new Set(all.map(item => item.region))].filter(name => !["Unspecified", "Various", "Prologue"].includes(name)).sort((a, b) => a.localeCompare(b));
   setOptions(document.getElementById("region"), [["all", "All regions"], ...regions.map(name => [name, name])], document.getElementById("region").value);
   const extra = document.getElementById("kind-filter");
   const label = document.getElementById("kind-label");
@@ -559,8 +559,8 @@ function renderEntry(item) {
     body.append(req);
   }
   if (item.kind === "beacon") {
-    const rule = item.alreadyCleansed ? "Already active when found." : item.subtype === "ghost" ? "Interact with the Ghost Beacon to enter." : "Follow this beacon’s requirements below; activation varies by location.";
-    body.append(element("p", "", rule));
+    const rule = item.alreadyCleansed ? "Already active when found." : item.subtype === "ghost" ? "Interact with the Ghost Beacon to enter." : null;
+    if (rule) body.append(element("p", "", rule));
   }
   if (item.nearestBeacon) {
     const beacon = byId.get(item.nearestBeaconId);

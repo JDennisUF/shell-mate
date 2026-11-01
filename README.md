@@ -14,7 +14,7 @@ Open http://localhost:8000. Stop the server with Ctrl+C. Open through a server r
 
 ## Filter the guide
 
-Under **Content**, choose **Rotten Autumn DLC only**, **Base game only**, or **Base game + DLC**. This choice stays selected when switching categories. Progress totals follow that content choice. Search, region, type, and completion filters work together.
+Under **Content**, choose **Rotten Autumn DLC**, **Base game**, or **All**. This choice stays selected when switching categories. Progress totals follow that content choice. Search, region, type, and completion filters work together.
 
 The guide includes eight playable Shells plus prologue-only Harros, with their signature abilities and Shell Point skill trees; eight primary Weapons; eight Sidearms; 89 tarstones (77 base-game entries, including Glimpse Stone and Egon's Stone, and 12 DLC stones); 68 beacons (64 standard and four Ghost Beacons); 46 bosses; and 52 dungeons (37 base-game and 15 Rotten Autumn). Ghost Beacon and dungeon checks are independent, even where they describe the same place.
 
