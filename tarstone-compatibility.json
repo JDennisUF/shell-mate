@@ -485,7 +485,7 @@
   "Bloodoath Stone": { "slot": "both", "fits": [] },
   "Waning Stone": { "slot": "sidearm", "fits": [] },
   "Starless Eye": { "slot": "sidearm", "fits": [] },
-  "Wellspring Stone": { "slot": "none", "fits": [] },
+  "Wellspring Stone": { "slot": "support", "fits": [] },
   "Forsaken Vow": { "slot": "none", "fits": [] },
   "Justiciar's Stone": {
     "slot": "support",

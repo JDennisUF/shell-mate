@@ -26,7 +26,7 @@ const loaded = loadProgress(storage);
 let completed = loaded.completed;
 let skillRanks = loaded.skillRanks;
 let saveBlocked = loaded.blocked;
-const completionExclusions = new Set(["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]);
+const completionExclusions = new Set(["tar-ra-forsaken-vow"]);
 const clearUnavailable = () => { for (const id of completionExclusions) delete completed[id]; };
 const hadUnavailableChecks = [...completionExclusions].some(id => completed[id]);
 clearUnavailable();

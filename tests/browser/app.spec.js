@@ -14,11 +14,11 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   }, backup(completed));
   await page.goto("./");
   await expect(page.locator(".entry")).toHaveCount(89);
-  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 87");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 88");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(4);
   await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Support");
-  await expect(page.locator(".entry")).toHaveCount(2);
+  await expect(page.locator(".entry")).toHaveCount(3);
   await page.locator("#tar-egons-stone > .route > summary").click();
   await expect(page.locator("#tar-egons-stone .route-body")).toContainText("Merrick");
   await expect(page.locator('#tar-egons-stone a[href="#beacon-01"]').first()).toBeVisible();
@@ -33,7 +33,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await expect(page.locator("#check-tar-01")).toBeChecked();
   await expect(page.locator("#check-tar-ra-forsaken-vow")).not.toBeChecked();
   await expect(page.locator("#check-tar-glimpse-stone")).not.toBeChecked();
-  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 87");
+  await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 88");
 });
 
 test("DLC selection follows categories and updates guide totals", async ({ page }) => {
@@ -41,7 +41,7 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(12);
-  await expect(page.locator("#overall-count")).toHaveText("0 / 37");
+  await expect(page.locator("#overall-count")).toHaveText("0 / 38");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
   await expect(page.locator(".entry")).toHaveCount(4);
   await expect(page.locator("#scope")).toHaveValue("rotten-autumn");
@@ -336,8 +336,8 @@ test('bulk selection follows filters, persists, and leaves other categories alon
   await expect(page.getByRole('button', { name: 'Select all' })).toBeDisabled();
 });
 
-test('completion totals exclude the two undiscovered stones', async ({ page }) => {
-  const excluded = new Set(['tar-ra-wellspring-stone', 'tar-ra-forsaken-vow']);
+test('completion totals exclude the undiscovered stone', async ({ page }) => {
+  const excluded = new Set(['tar-ra-forsaken-vow']);
   const entries = all.filter(item => !excluded.has(item.id));
   await page.addInitScript(data => localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)), backup(Object.fromEntries(entries.map(item => [item.id, true]))));
   await page.goto('./');
@@ -346,11 +346,11 @@ test('completion totals exclude the two undiscovered stones', async ({ page }) =
   const banner = page.locator('#completion-banner');
   await expect(banner).toBeVisible();
   await expect(banner).toContainText('Congratulations Shell Master!');
-  await expect(banner).toHaveAttribute('title', /Wellspring Stone and Forsaken Vow/);
+  await expect(banner).toHaveAttribute('title', /Forsaken Vow/);
 });
 
 test('unavailable stones stay unchecked after loading, bulk selection and import', async ({ page }) => {
-  const ids = ['tar-ra-wellspring-stone', 'tar-ra-forsaken-vow'];
+  const ids = ['tar-ra-forsaken-vow'];
   await page.addInitScript(data => { if (!localStorage.getItem('shell-mate-progress-v2')) localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)); }, backup(Object.fromEntries(ids.map(id => [id, true]))));
   await page.goto('./?page=tarstones');
   for (const id of ids) {

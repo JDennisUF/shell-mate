@@ -2790,24 +2790,35 @@ export const catalog = {
       "id": "tar-ra-wellspring-stone",
       "name": "Wellspring Stone",
       "kind": "tarstone",
-      "availabilityWarning": "NOT FOUND BY PLAYERS · POSSIBLY BUGGED",
       "scope": "rotten-autumn",
-      "region": "Unspecified",
+      "region": "Marrow Keep",
       "order": 88,
-      "category": "Unknown",
+      "category": "Support",
+      "nearestBeacon": "Marrow Keep",
+      "nearestBeaconId": "beacon-01",
       "steps": [
-        "No acquisition route is documented yet. This entry tracks Wellspring Stone, which continuously regenerates Resolve."
+        "Go to the Alchemist’s Workshop dungeon.",
+        "Collect Rickart’s Journal.",
+        "Find Ruk at the top of Marrow Keep.",
+        "Give him the journal to receive the Wellspring Stone."
       ],
-      "requirement": "",
+      "requirement": "Rickart’s Journal",
       "sources": [
         "tarstone-effects",
         "rotten-missing-stones"
       ],
       "aliases": [],
-      "relatedIds": [],
-      "fixedEffect": "Continuously regenerate Resolve, even when empty.",
+      "relatedIds": [
+        "dungeon-41"
+      ],
+      "fixedEffect": "After damaging an enemy, regenerate Resolve over time for a duration.",
+      "levelEffects": [
+        "Regenerate 2 Resolve per second for 5s.",
+        "Regenerate 2 Resolve per second for 10s.",
+        "Regenerate 2 Resolve per second for 15s."
+      ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Wellspring_Stone",
-      "description": "Lets you regenerate Resolve after damaging an enemy. Subsequent levels increase the duration of this effect."
+      "description": "After damaging an enemy, regenerate Resolve over time for a duration."
     },
     {
       "id": "tar-ra-forsaken-vow",

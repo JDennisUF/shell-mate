@@ -64,7 +64,11 @@ test("expanded Tarstone catalog includes missing update stones without duplicate
     assert.ok(matches(byId.get(id), { ...filters, scope: "base", kind: "Support" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, "beacon-01");
   }
-  for (const id of ["tar-ra-wellspring-stone", "tar-ra-forsaken-vow"]) {
+  assert.ok(matches(byId.get("tar-ra-wellspring-stone"), { ...filters, scope: "rotten-autumn", kind: "Support" }, {}));
+  assert.equal(byId.get("tar-ra-wellspring-stone").nearestBeaconId, "beacon-01");
+  assert.ok(relatedItems(byId.get("tar-ra-wellspring-stone")).some(item => item.id === "dungeon-41"));
+  assert.match(byId.get("tar-ra-wellspring-stone").steps.join(" "), /Rickart’s Journal/);
+  for (const id of ["tar-ra-forsaken-vow"]) {
     assert.ok(matches(byId.get(id), { ...filters, scope: "rotten-autumn", kind: "Unknown" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, undefined);
     assert.match(byId.get(id).steps[0], /No acquisition route is documented/);

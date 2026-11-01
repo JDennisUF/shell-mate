@@ -4,7 +4,7 @@ The catalog includes eight primary Weapons, eight Sidearms, 89 tarstones, 53 bea
 
 The base-game dungeon routes follow the overworld dungeon list and include the tutorial’s Derelict Hideout. Each dungeon is a separate progress check; Beacon routes link back to their nearest Beacon.
 
-Tarstones include 75 original entries, two additional Fragile stones (Glimpse Stone and Egon's Stone), and 12 Rotten Autumn entries. Wellspring Stone and Forsaken Vow are represented without an acquisition route until one is documented. Alternate names such as Forsaken Vow Stone are searchable aliases rather than extra checklist entries.
+Tarstones include 75 original entries, two additional Fragile stones (Glimpse Stone and Egon's Stone), and 12 Rotten Autumn entries. Wellspring Stone has a documented journal exchange route; Forsaken Vow is represented without an acquisition route until one is documented. Alternate names such as Forsaken Vow Stone are searchable aliases rather than extra checklist entries.
 
 Source links are available inside each route. Tarstone catalog order follows the item inventory, grouped by type.
 
