@@ -362,3 +362,8 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 
 .theme-picker{margin-right:16px}
 @media(max-width:540px){.theme-picker{margin-right:8px}}
+
+/* Header navigation follows the selected dark theme's control colors. */
+:root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.glossary-back,.loadout-button,.glossary-button){background:var(--theme-control);border-color:var(--theme-control-border);color:#f5f3eb}
+:root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.glossary-back,.loadout-button,.glossary-button):hover{background:var(--theme-hover);border-color:var(--theme-accent)}
+:root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.loadout-button,.glossary-button) img{filter:brightness(0) invert(.92)}

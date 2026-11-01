@@ -156,3 +156,19 @@ test('Shell Point skill panels follow dark and light theme palettes', async ({ p
   await expect(page.locator('.loadout-skills')).toHaveCSS('background-color', 'rgb(43, 9, 13)');
   await expect(page.locator('.loadout-skill-tier').first()).toHaveCSS('border-top-color', 'rgb(135, 49, 58)');
 });
+
+test('dark themes color header navigation buttons across pages', async ({ page }) => {
+  await page.goto('./');
+  for (const [theme, color] of [['obsidian', 'rgb(34, 34, 36)'], ['queen-of-hearts', 'rgb(80, 17, 23)'], ['sanguine-prophet', 'rgb(64, 23, 27)']]) {
+    await page.getByLabel('Theme').selectOption(theme);
+    await expect(page.locator('.loadout-button')).toHaveCSS('background-color', color);
+    await expect(page.locator('.glossary-button')).toHaveCSS('background-color', color);
+    await page.goto('./glossary.html');
+    await expect(page.locator('.glossary-back')).toHaveCSS('background-color', color);
+    await page.goto('./loadout.html');
+    await expect(page.locator('.glossary-back')).toHaveCSS('background-color', color);
+    await page.goto('./');
+  }
+  await page.getByLabel('Theme').selectOption('ophidian');
+  await expect(page.locator('.loadout-button')).toHaveCSS('background-color', 'rgb(248, 243, 232)');
+});
