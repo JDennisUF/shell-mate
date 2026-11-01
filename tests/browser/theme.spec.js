@@ -172,3 +172,15 @@ test('dark themes color header navigation buttons across pages', async ({ page }
   await page.getByLabel('Theme').selectOption('ophidian');
   await expect(page.locator('.loadout-button')).toHaveCSS('background-color', 'rgb(248, 243, 232)');
 });
+
+test('Ko-fi button follows the selected theme and retains its default styling', async ({ page }) => {
+  await page.goto('./');
+  const support = page.getByRole('link', { name: 'Support Shell Mate on Ko-fi' });
+  await expect(support).toHaveCSS('background-color', 'rgb(56, 35, 31)');
+  for (const theme of ['obsidian', 'queen-of-hearts', 'ophidian', 'porcelain-prime', 'bonegrafted']) {
+    await page.getByLabel('Theme').selectOption(theme);
+    const background = await page.locator('.loadout-button').evaluate(el => getComputedStyle(el).backgroundColor);
+    await expect(support).toHaveCSS('background-color', background);
+    await expect(support).toHaveAttribute('href', 'https://ko-fi.com/bashotomo');
+  }
+});

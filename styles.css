@@ -371,3 +371,11 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 /* Naylshotte artwork has transparent space on its right side. */
 .tab[data-category="sidearms"] .category-icon{transform:translateX(15%) scale(1.15)}
 #sidearm-01 .equipment-portrait{object-position:right center}
+
+/* Match the support link to the active theme while retaining its coffee icon. */
+:root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) .kofi-button{background:var(--theme-control);border-color:var(--theme-control-border);color:#f5f3eb}
+:root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) .kofi-button:hover{background:var(--theme-hover);border-color:var(--theme-accent)}
+:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) .kofi-button{background:#f8f3e8;border-color:#9d8a60;color:#29251e}
+:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) .kofi-button:hover{background:var(--theme-hover);border-color:var(--light-gold)}
+:root[data-theme="porcelain-prime"] .kofi-button,:root[data-theme="bonegrafted"] .kofi-button{background:var(--theme-control);border-color:var(--theme-control-border);color:#222426}
+:root[data-theme="porcelain-prime"] .kofi-button:hover,:root[data-theme="bonegrafted"] .kofi-button:hover{background:var(--theme-hover);border-color:var(--light-gold)}
