@@ -41,3 +41,52 @@ test('every catalog Shade has a distinct selectable, persistent theme', async ({
   await page.reload();
   await expect(picker).toHaveValue('queen-of-hearts');
 });
+
+test('Ophidian uses light surfaces and dark text across the guide, glossary, and loadout', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('ophidian');
+  const lightSurface = async (surface, text) => {
+    const colors = await page.locator(surface).first().evaluate((node, textSelector) => {
+      const rgb = value => value.match(/\d+/g).slice(0, 3).map(Number);
+      const target = textSelector ? node.querySelector(textSelector) : node;
+      return [rgb(getComputedStyle(node).backgroundColor), rgb(getComputedStyle(target).color)];
+    }, text);
+    expect(Math.min(...colors[0])).toBeGreaterThan(175);
+    expect(Math.max(...colors[1])).toBeLessThan(130);
+  };
+  await lightSurface('.entry', '.entry-name');
+  await lightSurface('.filters', 'label span');
+  await page.goto('./glossary.html');
+  await lightSurface('.glossary-card', 'p');
+  await lightSurface('.glossary-card', 'h4');
+  await page.goto('./loadout.html');
+  await lightSurface('.loadout-saves', 'label');
+  await lightSurface('.effects', '.concise-toggle');
+  await page.locator('.picker-trigger').first().click();
+  await lightSurface('.picker-dialog', 'h2');
+});
+
+test('Ophidian controls and transparent stone frames use light backgrounds', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('ophidian');
+  await page.getByRole('button', { name: 'Tarstones', exact: true }).click();
+  for (const selector of ['#search', '#region', '#export', '.tarstone-portrait']) {
+    const color = await page.locator(selector).first().evaluate(el => getComputedStyle(el).backgroundColor);
+    expect(Math.min(...color.match(/\d+/g).slice(0, 3).map(Number))).toBeGreaterThan(175);
+  }
+  await page.goto('./glossary.html');
+  const search = page.locator('#glossary-search');
+  await expect(search).toHaveCSS('background-color', 'rgb(248, 243, 232)');
+  await page.goto('./loadout.html');
+  await expect(page.locator('.stone-icon').first()).toHaveCSS('background-color', 'rgb(230, 221, 201)');
+  await expect(page.locator('.picker-trigger').first()).toHaveCSS('color', 'rgb(41, 37, 30)');
+});
+
+test('Ophidian header has a light background and dark text', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('ophidian');
+  await expect(page.locator('.site-header')).toHaveCSS('background-color', 'rgb(245, 240, 229)');
+  await expect(page.locator('.site-header h1')).toHaveCSS('color', 'rgb(33, 31, 27)');
+  await page.goto('./glossary.html');
+  await expect(page.locator('.glossary-back')).toHaveCSS('color', 'rgb(41, 37, 30)');
+});
