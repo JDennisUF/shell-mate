@@ -142,3 +142,17 @@ test('light themes use light frames for Shell, weapon, and sidearm artwork', asy
     }
   }
 });
+
+test('Shell Point skill panels follow dark and light theme palettes', async ({ page }) => {
+  await page.goto('./?page=shells');
+  await page.locator('.entry .route > summary').first().click();
+  const tier = page.locator('.shell-tier').first();
+  for (const [theme, color] of [['obsidian', 'rgb(23, 23, 25)'], ['queen-of-hearts', 'rgb(57, 12, 17)'], ['sanguine-prophet', 'rgb(43, 16, 19)'], ['ophidian', 'rgb(229, 220, 203)']]) {
+    await page.getByLabel('Theme').selectOption(theme);
+    await expect(tier).toHaveCSS('background-color', color);
+  }
+  await page.goto('./loadout.html');
+  await page.getByLabel('Theme').selectOption('queen-of-hearts');
+  await expect(page.locator('.loadout-skills')).toHaveCSS('background-color', 'rgb(43, 9, 13)');
+  await expect(page.locator('.loadout-skill-tier').first()).toHaveCSS('border-top-color', 'rgb(135, 49, 58)');
+});
