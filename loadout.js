@@ -70,6 +70,8 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
     option.setAttribute('aria-describedby', preview.id);
     const showPreview = () => {
      preview.replaceChildren(el('strong', '', item.name));
+     const portrait = el('img', 'preview-art'); portrait.src = imageFor(item) || 'assets/categories/tarstones.png'; portrait.alt = ''; preview.append(portrait);
+     preview.append(el('p', 'preview-category', item.category || 'Tarstone'));
      if (!label.startsWith('Support stones ')) {
      const type = label.startsWith('Weapon stones ') ? 'melee' : 'sidearm';
      const gearList = type === 'melee' ? catalog.weapons : catalog.sidearms;
@@ -94,6 +96,7 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
      else if (item.fixedEffect) preview.append(effectText(item.fixedEffect, true));
      else if (!item.description) preview.append(effectText('Effect details not yet documented.'));
      preview.hidden = false;
+     if (window.matchMedia('(min-width: 800px)').matches) return;
      const rect = option.getBoundingClientRect();
      const width = preview.offsetWidth;
      const height = preview.offsetHeight;
@@ -105,8 +108,8 @@ function picker(label, selected, items, imageFor, onSelect, disabled = false, no
     };
     option.addEventListener('mouseenter', showPreview);
     option.addEventListener('focus', showPreview);
-    option.addEventListener('mouseleave', () => { if (document.activeElement !== option) preview.hidden = true; });
-    option.addEventListener('blur', () => { preview.hidden = true; });
+    option.addEventListener('mouseleave', () => { if (window.innerWidth < 800 && document.activeElement !== option) preview.hidden = true; });
+    option.addEventListener('blur', () => { if (window.innerWidth < 800) preview.hidden = true; });
    }
    const note = noteFor(item); if (note) option.append(el('small', '', note));
    option.addEventListener('click', () => { dialog.close(); onSelect(item.id); }); grid.append(option);
