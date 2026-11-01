@@ -437,18 +437,14 @@ function renderEntry(item) {
     portrait.decoding = "async";
   }
   heading.append(element("div", "entry-scope", item.scope === "rotten-autumn" ? "Rotten Autumn DLC" : "Base game"));
+  if (item.kind === "boss" && item.rewards) {
+    heading.append(element("p", "boss-description", `Notable drop: ${item.rewards.split(",")[0]}.`));
+  }
   if (item.availabilityWarning) heading.append(element("span", "entry-warning", item.availabilityWarning));
   const tag = element("span", "entry-tag", item.category || (item.subtype === "ghost" ? "Ghost" : item.bossType || (item.alreadyCleansed ? "Already active" : "Beacon")));
   if (item.kind === "achievement") heading.append(element("p", "", item.description));
   row.append(check, heading, tag);
   if (portrait) row.append(portrait);
-  if (item.kind === "boss") {
-    const description = element("p", "boss-description");
-    const encounter = item.nearestBeacon ? `Encountered near ${item.nearestBeacon} in ${item.region}.` : `Encountered in ${item.region}.`;
-    const reward = item.rewards ? ` Notable drop: ${item.rewards.split(",")[0]}.` : "";
-    description.textContent = encounter + reward;
-    card.append(description);
-  }
   const details = element("details", "route");
   details.open = disclosureState.get(item.id)?.route || false;
   const summary = element("summary", "", item.kind === "shell" ? "Abilities & details" : "Route & details");

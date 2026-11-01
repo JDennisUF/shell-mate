@@ -60,11 +60,15 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await expect(page.locator(".entry")).toHaveCount(9);
 });
 
-test("every boss card has an identifying image and encounter description", async ({ page }) => {
+test("boss cards have identifying images and show notable drops below their game indicator", async ({ page }) => {
   await page.goto("./?page=bosses");
   await expect(page.locator(".entry")).toHaveCount(46);
   await expect(page.locator(".boss-portrait")).toHaveCount(46);
-  await expect(page.locator(".boss-description")).toHaveCount(46);
+  const drops = page.locator(".boss-description");
+  expect(await drops.count()).toBeGreaterThan(0);
+  await expect(page.locator(".entry-heading > .entry-scope + .boss-description")).toHaveCount(await drops.count());
+  expect(await drops.allTextContents()).toEqual(expect.arrayContaining([expect.stringMatching(/^Notable drop: /)]));
+  expect((await drops.allTextContents()).every(text => text.startsWith("Notable drop: "))).toBe(true);
   await expect(page.locator(".boss-portrait").first()).toHaveAttribute("alt", /boss$/);
   expect(await page.locator(".boss-portrait").evaluateAll(images => images.every(image => /^\.\/assets\/bosses\/.+\.jpg$/.test(image.getAttribute("src"))))).toBe(true);
   for (const [id, image] of [["boss-11", "hexapod"], ["boss-16", "malborn-offspring"], ["boss-18", "orrem-the-reclaimed"], ["boss-33", "foul-passenger"], ["boss-35", "the-monolith"], ["boss-46", "zmey-the-unbidden"]]) {
