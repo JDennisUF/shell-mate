@@ -24,3 +24,20 @@ for (const group of [...new Set(glossary.map(entry => entry.group))]) {
   section.append(cards);
   container.append(section);
 }
+
+const search = document.getElementById("glossary-search");
+const empty = document.getElementById("glossary-empty");
+search.addEventListener("input", () => {
+  const query = search.value.trim().toLocaleLowerCase();
+  let count = 0;
+  for (const section of container.querySelectorAll(".glossary-section")) {
+    let visible = 0;
+    for (const card of section.querySelectorAll(".glossary-card")) {
+      const match = card.textContent.toLocaleLowerCase().includes(query);
+      card.hidden = !match;
+      if (match) { visible++; count++; }
+    }
+    section.hidden = visible === 0;
+  }
+  empty.hidden = count !== 0;
+});
