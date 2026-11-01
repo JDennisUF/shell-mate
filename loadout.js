@@ -6,7 +6,8 @@ const compat = await fetch('./tarstone-compatibility.json').then(r => r.json());
 const norm = s => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
 const lookup = stone => Object.entries(compat).find(([name]) => [stone.name, ...(stone.aliases || [])].some(n => norm(n) === norm(name)))?.[1];
 const slots = ['melee-Abilities','melee-Infusions','melee-Combat','sidearm-Abilities','sidearm-Infusions','sidearm-Combat', ...[1,2,3,4].map(i => `support-${i}`)];
-const defaultState = () => ({ melee: '', sidearm: '', stones: {}, levels: {}, gearStones: { melee: {}, sidearm: {} }, concise: false });
+const playableShells = catalog.shells.filter(shell => shell.maxShellPoints);
+const defaultState = () => ({ shell: 'shell-eredrim', skillRanks: {}, melee: '', sidearm: '', stones: {}, levels: {}, gearStones: { melee: {}, sidearm: {} }, concise: false });
 let state; try { state = { ...defaultState(), ...JSON.parse(localStorage.getItem('shell-mate-loadout') || '{}') }; } catch { state = defaultState(); }
 const save = () => { try { localStorage.setItem('shell-mate-loadout', JSON.stringify(state)); } catch {} };
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
@@ -159,7 +160,39 @@ const infusionEffects = {
  'Voltaic Amber':'Lightning', 'Frostshard Stone':'Frost', 'Monarch’s Vestige':'Phantom',
  'Accursed Stone':'Curse', 'Weeping Stone':'Trauma'
 };
+function renderShell() {
+ const shell = playableShells.find(item => item.id === state.shell) || playableShells[0];
+ state.shell = shell.id; state.skillRanks ||= {};
+ const select = document.querySelector('#shell-select');
+ select.replaceChildren(...playableShells.map(item => new Option(item.shellName, item.id)));
+ select.value = shell.id;
+ const image = document.querySelector('#shell-image'); image.src = shell.image; image.alt = shell.shellName;
+ const root = document.querySelector('#shell-skills'); root.replaceChildren();
+ const ranks = state.skillRanks[shell.id] ||= {};
+ const spent = Object.values(ranks).reduce((sum, rank) => sum + rank * (rank + 1) / 2, 0);
+ const heading = el('div', 'skills-heading'); heading.append(el('h2', '', `${shell.shellName} skills`), el('p', spent > shell.maxShellPoints ? 'over-limit' : '', `Shell Points: ${spent} / ${shell.maxShellPoints}`));
+ const reset = el('button', '', 'Reset skills'); reset.type = 'button'; reset.onclick = () => { delete state.skillRanks[shell.id]; save(); renderShell(); }; heading.append(reset); root.append(heading);
+ const tiers = el('div', 'loadout-skill-tiers');
+ for (let tier = 1; tier <= 4; tier++) {
+  const skills = (shell.skillDetails || []).filter(skill => skill.tier === tier); if (!skills.length) continue;
+  const section = el('section', 'loadout-skill-tier'); section.append(el('h3', '', `Tier ${tier}`));
+  for (const skill of skills) {
+   const card = el('article', 'loadout-skill'); card.append(el('h4', '', skill.name));
+   if (skill.description) card.append(el('p', '', skill.description));
+   (skill.levels || []).forEach((effect, index) => {
+    const rank = index + 1, row = el('div', 'loadout-rank');
+    const button = el('button', 'shell-rank-button', String(rank)); button.type = 'button';
+    button.setAttribute('aria-label', `${shell.shellName} ${skill.name} rank ${rank}`); button.setAttribute('aria-pressed', String(rank <= (ranks[skill.name] || 0)));
+    button.title = `Rank ${rank} costs ${rank} Shell ${rank === 1 ? 'Point' : 'Points'}`;
+    button.onclick = () => { if (ranks[skill.name] === rank) delete ranks[skill.name]; else ranks[skill.name] = rank; save(); renderShell(); };
+    row.append(button, el('span', '', effect)); card.append(row);
+   }); section.append(card);
+  } tiers.append(section);
+ } root.append(tiers);
+}
+document.querySelector('#shell-select').addEventListener('change', event => { state.shell = event.target.value; save(); renderShell(); });
 function render() {
+ renderShell();
  const gearRoot = document.querySelector('#gear'); gearRoot.replaceChildren();
  for (const [type, label, list] of [['melee','Melee weapon',catalog.weapons],['sidearm','Sidearm',catalog.sidearms]]) {
   const card = el('div','gear-card'); const gear = list.find(x=>x.id===state[type]);
@@ -175,10 +208,27 @@ function render() {
    const category=type==='support'?'Support':key.split('-')[1]; const gear=(type==='melee'?catalog.weapons:catalog.sidearms).find(x=>x.id===state[type]);
    const row=el('div','stone-slot'); const selected=stoneById(state.stones[key]);
    const img=el('img','stone-icon'); img.src=tarstoneArtwork[selected?.id] || 'assets/categories/tarstones.png'; img.alt=''; row.append(img);
-   const label=el('div','slot-label',type==='support'?`Support ${key.split('-')[1]}`:category.replace('Infusions','Infusion').replace('Abilities','Ability'));
+   const label=el('div','slot-label');
+   const slotName=type==='support'?`Support ${key.split('-')[1]}`:category.replace('Infusions','Infusion').replace('Abilities','Ability');
+   if (type !== 'support') label.append(document.createTextNode(slotName));
    const candidates=catalog.tarstones.filter(s=>s.category===category && (!Object.entries(state.stones).some(([k,id])=>k!==key && id===s.id)) && status(s,type,gear)!=='no');
    candidates.sort((a,b)=>a.name.localeCompare(b.name));
-   label.append(picker(`${title} ${label.textContent}`, selected, candidates, item => tarstoneArtwork[item.id], value => {state.stones[key]=value;if(type !== 'support') rememberGear(type);save();render();}, type!=='support'&&!gear, item => status(item,type,gear)==='unknown' ? 'Compatibility unknown' : '')); row.append(label); section.append(row);
+   const trigger = picker(`${title} ${slotName}`, selected, candidates, item => tarstoneArtwork[item.id], value => {state.stones[key]=value;if(type !== 'support') rememberGear(type);save();render();}, type!=='support'&&!gear, item => status(item,type,gear)==='unknown' ? 'Compatibility unknown' : '');
+   label.append(trigger); row.append(label);
+   if (selected) {
+    const preview = el('div', 'equipped-preview'); preview.id = `preview-${key}`; preview.hidden = true; preview.setAttribute('role', 'tooltip');
+    preview.append(el('strong', '', selected.name));
+    const art = el('img', 'preview-art'); art.src = tarstoneArtwork[selected.id] || 'assets/categories/tarstones.png'; art.alt = ''; preview.append(art, el('p', 'preview-category', selected.category));
+    if (selected.description) preview.append(effectText(selected.description));
+    if (selected.levelEffects?.length) selected.levelEffects.forEach((effect, index) => { const detail = effectText(effect); detail.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(detail); });
+    else if (selected.fixedEffect) preview.append(effectText(selected.fixedEffect));
+    else if (!selected.description) preview.append(effectText('Effect details not yet documented.'));
+    trigger.setAttribute('aria-describedby', preview.id); row.append(preview);
+    const show = () => { preview.hidden = false; const rect = row.getBoundingClientRect(); const box = preview.getBoundingClientRect(); preview.style.left = `${Math.max(8, Math.min(rect.right + 8, window.innerWidth - box.width - 8))}px`; preview.style.top = `${Math.max(8, Math.min(rect.top, window.innerHeight - box.height - 8))}px`; };
+    row.addEventListener('mouseenter', show); row.addEventListener('mouseleave', () => { preview.hidden = true; });
+    trigger.addEventListener('focus', () => { if (trigger.matches(':focus-visible')) show(); }); trigger.addEventListener('blur', () => { preview.hidden = true; }); trigger.addEventListener('click', () => { preview.hidden = true; });
+   }
+   section.append(row);
   } root.append(section);
  }
  const effects=document.querySelector('#effects'); effects.replaceChildren(); effects.classList.toggle('is-concise', !!state.concise); document.querySelector('#concise').checked = !!state.concise; let count=0;
@@ -233,8 +283,10 @@ function writeLibrary(library) {
  catch { message.textContent = 'Could not save loadouts in this browser.'; return false; }
 }
 function currentLoadout() {
- return { melee: state.melee, sidearm: state.sidearm, stones: Object.fromEntries(slots.filter(key => state.stones[key]).map(key => [key, state.stones[key]])) };
+ return { shell: state.shell, skillRanks: structuredClone(state.skillRanks), melee: state.melee, sidearm: state.sidearm, stones: Object.fromEntries(slots.filter(key => state.stones[key]).map(key => [key, state.stones[key]])) };
 }
+let savedSnapshot = JSON.stringify(currentLoadout());
+let activeLoadoutName = '';
 function validateLoadout(value) {
  if (!value || typeof value !== 'object' || Array.isArray(value) || typeof value.melee !== 'string' || typeof value.sidearm !== 'string' || !value.stones || typeof value.stones !== 'object' || Array.isArray(value.stones)) throw new Error('Invalid loadout file.');
  if ((value.melee && !catalog.weapons.some(x => x.id === value.melee)) || (value.sidearm && !catalog.sidearms.some(x => x.id === value.sidearm))) throw new Error('The loadout contains unknown equipment.');
@@ -245,7 +297,19 @@ function validateLoadout(value) {
   if (!slots.includes(key) || !stone || stone.category !== (type === 'support' ? 'Support' : key.split('-')[1]) || seen.has(id) || (type !== 'support' && (!gear || status(stone, type, gear) === 'no'))) throw new Error('The loadout contains an invalid Tarstone selection.');
   seen.add(id);
  }
- return { melee: value.melee, sidearm: value.sidearm, stones: { ...value.stones } };
+ const shellId = value.shell ?? 'shell-eredrim';
+ if (!playableShells.some(item => item.id === shellId)) throw new Error('The loadout contains an unknown shell.');
+ const skillRanks = value.skillRanks ?? {};
+ if (!skillRanks || typeof skillRanks !== 'object' || Array.isArray(skillRanks)) throw new Error('Invalid shell skill ranks.');
+ for (const [id, ranks] of Object.entries(skillRanks)) {
+  const shell = playableShells.find(item => item.id === id);
+  if (!shell || !ranks || typeof ranks !== 'object' || Array.isArray(ranks)) throw new Error('Invalid shell skill ranks.');
+  for (const [name, rank] of Object.entries(ranks)) {
+   const skill = shell.skillDetails?.find(item => item.name === name);
+   if (!skill || !Number.isInteger(rank) || rank < 1 || rank > skill.levels.length) throw new Error('Invalid shell skill rank.');
+  }
+ }
+ return { shell: shellId, skillRanks: structuredClone(skillRanks), melee: value.melee, sidearm: value.sidearm, stones: { ...value.stones } };
 }
 function refreshLibrary(selected = '') {
  savedSelect.replaceChildren(new Option('Choose a loadout', ''));
@@ -261,12 +325,15 @@ function storeNamed(name, loadout) {
 }
 function getName() { const name = nameInput.value.trim(); if (!name) message.textContent = 'Enter a loadout name first.'; return name; }
 document.querySelector('#save-loadout').addEventListener('click', () => {
- const name = getName(); if (name && storeNamed(name, currentLoadout())) message.textContent = `Saved “${name}”.`;
+ const name = getName(); if (name && storeNamed(name, currentLoadout())) { activeLoadoutName = name; savedSnapshot = JSON.stringify(currentLoadout()); message.textContent = `Saved “${name}”.`; }
 });
 document.querySelector('#export-loadout').addEventListener('click', () => {
  const name = getName(); if (!name) return;
- const url = URL.createObjectURL(new Blob([JSON.stringify({ version: 1, type: 'shell-mate-loadout', name, loadout: currentLoadout() }, null, 2)], { type: 'application/json' }));
- const link = el('a'); link.href = url; link.download = 'shell-mate-loadout.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+ const loadout = currentLoadout();
+ loadout.stones = Object.fromEntries(Object.entries(loadout.stones).map(([slot, id]) => [slot, stoneById(id).name]));
+ loadout.skillRanks = loadout.skillRanks[loadout.shell] ? { [loadout.shell]: loadout.skillRanks[loadout.shell] } : {};
+ const url = URL.createObjectURL(new Blob([JSON.stringify({ version: 2, type: 'shell-mate-loadout', name, loadout }, null, 2)], { type: 'application/json' }));
+ const link = el('a'); link.href = url; link.download = `shell-mate-${name.replace(/[\\/:*?"<>|\x00-\x1f]/g, '-')}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
  message.textContent = `Exported “${name}”.`;
 });
 document.querySelector('#import-loadout').addEventListener('click', () => document.querySelector('#loadout-file').click());
@@ -274,22 +341,39 @@ document.querySelector('#loadout-file').addEventListener('change', async event =
  const file = event.target.files[0]; if (!file) return;
  try {
   const data = JSON.parse(await file.text());
-  if (data?.version !== 1 || data.type !== 'shell-mate-loadout' || typeof data.name !== 'string' || !data.name.trim() || data.name.length > 100) throw new Error('Invalid loadout file.');
+  if (![1, 2].includes(data?.version) || data.type !== 'shell-mate-loadout' || typeof data.name !== 'string' || !data.name.trim() || data.name.length > 100) throw new Error('Invalid loadout file.');
+  if (data.version === 2) {
+   const stones = data.loadout?.stones;
+   if (!stones || typeof stones !== 'object' || Array.isArray(stones)) throw new Error('Invalid Tarstone selections.');
+   const converted = {};
+   for (const [slot, name] of Object.entries(stones)) {
+    const matches = catalog.tarstones.filter(stone => stone.name === name);
+    if (matches.length !== 1) throw new Error(`Unknown Tarstone: ${String(name)}`);
+    converted[slot] = matches[0].id;
+   }
+   data.loadout.stones = converted;
+  }
   const loadout = validateLoadout(data.loadout), name = data.name.trim();
-  if (storeNamed(name, loadout)) { nameInput.value = name; message.textContent = `Imported “${name}”. Select Load to use it.`; }
+  if (storeNamed(name, loadout)) { message.textContent = `Imported “${name}”. Select it to load.`; }
  } catch (error) { message.textContent = error instanceof SyntaxError ? 'Invalid loadout file.' : error.message; }
  event.target.value = '';
 });
-document.querySelector('#load-loadout').addEventListener('click', () => {
+function loadSelectedLoadout() {
  const entry = readLibrary().find(item => item.name === savedSelect.value);
  if (!entry) { message.textContent = 'Choose a saved loadout first.'; return; }
  try {
+  if (JSON.stringify(currentLoadout()) !== savedSnapshot && window.confirm('Save changes to the current loadout before switching?')) {
+   const name = nameInput.value.trim() || window.prompt('Name the current loadout:')?.trim();
+   if (!name || name.length > 100 || !storeNamed(name, currentLoadout())) { refreshLibrary(activeLoadoutName); return; }
+  }
   const loadout = validateLoadout(entry.loadout);
   state = { ...defaultState(), ...loadout, concise: state.concise };
   rememberGear('melee'); rememberGear('sidearm'); save(); render(); nameInput.value = entry.name;
-  message.textContent = `Loaded “${entry.name}”.`;
+  activeLoadoutName = entry.name; savedSnapshot = JSON.stringify(currentLoadout()); refreshLibrary(entry.name);
+  message.textContent = '';
  } catch (error) { message.textContent = error.message; }
-});
+}
+savedSelect.addEventListener('change', () => { if (savedSelect.value) loadSelectedLoadout(); });
 document.querySelector('#delete-loadout').addEventListener('click', () => {
  const name = savedSelect.value; if (!name) { message.textContent = 'Choose a saved loadout first.'; return; }
  if (writeLibrary(readLibrary().filter(entry => entry.name !== name))) { refreshLibrary(); message.textContent = `Deleted “${name}”.`; }

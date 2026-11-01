@@ -208,3 +208,27 @@ test('support stone preview shows effects on hover and focus', async ({ page }) 
   await stone.focus();
   await expect(preview).toBeVisible();
 });
+
+test('exports stone names and imports both named and legacy ID loadouts', async ({ page }) => {
+  await page.goto('./loadout.html');
+  await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  const option = page.getByRole('dialog').locator('.picker-option:not(.picker-empty)').first();
+  const name = await option.locator('span').first().textContent();
+  await option.click();
+  await page.locator('#loadout-name').fill('Names');
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export', exact: true }).click();
+  const download = await downloadPromise;
+  const chunks = []; for await (const chunk of await download.createReadStream()) chunks.push(chunk);
+  const data = JSON.parse(Buffer.concat(chunks).toString());
+  expect(data.version).toBe(2);
+  expect(data.loadout.stones['support-1']).toBe(name);
+  await page.locator('#loadout-file').setInputFiles({ name: 'named.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
+  await page.getByRole('button', { name: 'Clear', exact: true }).click();
+  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await expect(page.getByRole('button', { name: `Support stones Support 1: ${name}` })).toBeVisible();
+  const saved = JSON.parse(await page.evaluate(() => localStorage.getItem('shell-mate-loadout')));
+  data.version = 1; data.name = 'Legacy'; data.loadout.stones = saved.stones;
+  await page.locator('#loadout-file').setInputFiles({ name: 'legacy.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
+  await expect(page.locator('#loadout-message')).toContainText('Imported');
+});
