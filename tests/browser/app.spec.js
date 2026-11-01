@@ -396,13 +396,13 @@ test('named loadouts can be exported, imported, and selectively loaded', async (
   const chunks = []; for await (const chunk of stream) chunks.push(chunk);
   const content = Buffer.concat(chunks);
   await page.getByRole('button', { name: 'Clear', exact: true }).click();
-  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await page.locator('#saved-loadouts').selectOption('My build');
   await expect(page.locator('#gear .picker-trigger').first()).toHaveAttribute('aria-label', selected);
   await page.getByRole('button', { name: 'Delete', exact: true }).click();
   await page.locator('#loadout-file').setInputFiles({ name: 'build.json', mimeType: 'application/json', buffer: content });
-  await expect(page.locator('#saved-loadouts')).toHaveValue('My build');
+  await expect(page.locator('#saved-loadouts').locator('option[value="My build"]')).toHaveCount(1);
   await page.getByRole('button', { name: 'Clear', exact: true }).click();
-  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await page.locator('#saved-loadouts').selectOption('My build');
   await expect(page.locator('#gear .picker-trigger').first()).toHaveAttribute('aria-label', selected);
 });
 

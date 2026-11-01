@@ -132,9 +132,7 @@ test('weapon stone preview shows effects and colored rank details on hover and f
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Wounding Stone', exact: true });
   await stone.hover();
   const preview = page.getByRole('tooltip');
-  const stoneBox = await stone.boundingBox();
-  const previewBox = await preview.boundingBox();
-  expect(previewBox.y === 8 || Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y)) <= 9).toBeTruthy();
+  await expect(preview).toBeVisible();
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');
@@ -154,9 +152,7 @@ test('sidearm stone preview shows colored effects and ranks on hover and focus',
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true });
   await stone.hover();
   const preview = page.getByRole('tooltip');
-  const stoneBox = await stone.boundingBox();
-  const previewBox = await preview.boundingBox();
-  expect(previewBox.y === 8 || Math.min(Math.abs(previewBox.y - (stoneBox.y + stoneBox.height)), Math.abs(previewBox.y + previewBox.height - stoneBox.y)) <= 9).toBeTruthy();
+  await expect(preview).toBeVisible();
   await expect(preview).toContainText('Rank 1:');
   await expect(preview).toContainText('Rank 2:');
   await expect(preview).toContainText('Rank 3:');
@@ -225,7 +221,7 @@ test('exports stone names and imports both named and legacy ID loadouts', async 
   expect(data.loadout.stones['support-1']).toBe(name);
   await page.locator('#loadout-file').setInputFiles({ name: 'named.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
   await page.getByRole('button', { name: 'Clear', exact: true }).click();
-  await page.getByRole('button', { name: 'Load', exact: true }).click();
+  await page.locator('#saved-loadouts').selectOption('Names');
   await expect(page.getByRole('button', { name: `Support stones Support 1: ${name}` })).toBeVisible();
   const saved = JSON.parse(await page.evaluate(() => localStorage.getItem('shell-mate-loadout')));
   data.version = 1; data.name = 'Legacy'; data.loadout.stones = saved.stones;

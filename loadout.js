@@ -268,7 +268,7 @@ function render() {
  if(!count) effects.append(el('p','empty-effects','Your selected stones and their effects will appear here.'));
 }
 document.querySelector('#concise').addEventListener('change', event => { state.concise = event.target.checked; save(); render(); });
-document.querySelector('#reset').addEventListener('click',()=>{state=defaultState();save();render();}); render();
+document.querySelector('#reset').addEventListener('click',()=>{state=defaultState();save();render();document.querySelector('#saved-loadouts').value='';}); render();
 
 const libraryKey = 'shell-mate-saved-loadouts-v1';
 const nameInput = document.querySelector('#loadout-name');
@@ -354,7 +354,7 @@ document.querySelector('#loadout-file').addEventListener('change', async event =
    data.loadout.stones = converted;
   }
   const loadout = validateLoadout(data.loadout), name = data.name.trim();
-  if (storeNamed(name, loadout)) { message.textContent = `Imported “${name}”. Select it to load.`; }
+  if (storeNamed(name, loadout)) { refreshLibrary(); message.textContent = `Imported “${name}”. Select it to load.`; }
  } catch (error) { message.textContent = error instanceof SyntaxError ? 'Invalid loadout file.' : error.message; }
  event.target.value = '';
 });
