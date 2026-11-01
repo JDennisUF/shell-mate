@@ -29,10 +29,10 @@ test('every catalog Shade has a distinct selectable, persistent theme', async ({
   await page.goto('./');
   const shades = await page.evaluate(async () => (await import('./extras.js')).shades.map(shade => shade.name));
   const picker = page.getByLabel('Theme');
-  const options = await picker.locator('optgroup option').allTextContents();
+  const options = await picker.locator('option:not([value=default]):not([value=obsidian])').allTextContents();
   expect(options).toEqual(shades);
   const backgrounds = new Set();
-  for (const option of await picker.locator('optgroup option').evaluateAll(nodes => nodes.map(node => node.value))) {
+  for (const option of await picker.locator('option:not([value=default]):not([value=obsidian])').evaluateAll(nodes => nodes.map(node => node.value))) {
     await picker.selectOption(option);
     await expect(page.locator('html')).toHaveAttribute('data-theme', option);
     backgrounds.add(await page.locator('html').evaluate(node => getComputedStyle(node).backgroundColor + getComputedStyle(node).getPropertyValue('--theme-accent')));
@@ -89,4 +89,56 @@ test('Ophidian header has a light background and dark text', async ({ page }) =>
   await expect(page.locator('.site-header h1')).toHaveCSS('color', 'rgb(33, 31, 27)');
   await page.goto('./glossary.html');
   await expect(page.locator('.glossary-back')).toHaveCSS('color', 'rgb(41, 37, 30)');
+});
+
+test('Porcelain Prime applies its white and silver palette across pages', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('porcelain-prime');
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(241, 242, 241)');
+  await expect(page.locator('.site-header')).toHaveCSS('background-color', 'rgb(250, 250, 250)');
+  await expect(page.locator('.entry-name').first()).toHaveCSS('color', 'rgb(34, 36, 38)');
+  await page.goto('./glossary.html');
+  await expect(page.locator('#glossary-search')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+  await expect(page.locator('.glossary-card').first()).toHaveCSS('background-color', 'rgb(250, 251, 250)');
+  await page.goto('./loadout.html');
+  await expect(page.locator('.effects')).toHaveCSS('background-color', 'rgb(247, 248, 247)');
+  await expect(page.locator('.picker-trigger').first()).toHaveCSS('color', 'rgb(34, 36, 38)');
+});
+
+test('Bonegrafted uses light bone surfaces and silver accents across pages', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('bonegrafted');
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(231, 226, 215)');
+  await expect(page.locator('.site-header')).toHaveCSS('background-color', 'rgb(242, 238, 230)');
+  await expect(page.locator('.entry-name').first()).toHaveCSS('color', 'rgb(34, 36, 38)');
+  await page.goto('./glossary.html');
+  await expect(page.locator('#glossary-search')).toHaveCSS('background-color', 'rgb(250, 248, 243)');
+  await expect(page.locator('.glossary-card').first()).toHaveCSS('background-color', 'rgb(245, 242, 235)');
+  await page.goto('./loadout.html');
+  await expect(page.locator('.effects')).toHaveCSS('background-color', 'rgb(241, 238, 231)');
+  await expect(page.locator('.picker-trigger').first()).toHaveCSS('color', 'rgb(34, 36, 38)');
+});
+
+test('Queen of Hearts uses a dark blood-red palette across pages', async ({ page }) => {
+  await page.goto('./');
+  await page.getByLabel('Theme').selectOption('queen-of-hearts');
+  await expect(page.locator('html')).toHaveCSS('background-color', 'rgb(33, 8, 11)');
+  await expect(page.locator('.site-header')).toHaveCSS('background-color', 'rgb(72, 10, 16)');
+  await expect(page.locator('.tab[aria-current="page"]')).toHaveCSS('border-bottom-color', 'rgb(240, 68, 79)');
+  await page.goto('./glossary.html');
+  await expect(page.locator('.glossary-card').first()).toHaveCSS('background-color', 'rgb(65, 14, 20)');
+  await page.goto('./loadout.html');
+  await expect(page.locator('.effects')).toHaveCSS('background-color', 'rgb(43, 9, 13)');
+});
+
+test('light themes use light frames for Shell, weapon, and sidearm artwork', async ({ page }) => {
+  await page.goto('./');
+  for (const theme of ['ophidian', 'porcelain-prime', 'bonegrafted']) {
+    await page.getByLabel('Theme').selectOption(theme);
+    for (const [category, image] of [['Shells', '.shell-portrait'], ['Weapons', '.equipment-portrait'], ['Sidearms', '.equipment-portrait']]) {
+      await page.getByRole('button', { name: category, exact: true }).click();
+      const color = await page.locator(image).first().evaluate(el => getComputedStyle(el).backgroundColor);
+      expect(Math.min(...color.match(/\d+/g).slice(0, 3).map(Number))).toBeGreaterThan(175);
+    }
+  }
 });

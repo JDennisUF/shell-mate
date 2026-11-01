@@ -10,7 +10,7 @@
     const picker = document.getElementById('theme-select');
     if (picker) picker.value = theme;
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === 'ophidian' ? '#e9e2d2' : theme === 'default' ? '#181b1b' : '#0b0b10';
+    if (meta) meta.content = theme === 'bonegrafted' ? '#e7e2d7' : theme === 'porcelain-prime' ? '#f1f2f1' : theme === 'ophidian' ? '#e9e2d2' : theme === 'default' ? '#181b1b' : '#0b0b10';
   };
   try { apply(localStorage.getItem(key)); } catch { apply('default'); }
   document.addEventListener('DOMContentLoaded', () => {
