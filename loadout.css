@@ -20,3 +20,10 @@
 .skills-heading{align-items:center;gap:.4rem 1rem;margin-bottom:.7rem}.skills-heading h2{margin-right:.25rem}.skills-heading p{margin:0;font-size:.85rem;letter-spacing:.03em}.skills-heading button{margin-left:auto;align-self:flex-start;padding:.45rem .8rem}@media(max-width:600px){.skills-heading h2{font-size:1.3rem}.skills-heading p{order:3;flex-basis:100%}}
 .equipped-preview{position:fixed;z-index:20;width:min(340px,calc(100vw - 16px));max-height:80vh;overflow:auto;pointer-events:none;box-sizing:border-box;padding:1.2rem;background:#0d0e0d;border:1px solid #9e8656;box-shadow:0 4px 20px #000;text-align:center}.equipped-preview[hidden]{display:none}.equipped-preview strong{display:block;font:small-caps 1.7rem Georgia;color:#d3c6ae}.equipped-preview .effect-description{text-align:left;border:1px solid #39332b;padding:.8rem;margin:.3rem 0;background:#1b1a16}
 .equipped-preview{width:min(420px,calc(100vw - 16px))}
+
+@media (min-width:800px){
+  .picker-dialog:has(.stone-preview){grid-template-columns:minmax(0,1fr) minmax(300px,420px)}
+  .picker-dialog:has(.stone-preview) .picker-grid{grid-template-columns:repeat(auto-fill,minmax(115px,1fr))}
+  .picker-dialog:has(.stone-preview) .picker-option{min-height:130px;padding:.5rem}
+  .picker-dialog:has(.stone-preview) .picker-option img{width:85px;height:85px}
+}

@@ -155,7 +155,7 @@ const retainedUpgrades = {
  'Magdalena’s Memento': [0, 1, 2], 'Captive’s Scabstone': [0, 1, 2],
  'Conqueror’s Reward': [0, 1, 2], 'Infused Stone': [0, 1, 2],
  'Shrike Stone': [0, 1, 2], 'Colossus Stone': [1, 2],
- 'Lost Clotstone': [0, 1, 2], 'Scholar’s Wormstone': [1, 2],
+ 'Lost Clotstone': [0, 1, 2],
  'Clockwork Shardstone': [1, 2], 'Hexapod Core': [0, 1, 2],
  'Solnir Shard': [1, 2], 'Fusillade Stone': [1, 2],
  'Fulminant Stone': [1, 2], 'Strange Remnant': [1, 2],

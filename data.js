@@ -2080,12 +2080,11 @@ export const catalog = {
       ],
       "nearestBeaconId": "beacon-35",
       "levelEffects": [
-        "Each chainsaw spin deals 12% of the weapon base damage",
-        "Each chainsaw spin deals 15 Stagger Damage",
-        "Each chainsaw spin deals 20% of the weapon base damage"
+        "Each chainsaw spin deals 15% of the weapon base damage",
+        "Each chainsaw spin deals 25% of the weapon base damage",
+        "Each chainsaw spin deals 35% of the weapon base damage"
       ],
-      "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Scholar%27s_Wormstone",
-      "description": "Consume Resolve over time to set the chainsaw in motion, augmenting your attacks."
+      "description": "Consume Resolve over time to set the chainsaw in motion, augmenting your every attack."
     },
     {
       "id": "tar-64",
