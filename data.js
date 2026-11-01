@@ -319,7 +319,7 @@ export const catalog = {
         "Generates 28 Resolve"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Devout_Stone",
-      "description": "Improves Resolve gain from melee attacks."
+      "description": "Killing an enemy with your Sidearm:"
     },
     {
       "id": "tar-04",
@@ -349,7 +349,7 @@ export const catalog = {
         "The next melee attack deals +50% Stagger Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Shattering_Stone",
-      "description": "Improves melee Stagger Damage."
+      "description": "On killing an enemy:"
     },
     {
       "id": "tar-05",
@@ -526,7 +526,7 @@ export const catalog = {
         "Gain 70% Damage Reduction for the next 4s"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Bulwark_Stone",
-      "description": "Provides Damage Reduction to all characters."
+      "description": "On killing an enemy:"
     },
     {
       "id": "tar-11",
@@ -695,7 +695,7 @@ export const catalog = {
         "All attacks"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Duality_Stone",
-      "description": "Your Weapon light attack combo strikes twice."
+      "description": "Your Weapon light attack combo strikes twice, each dealing 80% damage and reduced Resolve gain to 25%."
     },
     {
       "id": "tar-17",
@@ -1583,7 +1583,7 @@ export const catalog = {
         "Infusion is permanent"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Hag_Stone",
-      "description": "Consume 20 Resolve to infuse your Sidearm with Trauma."
+      "description": "Consume 20 Resolve to infuse your Sidearm with Poison."
     },
     {
       "id": "tar-47",
@@ -2465,14 +2465,13 @@ export const catalog = {
       "relatedIds": [
         "dungeon-01"
       ],
-      "fixedEffect": "Unlocks one guitar melody for the lute, with another at each upgrade.",
       "levelEffects": [
         "Unlocks melodies 1, 2 and 3",
         "Unlocks melodies 4, 5 and 6",
         "Unlocks melodies 7, 8 and 9"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Guitarstone",
-      "description": "Compatible only with the Troubadour's Lute, which unlocks additional tracks."
+      "description": "Unlocks more melodies for the Lute, while retaining familiar songs."
     },
     {
       "id": "tar-ra-mourning-bell",
@@ -2504,7 +2503,7 @@ export const catalog = {
         "Melee attacks deal 180% Stagger Damage but are 15% slower"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Mourning_Bell",
-      "description": "Increases melee Stagger Damage at night, but slows attack speed."
+      "description": "At Night, Melee attacks deal increased Stagger Damage, but are slower."
     },
     {
       "id": "tar-ra-widowmoon-stone",
@@ -2619,14 +2618,13 @@ export const catalog = {
       "relatedIds": [
         "dungeon-10"
       ],
-      "fixedEffect": "Regenerate additional Resolve while aiming a sidearm. Regeneration continues while firing.",
       "levelEffects": [
         "Regenerates Resolve proportional to 50% damage over 5s",
         "Regenerates Resolve proportional to 60% damage over 5s",
         "Regenerates Resolve proportional to 80% damage over 5s"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Channeler%27s_Stone",
-      "description": "Lets you regenerate Resolve in proportion to the damage dealt to enemies with a Sidearm."
+      "description": "Damaging an enemy with a Sidearm regenerates Resolve proportional to the damage dealt."
     },
     {
       "id": "tar-ra-starless-eye",
@@ -2690,7 +2688,7 @@ export const catalog = {
         "Each Halberd strike deals 270 damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Black_Fleece",
-      "description": "Transforms you into a black sheep that can attack with a halberd."
+      "description": "While in sheep form, consume 40 Resolve to become a black sheep and unleash a halberd flurry."
     },
     {
       "id": "tar-ra-bloodoath-stone",

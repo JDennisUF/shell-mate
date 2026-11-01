@@ -1,5 +1,10 @@
 // Shared definitions for colored combat terms in Shell Mate.
 export const glossary = [
+  { id: "permanent", term: "Permanent", group: "Core combat", definition: "The stated effect remains active without a limited number of attacks." },
+  { id: "sidearm", term: "Sidearm", group: "Core combat", definition: "The equipped ranged weapon used for Sidearm attacks and abilities." },
+  { id: "weapon", term: "Weapon", group: "Core combat", definition: "The equipped melee weapon used for attacks and abilities." },
+  { id: "lute", term: "Lute", group: "Core combat", definition: "A playable instrument that can perform melodies." },
+  { id: "at-night", term: "At Night", group: "Core combat", definition: "The effect applies while Night Mode is active." },
   { id: "negative-conditions", term: "Negative Conditions", group: "Core combat", definition: "Harmful status effects, such as Poison, Burn, Lightning and Frost." },
   { id: "damage-reduction", term: "Damage Reduction", group: "Core combat", definition: "Reduces the amount of incoming damage received." },
   { id: "massive", term: "Massive", group: "Core combat", definition: "Describes a particularly large amount of the specified effect or damage." },
@@ -71,6 +76,6 @@ export const glossary = [
   { id: "faithful", term: "Faithful", group: "Smert’s abilities", definition: "The state of having Faith, which causes Smert’s melee attacks to regenerate additional Resolve." }
 ];
 
-export const keywordAliases = [["curse", "Cursed"], ["break-damage", "Broken"], ["frost", "Frozen"], ["kick", "Kicks"], ["kick", "Kicking"], ["faithful", "Faith"], ["stray-doubles", "Stray Double"], ["specimen", "Specimens"], ["biosampler", "Biosamples"], ["critical-hit", "Critically"], ["break-damage", "Break"], ["critical-hit", "Critical Hits"], ["poison", "Poisonous"], ["shadow", "Shadowed"]];
+export const keywordAliases = [["stagger-damage", "Stagger"], ["curse", "Cursed"], ["break-damage", "Broken"], ["frost", "Frozen"], ["kick", "Kicks"], ["kick", "Kicking"], ["faithful", "Faith"], ["stray-doubles", "Stray Double"], ["specimen", "Specimens"], ["biosampler", "Biosamples"], ["critical-hit", "Critically"], ["break-damage", "Break"], ["critical-hit", "Critical Hits"], ["poison", "Poisonous"], ["shadow", "Shadowed"]];
 
 export const glossaryById = new Map(glossary.map(entry => [entry.id, entry]));

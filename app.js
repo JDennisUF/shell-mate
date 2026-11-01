@@ -42,11 +42,12 @@ function element(tag, className, value) {
   if (value !== undefined) node.textContent = value;
   return node;
 }
-const tarstoneKeywords = [...glossary.map(({ id, term }) => [id, term]), ...keywordAliases].sort((a, b) => b[1].length - a[1].length);
+const tarstoneKeywords = [...glossary.map(({ id, term }) => [id, term]), ...keywordAliases, ["ordinal", "First"], ["ordinal", "Second"], ["ordinal", "All"]].sort((a, b) => b[1].length - a[1].length);
 const tarstoneKeywordPattern = new RegExp(`\\b(${tarstoneKeywords.map(([, word]) => word.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")).join("|")})\\b`, "gi");
 const tarstoneKeywordClasses = new Map(tarstoneKeywords.map(([className, word]) => [word.toLowerCase(), className]));
 function glossaryTerm(term, text) {
   const id = tarstoneKeywordClasses.get(term.toLowerCase());
+  if (id === "ordinal") return element("span", "keyword-ordinal", text);
   const node = element("span", `tarstone-keyword tarstone-keyword-${id} glossary-term`, text);
   node.dataset.glossaryId = id;
   node.tabIndex = 0;

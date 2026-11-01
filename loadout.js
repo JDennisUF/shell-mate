@@ -129,7 +129,7 @@ function picker(label, selected, items, imageFor, onSelect, missingGear = false,
  });
  return button;
 }
-const keywordMap = new Map([...glossary.map(item => [item.term.toLowerCase(), item.id]), ...keywordAliases.map(([id, term]) => [term.toLowerCase(), id])]);
+const keywordMap = new Map([...glossary.map(item => [item.term.toLowerCase(), item.id]), ...keywordAliases.map(([id, term]) => [term.toLowerCase(), id]), ['first', 'ordinal'], ['second', 'ordinal'], ['all', 'ordinal']]);
 const keywordPattern = new RegExp(`\\b(${[...keywordMap.keys()].sort((a,b) => b.length - a.length).map(term => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join('|')})\\b`, 'gi');
 function effectText(text, highlightNumbers = true) {
  const p = el('p', 'effect-description'); let last = 0;
@@ -144,7 +144,8 @@ function effectText(text, highlightNumbers = true) {
  };
  for (const match of text.matchAll(keywordPattern)) {
   appendText(text.slice(last, match.index));
-  p.append(el('span', `tarstone-keyword tarstone-keyword-${keywordMap.get(match[0].toLowerCase())}`, match[0]));
+  const id = keywordMap.get(match[0].toLowerCase());
+  p.append(el('span', id === 'ordinal' ? 'keyword-ordinal' : `tarstone-keyword tarstone-keyword-${id}`, match[0]));
   last = match.index + match[0].length;
  }
  appendText(text.slice(last)); return p;
