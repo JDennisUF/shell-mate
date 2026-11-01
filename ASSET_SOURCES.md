@@ -19,3 +19,5 @@ The displayed Bosses tab icon (`assets/categories/bosses-red-eyes.png`) is a gen
 The 16 isolated item images in `assets/weapons/` show the weapons and sidearms themselves. They are copied locally from the equipment database at MortalShell2.org; the catalog uses the same image for each item and the guide does not depend on that site to display them.
 
 Source: <https://www.mortalshell2.org/tools/equipment-database/>. Game imagery and trademarks belong to their respective owners. GameSpot images remain the source for weapon and sidearm pickup routes, as listed in `data.js`.
+
+Troubadour’s Lute uses a transparent image generated from a user-provided reference image.

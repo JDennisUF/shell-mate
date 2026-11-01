@@ -186,7 +186,7 @@ export const catalog = {
     },
     {
       "id": "sidearm-04", "name": "Troubadour’s Lute", "kind": "sidearm", "region": "Fainweald", "scope": "base", "order": 4,
-      "category": "Instrument", "image": "assets/weapons/troubadours-lute.webp", "description": "A lute that can confuse enemies.",
+      "category": "Instrument", "image": "assets/weapons/troubadours-lute-cutout.webp", "description": "A lute that can confuse enemies.",
       "nearestBeacon": "One Legged Wolf", "nearestBeaconId": "beacon-11", "steps": ["Enter One Legged Wolf Tavern southeast of One Legged Wolf Beacon.", "Pick up the lute from the stage to the left of the performer."],
       "aliases": ["Troubador’s Lute", "Troubadour's Lute", "Troubador's Lute"], "sources": ["sidearm-locations", "gear-locations"]
     },

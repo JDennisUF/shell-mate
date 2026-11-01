@@ -367,3 +367,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 :root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.glossary-back,.loadout-button,.glossary-button){background:var(--theme-control);border-color:var(--theme-control-border);color:#f5f3eb}
 :root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.glossary-back,.loadout-button,.glossary-button):hover{background:var(--theme-hover);border-color:var(--theme-accent)}
 :root[data-theme]:not([data-theme="default"]):not([data-theme="ophidian"]):not([data-theme="porcelain-prime"]):not([data-theme="bonegrafted"]) :is(.loadout-button,.glossary-button) img{filter:brightness(0) invert(.92)}
+
+/* Naylshotte artwork has transparent space on its right side. */
+.tab[data-category="sidearms"] .category-icon{transform:translateX(15%) scale(1.15)}
+#sidearm-01 .equipment-portrait{object-position:right center}
