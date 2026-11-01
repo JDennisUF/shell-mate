@@ -11,7 +11,7 @@ a{color:var(--theme-accent, #e9bb69);text-underline-offset:3px}
 .skip{position:absolute;top:-80px;left:16px;z-index:10;background:var(--theme-accent, #e9bb69);color:#171919;padding:8px}
 .skip:focus{top:12px}
 .site-header{border-bottom:1px solid var(--theme-border, #46534e);background:var(--theme-header, #202624)}
-.site-header .shell{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:26px 0 24px}
+.site-header .shell{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 0}
 .kofi-button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;margin-top:2px;border:1px solid #df785f;border-radius:5px;background:#38231f;color:#ffe6d8;text-decoration:none;font-size:2rem;line-height:1}
 .kofi-button:hover{border-color:#ffab88;background:#4a2b24;color:#fff}
 .eyebrow{text-transform:uppercase;letter-spacing:.09em;color:var(--theme-eyebrow, #94b7aa);font-size:.74rem;font-weight:700;margin:0 0 5px}
@@ -217,6 +217,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 @media(max-width:540px){.site-header .shell{flex-wrap:wrap}.header-actions{flex-wrap:wrap}}
 
 @media(max-width:540px){.header-actions{flex:0 1 100%;min-width:0}.theme-picker{flex-wrap:wrap}}
+@media(max-width:540px){.site-header .shell{padding:12px 0}}
 
 /* Shade-inspired palettes share the same semantic color roles. */
 :root[data-theme="porcelain-prime"]{--theme-page:#f1f2f1;--theme-header:#fafafa;--theme-control:#fff;--theme-control-border:#92989b;--theme-accent:#50575c;--theme-border:#a5aaac;--theme-panel:#e4e7e7;--theme-card:#fafbfa;--theme-hover:#e1e4e4;--theme-eyebrow:#555c60;--theme-loadout-panel:#f7f8f7;--theme-loadout-border:#a5aaac;--theme-loadout-card:#e8eaea;--theme-loadout-control:#fff;--theme-loadout-control-border:#92989b;}

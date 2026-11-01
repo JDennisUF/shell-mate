@@ -1,10 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Paired hooded, porcelain-like masks inspired by Genessa. -->
-  <path d="M2 14C2 6 5 2 10 2s8 4 8 12l-2 10-6 5-6-5z" fill="#858b80" stroke="#565e55" stroke-width="1.2"/>
-  <path d="M5 12c0-5 2-7 5-7s5 2 5 7v6c0 4-2 7-5 8-3-1-5-4-5-8z" fill="#eee9da" stroke="#a4a79b" stroke-width="1"/>
-  <path d="M14 15C14 7 17 3 22 3s8 4 8 12l-2 10-6 5-6-5z" fill="#59645c" stroke="#303b35" stroke-width="1.2"/>
-  <path d="M17 13c0-5 2-7 5-7s5 2 5 7v6c0 4-2 7-5 8-3-1-5-4-5-8z" fill="#343e39" stroke="#9aa298" stroke-width="1"/>
-  <path d="M7 13l2 1m3 0 2-1M9 20h2" fill="none" stroke="#656b63" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M19 14l2 1m3 0 2-1m-5 7h2" fill="none" stroke="#d5d9cc" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M10 7v3m12-2v3" stroke="#b5bbae" stroke-width=".8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Eredrim in red and yellow armor</title>
+  <defs>
+    <g id="bust">
+      <!-- Layered pauldrons and breastplate. -->
+      <path d="M1 62l2-13 5-7 6-3h8l6 3 5 7 2 13z" fill="#303531" stroke="#161b19" stroke-width="2"/>
+      <path d="M3 49l7-7 7 3-4 8-9 2zm30 0-7-7-7 3 4 8 9 2z" fill="currentColor" stroke="#222721" stroke-width="1.5"/>
+      <path d="M4 55l8-3 5 4 5-4 10 3-1 7H4z" fill="#50564f" stroke="#1b211e" stroke-width="1.5"/>
+      <path d="M5 59l8-3 4 4 5-4 9 3M8 46l5 3m13-3-5 3" fill="none" stroke="#a2a69a" stroke-width="1"/>
+      <!-- Crown-topped great helm. -->
+      <path d="M8 14L7 3l5 6 5-7 5 7 5-6-1 11 1 5-2 18-8 8-8-8-2-18z" fill="#272c29" stroke="#171b19" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M9 13l3-2 5 2 5-2 3 2v7H9z" fill="#77796d" stroke="#181d1a" stroke-width="1"/>
+      <path d="M9 20h16l-1 16-7 7-7-7z" fill="#555951" stroke="#181d1a" stroke-width="1"/>
+      <path d="M10 20h3v13h-2zm11 0h3l-1 13h-2z" fill="currentColor" opacity=".8"/>
+      <path d="M14 20h6l-1 19-2 3-2-3z" fill="currentColor" stroke="#171b19" stroke-width=".8"/>
+      <path d="M10 23l3 1m8 0 3-1M11 31l2 1m8 0 2-1" stroke="#a5a69a" stroke-width="1"/>
+      <path d="M17 22v16" stroke="#e5d8b0" stroke-width=".8" stroke-dasharray="1 2"/>
+      <circle cx="7" cy="3" r="1.4" fill="#a8aca0"/><circle cx="17" cy="2" r="1.4" fill="#a8aca0"/><circle cx="27" cy="3" r="1.4" fill="#a8aca0"/>
+    </g>
+  </defs>
+  <g transform="translate(3 7) scale(.88)" color="#b33e30"><use href="#bust"/></g>
+  <g transform="translate(30 7) scale(.88)" color="#c9992c"><use href="#bust"/></g>
 </svg>
