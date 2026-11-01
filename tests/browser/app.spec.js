@@ -388,7 +388,7 @@ test("achievement entries allow tab changes, filtering and direct links", async 
 
 test('named loadouts can be exported, imported, and selectively loaded', async ({ page }) => {
   await page.goto('./loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('dialog').locator('.picker-option:not(.picker-empty)').first().click();
   const selected = await page.locator('#gear .picker-trigger').first().getAttribute('aria-label');
   await page.locator('#loadout-name').fill('My build');

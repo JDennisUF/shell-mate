@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('stone previews show compatibility for each weapon and sidearm', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Axe & Dagger', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Duality Stone', exact: true }).focus();
@@ -11,7 +11,7 @@ test('stone previews show compatibility for each weapon and sidearm', async ({ p
   await expect(preview.locator('[aria-label="Black Needle: incompatible"]')).toHaveClass(/is-no/);
   await expect(preview.locator('.compatibility-icon')).toHaveCount(8);
   await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
-  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true }).focus();
@@ -34,7 +34,7 @@ test('Unwieldly Stone is compatible with all melee weapons', async ({ page }) =>
 
 test('Clockwork Shardstone is available in the Clockwork Scythe ability slot only', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Ability: empty' }).click();
   await page.getByRole('button', { name: 'Clockwork Shardstone', exact: true }).click();
@@ -48,7 +48,7 @@ test('Clockwork Shardstone is available in the Clockwork Scythe ability slot onl
 
 test('glance shows level 3 effects with colored keywords and no controls', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Axatana', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
   await page.getByRole('button', { name: 'Wounding Stone', exact: true }).click();
@@ -62,7 +62,7 @@ test('glance shows level 3 effects with colored keywords and no controls', async
 
 test('glance retains distinct upgrades and summarizes permanent infusions', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
   await page.getByRole('button', { name: 'Solnir Shard', exact: true }).click();
@@ -80,7 +80,7 @@ test('glance retains distinct upgrades and summarizes permanent infusions', asyn
 
 test('concise mode shows effect text without stone or type labels and persists', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Axatana', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
   await page.getByRole('button', { name: 'Wounding Stone', exact: true }).click();
@@ -99,11 +99,11 @@ test('concise mode shows effect text without stone or type labels and persists',
 
 test('weapon and sidearm selections are remembered separately across switches and reloads', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Ability: empty' }).click();
   await page.getByRole('button', { name: 'Clockwork Shardstone', exact: true }).click();
-  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
   await page.getByRole('button', { name: 'Solnir Shard', exact: true }).click();
@@ -119,14 +119,14 @@ test('weapon and sidearm selections are remembered separately across switches an
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Sidearm stones Ability: Solnir Shard' })).toBeVisible();
   await page.getByRole('button', { name: 'Clear', exact: true }).click();
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Clockwork Scythe', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Weapon stones Ability: empty' })).toBeVisible();
 });
 
 test('weapon stone preview shows effects and colored rank details on hover and focus', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Axatana', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Wounding Stone', exact: true });
@@ -146,7 +146,7 @@ test('weapon stone preview shows effects and colored rank details on hover and f
 
 test('sidearm stone preview shows colored effects and ranks on hover and focus', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
   const stone = page.getByRole('dialog').getByRole('button', { name: 'Solnir Shard', exact: true });
@@ -171,11 +171,11 @@ test('loadout picker arrows render correctly', async ({ page }) => {
 
 test('summary groups selected effects by weapon, sidearm and support', async ({ page }) => {
   await page.goto('loadout.html');
-  await page.getByRole('button', { name: 'Melee weapon: empty' }).click();
+  await page.getByRole('button', { name: 'Melee weapon: The Iconoclast' }).click();
   await page.getByRole('button', { name: 'Axatana', exact: true }).click();
   await page.getByRole('button', { name: 'Weapon stones Combat: empty' }).click();
   await page.getByRole('button', { name: 'Wounding Stone', exact: true }).click();
-  await page.getByRole('button', { name: 'Sidearm: empty' }).click();
+  await page.getByRole('button', { name: 'Sidearm: Naylshotte' }).click();
   await page.getByRole('button', { name: 'Naylshotte', exact: true }).click();
   await page.getByRole('button', { name: 'Sidearm stones Ability: empty' }).click();
   await page.getByRole('button', { name: 'Solnir Shard', exact: true }).click();
@@ -227,4 +227,22 @@ test('exports stone names and imports both named and legacy ID loadouts', async 
   data.version = 1; data.name = 'Legacy'; data.loadout.stones = saved.stones;
   await page.locator('#loadout-file').setInputFiles({ name: 'legacy.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(data)) });
   await expect(page.locator('#loadout-message')).toContainText('Imported');
+});
+
+test('defaults equipment and explains why empty equipment cannot accept stones', async ({ page }) => {
+  await page.goto('loadout.html');
+  await expect(page.getByRole('button', { name: 'Melee weapon: The Iconoclast' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Sidearm: Naylshotte' })).toBeVisible();
+  for (const [equipment, slot, message] of [
+    ['Melee weapon: The Iconoclast', 'Weapon stones Ability: empty', 'Select a weapon before choosing its tarstones.'],
+    ['Sidearm: Naylshotte', 'Sidearm stones Ability: empty', 'Select a sidearm before choosing its tarstones.']
+  ]) {
+    await page.getByRole('button', { name: equipment }).click();
+    await page.getByRole('button', { name: 'Empty slot' }).click();
+    await page.getByRole('button', { name: slot }).click();
+    await expect(page.getByRole('status').filter({ hasText: message })).toBeVisible();
+  }
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Melee weapon: The Iconoclast' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Sidearm: Naylshotte' })).toBeVisible();
 });

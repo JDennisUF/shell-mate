@@ -7,8 +7,10 @@ const norm = s => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/&/g
 const lookup = stone => Object.entries(compat).find(([name]) => [stone.name, ...(stone.aliases || [])].some(n => norm(n) === norm(name)))?.[1];
 const slots = ['melee-Abilities','melee-Infusions','melee-Combat','sidearm-Abilities','sidearm-Infusions','sidearm-Combat', ...[1,2,3,4].map(i => `support-${i}`)];
 const playableShells = catalog.shells.filter(shell => shell.maxShellPoints);
-const defaultState = () => ({ shell: 'shell-eredrim', skillRanks: {}, melee: '', sidearm: '', stones: {}, levels: {}, gearStones: { melee: {}, sidearm: {} }, concise: false });
+const defaultState = () => ({ shell: 'shell-eredrim', skillRanks: {}, melee: 'weapon-01', sidearm: 'sidearm-01', stones: {}, levels: {}, gearStones: { melee: {}, sidearm: {} }, concise: false });
 let state; try { state = { ...defaultState(), ...JSON.parse(localStorage.getItem('shell-mate-loadout') || '{}') }; } catch { state = defaultState(); }
+state.melee ||= 'weapon-01';
+state.sidearm ||= 'sidearm-01';
 const save = () => { try { localStorage.setItem('shell-mate-loadout', JSON.stringify(state)); } catch {} };
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
 const stoneById = id => catalog.tarstones.find(s => s.id === id);
@@ -51,10 +53,18 @@ function status(stone, type, gear) {
   if (!info.fits.length) return 'compatible';
   return info.fits.some(n => norm(n) === norm(gear?.name)) ? 'compatible' : 'no';
 }
-function picker(label, selected, items, imageFor, onSelect, disabled = false, noteFor = () => '') {
+function picker(label, selected, items, imageFor, onSelect, missingGear = false, noteFor = () => '') {
  const button = el('button', 'picker-trigger', selected?.name || 'Choose an item');
- button.type = 'button'; button.disabled = disabled; button.setAttribute('aria-label', `${label}: ${selected?.name || 'empty'}`); button.setAttribute('aria-haspopup', 'dialog');
+ button.type = 'button'; button.setAttribute('aria-label', `${label}: ${selected?.name || 'empty'}`); button.setAttribute('aria-haspopup', 'dialog');
  button.addEventListener('click', () => {
+  if (missingGear) {
+   let message = button.nextElementSibling;
+   if (!message || !message.classList.contains('gear-required')) {
+    message = el('span', 'gear-required', `Select a ${label.startsWith('Weapon') ? 'weapon' : 'sidearm'} before choosing its tarstones.`);
+    message.setAttribute('role', 'status'); button.after(message);
+   }
+   return;
+  }
   const dialog = el('dialog', 'picker-dialog');
   dialog.setAttribute('aria-label', `Choose ${label}`);
   const header = el('div', 'picker-header'); header.append(el('h2', '', `Choose ${label}`));
