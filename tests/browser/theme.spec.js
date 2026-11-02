@@ -58,7 +58,7 @@ test('Ophidian uses light surfaces and dark text across the guide, glossary, and
   await lightSurface('.filters', 'label span');
   await page.goto('./glossary.html');
   await lightSurface('.glossary-card', 'p');
-  await lightSurface('.glossary-card', 'h4');
+  await lightSurface('#term-dungeon', 'h4');
   await page.goto('./loadout.html');
   await lightSurface('.loadout-saves', 'label');
   await lightSurface('.effects', '.concise-toggle');
