@@ -14,7 +14,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
     if (!localStorage.getItem("shell-mate-progress-v2")) localStorage.setItem("shell-mate-progress-v2", JSON.stringify(data));
   }, backup(completed));
   await page.goto("./");
-  await expect(page.locator(".entry")).toHaveCount(89);
+  await expect(page.locator(".entry")).toHaveCount(90);
   await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 88");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
   await expect(page.locator(".entry")).toHaveCount(4);
@@ -342,7 +342,7 @@ test('bulk selection follows filters, persists, and leaves other categories alon
 });
 
 test('completion totals exclude the undiscovered stone', async ({ page }) => {
-  const excluded = new Set(['tar-ra-forsaken-vow']);
+  const excluded = new Set(['tar-ra-forsaken-vow', 'tar-ra-october30-stone']);
   const entries = all.filter(item => !excluded.has(item.id));
   await page.addInitScript(data => localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)), backup(Object.fromEntries(entries.map(item => [item.id, true]))));
   await page.goto('./');
@@ -355,7 +355,7 @@ test('completion totals exclude the undiscovered stone', async ({ page }) => {
 });
 
 test('unavailable stones stay unchecked after loading, bulk selection and import', async ({ page }) => {
-  const ids = ['tar-ra-forsaken-vow'];
+  const ids = ['tar-ra-forsaken-vow', 'tar-ra-october30-stone'];
   await page.addInitScript(data => { if (!localStorage.getItem('shell-mate-progress-v2')) localStorage.setItem('shell-mate-progress-v2', JSON.stringify(data)); }, backup(Object.fromEntries(ids.map(id => [id, true]))));
   await page.goto('./?page=tarstones');
   for (const id of ids) {

@@ -2864,6 +2864,21 @@ export const catalog = {
         "During Night Mode, gain 100% bonus melee attack damage; sidearm and shell ability remain disabled."
       ],
       "description": "During Night Mode, increases melee attack damage while disabling Sidearm use and Shell abilities."
+    },
+    {
+      "id": "tar-ra-october30-stone",
+      "name": "October30 Stone",
+      "kind": "tarstone",
+      "availabilityWarning": "NOT FOUND BY PLAYERS · POSSIBLY BUGGED",
+      "scope": "rotten-autumn",
+      "region": "Unspecified",
+      "order": 90,
+      "category": "Unknown",
+      "steps": ["No acquisition route is documented yet."],
+      "requirement": "",
+      "sources": [],
+      "aliases": [],
+      "relatedIds": []
     }
   ],
   "beacons": [

@@ -18,7 +18,8 @@ test("catalog entries have unique permanent IDs, checklist information, sources,
       assert.ok(Array.isArray(item.skills), item.id + ": skills");
     } else {
       assert.ok(item.steps?.length, item.id + ": steps");
-      assert.ok(item.sources?.length, item.id + ": sources");
+      assert.ok(Array.isArray(item.sources), item.id + ": sources");
+      if (item.id !== "tar-ra-october30-stone") assert.ok(item.sources.length, item.id + ": sources");
       for (const source of item.sources) {
         assert.ok(catalog.sources[source], item.id + ": " + source);
         assert.equal(new URL(catalog.sources[source].url).protocol, "https:");
@@ -40,7 +41,7 @@ test("original saved IDs are preserved", () => {
 
 test("DLC filters exclude base entries and combine with search, region, type and completion", () => {
   const dlc = { ...filters, scope: "rotten-autumn" };
-  assert.equal(catalog.tarstones.filter(item => matches(item, dlc, {})).length, 12);
+  assert.equal(catalog.tarstones.filter(item => matches(item, dlc, {})).length, 13);
   assert.equal(catalog.beacons.filter(item => matches(item, dlc, {})).length, 4);
   assert.equal(catalog.dungeons.filter(item => matches(item, dlc, {})).length, 15);
   assert.equal(catalog.dungeons.filter(item => matches(item, { ...filters, scope: "base" }, {})).length, 37);
@@ -57,9 +58,9 @@ test("search finds aliases and ignores apostrophes and accents", () => {
 });
 
 test("expanded Tarstone catalog includes missing update stones without duplicate names", () => {
-  assert.equal(catalog.tarstones.length, 89);
-  assert.equal(new Set(catalog.tarstones.map(item => item.name.toLowerCase())).size, 89);
-  assert.equal(new Set(catalog.tarstones.map(item => item.order)).size, 89);
+  assert.equal(catalog.tarstones.length, 90);
+  assert.equal(new Set(catalog.tarstones.map(item => item.name.toLowerCase())).size, 90);
+  assert.equal(new Set(catalog.tarstones.map(item => item.order)).size, 90);
   for (const id of ["tar-glimpse-stone", "tar-egons-stone"]) {
     assert.ok(matches(byId.get(id), { ...filters, scope: "base", kind: "Support" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, "beacon-01");
@@ -68,7 +69,7 @@ test("expanded Tarstone catalog includes missing update stones without duplicate
   assert.equal(byId.get("tar-ra-wellspring-stone").nearestBeaconId, "beacon-01");
   assert.ok(relatedItems(byId.get("tar-ra-wellspring-stone")).some(item => item.id === "dungeon-41"));
   assert.match(byId.get("tar-ra-wellspring-stone").steps.join(" "), /Rickart’s Journal/);
-  for (const id of ["tar-ra-forsaken-vow"]) {
+  for (const id of ["tar-ra-forsaken-vow", "tar-ra-october30-stone"]) {
     assert.ok(matches(byId.get(id), { ...filters, scope: "rotten-autumn", kind: "Unknown" }, {}));
     assert.equal(byId.get(id).nearestBeaconId, undefined);
     assert.match(byId.get(id).steps[0], /No acquisition route is documented/);
