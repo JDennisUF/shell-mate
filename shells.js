@@ -1246,7 +1246,7 @@ export const shellItems = [
     "order": 4,
     "category": "Prologue only",
     "shellName": "Harros",
-    "image": "assets/shells/harros.png",
+    "image": "assets/shells/harros.webp",
     "signature": [
       "Stone Stun: petrify nearby enemies; they cannot act and take Break damage instead of damage."
     ],

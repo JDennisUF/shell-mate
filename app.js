@@ -15,7 +15,7 @@ const categoryArtwork = {
   sidearms: "assets/weapons/naylshotte.webp",
   tarstones: "assets/categories/tarstones.png",
   beacons: "assets/categories/beacons.png",
-  bosses: "assets/categories/bosses-transparent.png",
+  bosses: "assets/categories/bosses-transparent.svg",
   dungeons: "assets/categories/dungeons.png"
 };
 const storage = {

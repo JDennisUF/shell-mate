@@ -35,6 +35,7 @@ jobs:
           mkdir _site
           cp favicon.ico theme.js index.html glossary.html loadout.html styles.css loadout.css app.js loadout.js glossary-page.js glossary.js data.js extras.js model.js shells.js storage.js tarstone-art.js tarstone-compatibility.json TARSTONE_EQUIPMENT_RULES.md _site/
           cp -r assets _site/assets
+          rm -f _site/assets/tarstones/*.png _site/assets/tarstones/*-orig.webp _site/assets/shells/harros.png _site/assets/categories/bosses-transparent.png
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

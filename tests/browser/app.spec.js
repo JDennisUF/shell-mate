@@ -17,7 +17,7 @@ test("existing Tarstone checks survive expansion and missing stones can be track
   await expect(page.locator(".entry")).toHaveCount(90);
   await expect(page.locator("#category-progress .progress-stat").filter({ hasText: "Tarstones" })).toContainText("85 / 88");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
-  await expect(page.locator(".entry")).toHaveCount(4);
+  await expect(page.locator(".entry")).toHaveCount(5);
   await page.getByRole("combobox", { name: "Stone type", exact: true }).selectOption("Support");
   await expect(page.locator(".entry")).toHaveCount(3);
   await page.locator("#tar-egons-stone > .route > summary").click();
@@ -41,7 +41,7 @@ test("DLC selection follows categories and updates guide totals", async ({ page 
   await page.goto("./");
   await page.getByRole("combobox", { name: "Content", exact: true }).selectOption("rotten-autumn");
   await page.getByRole("combobox", { name: "Progress", exact: true }).selectOption("open");
-  await expect(page.locator(".entry")).toHaveCount(12);
+  await expect(page.locator(".entry")).toHaveCount(13);
   await expect(page.locator("#overall-count")).toHaveText("0 / 38");
   await page.getByRole("button", { name: "Beacons", exact: true }).click();
   await expect(page.locator(".entry")).toHaveCount(4);
