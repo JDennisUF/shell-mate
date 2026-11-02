@@ -53,6 +53,7 @@ function status(stone, type, gear) {
   if (!info.fits.length) return 'compatible';
   return info.fits.some(n => norm(n) === norm(gear?.name)) ? 'compatible' : 'no';
 }
+function shiftSidearmImage(item) { return item?.kind === 'sidearm' && !['sidearm-04', 'sidearm-05', 'sidearm-08'].includes(item.id); }
 function picker(label, selected, items, imageFor, onSelect, missingGear = false, noteFor = () => '') {
  const button = el('button', 'picker-trigger', selected?.name || 'Choose an item');
  button.type = 'button'; button.setAttribute('aria-label', `${label}: ${selected?.name || 'empty'}`); button.setAttribute('aria-haspopup', 'dialog');
@@ -65,7 +66,7 @@ function picker(label, selected, items, imageFor, onSelect, missingGear = false,
    }
    return;
   }
-  const dialog = el('dialog', 'picker-dialog');
+  const dialog = el('dialog', 'picker-dialog' + (['Melee weapon', 'Sidearm'].includes(label) ? ' gear-picker-dialog' : ''));
   dialog.setAttribute('aria-label', `Choose ${label}`);
   const header = el('div', 'picker-header'); header.append(el('h2', '', `Choose ${label}`));
   const close = el('button', 'picker-close', 'Close'); close.type = 'button'; close.addEventListener('click', () => dialog.close()); header.append(close); dialog.append(header);
@@ -75,7 +76,7 @@ function picker(label, selected, items, imageFor, onSelect, missingGear = false,
   const empty = el('button', 'picker-option picker-empty', '✕'); empty.type = 'button'; empty.append(el('span', '', 'Empty slot')); empty.addEventListener('click', () => { dialog.close(); onSelect(''); }); grid.append(empty);
   for (const item of items) {
    const option = el('button', 'picker-option' + (selected?.id === item.id ? ' is-selected' : '')); option.type = 'button';
-   const img = el('img'); img.src = imageFor(item) || 'assets/categories/tarstones.png'; img.alt = ''; img.loading = 'lazy';
+   const img = el('img'); if (label === 'Sidearm' && shiftSidearmImage(item)) img.classList.add('gear-image-shift-right'); img.src = imageFor(item) || 'assets/categories/tarstones.png'; img.alt = ''; img.loading = 'lazy';
    option.append(img, el('span', '', item.name));
    if (preview) {
     option.setAttribute('aria-describedby', preview.id);
@@ -216,7 +217,7 @@ function render() {
  const gearRoot = document.querySelector('#gear'); gearRoot.replaceChildren();
  for (const [type, label, list] of [['melee','Melee weapon',catalog.weapons],['sidearm','Sidearm',catalog.sidearms]]) {
   const card = el('div','gear-card'); const gear = list.find(x=>x.id===state[type]);
-  if (gear?.image) { const img=el('img','gear-image'); img.src=gear.image; img.alt=''; card.append(img); } else card.append(el('div','gear-placeholder','⚔'));
+  if (gear?.image) { const img=el('img','gear-image'); if (shiftSidearmImage(gear)) img.classList.add('gear-image-shift-right'); img.src=gear.image; img.alt=''; card.append(img); } else card.append(el('div','gear-placeholder','⚔'));
   const body=el('div','gear-body'); const lab=el('div','slot-label',label);
   lab.append(picker(label, gear, list, item => item.image, value => selectGear(type, value, list))); body.append(lab); card.append(body); gearRoot.append(card);
  }
