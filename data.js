@@ -838,9 +838,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-20",
       "levelEffects": [
-        "The light finisher generates 1.4 Resolve",
-        "The light finisher generates 1.7 Resolve",
-        "The light finisher generates 2.5 Resolve"
+        "The light finisher generates 40% Resolve",
+        "The light finisher generates 70% Resolve",
+        "The light finisher generates 150% Resolve"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Zealot%27s_Stone",
       "description": "Grants access to a special Light Combo Finisher that generates Resolve."
