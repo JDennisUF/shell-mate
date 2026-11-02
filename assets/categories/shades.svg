@@ -4,7 +4,7 @@
     <linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c1c0b7"/><stop offset="1" stop-color="#8d8c84"/></linearGradient>
     <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#deded5"/><stop offset="1" stop-color="#afafa5"/></linearGradient>
   </defs>
-  <g transform="translate(-2.24 0) scale(1.07 1)">
+  <g transform="translate(-2.88 2) scale(1.09 .96)">
   <path d="M7 28h50l-2 25 3 5H6l3-5z" fill="url(#front)" stroke="#182122" stroke-width="2" stroke-linejoin="round"/>
   <path d="M4 21 13 9h38l9 12-2 10H6z" fill="url(#lid)" stroke="#202b2c" stroke-width="2" stroke-linejoin="round"/>
   <path d="M4 21q28 4 56 0l-2 10q-26 3-52 0z" fill="#b6b6ad" stroke="#283536" stroke-width="1.5"/>
