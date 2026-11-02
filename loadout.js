@@ -196,14 +196,16 @@ function renderShell() {
   const section = el('section', 'loadout-skill-tier'); section.append(el('h3', '', `Tier ${tier}`));
   for (const skill of skills) {
    const card = el('article', 'loadout-skill'); card.append(el('h4', '', skill.name));
-   if (skill.description) card.append(el('p', '', skill.description));
+   if (skill.description) card.append(effectText(skill.description));
    (skill.levels || []).forEach((effect, index) => {
     const rank = index + 1, row = el('div', 'loadout-rank');
     const button = el('button', 'shell-rank-button', String(rank)); button.type = 'button';
     button.setAttribute('aria-label', `${shell.shellName} ${skill.name} rank ${rank}`); button.setAttribute('aria-pressed', String(rank <= (ranks[skill.name] || 0)));
     button.title = `Rank ${rank} costs ${rank} Shell ${rank === 1 ? 'Point' : 'Points'}`;
     button.onclick = () => { if (ranks[skill.name] === rank) delete ranks[skill.name]; else ranks[skill.name] = rank; save(); renderShell(); };
-    row.append(button, el('span', '', effect)); card.append(row);
+    const rankEffect = el('span', 'shell-rank-effect');
+    rankEffect.append(...effectText(effect).childNodes);
+    row.append(button, rankEffect); card.append(row);
    }); section.append(card);
   } tiers.append(section);
  } root.append(tiers);

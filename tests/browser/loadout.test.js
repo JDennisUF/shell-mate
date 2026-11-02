@@ -194,6 +194,7 @@ test('summary groups selected effects by weapon, sidearm and support', async ({ 
 test('support stone preview shows effects on hover and focus', async ({ page }) => {
   await page.goto('loadout.html');
   await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  await page.mouse.move(0, 0);
   const stone = page.getByRole('dialog').locator('.picker-option:not(.picker-empty)').first();
   await stone.hover();
   const preview = page.getByRole('tooltip');
@@ -250,10 +251,20 @@ test('defaults equipment and explains why empty equipment cannot accept stones',
 test('fragile stones show effect, break and durability details without ranks', async ({ page }) => {
   await page.goto('loadout.html');
   await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  await page.mouse.move(0, 0);
   await page.getByRole('button', { name: "Egon's Stone", exact: true }).focus();
   const preview = page.getByRole('tooltip');
   await expect(preview).toContainText('Upon death inside a Dungeon, gives the option to revive at its entrance');
   await expect(preview).toContainText('On Break:');
   await expect(preview).toContainText('3, decreases on activation.');
   await expect(preview).not.toContainText('Rank 1');
+});
+
+test('Shell skill descriptions and ranks highlight keywords', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.locator('#shell-select').selectOption('shell-proxima');
+  const skill = page.locator('.loadout-skill').filter({ hasText: 'Each level reduces the Resolve cost of Biosampler.' });
+  await expect(skill.locator('p .tarstone-keyword-resolve')).toHaveText('Resolve');
+  await expect(skill.locator('p .tarstone-keyword-biosampler')).toHaveText('Biosampler');
+  await expect(page.locator('.loadout-rank .tarstone-keyword').first()).toBeVisible();
 });
