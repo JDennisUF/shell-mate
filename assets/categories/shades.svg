@@ -1,23 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>Eredrim in red and yellow armor</title>
+  <title>Bone chest</title>
   <defs>
-    <g id="bust">
-      <!-- Layered pauldrons and breastplate. -->
-      <path d="M1 62l2-13 5-7 6-3h8l6 3 5 7 2 13z" fill="#303531" stroke="#161b19" stroke-width="2"/>
-      <path d="M3 49l7-7 7 3-4 8-9 2zm30 0-7-7-7 3 4 8 9 2z" fill="currentColor" stroke="#222721" stroke-width="1.5"/>
-      <path d="M4 55l8-3 5 4 5-4 10 3-1 7H4z" fill="#50564f" stroke="#1b211e" stroke-width="1.5"/>
-      <path d="M5 59l8-3 4 4 5-4 9 3M8 46l5 3m13-3-5 3" fill="none" stroke="#a2a69a" stroke-width="1"/>
-      <!-- Crown-topped great helm. -->
-      <path d="M8 14L7 3l5 6 5-7 5 7 5-6-1 11 1 5-2 18-8 8-8-8-2-18z" fill="#272c29" stroke="#171b19" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M9 13l3-2 5 2 5-2 3 2v7H9z" fill="#77796d" stroke="#181d1a" stroke-width="1"/>
-      <path d="M9 20h16l-1 16-7 7-7-7z" fill="#555951" stroke="#181d1a" stroke-width="1"/>
-      <path d="M10 20h3v13h-2zm11 0h3l-1 13h-2z" fill="currentColor" opacity=".8"/>
-      <path d="M14 20h6l-1 19-2 3-2-3z" fill="currentColor" stroke="#171b19" stroke-width=".8"/>
-      <path d="M10 23l3 1m8 0 3-1M11 31l2 1m8 0 2-1" stroke="#a5a69a" stroke-width="1"/>
-      <path d="M17 22v16" stroke="#e5d8b0" stroke-width=".8" stroke-dasharray="1 2"/>
-      <circle cx="7" cy="3" r="1.4" fill="#a8aca0"/><circle cx="17" cy="2" r="1.4" fill="#a8aca0"/><circle cx="27" cy="3" r="1.4" fill="#a8aca0"/>
-    </g>
+    <linearGradient id="front" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c1c0b7"/><stop offset="1" stop-color="#8d8c84"/></linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#deded5"/><stop offset="1" stop-color="#afafa5"/></linearGradient>
   </defs>
-  <g transform="translate(3 7) scale(.88)" color="#b33e30"><use href="#bust"/></g>
-  <g transform="translate(30 7) scale(.88)" color="#c9992c"><use href="#bust"/></g>
+  <g transform="translate(-2.24 0) scale(1.07 1)">
+  <path d="M7 28h50l-2 25 3 5H6l3-5z" fill="url(#front)" stroke="#182122" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M4 21 13 9h38l9 12-2 10H6z" fill="url(#lid)" stroke="#202b2c" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M4 21q28 4 56 0l-2 10q-26 3-52 0z" fill="#b6b6ad" stroke="#283536" stroke-width="1.5"/>
+  <path d="M8 33q24 3 48 0M10 53q22 2 44 0" fill="none" stroke="#e7e7dc" opacity=".25"/>
+  <!-- Spine and ribs emerging from the stone lid and draping over its edge. -->
+  <g fill="none" stroke="#74746c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10v31M32 13c-3 0-4 3-9 4m9-1c-4 0-6 4-12 5m12-2c-5 0-7 4-14 5m14-2c-5 1-8 5-15 5m15-14c3 0 4 3 9 4m-9-1c4 0 6 4 12 5m-12-2c5 0 7 4 14 5m-14-2c5 1 8 5 15 5M32 29c-4 1-5 5-8 8m8-8c4 1 5 5 8 8m-8-4c-3 1-4 5-6 7m6-7c3 1 4 5 6 7"/>
+  </g>
+  <g fill="none" stroke="#e5e5db" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 10v30M32 13c-3 0-4 3-9 4m9-1c-4 0-6 4-12 5m12-2c-5 0-7 4-14 5m14-2c-5 1-8 5-15 5m15-14c3 0 4 3 9 4m-9-1c4 0 6 4 12 5m-12-2c5 0 7 4 14 5m-14-2c5 1 8 5 15 5M32 29c-4 1-5 5-8 8m8-8c4 1 5 5 8 8m-8-4c-3 1-4 5-6 7m6-7c3 1 4 5 6 7"/>
+  </g>
+  <path d="M30 12h4m-4 4h4m-4 4h4m-4 4h4m-4 4h4m-4 4h4m-4 4h4" stroke="#f0f0e6" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
 </svg>
