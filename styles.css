@@ -144,7 +144,10 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .tarstone-keyword-shock,.tarstone-keyword-critical-hit,.tarstone-keyword-lightning,.tarstone-keyword-critical-damage,.tarstone-keyword-critical-chance{color:#ffe16b}
 .tarstone-keyword-stagger-damage,.tarstone-keyword-resolve{color:#c39a79}
 .tarstone-keyword-at-night{color:#25bfff}
-.tarstone-keyword-lute,.tarstone-keyword-weapon,.tarstone-keyword-sidearm,.tarstone-keyword-permanent{color:#fff}
+.tarstone-keyword-blocked{color:#ff583d}
+:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.entry,.glossary-card,.loadout,.picker-dialog,.equipped-preview) .tarstone-keyword-blocked{color:#b52e19}
+.tarstone-keyword-lute,.tarstone-keyword-weapon,.tarstone-keyword-sidearm,.tarstone-keyword-permanent,.tarstone-keyword-dungeon{color:#fff}
+:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.entry,.glossary-card,.loadout,.picker-dialog,.equipped-preview) .tarstone-keyword-dungeon{color:#27241e}
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.entry,.glossary-card,.loadout,.picker-dialog,.equipped-preview) .tarstone-keyword-permanent{color:#27241e}
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.entry,.glossary-card,.loadout,.picker-dialog,.equipped-preview) .tarstone-keyword-sidearm{color:#27241e}
 .keyword-ordinal{color:#fff}

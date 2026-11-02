@@ -246,3 +246,14 @@ test('defaults equipment and explains why empty equipment cannot accept stones',
   await expect(page.getByRole('button', { name: 'Melee weapon: The Iconoclast' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Sidearm: Naylshotte' })).toBeVisible();
 });
+
+test('fragile stones show effect, break and durability details without ranks', async ({ page }) => {
+  await page.goto('loadout.html');
+  await page.getByRole('button', { name: 'Support stones Support 1: empty' }).click();
+  await page.getByRole('button', { name: "Egon's Stone", exact: true }).focus();
+  const preview = page.getByRole('tooltip');
+  await expect(preview).toContainText('Upon death inside a Dungeon, gives the option to revive at its entrance');
+  await expect(preview).toContainText('On Break:');
+  await expect(preview).toContainText('3, decreases on activation.');
+  await expect(preview).not.toContainText('Rank 1');
+});

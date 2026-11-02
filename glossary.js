@@ -1,5 +1,7 @@
 // Shared definitions for colored combat terms in Shell Mate.
 export const glossary = [
+  { id: "blocked", term: "Blocked", group: "Core combat", definition: "The specified action or effect is unavailable while this condition applies." },
+  { id: "dungeon", term: "Dungeon", group: "Core combat", definition: "An explorable area entered from the world or through a Beacon." },
   { id: "permanent", term: "Permanent", group: "Core combat", definition: "The stated effect remains active without a limited number of attacks." },
   { id: "sidearm", term: "Sidearm", group: "Core combat", definition: "The equipped ranged weapon used for Sidearm attacks and abilities." },
   { id: "weapon", term: "Weapon", group: "Core combat", definition: "The equipped melee weapon used for attacks and abilities." },

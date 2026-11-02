@@ -559,6 +559,7 @@ export const catalog = {
     },
     {
       "id": "tar-12",
+      "fragileDetails": {"effect": "Slain foes yield 30% more Gloom.", "onBreak": "Grants 3,000 Gloom.", "durability": "10,000; decreases as Gloom is gained from enemies."},
       "name": "Gloombound Stone",
       "kind": "tarstone",
       "region": "Fainweald",
@@ -585,6 +586,7 @@ export const catalog = {
     },
     {
       "id": "tar-13",
+      "fragileDetails": {"effect": "Slain foes yield 30% more Coin.", "onBreak": "Grants 1500 Coin.", "durability": "5,000; decreases as Coin is gained."},
       "name": "Justiciar’s Stone",
       "kind": "tarstone",
       "region": "Fainweald",
@@ -777,12 +779,12 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-14",
       "levelEffects": [
-        "Gain 3 Warp stack per strike",
+        "Gain 3 Warp stacks per strike",
         "Gain 4 Warp stacks per strike",
         "Gain 5 Warp stacks per strike"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Thief%27s_Stone",
-      "description": "Striking foes grants Warp."
+      "description": "Striking foes grants you Warp"
     },
     {
       "id": "tar-20",
@@ -1373,7 +1375,7 @@ export const catalog = {
         "Infusion is permanent"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Voltaic_Crown",
-      "description": "Consume 30 Resolve to infuse with Lightning."
+      "description": "Consume 30 Resolve to infuse your Weapon with Lightning."
     },
     {
       "id": "tar-40",
@@ -1842,9 +1844,9 @@ export const catalog = {
       "relatedIds": [],
       "nearestBeaconId": "beacon-01",
       "levelEffects": [
-        "The charged attack restores 10 Health on a critically hit.",
-        "The charged attack restores 20 Health on a critically hit.",
-        "The charged attack restores 40 Health on a critically hit."
+        "The charged attack restores 10 Health on a critical hit.",
+        "The charged attack restores 20 Health on a critical hit.",
+        "The charged attack restores 40 Health on a critical hit."
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Unwieldly_Stone",
       "description": "Consume 35 Resolve to perform a charged Heavy Attack."
@@ -2588,12 +2590,12 @@ export const catalog = {
         "dungeon-08"
       ],
       "levelEffects": [
-        "After a parry, perfect guard, or perfect harden, the next melee hit restores 10% of maximum health.",
-        "After a parry, perfect guard, or perfect harden, the next melee hit restores 20% of maximum health.",
-        "After a parry, perfect guard, or perfect harden, the next melee hit restores 30% of maximum health."
+        "Your next melee strike is empowered to restore 10% of maximum Health",
+        "Your next melee strike is empowered to restore 20% of maximum Health and deals 135% damage",
+        "Your next melee strike is empowered to restore 30% of maximum Health, deals 135% damage and 200% Stagger Damage"
       ],
       "descriptionSource": "https://mortalshell2.wiki.fextralife.com/Black_Lantern",
-      "description": "Blocks Mether's Pulse. Blocking, Perfect Guard, Parry, or Perfect Harden empowers your next attack."
+      "description": "Mether's Pulse gets Blocked but a Perfect Guard, successful Parry or Perfect Harden empowers your next Melee attack"
     },
     {
       "id": "tar-ra-channelers-stone",
@@ -2722,6 +2724,7 @@ export const catalog = {
     },
     {
       "id": "tar-ra-knowledge-stone",
+      "fragileDetails": {"effect": "Gain 5% damage per second locked onto the same enemy, up to 25%. Losing or changing lock-on resets the bonus.", "onBreak": "Dormant; no active effect is documented.", "durability": "Dormant; no active break condition is documented."},
       "name": "Knowledge Stone",
       "kind": "tarstone",
       "scope": "rotten-autumn",
@@ -2744,6 +2747,7 @@ export const catalog = {
     },
     {
       "id": "tar-glimpse-stone",
+      "fragileDetails": {"effect": "No passive effect.", "onBreak": "Grants 3 glimpses", "durability": "20; decreases as enemies are defeated."},
       "name": "Glimpse Stone",
       "kind": "tarstone",
       "scope": "base",
@@ -2772,6 +2776,7 @@ export const catalog = {
     },
     {
       "id": "tar-egons-stone",
+      "fragileDetails": {"effect": "Upon death inside a Dungeon, gives the option to revive at its entrance", "onBreak": "Prevents Gloom loss for this death", "durability": "3, decreases on activation."},
       "name": "Egon's Stone",
       "kind": "tarstone",
       "scope": "base",

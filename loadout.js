@@ -99,9 +99,11 @@ function picker(label, selected, items, imageFor, onSelect, missingGear = false,
      }
      preview.append(compatibility);
      }
-     if (item.description) preview.append(effectText(item.description, true));
+     if (item.fragileDetails) appendFragileDetails(preview, item);
+     else if (item.description) preview.append(effectText(item.description, true));
      const levels = item.levelEffects || [];
-     if (levels.length) levels.forEach((effect, index) => {
+     if (item.fragileDetails) { /* Details are already shown above. */ }
+     else if (levels.length) levels.forEach((effect, index) => {
       const row = effectText(effect, true); row.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(row);
      });
      else if (item.fixedEffect) preview.append(effectText(item.fixedEffect, true));
@@ -149,6 +151,11 @@ function effectText(text, highlightNumbers = true) {
   last = match.index + match[0].length;
  }
  appendText(text.slice(last)); return p;
+}
+function appendFragileDetails(target, stone) {
+ for (const [label, value] of [['Effect', stone.fragileDetails.effect], ['On Break', stone.fragileDetails.onBreak], ['Durability', stone.fragileDetails.durability]]) {
+  const detail = effectText(value); detail.prepend(el('strong', '', `${label}: `)); target.append(detail);
+ }
 }
 // Indexes of upgrades that remain distinct at level 3; unspecified stones use only the final upgrade.
 const retainedUpgrades = {
@@ -230,8 +237,10 @@ function render() {
     const preview = el('div', 'equipped-preview'); preview.id = `preview-${key}`; preview.hidden = true; preview.setAttribute('role', 'tooltip');
     preview.append(el('strong', '', selected.name));
     const art = el('img', 'preview-art'); art.src = tarstoneArtwork[selected.id] || 'assets/categories/tarstones.png'; art.alt = ''; preview.append(art, el('p', 'preview-category', selected.category));
-    if (selected.description) preview.append(effectText(selected.description));
-    if (selected.levelEffects?.length) selected.levelEffects.forEach((effect, index) => { const detail = effectText(effect); detail.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(detail); });
+    if (selected.fragileDetails) appendFragileDetails(preview, selected);
+    else if (selected.description) preview.append(effectText(selected.description));
+    if (selected.fragileDetails) { /* Details are already shown above. */ }
+    else if (selected.levelEffects?.length) selected.levelEffects.forEach((effect, index) => { const detail = effectText(effect); detail.prepend(document.createTextNode(`Rank ${index + 1}: `)); preview.append(detail); });
     else if (selected.fixedEffect) preview.append(effectText(selected.fixedEffect));
     else if (!selected.description) preview.append(effectText('Effect details not yet documented.'));
     trigger.setAttribute('aria-describedby', preview.id); row.append(preview);
@@ -256,7 +265,9 @@ function render() {
    card.append(el('h4','effect-name',stone.name));
   }
   const levels=stone.levelEffects || [];
-  if (stone.category === 'Infusions' && infusionEffects[stone.name]) {
+  if (stone.fragileDetails) {
+   appendFragileDetails(card, stone);
+  } else if (stone.category === 'Infusions' && infusionEffects[stone.name]) {
    card.append(effectText(`${key.startsWith('melee') ? 'Weapon' : 'Sidearm'} is infused with ${infusionEffects[stone.name]}.`));
    if (/critical hits only/i.test(stone.description || '')) card.append(effectText('Inflicted on Critical Hits only.'));
   } else {

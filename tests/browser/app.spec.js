@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { catalog } from "../../data.js";
 import { all } from "../../model.js";
+import { glossary } from "../../glossary.js";
 
 const backup = completed => ({ version: 2, completed });
 const upload = async (page, data) => page.locator("#import-file").setInputFiles({ name: "progress.json", mimeType: "application/json", buffer: Buffer.from(typeof data === "string" ? data : JSON.stringify(data)) });
@@ -236,7 +237,7 @@ test("colored terms show definitions on hover and focus, and the glossary lists 
   await expect(page.locator("#glossary-tooltip")).toBeHidden();
   await page.getByRole("link", { name: "Open glossary" }).click();
   await expect(page).toHaveURL(/glossary\.html$/);
-  await expect(page.locator(".glossary-card")).toHaveCount(69);
+  await expect(page.locator(".glossary-card")).toHaveCount(glossary.length);
   await expect(page.locator("#term-faithful-doubles")).toContainText("perform one weapon attack");
   await page.getByRole("link", { name: "Guide" }).click();
   await expect(page).toHaveURL(/\/shell-mate\/$/);

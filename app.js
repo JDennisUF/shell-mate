@@ -451,13 +451,22 @@ function renderEntry(item) {
   const summary = element("summary", "", item.kind === "shell" ? "Abilities & details" : "Route & details");
   const body = element("div", "route-body");
   if (item.kind === "tarstone") {
-    if (item.description) {
+    if (item.fragileDetails) {
+      for (const [label, value] of [["Effect", item.fragileDetails.effect], ["On Break", item.fragileDetails.onBreak], ["Durability", item.fragileDetails.durability]]) {
+        const detail = element("p", "tarstone-description");
+        detail.append(element("strong", "", `${label}: `));
+        appendTarstoneKeywords(detail, value);
+        body.append(detail);
+      }
+    } else if (item.description) {
       const description = element("p", "tarstone-description");
       appendTarstoneKeywords(description, item.description);
       body.append(description);
     }
     else body.append(element("p", "note", "Fextralife does not have a description for this Tarstone yet."));
-    if (item.levelEffects?.length === 3) {
+    if (item.fragileDetails) {
+      // Fragile stones have durability and break effects instead of upgrades.
+    } else if (item.levelEffects?.length === 3) {
       body.append(element("h3", "", "Upgrade effects"));
       const levels = element("ol", "tarstone-levels");
       item.levelEffects.forEach((effect, index) => {
