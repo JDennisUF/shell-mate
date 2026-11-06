@@ -216,9 +216,9 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 .glossary-button:hover{border-color:#c5ddc9;background:#344a3d}
 .glossary-button img{width:32px;height:32px;filter:brightness(0) saturate(100%) invert(89%) sepia(11%) saturate(477%) hue-rotate(77deg) brightness(97%)}
 
-.loadout-button{display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex:none;width:48px;height:48px;margin-top:2px;border:1px solid #8fae9c;border-radius:5px;background:#26362f}
+.loadout-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;width:max-content;min-width:max-content;white-space:nowrap;height:48px;margin-top:2px;padding:0 12px 0 8px;border:1px solid #8fae9c;border-radius:4px 12px;background:#26362f;box-shadow:inset 0 0 0 2px #ffffff12;color:#e1eadf;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
 .loadout-button:hover{border-color:#c5ddc9;background:#344a3d}
-.loadout-button img{width:32px;height:32px;filter:brightness(0) saturate(100%) invert(89%) sepia(11%) saturate(477%) hue-rotate(77deg) brightness(97%)}
+.loadout-button img{width:28px;height:28px;filter:brightness(0) saturate(100%) invert(89%) sepia(11%) saturate(477%) hue-rotate(77deg) brightness(97%)}
 .header-actions .kofi-button{margin-left:12px}
 @media(max-width:540px){.header-actions{gap:4px}.header-actions .kofi-button{margin-left:4px}.site-header .shell{gap:8px}}
 .glossary-search{display:flex;flex-direction:column;gap:.4rem;max-width:30rem;margin:1rem 0;color:#c7b792}.glossary-search input{width:100%;padding:.65rem;background:var(--theme-loadout-control, #101311);color:#eee;border:1px solid var(--theme-loadout-control-border, #565549);border-radius:2px}.glossary-card[hidden],.glossary-section[hidden]{display:none}
@@ -327,7 +327,7 @@ progress{display:block;width:100%;height:9px;margin:14px 0 18px;accent-color:#8b
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) .site-header .eyebrow{color:#705218}
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) .site-header h1 span{color:#89671f}
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) .glossary-back{background:#f8f3e8;color:#29251e;border-color:#9d8a60}
-:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.loadout-button,.glossary-button){background:#f8f3e8;border-color:#9d8a60}
+:root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.loadout-button,.glossary-button){background:#f8f3e8;border-color:#9d8a60;color:#332f25}
 :root:is([data-theme="ophidian"],[data-theme="porcelain-prime"],[data-theme="bonegrafted"]) :is(.loadout-button,.glossary-button) img{filter:brightness(0) saturate(100%) invert(20%) sepia(12%) saturate(725%) hue-rotate(359deg) brightness(92%)}
 
 /* Porcelain Prime: cool white, black and silver. */

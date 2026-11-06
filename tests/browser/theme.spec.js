@@ -30,7 +30,8 @@ test('every catalog Shade has a distinct selectable, persistent theme', async ({
   const shades = await page.evaluate(async () => (await import('./extras.js')).shades.map(shade => shade.name));
   const picker = page.getByLabel('Theme');
   const options = await picker.locator('option:not([value=default]):not([value=obsidian])').allTextContents();
-  expect(options).toEqual(shades);
+  expect([...options].sort()).toEqual([...shades].sort());
+  await expect(picker.locator('optgroup[label=Light] option')).toHaveText(['Porcelain Prime', 'Ophidian', 'Bonegrafted']);
   const backgrounds = new Set();
   for (const option of await picker.locator('option:not([value=default]):not([value=obsidian])').evaluateAll(nodes => nodes.map(node => node.value))) {
     await picker.selectOption(option);
@@ -39,7 +40,7 @@ test('every catalog Shade has a distinct selectable, persistent theme', async ({
   }
   expect(backgrounds.size).toBe(shades.length);
   await page.reload();
-  await expect(picker).toHaveValue('queen-of-hearts');
+  await expect(picker).toHaveValue('bonegrafted');
 });
 
 test('Ophidian uses light surfaces and dark text across the guide, glossary, and loadout', async ({ page }) => {
